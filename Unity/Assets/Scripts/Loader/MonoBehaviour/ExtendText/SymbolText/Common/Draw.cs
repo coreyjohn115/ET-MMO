@@ -1,0 +1,46 @@
+﻿﻿using UnityEngine;
+using System;
+
+namespace ET.Client
+{
+    public enum DrawType
+    {
+        Default, // 默认
+        Alpha, // 透明
+        Offset, // 位置偏移
+
+        Outline, // 画线
+        OffsetAndAlpha, // 透明+位置
+        Cartoon, // 动画
+        ISprite, // 异步加载的Sprite
+    }
+
+    public interface Draw
+    {
+        DrawType type { get; } // 类型
+
+        long key { get; set; } // 名称
+
+        Material srcMat { get; set; } // 源材质
+
+        Texture texture { get; set; } // 源贴图
+
+        CanvasRenderer canvasRenderer { get; }
+
+        RectTransform rectTransform { get; }
+
+        void UpdateSelf(float deltaTime);
+
+        void FillMesh(Mesh workerMesh);
+
+        void UpdateMaterial(Material mat);
+
+        void OnClipRectChange(Rect clipRect, bool validRect);
+
+        void Release();
+
+        void DestroySelf();
+
+        void OnInit();
+    }
+}

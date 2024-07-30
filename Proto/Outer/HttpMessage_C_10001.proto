@@ -1,0 +1,55 @@
+syntax = "proto3";
+package ET;
+
+message HttpGetRouterResponse
+{
+  repeated string Realms = 1;
+  repeated string Routers = 2;
+}
+
+message RouterSync
+{
+  uint32 ConnectId = 1;
+  string Address = 2;
+}
+
+message AccountProto
+{
+  int64 Id = 0;
+  int32 AccountType = 2;
+  int64 CreateTime = 3;
+}
+
+message HttpAccount
+{
+  int32 Error = 91;
+  AccountProto Account = 1;
+}
+
+message ServerInfoProto
+{
+	int64 Id = 1;
+	int32 Status = 2;
+	string ServerName = 3;
+}
+
+message HttpServerList
+{
+  repeated ServerInfoProto ServerList = 1;
+}
+
+message RoleInfoProto
+{
+	int64 Id = 1;
+	string Name = 2;
+	int32 State = 3;
+	string Account = 4;
+	int64 LastLoginTime = 5;
+	int64 CreateTime = 6;
+	int32 ServerId = 7;
+}
+
+message HttpRoleList
+{
+  repeated RoleInfoProto RoleList = 1;
+}

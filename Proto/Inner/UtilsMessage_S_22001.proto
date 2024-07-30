@@ -1,0 +1,144 @@
+syntax = "proto3";
+package ET;
+
+//添加或更新缓存数据
+//ResponseType Cache2Other_UpdateCache
+message Other2Cache_UpdateCache // IRequest
+{
+	int64 UnitId = 1;
+	//实体列表
+	repeated string EntityTypeList = 2;
+	repeated bytes EntityData = 3;
+}
+message Cache2Other_UpdateCache // IResponse
+{
+}
+
+//获取缓存数据
+//ResponseType Cache2Other_GetCache
+message Other2Cache_GetCache // IRequest
+{
+	int64 UnitId = 1;
+	repeated string ComponentNameList = 2;
+}
+message Cache2Other_GetCache // IResponse
+{
+	repeated string ComponentNameList = 1;
+	repeated bytes Entitys = 2;
+}
+
+//删除缓存数据
+//ResponseType Cache2Other_DeleteCache
+message Other2Cache_DeleteCache // IRequest
+{
+	int64 UnitId = 1;
+}
+message Cache2Other_DeleteCache // IResponse
+{
+}
+
+
+
+//获取排行榜数据
+//ResponseType Rank2O_GetRankResponse
+message O2Rank_GetRankRequest // IRequest
+{
+	int64 Id = 1;
+	RankType Type = 2;
+	int32 SubType = 3;
+	int32 Page = 4;
+}
+message Rank2O_GetRankResponse // IResponse
+{
+	repeated RankInfoProto List = 1;
+	//自己的数据
+	RankInfoProto SelfInfo = 2;
+	int32 Page = 3;
+}
+
+//更新排行榜
+//ResponseType Rank2O_UpdateResponse
+message O2Rank_UpdateRequest // IRequest
+{
+	int64 Id = 1;
+	RankType RankType = 2;
+	repeated int32 SubTypes = 3;
+	int64 Score = 4;
+	repeated byte Info = 5;
+}
+message Rank2O_UpdateResponse // IResponse
+{
+}
+
+//更新排行榜数据
+//ResponseType Rank2O_UpdateObjResponse
+message O2Rank_UpdateObjRequest // IRequest
+{
+	int64 Id = 1;
+	repeated byte Info = 2;
+}
+message Rank2O_UpdateObjResponse // IResponse
+{
+}
+
+//获取玩家积分和排名
+//ResponseType Rank2O_QueryScoreResponse
+message O2Rank_QueryScoreRequest // IRequest
+{
+	int64 Id = 1;
+	RankType RankType = 2;
+	int32 SubType = 3;
+}
+message Rank2O_QueryScoreResponse // IResponse
+{
+	int64 Score = 1;
+	int32 Rank = 2;
+}
+
+//清除排行榜
+//ResponseType Rank2O_ClearResponse
+message O2Rank_ClearRequest // IRequest
+{
+	RankType RankType = 1;
+	repeated int32 SubTypes = 2;
+}
+message Rank2O_ClearResponse // IResponse
+{
+}
+
+
+
+// 添加道具
+//ResponseType M2O_AddItemResponse
+message O2M_AddItemRequest //ILocationRequest
+{
+	int64 Id = 1;
+	repeated ET.ItemArgs ItemList = 2;
+	int32 LogEvent = 3;
+}
+message M2O_AddItemResponse // ILocationResponse
+{
+}
+
+//消耗道具
+//ResponseType M2O_ConsumeItemResponse
+message O2M_ConsumeItemRequest //ILocationRequest
+{
+	int64 Id = 1;
+	repeated ET.ItemArgs ItemList = 2;
+	int32 LogEvent = 3;
+}
+message M2O_ConsumeItemResponse // ILocationResponse
+{
+}
+
+//道具是否足够
+//ResponseType M2O_IsEnoughItemResponse
+message O2M_IsEnoughItemRequest //ILocationRequest
+{
+	int64 Id = 1;
+	repeated ET.ItemArgs ItemList = 2;
+}
+message M2O_IsEnoughItemResponse // ILocationResponse
+{
+}

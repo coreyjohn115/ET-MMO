@@ -1,0 +1,55 @@
+[
+    {
+        "src_xlsx": "玩家",
+        "src_sheet": "career",
+        "dst_xlsx": "player.xlsx"
+    },
+    {
+        "src_xlsx": "道具",
+        "src_sheet": "item",
+        "dst_xlsx": "item.xlsx",
+        "func_name" : "build_item",
+        "language_id": 103000,
+        "language_name" : "Language_103001_Item@c"
+    },
+    {
+        "src_xlsx": "技能",
+        "src_sheet": "skill",
+        "dst_xlsx": "SkillConfig.xlsx",
+        "func_name" : "build_skill",
+        "language_id": 113000,
+        "language_name" : "Language_113001_Skill@c"
+    },
+    {
+        "src_xlsx": "BUFF表",
+        "src_sheet": "buff",
+        "dst_xlsx": "BuffConfig.xlsx",
+        "language_id": 114000,
+        "language_name" : "Language_114001_Buff@c"
+    },
+    {
+        "src_xlsx": "天赋表",
+        "src_sheet": "talent",
+        "dst_xlsx": "TalentConfig.xlsx",
+        "language_id": 115000,
+        "language_name" : "Language_115001_Talent@c"
+    },
+    {
+        "src_xlsx": "怪物属性",
+        "src_sheet": "monster_level",
+        "dst_xlsx": "monster_level.xlsx"
+    },
+    {
+        "src_xlsx": "装备",
+        "src_sheet": "base",
+        "dst_xlsx": "equip.xlsx",
+        "func_name" : "build_equip",
+        "language_id": 112000,
+        "language_name" : "Language_112001_Equip@c"
+    },
+    {
+        "src_xlsx": "掉落",
+        "src_sheet": "monster_drop",
+        "dst_xlsx": "drop//drop_monster_drop.xlsx"
+    }
+]

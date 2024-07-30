@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 312ef3862be95544daf14a84810fef28, type: 3}
+  m_Name: SmartBuilder_Promo
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 2800000, guid: 1f145b8e365369945babd19bc06a7ef1, type: 3}
+  PackageShowPrio: 1100
+  AssetName: SmartBuilder
+  Subheader: Level Design Tool
+  AssetIdentifier: Heureka.SmartBuilder
+  Description: 'SmartBuilder will speed up your level production
+
+
+    100% plug
+    and play, no setup required!
+
+
+    Smartbuilder gives you a intutitive window
+    with a list of context sensitive assets - i.e. if you are building a forest,
+    it gives you a grid of vegetation prefabs and if you are building a Village it
+    gives you a grid of houses. It will reflect your selection, and always show you
+    the most relevant prefabs and allow you to drag directly into the scene. It does
+    this by analyzing the filename, directory, tags and labels of your assets.
+
+'
+  Links:
+  - ActiveLink: 1
+    Name: Asset Store
+    Link: https://prf.hn/click/camref:1011l4Izm/pubref:Package/destination:https%3A%2F%2Fassetstore.unity.com%2Fpackages%2Fslug%2F206777
+  - ActiveLink: 1
+    Name: Documentation
+    Link: http://docs.heurekagames.com/Documentation%20SmartBuilder.pdf
+  - ActiveLink: 1
+    Name: Forum Thread
+    Link: https://forum.unity.com/threads/released-smartbuilder-level-design-tool.1205263/
+  - ActiveLink: 1
+    Name: Youtube Promo
+    Link: https://youtu.be/O8PZFflOFlE
+  - ActiveLink: 0
+    Name: Youtube Introduction
+    Link: 

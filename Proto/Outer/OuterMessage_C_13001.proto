@@ -1,0 +1,198 @@
+syntax = "proto3";
+package ET;
+
+//ResponseType G2C_Ping
+message C2G_Ping // ISessionRequest
+{
+}
+
+message G2C_Ping // ISessionResponse
+{
+  int64 Time = 4;
+}
+
+//ResponseType R2C_Login
+message C2R_Login // ISessionRequest
+{
+  int32 Zone = 1;
+  string Account = 2;  // 帐号
+  string Password = 3;  // 密码
+}
+
+message R2C_Login // ISessionResponse
+{
+  string Address = 4;
+  int64 Key = 5;
+  int64 GateId = 6;
+}
+
+//ResponseType G2C_LoginGate
+message C2G_LoginGate // ISessionRequest
+{
+  int64 Id = 1;
+  int64 Key = 2;
+  int64 GateId = 3;
+}
+
+message G2C_LoginGate // ISessionResponse
+{
+  int64 PlayerId = 4;
+}
+
+message RankRoleInfoProto
+{
+	string Name = 1;
+	string HeadIcon = 2;
+	int32 Level = 3;
+	int64 Fight = 4;
+	int32 Sex = 5;
+}
+
+//排行榜显示信息
+message RankInfoProto
+{
+	int64 Id = 1;
+	//分数
+	int64 Score = 2;
+	//排名
+	int64 Rank = 3;
+	//时间
+	int64 Time = 4;
+	//角色信息
+	RankRoleInfoProto RoleInfo = 5;
+}
+
+//获取排行榜数据
+//ResponseType Map2C_GetRankResponse
+message C2Map_GetRankRequest // ILocationRequest
+{
+	RankType Type = 2;
+	int32 SubType = 3;
+	int32 Page = 4;
+}
+message Map2C_GetRankResponse // ILocationResponse
+{
+	repeated RankInfoProto List = 1;
+	//自己的数据
+	RankInfoProto SelfInfo = 2;
+	int32 Page = 3;
+}
+
+message HeadProto
+{
+  string HeadIcon = 1;
+  //头像框ID
+  int32 ChatFrame = 2;
+  //气泡Id
+  int32 ChatBubble = 3;
+}
+
+message PlayerInfoProto
+{
+	int64 Id = 1;
+  string Name = 2;
+	HeadProto HeadIcon = 3;
+	int32 Level = 4;
+	int64 Fight = 5;
+	int32 Sex = 6;
+}
+
+message ChatMsgProto
+{
+  int64 Id = 1;
+  int64 Time = 2;
+  int32 Channel = 3;
+  //发送方信息
+  PlayerInfoProto RoleInfo = 4;
+  string Message = 5;
+  //讨论组id
+  string GroupId = 6;
+}
+
+//发送聊天消息
+//ResponseType C2C_SendResponse
+message C2Chat_SendRequest // IChatRequest
+{
+	int32 Channel = 1;
+	PlayerInfoProto RoleInfo = 2;
+	string Message = 3;
+	string GroupId = 4;
+}
+message C2C_SendResponse // IChatResponse
+{
+}
+
+//收到聊天信息
+message C2C_UpdateChat // IChatMessage
+{
+	repeated ChatMsgProto List = 1;
+}
+
+message ChatGroupMemberProto
+{
+  int64 RoleId = 1;
+  HeadProto HeadIcon = 2;
+  //消息免打扰
+  bool NoDisturbing = 3;
+  int64 Sort = 4;
+}
+
+message ChatGroupProto
+{
+  string GroupId = 1;
+  int64 LeaderId = 2;
+  string Name = 3;
+  repeated ChatGroupMemberProto MemberList = 4;
+}
+
+// 更新群组列表(上线和新进群聊时)
+message C2C_GroupUpdate // IChatMessage
+{
+  repeated ChatGroupProto List = 1;
+}
+
+// 删除群聊
+message C2C_GroupDel // IChatMessage
+{
+  string GroupId = 1;
+}
+
+//GM
+//ResponseType M2C_GMResponse
+message C2M_GMRequest //ILocationRequest
+{
+  string Cmd = 1;
+  repeated string Args = 2;
+}
+message M2C_GMResponse //ILocationResponse
+{
+}
+
+//客户端命令
+//ResponseType M2C_ClientCmdResponse
+message C2M_ClientCmdRequest //ILocationRequest
+{
+  string Cmd = 1;
+  repeated string Args = 2;
+}
+message M2C_ClientCmdResponse //ILocationResponse
+{
+}
+
+//更新玩家基础信息
+message M2C_UpdateBasicInfo // IMessage
+{
+  UnitBasicProto UnitBasic = 1;
+}
+
+//更新杂项数据
+message M2C_UpdateFlexList // IMessage
+{
+  repeated int64 List = 1;
+}
+
+//更新战力列表
+message M2C_UpdateFightList // IMessage
+{
+  repeated int64 List = 1;
+}

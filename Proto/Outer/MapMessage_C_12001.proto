@@ -1,0 +1,265 @@
+syntax = "proto3";
+package ET;
+
+// 进入地图
+//ResponseType G2C_EnterMap
+message C2G_EnterMap // ISessionRequest
+{
+}
+message G2C_EnterMap // ISessionResponse
+{
+  // 自己unitId
+  int64 MyId = 4;
+}
+
+// 进入地图成功
+//ResponseType M2C_EnterMapOk
+message C2M_EnterMapOk // ILocationRequest
+{
+}
+message M2C_EnterMapOk // ILocationResponse
+{
+}
+
+//ResponseType M2C_TransferMap
+message C2M_TransferMap // ILocationRequest
+{
+}
+message M2C_TransferMap // ILocationResponse
+{
+}
+
+message UnitBasicProto
+{
+  int64 Gid = 1;
+  string UserUid = 2;
+  string PlayerName = 3;
+  int Level = 4;
+  int VipLevel = 5;
+  HeadProto HeadIcon = 6;
+  int Sex = 7;
+  int64 TotalFight = 8;
+}
+
+message MoveInfo
+{
+  repeated Unity.Mathematics.float3 Points = 1;
+  Unity.Mathematics.quaternion Rotation = 2;
+  int32 TurnSpeed = 3;
+}
+
+message UnitInfo
+{
+  int64 UnitId = 1;
+  int32 ConfigId = 2;
+  int32 Type = 3;
+  Unity.Mathematics.float3 Position = 4;
+  Unity.Mathematics.float3 Forward = 5;
+  map<int32, int64> KV = 6;
+  MoveInfo MoveInfo = 7;
+  FightDataInfo FightData = 8;
+  UnitBasicProto Basic = 9;
+  map<FashionEffectType, int64> FashionEffect = 10;
+}
+
+//更新属性列表
+message M2C_UpdateNumeric // IMessage
+{
+  map<int32, int64> KV = 6;
+}
+
+// 创建对象列表
+message M2C_CreateUnits // IMessage
+{
+  repeated UnitInfo Units = 1;
+}
+
+// 删除对象列表
+message M2C_RemoveUnits // IMessage
+{
+  repeated int64 Units = 1;
+}
+
+// 创建主玩家
+message M2C_CreateMyUnit // IMessage
+{
+  UnitInfo Unit = 1;
+}
+
+// 开始切换场景
+message M2C_StartSceneChange // IMessage
+{
+  int64 SceneInstanceId = 1;
+  string SceneName = 2;
+}
+
+// 寻路请求
+message C2M_PathfindingResult // ILocationMessage
+{
+  Unity.Mathematics.float3 Position = 2;
+}
+
+// 寻路广播
+message M2C_PathfindingResult // IMessage
+{
+  int64 Id = 1;
+  Unity.Mathematics.float3 Position = 2;
+  repeated Unity.Mathematics.float3 Points = 3;
+}
+
+// 停止移动
+message C2M_Stop // ILocationMessage
+{
+}
+
+// 停止移动
+message M2C_Stop // IMessage
+{
+  int32 Error = 1;
+  int64 Id = 2;
+  Unity.Mathematics.float3 Position = 3;
+  Unity.Mathematics.quaternion Rotation = 4;
+}
+
+
+//释放技能
+//ResponseType M2C_UseSkillResponse
+message C2M_UseSkillRequest //ILocationRequest
+{
+  int32 Id = 1;
+  //自己的坐标
+  Unity.Mathematics.float3 Position = 2;
+  repeated Unity.Mathematics.float3 DstPosition = 3;
+  repeated int64 DstList = 4;
+  Unity.Mathematics.float3 Forward = 5;
+}
+message M2C_UseSkillResponse //ILocationResponse
+{
+}
+
+message M2C_UseSkill //IMessage
+{
+  int32 Id = 1;
+  //释放者id
+  int64 RoleId = 2;
+  repeated int64 DstList = 3;
+  repeated Unity.Mathematics.float3 DstPosition = 4;
+  Unity.Mathematics.float3 Forward = 5;
+  Unity.Mathematics.float3 Position = 6;
+}
+
+message SkillProto
+{
+  int32 Id = 1;
+  int32 Level = 2;
+  repeated int64 CdList = 3;
+}
+
+//更新单个技能
+message M2C_UpdateSkill //IMessage
+{
+  SkillProto Skill = 1;
+}
+
+//更新技能列表
+message M2C_UpdateSkillList //IMessage
+{
+  repeated SkillProto List = 1;
+}
+
+//删除技能列表
+message M2C_DelSkillList //IMessage
+{
+  repeated int32 List = 1;
+}
+
+//打断技能
+message C2M_BreakSkill //ILocationMessage
+{
+}
+
+message M2C_BreakSkill //IMessage
+{
+  int32 Id = 1;
+  int64 RoleId = 2;
+}
+
+//更新玩家Buff
+message M2C_UpdateBuff //IMessage
+{
+  int64 Id = 1;
+  int64 RoleId = 2;
+  int32 Layer = 3;
+  int64 ValidTime = 4;
+  int32 CfgId = 5;
+}
+
+//删除玩家Buff
+message M2C_DelBuff //IMessage
+{
+  int64 Id = 1;
+  int64 RoleId = 2;
+}
+
+//受伤信息
+message HurtProto
+{
+  //受伤者id
+  int64 Id = 1;
+  //伤害值
+  int64 Hurt = 2;
+  //吸血值
+  int64 SuckHp = 3;
+  //是否暴击
+  bool IsCrit = 5;
+  //是否直击
+  bool IsDirect = 6;
+  //是否格挡
+  bool IsFender = 7;
+  //是否是加血
+  bool IsAddHp = 8;
+  //是否免疫
+  bool IsImmUnity = 9;
+}
+
+message M2C_HurtList //IMessage
+{
+  int64 RoleId = 1;
+  int32 Id = 2;
+  repeated HurtProto HurtList = 3;
+  string ViewCmd = 4;
+}
+
+//战斗数据
+message FightDataInfo
+{
+  int32 Ability = 1;
+  int64 TeamId = 2;
+}
+
+message M2C_UpdateFightDataInfo //IMessage
+{
+  int64 RoleId = 1;
+  FightDataInfo FightData = 2;
+}
+
+//更新护盾数据
+message M2C_UpdateShield //IMessage
+{
+  int64 RoleId = 1;
+  map<int32, int64> KV = 2;
+}
+
+//更新血量
+message M2C_UpdateHp //IMessage
+{
+  int64 RoleId = 1;
+  int64 Hp = 2;
+}
+
+//更新Unit外观
+message M2C_UpdateFashionEffect //IMessage
+{
+  int64 RoleId = 1;
+  map<FashionEffectType, int64> KV = 2;
+}

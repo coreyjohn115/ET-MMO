@@ -1,0 +1,585 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b02dfa7aa9d4545b3417a18477fbee, type: 3}
+  m_Name: BuildinFileManifest
+  m_EditorClassIdentifier: 
+  BuildinFiles:
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_aotdlls_8b156fdd92b1aa4f5906c1a079533ae1.bundle
+    FileCRC32: 45aa3dc9
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_audioimporter_001c27a165b73b8b15bf98c3db232709.bundle
+    FileCRC32: f19e9716
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_attack-miss_409d7ed93fe111d921cd9bc83673f1a6.bundle
+    FileCRC32: 20975903
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_buff_9602aca994df4bbbef7f1becffe8c54c.bundle
+    FileCRC32: e48ed50c
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_button_b90a33bf29cf3a4e890de5521645e779.bundle
+    FileCRC32: f320d528
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_castskill_751ba1d3db1dd5c30d5421b82f4250ea.bundle
+    FileCRC32: 54256b5e
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_heal-all_ec6419e9ba0663eb9720435467a581fc.bundle
+    FileCRC32: cc844331
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_heal_278a830c99326be00ae20cc8dcc7962e.bundle
+    FileCRC32: bf6ced07
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_mage-expolsion_819bb97c8dea13381ce4364e9fe1b809.bundle
+    FileCRC32: 8e96fd0d
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_sfx_nextdialog_a1cb078daa196491d82fa75a48487030.bundle
+    FileCRC32: ee0ba12d
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_slash-double_b47ebd09ece53f32dc7779c8c340ba35.bundle
+    FileCRC32: 7d24ba91
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_slash-normal2_db74d793578d5c8b8925beba2ed74d15.bundle
+    FileCRC32: f8fd36c5
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_slash-normal_bb953077b3a19109319a7efad2f94809.bundle
+    FileCRC32: 9fa0f5f2
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_slime-hit_82148ba5318d0589f21387395cfa63be.bundle
+    FileCRC32: 950c7dc6
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_sword swing_a8287aa596dfc2d4c1bd0cd7777d7523.bundle
+    FileCRC32: cffe4932
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_scene_weapon-swing_06cd55ec54a295c6beac3eedeb91a0fa.bundle
+    FileCRC32: 47448096
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_ui_fanhui_anniu_76c7f581ad4ccb6d4f65440422b1d643.bundle
+    FileCRC32: 765504e2
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_audio_ui_tongyong_anniu_f9ee0c962c2538bb6617f743bee3a21c.bundle
+    FileCRC32: 0e9649fb
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_code_c9ef586091bd6f4f51606a712edb10e2.bundle
+    FileCRC32: 3b182ebb
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_config_5162e1e5c42e3a6ca95c0aaede9475d6.bundle
+    FileCRC32: cf4564af
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_anbs_daoguang_81a359bf3b9e36a42743eb7c568681e6.bundle
+    FileCRC32: b49729f6
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_anbs_huo_71a56e41cc62c52a865a60926188bc77.bundle
+    FileCRC32: 3007cd76
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_anubisi_attack_01_0c5574548f04db0712f36f73db866e77.bundle
+    FileCRC32: 6a05ad7f
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_a_p_zs_b_001_1_skill_01_fire_4f5b918049346a74f14cf7151cdab6fd.bundle
+    FileCRC32: 2c7d2752
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_a_p_zs_b_001_1_skill_01_ice_329c3da22765e59e6f758e9ea5466ee3.bundle
+    FileCRC32: 47c4f3be
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_a_p_zs_b_001_1_skill_01_thunder_c74dcc674c1071e6001ee0af99803910.bundle
+    FileCRC32: 2d506a97
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_baoxiang_guang_855816cdc5bb55549586c197b07484f6.bundle
+    FileCRC32: b149ec6d
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_boss_shuibaozha_4635cd007a0212838bf454ca89322b90.bundle
+    FileCRC32: 8aef20ba
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_boss_shuiqiu_e8ef2353f801897eec7fb8eac64e90c7.bundle
+    FileCRC32: 6c81bf15
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_aoe_c9af44cfe9afbc4147d1dd9d24a0b4fe.bundle
+    FileCRC32: c268ebac
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_baozha_a718f6e9693610269941583a399b36ae.bundle
+    FileCRC32: d838d647
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_baozha_lei_5b248b1805edd73fab666db723209576.bundle
+    FileCRC32: 1eef7d0f
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_dizzy_23e92566b0efd01ecc971214ba6e91ff.bundle
+    FileCRC32: b0f5b0e0
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_fow_3_6e6b7f5e07b2e8f294fec062296d1a6d.bundle
+    FileCRC32: b1aa9b61
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_liliang_b8b7ad3dd2ee47fb81fe2d378c8c9fef.bundle
+    FileCRC32: 80067a06
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_shield2_f080e90397f36835bfba00b7ee1c75a4.bundle
+    FileCRC32: 01f25d3b
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_shield3_8c60ba502a90a405e7cc6c627724f902.bundle
+    FileCRC32: 926dbb85
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_shield_1773dd2adccbf0d45eddd26657fde92c.bundle
+    FileCRC32: d70f12db
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_smoke_25f9b39d91d6e22301aa17653406cca0.bundle
+    FileCRC32: 308e8acf
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_speed_63f7f91ceab8398c44a495a3def90853.bundle
+    FileCRC32: f9fb536f
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_buff_zhaohuanqiu_3cc716c214f258a0a11d10eda9dcab9d.bundle
+    FileCRC32: 39614869
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_daoguang01_0fff3e17f32d00d3bf2991db6c49eec3.bundle
+    FileCRC32: e383016d
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_dianta_line_a36dd09087b5f38f65738a7d359b5019.bundle
+    FileCRC32: cb95723c
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_dianta_pao_c9f9b96345decc3a00b86bffb14751b9.bundle
+    FileCRC32: 8f2f5326
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_dianta_shiquan_fca87269c1090416b1c6f91cf4ebfd6c.bundle
+    FileCRC32: 55c29c1a
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_duaoluo_qiu_eff_5d49f961efbf70728d5acb0cf32c3914.bundle
+    FileCRC32: 5d6b3581
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_duyeqiu_fei_8e67b04b2d6cc66a2b6b0cb267328760.bundle
+    FileCRC32: 6f3cdbf1
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_eff_mny_die_f654d6df2197f9af861fc8571f1440bc.bundle
+    FileCRC32: 41acda27
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_eff_playerelf_fly_0db2d85b0f594b6b6bd53eeb194e5151.bundle
+    FileCRC32: 520d82b4
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_fanwei_2_360_20_4c7c22c1c186d72b7e479ad1e47656d8.bundle
+    FileCRC32: d93fa194
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_fanwei_3_360_10_ab77649398b6e49899c99b8caa4efed2.bundle
+    FileCRC32: 78c46111
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_hangkongzhadan_yanchen_fc8a990518eda8d5ca4c3a6026511858.bundle
+    FileCRC32: 945dc617
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_hit_yanjiang_03d6e2f203e31acbfab29ca6a4fbc941.bundle
+    FileCRC32: d3c901f0
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_icecroo_6b7a22e507b19c52cf1b1b29b9ff528f.bundle
+    FileCRC32: 4725f26f
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_icecroo_never_b610c5cf443b8f8646f277cc49fbdf44.bundle
+    FileCRC32: e622ee2b
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_jingjie_c78ef44cf84d48903c4160ce75534ade.bundle
+    FileCRC32: 681571f7
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_jiqiangta_attack_fd293b0a94bf618b55c85cca4a0877f9.bundle
+    FileCRC32: 8d2d2f1f
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_l2_1f5cceb25fd8b8f39e161431730d7423.bundle
+    FileCRC32: 1f08826a
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_l3_2da00006257935528745dd319245e453.bundle
+    FileCRC32: dfb91f7c
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_l4_b1950eecbb7458318835f6d836a00930.bundle
+    FileCRC32: 2aa7808c
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_l5_9930c125acc731d156978e95ad85a059.bundle
+    FileCRC32: 9f3d7b12
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_l6_9b61bf6bc8e484b7e6e18ed12912901b.bundle
+    FileCRC32: d97d3a5d
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_maonv_2_attack_6c10651e37acf577e7221f376db82573.bundle
+    FileCRC32: c5cf1268
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_maonv_chongjibo_98e5706b3186fab50129b7f9c428052b.bundle
+    FileCRC32: f2e8bc2c
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_mb_zadanren_zhong01_336a56680c62de7a3d0659d0c386bca1.bundle
+    FileCRC32: 3439cf9d
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_quanxiping_c9507d57a791a7b05d8c1c56086114a9.bundle
+    FileCRC32: 2bd084dd
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_aoe_bing_949da4431d33a45b1411d65cbf36c465.bundle
+    FileCRC32: 91a78705
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_aoe_huo_d295a7ea20e2982f2edf04f5bb23de0a.bundle
+    FileCRC32: 04d244f2
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_aoe_lei_4f5a91dfa46499d876aac37f75302536.bundle
+    FileCRC32: b7f61345
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_attack_1d438b6a962430ce78864f7ddf54ef5a.bundle
+    FileCRC32: b8e9f035
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_bing_3f676dcd49f6e53e3c6f24e44bf2890e.bundle
+    FileCRC32: 9d9246cc
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_fz_bing_78899f066218ef39439ba2c0e6754258.bundle
+    FileCRC32: bd7cf483
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_fz_huo_7388f1fd23004042f00dfcee66d1adc1.bundle
+    FileCRC32: 7735a3fd
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_fz_lei_25a3ce254709c893636e87c4135e4747.bundle
+    FileCRC32: 02ac9fc9
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_huo_bb45523d9cf5fd92208864ccc0dfee5a.bundle
+    FileCRC32: b1c23b27
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_shenv_lei_787fe6ad4cabc700a8d2df237e28aacf.bundle
+    FileCRC32: 31c51459
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_xiao_shuiqiu_4ef034829c0abe7c31b5baaaf0f10304.bundle
+    FileCRC32: a8d987a4
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_buff_yunshi_01_db3c38a534ed27092fe53af6878100a4.bundle
+    FileCRC32: 0843eb56
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_skillrange_skillcircle_49a04bad87e73d8a3c070cf753905f68.bundle
+    FileCRC32: dc703646
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_skillrange_skillrect_1ecd3288052b0d5de26b4f4a595d0214.bundle
+    FileCRC32: d5f449fb
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_effect_skillrange_skillsector_cf6b93366f8a77f7d45e7ae4ab111868.bundle
+    FileCRC32: a25c0aae
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_scenes_map1_3766da6303ea5839d20326e68a1d4cc6.bundle
+    FileCRC32: 51595a6e
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_scenes_map2_754bd0e41380ea9e0b0b83de95e96776.bundle
+    FileCRC32: c9249c11
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_atlas_arttext_e866ec9955094e64636f25dc3e6dea75.bundle
+    FileCRC32: 6119f793
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_atlas_emotion_61b69eb6f13eec86f5e3dcde6c194886.bundle
+    FileCRC32: 08d374a6
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_atlas_icon_common_b6ca79fa434b1d29a38c91d6c4851ee2.bundle
+    FileCRC32: a6dc530a
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_atlas_widget_c9c867929a7a43f9a3a214118e77177f.bundle
+    FileCRC32: df5df093
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_common_2ebb8406951f50f7548a1fe8a6a43691.bundle
+    FileCRC32: 5d93665f
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_common_hud_e35c9b9258d07d3b7a5c89dc13450477.bundle
+    FileCRC32: 01edae93
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_common_item_565bb42ee0a7f5765c4c254e3c3fb1f6.bundle
+    FileCRC32: 9f3805a6
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_common_unit_806365207f20441c8f600d837c61e860.bundle
+    FileCRC32: 0da471c2
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_5a15a2aae6aa27f522b0deb623c6bb1e.bundle
+    FileCRC32: 3346f6d1
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_3b431c53d64ad5454138067bf45392df.bundle
+    FileCRC32: 9e335dc6
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_exp_d66842c0143123ee2ea1a7db4d412469.bundle
+    FileCRC32: 33c7a2cf
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_hp_7e85f3b31510664317c839c7fc6ec198.bundle
+    FileCRC32: 359a07c0
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_otherhurtcrit_f7d3108f09175d19bc6caacc30a3de58.bundle
+    FileCRC32: a358961f
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_otherhurt_63f17bb021fab43931054ff9a5a21095.bundle
+    FileCRC32: 71153ee6
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_otherpetcrit_a04b1cd740d2f96246ff951a108408df.bundle
+    FileCRC32: 9b806c21
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_otherpethurt_434d33952c88c48a553cb7502b732478.bundle
+    FileCRC32: f7669046
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_selfhurtcrit_9a7a1b6295055c6073cc3e49715f07ba.bundle
+    FileCRC32: 7fe59da7
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_selfhurt_073c6ddef57cd2e527e70c6cf625227a.bundle
+    FileCRC32: bb58398e
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_selfpetcrit_5b37d75b4c871ae5af793f2f3c949679.bundle
+    FileCRC32: 7d42fabc
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_timer_9099f7984dab614a5b1db08e6a406c38.bundle
+    FileCRC32: 9b3aad31
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_fonts_number_vip_117edb3ca44d25d688bf99dc0a6599bf.bundle
+    FileCRC32: aa2fc4cc
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_bag_es_comattr_46355e7138cf302e084f4011bc81093e.bundle
+    FileCRC32: 36ecea93
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_bag_es_combag_9ff29b29bc95598639bdc61461198d36.bundle
+    FileCRC32: acf3a5b3
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_bag_es_comresolve_400999075340f0a846907b7f0885bdf5.bundle
+    FileCRC32: 23ed7540
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_bag_item_bagmenu_444b78596ad9530872d39bcaa501c7ac.bundle
+    FileCRC32: c7050293
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_bag_uibag_abcf0579df2e7ec7c89defb2a414edf1.bundle
+    FileCRC32: 7aa4c18b
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_es_otherchatlite_7ce3eabba76d9c992430cf08db1b33d7.bundle
+    FileCRC32: c04e3cc8
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_es_selfchatlite_0f961d7502c5db77bc826c07552f534b.bundle
+    FileCRC32: 8dfb9097
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_chat_d02e24823dee531a8fafbc3c29cc6905.bundle
+    FileCRC32: f408e40c
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_emoj_9f5f61975a18ed47ad1055f5f1aba644.bundle
+    FileCRC32: 26f9ab9a
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_emotionmenu_ecc4acf8659772dc92272f25401e2762.bundle
+    FileCRC32: 88b444e5
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_es_otherimage_f70250dc87e64a6c7a29eb814364a88f.bundle
+    FileCRC32: bfd12a56
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_es_othertext_eb6204661e25f4fa8172b0c63d6c14ca.bundle
+    FileCRC32: 7d391d08
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_es_selfimage_224df8cca382db689342dd98c319205d.bundle
+    FileCRC32: a0d107ac
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_es_selftext_c454cd9b92082fac599c97c613c90e85.bundle
+    FileCRC32: 856b9eb1
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_item_es_time_161fdfc707e63ae6467bf7aea248d53a.bundle
+    FileCRC32: ea72127b
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_chat_uichat_7ecb64c362d2d78a0fbc1edbd442368a.bundle
+    FileCRC32: 455adedf
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_common_uiconfirm_a72a78aded75e1fba53dce77efb64780.bundle
+    FileCRC32: 3696c026
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_common_uipop_2554bf48d24b86ae253550a7b0cc14d1.bundle
+    FileCRC32: 39e22ee4
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_hud_uihud_e61fc124c5e5baebe28e63dacd757731.bundle
+    FileCRC32: b3d12f1b
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_itemtip_es_normalitem_8110340df9c4e8fbf9e6754559494211.bundle
+    FileCRC32: 8fc2457d
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_itemtip_uiitemtip_bae7973a61228c8569e9fad6feae0f28.bundle
+    FileCRC32: 4fa381d1
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_item_item_bag_57f22162d518a65742d687bc61915ea1.bundle
+    FileCRC32: 4c656272
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_item_item_bag_left_menu_c11a5044f6813bd99074210410f1dcff.bundle
+    FileCRC32: e6908e3b
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_item_item_main_menu_c5dd16f1981e46f1ab3c3c49517d5d3b.bundle
+    FileCRC32: 96dfbe02
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_item_item_server_2f79986e52360dd64b63296182801a1e.bundle
+    FileCRC32: f1fd0054
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_loading_uiloading_ecc1b635e2a4d1668ea015b526779dad.bundle
+    FileCRC32: 4e06c37e
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_login_uilogin_fb483b5682ce2ad49b9abe290a6f7014.bundle
+    FileCRC32: b72c248a
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_login_uiserverlist_6d64f9c0a72bd92a0a804d2722be31bd.bundle
+    FileCRC32: 6c29762c
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_main_uimain_5d370a02e3abf52867c5a8311ef8f0ba.bundle
+    FileCRC32: 75a5bebd
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_setting_uisetting_6a1deefe1d98a7f4ca0965eaf0e9076a.bundle
+    FileCRC32: caf9b172
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_ui_window_setting_uisetting_hotkey_5a9a565ddddde351bb5f0d809141bb46.bundle
+    FileCRC32: 5bd444fa
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_unit_player_p_001_gun_b2902f8d97a3b1b581ea25180f75cb74.bundle
+    FileCRC32: 8fd29721
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_unit_player_p_001_shield_9a5db4b5a8af308512dd0d3ea49aedbd.bundle
+    FileCRC32: 75ceccb5
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_unit_player_p_001_sword_c11ad02b73f84264c702c14b4faf4621.bundle
+    FileCRC32: bef73a83
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_unit_player_p_001_unit_491841c30c50a6c7a9fe2dd04c143d96.bundle
+    FileCRC32: ce51bf97
+  - PackageName: DefaultPackage
+    FileName: assets_bundles_unit_player_p_001_wand_aa029e3f94d8dc295fa4edbc5aa89b84.bundle
+    FileCRC32: eba26430
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_arttext_2b492db5cd792bc24be22ba1c32ec75b.bundle
+    FileCRC32: 90a5740e
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_emotion_b14a7ab7cdfc743bd895f45a6736ed76.bundle
+    FileCRC32: 5f1ad67e
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_icon_bubble_0126df9a9af46ef2faf04fd4dd9d4ad9.bundle
+    FileCRC32: d32c26f0
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_icon_ec8b7d53aaaa06ab47b556cffcbd54ac.bundle
+    FileCRC32: bb0ca049
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_icon_frame_438c28de5f27d4019e58fb7806895423.bundle
+    FileCRC32: ecc75361
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_icon_head_f6b7442facdccbf6b497280c8f14b4d3.bundle
+    FileCRC32: ef8e2272
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_icon_item_59ad3f255af8286c8d8aab2b5fa0a74d.bundle
+    FileCRC32: f45a0614
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_pophud_15a12d5232d5d5fbc4ae47a8f1dab7fe.bundle
+    FileCRC32: 60883aff
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_system_bag_bbb2accd783c7848e71a9170f523fdc6.bundle
+    FileCRC32: 948f3be3
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_atlas_widget_a6c932086adb0825909bf215bb55c683.bundle
+    FileCRC32: 78c1b9dc
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_materials_fa0007134c6768e91aa314d7e2900435.bundle
+    FileCRC32: 3891c6f0
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_ad26d8ba21536ac2a985631605af53a7.bundle
+    FileCRC32: e5123ecf
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_knife_5851833238092a0e73bd653bc68fe556.bundle
+    FileCRC32: 23435189
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_line_4c179b4fa7a85eab99690f204b5d5ab5.bundle
+    FileCRC32: 625cb38c
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_other_216a17878b9bb76bf018bfa925ababcc.bundle
+    FileCRC32: 423a9462
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_point_4b96640dbe76362a7f6c2598c16ad3a1.bundle
+    FileCRC32: c85e045e
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_ring_19f08cf66ac11b60a943c8db4356a797.bundle
+    FileCRC32: 90315ef4
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_sequense_2d_47a7e0e2931bd0b01bac0310e5e9e41b.bundle
+    FileCRC32: 546abda0
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_sequense_585d58cc8813e64f13feec9b54067543.bundle
+    FileCRC32: 669c5e89
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_sequense_point_fd37fbb3559b2704acb7681f8a047ceb.bundle
+    FileCRC32: 0c211245
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_sequense_tuteng_a88d90999e86e4138e6775a3409c1886.bundle
+    FileCRC32: e8bcee43
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_smoke_1bd400613b05fd468cfe29e1fa1eb24d.bundle
+    FileCRC32: 96ae2827
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_buff_texture_texture2d_f55d0c47515aac63a89c5f9ed175c7a7.bundle
+    FileCRC32: 8d1daf05
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_effect_scene_skillrange_420ffc79a854f731e03e7ea58b39ccfe.bundle
+    FileCRC32: 86fa9426
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_mat_683b94858ca88dfc126dd9f5243575aa.bundle
+    FileCRC32: 241dfbef
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_unit_player_p_001_1a738b1ecce28238288537d75ec3facd.bundle
+    FileCRC32: 62c1cdeb
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_unit_player_p_001_materials_e9f4e869aa22123e99e5e05dede5b64d.bundle
+    FileCRC32: f24287e3
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_unit_player_p_001_texture_89403219f36f543560ca52a7d6b09b5d.bundle
+    FileCRC32: 558b364d
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_unit_player_p_001_weapon_706348bff904c79e6b28de0da9e8b56d.bundle
+    FileCRC32: c45e0757
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_unit_player_p_001_weapon_materials_76a2efcd57d6a228d31e2a14b322caa3.bundle
+    FileCRC32: 4f49a0db
+  - PackageName: DefaultPackage
+    FileName: share_assets_artres_unit_player_p_001_weapon_texture_c56d4590e8c5ae70970245b2252f3a89.bundle
+    FileCRC32: 68b7b530
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_scenes_map1_7ca580b43e46be66eddc42ab2e11ba2c.bundle
+    FileCRC32: 0bf0e054
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_scenes_map2_9a623bfbb122a5c08a92001b04257773.bundle
+    FileCRC32: 2fbacb8e
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_52e44df6d9b55626d78779cf6d642b9b.bundle
+    FileCRC32: af3479af
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_4bb48cb860371d4ca1ae91ffd3d98352.bundle
+    FileCRC32: 96fa2c46
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_exp_31a7738020651a8e699a36e046160b05.bundle
+    FileCRC32: 93ab6711
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_hp_220a84c5a6997c82459b823f9054e0d1.bundle
+    FileCRC32: 4ab071d5
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_otherhurtcrit_269e93c07d52f29abf6084268a547b65.bundle
+    FileCRC32: 2a6fb101
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_otherhurt_c57714fa4ce8008786aeb1422ccdb5ab.bundle
+    FileCRC32: c73c0df1
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_otherpetcrit_0a985678c0db3baed4f6ae1300e04b08.bundle
+    FileCRC32: 93267d6b
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_otherpethurt_706e51a7d3e7e590881c585127a969bd.bundle
+    FileCRC32: 2d45e96a
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_selfhurtcrit_9551b1ae068fcdd0f72a3bedf13df764.bundle
+    FileCRC32: 98f5a209
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_selfhurt_ed7658cccb88d505df3599d148cecb7a.bundle
+    FileCRC32: bc0515fa
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_selfpetcrit_0bdc3600c2f0fc9051ba6c97fe660ace.bundle
+    FileCRC32: e8e977e3
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_timer_cf00770096be8479d41847a1c23d03b6.bundle
+    FileCRC32: a39ab25e
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_fonts_number_vip_fb00cba9a6398b324d6692e3f0262c19.bundle
+    FileCRC32: 8875d490
+  - PackageName: DefaultPackage
+    FileName: share_assets_bundles_ui_texture_d1c0d9f3e6c2d6c1da0b0c69938c2175.bundle
+    FileCRC32: eb046a06
+  - PackageName: DefaultPackage
+    FileName: share_assets_resources_anim_e1a0ac98e31d0e8ec39025b8740c11d0.bundle
+    FileCRC32: a2306cea
+  - PackageName: DefaultPackage
+    FileName: share_assets_uitools_5fef31bb016604f425cd4d5156b61bc2.bundle
+    FileCRC32: fca2f389
+  - PackageName: DefaultPackage
+    FileName: unityshaders_406cf6cdab65f90275b3727417a1231f.bundle
+    FileCRC32: 7c75015e

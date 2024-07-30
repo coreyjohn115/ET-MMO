@@ -1,0 +1,891 @@
+fileFormatVersion: 2
+guid: 092c040035ac061479ba374451d56f4f
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bip01
+  - first:
+      1: 100002
+    second: Bip01 Footsteps
+  - first:
+      1: 100004
+    second: Bip01 Head
+  - first:
+      1: 100006
+    second: Bip01 HeadNub
+  - first:
+      1: 100008
+    second: Bip01 L Calf
+  - first:
+      1: 100010
+    second: Bip01 L Clavicle
+  - first:
+      1: 100012
+    second: Bip01 L Foot
+  - first:
+      1: 100014
+    second: Bip01 L Forearm
+  - first:
+      1: 100016
+    second: Bip01 L Hand
+  - first:
+      1: 100018
+    second: Bip01 L HorseLink
+  - first:
+      1: 100020
+    second: Bip01 L Thigh
+  - first:
+      1: 100022
+    second: Bip01 L Toe0
+  - first:
+      1: 100024
+    second: Bip01 L Toe0Nub
+  - first:
+      1: 100026
+    second: Bip01 L UpperArm
+  - first:
+      1: 100028
+    second: Bip01 Neck
+  - first:
+      1: 100030
+    second: Bip01 Pelvis
+  - first:
+      1: 100032
+    second: Bip01 R Calf
+  - first:
+      1: 100034
+    second: Bip01 R Clavicle
+  - first:
+      1: 100036
+    second: Bip01 R Foot
+  - first:
+      1: 100038
+    second: Bip01 R Forearm
+  - first:
+      1: 100040
+    second: Bip01 R Hand
+  - first:
+      1: 100042
+    second: Bip01 R HorseLink
+  - first:
+      1: 100044
+    second: Bip01 R Thigh
+  - first:
+      1: 100046
+    second: Bip01 R Toe0
+  - first:
+      1: 100048
+    second: Bip01 R Toe0Nub
+  - first:
+      1: 100050
+    second: Bip01 R UpperArm
+  - first:
+      1: 100052
+    second: Bip01 Spine
+  - first:
+      1: 100054
+    second: Bip01 Spine1
+  - first:
+      1: 100056
+    second: Bone001
+  - first:
+      1: 100058
+    second: Bone002
+  - first:
+      1: 100060
+    second: Bone003
+  - first:
+      1: 100062
+    second: Bone004
+  - first:
+      1: 100064
+    second: Bone005
+  - first:
+      1: 100066
+    second: Bone006
+  - first:
+      1: 100068
+    second: Bone007
+  - first:
+      1: 100070
+    second: Bone010
+  - first:
+      1: 100072
+    second: Bone011
+  - first:
+      1: 100074
+    second: Bone012
+  - first:
+      1: 100076
+    second: Bone014
+  - first:
+      1: 100078
+    second: Bone015
+  - first:
+      1: 100080
+    second: Bone016
+  - first:
+      1: 100082
+    second: Bone018
+  - first:
+      1: 100084
+    second: Bone019
+  - first:
+      1: 100086
+    second: Bone020
+  - first:
+      1: 100088
+    second: Bone022
+  - first:
+      1: 100090
+    second: Bone023
+  - first:
+      1: 100092
+    second: Bone024
+  - first:
+      1: 100094
+    second: chest
+  - first:
+      1: 100096
+    second: cw_hu_ba_0_0
+  - first:
+      1: 100098
+    second: //RootNode
+  - first:
+      1: 100100
+    second: down
+  - first:
+      1: 100102
+    second: name
+  - first:
+      1: 100104
+    second: a_o_p29_01
+  - first:
+      1: 100106
+    second: Bone008
+  - first:
+      1: 100108
+    second: Bone009
+  - first:
+      1: 100110
+    second: Bone013
+  - first:
+      1: 100112
+    second: Bone017
+  - first:
+      1: 100114
+    second: Bone021
+  - first:
+      1: 100116
+    second: Bone025
+  - first:
+      4: 400000
+    second: Bip01
+  - first:
+      4: 400002
+    second: Bip01 Footsteps
+  - first:
+      4: 400004
+    second: Bip01 Head
+  - first:
+      4: 400006
+    second: Bip01 HeadNub
+  - first:
+      4: 400008
+    second: Bip01 L Calf
+  - first:
+      4: 400010
+    second: Bip01 L Clavicle
+  - first:
+      4: 400012
+    second: Bip01 L Foot
+  - first:
+      4: 400014
+    second: Bip01 L Forearm
+  - first:
+      4: 400016
+    second: Bip01 L Hand
+  - first:
+      4: 400018
+    second: Bip01 L HorseLink
+  - first:
+      4: 400020
+    second: Bip01 L Thigh
+  - first:
+      4: 400022
+    second: Bip01 L Toe0
+  - first:
+      4: 400024
+    second: Bip01 L Toe0Nub
+  - first:
+      4: 400026
+    second: Bip01 L UpperArm
+  - first:
+      4: 400028
+    second: Bip01 Neck
+  - first:
+      4: 400030
+    second: Bip01 Pelvis
+  - first:
+      4: 400032
+    second: Bip01 R Calf
+  - first:
+      4: 400034
+    second: Bip01 R Clavicle
+  - first:
+      4: 400036
+    second: Bip01 R Foot
+  - first:
+      4: 400038
+    second: Bip01 R Forearm
+  - first:
+      4: 400040
+    second: Bip01 R Hand
+  - first:
+      4: 400042
+    second: Bip01 R HorseLink
+  - first:
+      4: 400044
+    second: Bip01 R Thigh
+  - first:
+      4: 400046
+    second: Bip01 R Toe0
+  - first:
+      4: 400048
+    second: Bip01 R Toe0Nub
+  - first:
+      4: 400050
+    second: Bip01 R UpperArm
+  - first:
+      4: 400052
+    second: Bip01 Spine
+  - first:
+      4: 400054
+    second: Bip01 Spine1
+  - first:
+      4: 400056
+    second: Bone001
+  - first:
+      4: 400058
+    second: Bone002
+  - first:
+      4: 400060
+    second: Bone003
+  - first:
+      4: 400062
+    second: Bone004
+  - first:
+      4: 400064
+    second: Bone005
+  - first:
+      4: 400066
+    second: Bone006
+  - first:
+      4: 400068
+    second: Bone007
+  - first:
+      4: 400070
+    second: Bone010
+  - first:
+      4: 400072
+    second: Bone011
+  - first:
+      4: 400074
+    second: Bone012
+  - first:
+      4: 400076
+    second: Bone014
+  - first:
+      4: 400078
+    second: Bone015
+  - first:
+      4: 400080
+    second: Bone016
+  - first:
+      4: 400082
+    second: Bone018
+  - first:
+      4: 400084
+    second: Bone019
+  - first:
+      4: 400086
+    second: Bone020
+  - first:
+      4: 400088
+    second: Bone022
+  - first:
+      4: 400090
+    second: Bone023
+  - first:
+      4: 400092
+    second: Bone024
+  - first:
+      4: 400094
+    second: chest
+  - first:
+      4: 400096
+    second: cw_hu_ba_0_0
+  - first:
+      4: 400098
+    second: //RootNode
+  - first:
+      4: 400100
+    second: down
+  - first:
+      4: 400102
+    second: name
+  - first:
+      4: 400104
+    second: a_o_p29_01
+  - first:
+      4: 400106
+    second: Bone008
+  - first:
+      4: 400108
+    second: Bone009
+  - first:
+      4: 400110
+    second: Bone013
+  - first:
+      4: 400112
+    second: Bone017
+  - first:
+      4: 400114
+    second: Bone021
+  - first:
+      4: 400116
+    second: Bone025
+  - first:
+      43: 4300000
+    second: cw_hu_ba_0_0
+  - first:
+      43: 4300002
+    second: a_o_p29_01
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      74: 7400002
+    second: born
+  - first:
+      74: 7400004
+    second: idle_0
+  - first:
+      74: 7400006
+    second: idle_1
+  - first:
+      74: 7400008
+    second: run
+  - first:
+      74: 7400010
+    second: dead_1_0
+  - first:
+      74: 7400012
+    second: dead_1_1
+  - first:
+      74: 7400014
+    second: nskill_0
+  - first:
+      74: 7400016
+    second: skill_1
+  - first:
+      74: 7400018
+    second: xx_nskill_0
+  - first:
+      74: 7400020
+    second: xx_skill_1
+  - first:
+      74: 7400022
+    second: cw_nskill_0
+  - first:
+      74: 7400024
+    second: cw_nskill_1
+  - first:
+      74: 7400026
+    second: cw_skill_31
+  - first:
+      74: 7400028
+    second: cw_skill_32
+  - first:
+      74: 7400030
+    second: cw_skill_33
+  - first:
+      74: 7400032
+    second: cw_skill_34
+  - first:
+      74: 7400034
+    second: cw_skill_35
+  - first:
+      74: 7400036
+    second: cw_skill_36
+  - first:
+      74: 7400038
+    second: cw_skill_37
+  - first:
+      74: 7400040
+    second: cw_skill_38
+  - first:
+      74: 7400042
+    second: cw_skill_39
+  - first:
+      74: 7400044
+    second: cw_skill_310
+  - first:
+      74: 7400046
+    second: cw_skill_311
+  - first:
+      74: 7400048
+    second: cw_skill_312
+  - first:
+      74: 7400050
+    second: cw_skill_313
+  - first:
+      74: 7400052
+    second: cw_skill_314
+  - first:
+      74: 7400054
+    second: cw_skill_315
+  - first:
+      74: 7400056
+    second: cw_skill_316
+  - first:
+      74: 7400058
+    second: cw_skill_317
+  - first:
+      74: 7400060
+    second: cw_skill_318
+  - first:
+      74: 7400062
+    second: cw_skill_11
+  - first:
+      74: 7400064
+    second: cw_skill_12
+  - first:
+      74: 7400066
+    second: cw_skill_13
+  - first:
+      74: 7400068
+    second: cw_skill_14
+  - first:
+      74: 7400070
+    second: cw_skill_15
+  - first:
+      74: 7400072
+    second: cw_skill_16
+  - first:
+      74: 7400074
+    second: cw_skill_17
+  - first:
+      74: 7400076
+    second: cw_skill_18
+  - first:
+      74: 7400078
+    second: cw_skill_19
+  - first:
+      74: 7400080
+    second: cw_skill_110
+  - first:
+      74: 7400082
+    second: cw_skill_41
+  - first:
+      74: 7400084
+    second: cw_skill_319
+  - first:
+      74: 7400086
+    second: cw_skill_320
+  - first:
+      74: 7400088
+    second: idle_normal
+  - first:
+      74: 7400090
+    second: idle_easy
+  - first:
+      74: 7400092
+    second: run_easy
+  - first:
+      74: 7400094
+    second: die
+  - first:
+      74: 7400096
+    second: attack_01
+  - first:
+      74: 7400098
+    second: xx_attack_01
+  - first:
+      74: 7400100
+    second: cw_attack_01
+  - first:
+      74: 7400102
+    second: skill_01
+  - first:
+      74: 7400104
+    second: show
+  - first:
+      74: 7400106
+    second: skill_02
+  - first:
+      74: 7400108
+    second: ui_show
+  - first:
+      74: 7400110
+    second: hit
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: cw_hu_ba_0_0
+  - first:
+      137: 13700002
+    second: a_o_p29_01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: a_o_p29_01
+    second: {fileID: 2100000, guid: 35fdd591a0f934241ac0eeb4f2566850, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cw_hu_ba_0_0
+    second: {fileID: 2100000, guid: 139a7d6738155f241aac88c3c8f1b2ba, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0
+    animationPositionError: 3
+    animationScaleError: 3
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ui_show
+      takeName: 
+      internalID: 0
+      firstFrame: 200
+      lastFrame: 235
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle_normal
+      takeName: 
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: run_easy
+      takeName: 
+      internalID: 0
+      firstFrame: 170
+      lastFrame: 194
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: hit
+      takeName: 
+      internalID: 0
+      firstFrame: 215
+      lastFrame: 235
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: die
+      takeName: 
+      internalID: 0
+      firstFrame: 130
+      lastFrame: 163
+      wrapMode: 8
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack_01
+      takeName: 
+      internalID: 0
+      firstFrame: 50
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: skill_01
+      takeName: 
+      internalID: 0
+      firstFrame: 90
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: skill_02
+      takeName: 
+      internalID: 0
+      firstFrame: 300
+      lastFrame: 336
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 2
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1.1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

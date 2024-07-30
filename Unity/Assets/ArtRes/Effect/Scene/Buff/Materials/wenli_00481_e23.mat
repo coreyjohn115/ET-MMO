@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: wenli_00481_e23
+  m_Shader: {fileID: 4800000, guid: 73f665d85225de844bc26e4e6ad1d09e, type: 3}
+  m_ShaderKeywords: Float_On MainTex_On
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 3010
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _Glittering
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _IllumTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 58d98b247a171374a86d01d9c533c91b, type: 3}
+        m_Scale: {x: 1.5, y: 0.4}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MaskTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Tex1
+      second:
+        m_Texture: {fileID: 2800000, guid: 33074c9b93c99a247a8b652d63d98c3a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Tex2
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Tex3
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _Atten
+      second: 0
+    - first:
+        name: _DstBlend
+      second: 1
+    - first:
+        name: _FloatSpeedX
+      second: -10
+    - first:
+        name: _FloatSpeedY
+      second: 0
+    - first:
+        name: _IllumBreath
+      second: 0
+    - first:
+        name: _Intensity
+      second: 1
+    - first:
+        name: _MaxAlpha
+      second: 0
+    - first:
+        name: _MinAlpha
+      second: 0
+    - first:
+        name: _Mode
+      second: 1
+    - first:
+        name: _RimLength
+      second: 0
+    - first:
+        name: _RotateSpeed
+      second: 0
+    - first:
+        name: _Scale1
+      second: 0
+    - first:
+        name: _Scale2
+      second: 0
+    - first:
+        name: _Scale3
+      second: 0
+    - first:
+        name: _Speed1
+      second: -60
+    - first:
+        name: _Speed2
+      second: 0
+    - first:
+        name: _Speed3
+      second: 0
+    - first:
+        name: _SpeedX
+      second: 10
+    - first:
+        name: _SpeedY
+      second: 0
+    - first:
+        name: _SrcBlend
+      second: 5
+    m_Colors:
+    - first:
+        name: _Alpha1
+      second: {r: 1, g: 1, b: 0.7, a: 0}
+    - first:
+        name: _Alpha2
+      second: {r: 1, g: 1, b: 1, a: 0}
+    - first:
+        name: _Alpha3
+      second: {r: 1, g: 1, b: 1, a: 0}
+    - first:
+        name: _Color
+      second: {r: 0.8295848, g: 0.8896582, b: 1, a: 1}
+    - first:
+        name: _Color1
+      second: {r: 0.1194853, g: 0.625, b: 0.47954586, a: 0.684}
+    - first:
+        name: _Color2
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Color3
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _GlitterColor
+      second: {r: 0.74264705, g: 0.82961464, b: 1, a: 1}
+    - first:
+        name: _IllumColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _OutLineColor
+      second: {r: 0, g: 0, b: 0, a: 0}

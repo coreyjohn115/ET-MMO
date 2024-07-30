@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: qiu_liuguang 2
+  m_Shader: {fileID: 4800000, guid: 73f665d85225de844bc26e4e6ad1d09e, type: 3}
+  m_ShaderKeywords: MainTex_On MaskMap_On
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Glittering:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IllumTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 748e2100f44e5c44ca9705db28cf873b, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 2800000, guid: 3cb22a1ad089d85449205c0d4c7bc690, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Atten: 0
+    - _ColorMask: 15
+    - _DstBlend: 1
+    - _FloatSpeedX: 0
+    - _FloatSpeedY: -30
+    - _IllumBreath: 0
+    - _Intensity: 1
+    - _MaxAlpha: 0
+    - _MinAlpha: 0
+    - _Mode: 1
+    - _RimLength: 0
+    - _RotateSpeed: 0
+    - _SpeedX: 0
+    - _SpeedY: 0
+    - _SrcBlend: 5
+    - _Stencil: 0
+    - _StencilComp: 0
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - _Color: {r: 5.3403134, g: 5.3403134, b: 5.3403134, a: 1}
+    - _GlitterColor: {r: 1, g: 1, b: 1, a: 1}
+    - _IllumColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutLineColor: {r: 0, g: 0, b: 0, a: 0}

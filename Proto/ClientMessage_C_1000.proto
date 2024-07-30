@@ -1,0 +1,20 @@
+syntax = "proto3";
+// using 
+
+package ET;
+
+//ResponseType NetClient2Main_Login
+message Main2NetClient_Login // IRequest
+{
+	int32 Zone = 1;
+	int32 OwnerFiberId = 2;
+	string Account = 3;
+	string Password = 4;
+	int64 Id = 5; //账号ID
+	string RouterHttpHost = 6;
+}
+
+message NetClient2Main_Login // IResponse
+{
+	int64 PlayerId = 4;
+}

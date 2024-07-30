@@ -1,0 +1,48 @@
+syntax = "proto3";
+package ET;
+
+//通知其他服务清档
+//ResponseType O2A_ClearResponse
+message A2O_ClearRequest // IRequest
+{
+}
+message O2A_ClearResponse // IResponse
+{
+}
+
+//通过名字查询组件数据
+//ResponseType ComponentQueryResponse
+message ComponentQueryRequest // IRequest
+{
+	string ComponentName = 1;
+}
+message ComponentQueryResponse // IResponse
+{
+	bytes Entity = 1;
+}
+
+//通过名字调用方法数据
+//ResponseType O2AInvokeResponse
+message A2OInvokeRequest // IRequest
+{
+	string ComponentName = 1;
+	string Method = 2;
+	repeated string Args = 3;
+}
+message O2AInvokeResponse // IResponse
+{
+	string Result = 1;
+	string ResultType = 2;
+}
+
+//查询Unit数据
+//ResponseType UnitQueryResponse
+message UnitQueryRequest // IRequest
+{
+	int64 Id = 1;
+	string ComponentName = 2;
+}
+message UnitQueryResponse // IResponse
+{
+	bytes Entity = 1;
+}

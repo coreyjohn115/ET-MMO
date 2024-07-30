@@ -1,0 +1,39 @@
+﻿using System;
+
+namespace ET
+{
+	public interface ILoad
+	{
+	}
+	
+	public interface ILoadSystem: ISystemType
+	{
+		void Run(Entity o);
+	}
+
+	[EntitySystem]
+	public abstract class LoadSystem<T> : ILoadSystem where T: Entity, ILoad
+	{
+		void ILoadSystem.Run(Entity o)
+		{
+			this.Load((T)o);
+		}
+
+		Type ISystemType.SystemType()
+		{
+			return typeof(ILoadSystem);
+		}
+
+		int ISystemType.GetInstanceQueueIndex()
+		{
+			return InstanceQueueIndex.Load;
+		}
+
+		Type ISystemType.Type()
+		{
+			return typeof(T);
+		}
+
+		protected abstract void Load(T self);
+	}
+}

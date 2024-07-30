@@ -1,0 +1,13 @@
+using System;
+using System.Collections.Generic;
+
+namespace ET
+{
+	/// <summary>
+    /// 常量定义(此文件由代码生成, 禁止修改)
+    /// </summary>
+	public static partial class ConstValue
+	{
+(fields)
+	}
+}

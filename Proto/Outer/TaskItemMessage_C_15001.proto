@@ -1,0 +1,101 @@
+syntax = "proto3";
+package ET;
+
+//任务
+message TaskProto
+{
+  int32 Id = 1;
+  repeated int64 Args = 2;
+  int64 Min = 3;
+  int64 Max = 4;
+  int32 Status = 5;
+  int64 Time = 6;
+  int64 AcceptTime = 7;
+}
+
+// 更新任务
+message M2C_UpdateTask //IMessage
+{
+  repeated TaskProto List = 1;
+}
+
+// 删除任务
+message M2C_DeleteTask //IMessage
+{
+  repeated int32 List = 1;
+}
+
+// 提交任务
+//ResponseType M2C_CommitTask
+message C2M_CommitTask //ILocationRequest
+{
+  int32 Id = 1;
+}
+
+message M2C_CommitTask //ILocationResponse
+{
+}
+
+// 更新道具
+message M2C_UpdateItem //IMessage
+{
+  byte[] Item = 1;
+  int64 Id = 2;
+  bool IsDelete = 3;
+}
+
+// 使用道具
+//ResponseType M2C_UseItem
+message C2M_UseItem //ILocationRequest
+{
+  int64 Id = 1;
+  int64 Count = 2;
+  repeated string Args = 3;
+}
+message M2C_UseItem //ILocationResponse
+{
+  repeated string RetArgs = 3;
+}
+
+// 删除道具
+//ResponseType M2C_DeleteItem
+message C2M_DeleteItem //ILocationRequest
+{
+  repeated int64 List = 1;
+}
+message M2C_DeleteItem //ILocationResponse
+{
+}
+
+// 穿戴装备
+//ResponseType M2C_PutOnEquip
+message C2M_PutOnEquip //ILocationRequest
+{
+  int64 Id = 1;
+}
+message M2C_PutOnEquip //ILocationResponse
+{
+}
+
+// 卸下装备
+//ResponseType M2C_TakeOffEquip
+message C2M_TakeOffEquip //ILocationRequest
+{
+  int64 Id = 1;
+}
+message M2C_TakeOffEquip //ILocationResponse
+{
+}
+
+message M2C_UpdateEquip //IMessage
+{
+  map<EquipPosType, int64> EquipDict = 1;
+}
+
+// 请求玩家数据
+message M2C_UpdatePlayerData //IMessage
+{
+  repeated byte[] ItemList = 1;
+  repeated TaskProto TaskList = 2;
+  map<int32, int64> FinishDict = 3;
+}

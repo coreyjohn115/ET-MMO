@@ -1,0 +1,7 @@
+{
+  "name": "com.heurekagames.utils",
+  "displayName": "HeurekaGames Utils",
+  "version": "1.0.3",
+  "unity": "2019.1",
+  "description": "This package contains code that is shared among all HeurekaGames Packages"
+}

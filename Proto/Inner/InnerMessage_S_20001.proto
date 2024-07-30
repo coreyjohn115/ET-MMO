@@ -1,0 +1,213 @@
+syntax = "proto3";
+package ET;
+
+//ResponseType InnerPingResponse
+message InnerPingRequest // IRequest
+{
+}
+message InnerPingResponse // IResponse
+{
+}
+
+//ResponseType G2G_LockResponse
+message G2G_LockRequest // IRequest
+{
+	int64 Id = 2;
+	string Address = 3;
+}
+message G2G_LockResponse // IResponse
+{
+}
+
+//ResponseType G2G_LockReleaseResponse
+message G2G_LockReleaseRequest // IRequest
+{
+	int64 Id = 2;
+	string Address = 3;
+}
+message G2G_LockReleaseResponse // IResponse
+{
+}
+
+//ResponseType ObjectAddResponse
+message ObjectAddRequest // IRequest
+{
+	int32 Type = 2;
+	int64 Key = 3;
+	ActorId ActorId = 4;
+}
+message ObjectAddResponse // IResponse
+{
+}
+
+//ResponseType ObjectLockResponse
+message ObjectLockRequest // IRequest
+{
+	int32 Type = 2;
+	int64 Key = 3;
+	ActorId ActorId = 4;
+	int32 Time = 5;
+}
+message ObjectLockResponse // IResponse
+{
+}
+
+//ResponseType ObjectUnLockResponse
+message ObjectUnLockRequest // IRequest
+{
+	int32 Type = 2;
+	int64 Key = 3;
+	ActorId OldActorId = 4;
+	ActorId NewActorId = 5;
+}
+message ObjectUnLockResponse // IResponse
+{
+}
+
+//ResponseType ObjectRemoveResponse
+message ObjectRemoveRequest // IRequest
+{
+	int32 Type = 2;
+	int64 Key = 3;
+}
+message ObjectRemoveResponse // IResponse
+{
+}
+
+//ResponseType ObjectGetResponse
+message ObjectGetRequest // IRequest
+{
+	int32 Type = 2;
+	int64 Key = 3;
+}
+message ObjectGetResponse // IResponse
+{
+	int32 Type = 4;
+	ActorId ActorId = 5;
+}
+
+//ResponseType G2R_GetLoginKey
+message R2G_GetLoginKey // IRequest
+{
+	string Account = 2;
+}
+
+message G2R_GetLoginKey // IResponse
+{
+	int64 Key = 4;
+	int64 GateId = 5;
+}
+
+message G2M_SessionDisconnect // ILocationMessage
+{
+}
+
+//ResponseType M2G_RequestEnterGameState
+message G2M_RequestEnterGameState // ILocationRequest
+{
+
+}
+message M2G_RequestEnterGameState // ILocationResponse
+{
+
+}
+
+//ResponseType M2M_UnitTransferResponse
+message M2M_UnitTransferRequest // IRequest
+{
+	ActorId OldActorId = 2;
+	bytes Unit = 3;
+	repeated bytes Entitys = 4;
+	bool IsEnterGame = 5;
+}
+message M2M_UnitTransferResponse // IResponse
+{
+}
+
+//玩家进入游戏
+//ResponseType Other2G_EnterResponse
+message G2Other_EnterRequest // IRequest
+{
+	int64 PlayerId = 1;
+	PlayerInfoProto RoleInfo = 2;
+}
+message Other2G_EnterResponse // IResponse
+{
+	int64 Id = 1;
+}
+
+//玩家退出游戏
+//ResponseType Other2G_LeaveResponse
+message G2Other_LeaveRequest // IRequest
+{
+	int64 PlayerId = 1;
+}
+message Other2G_LeaveResponse // IResponse
+{
+}
+
+//守护进程请求重载
+//ResponseType Other2W_ReloadResponse
+message W2Other_ReloadRequest // IRequest
+{
+	bool ReloadCode = 1;
+}
+message Other2W_ReloadResponse // IResponse
+{
+
+}
+
+//守护进程请求保存数据
+//ResponseType Other2W_SaveDataResponse
+message W2Other_SaveDataRequest // IRequest
+{
+
+}
+message Other2W_SaveDataResponse // IResponse
+{
+}
+
+//守护进程请求释放内存
+//ResponseType Other2W_GCResponse
+message W2Other_GCRequest // IRequest
+{
+
+}
+message Other2W_GCResponse // IResponse
+{
+}
+
+//守护进程关闭其他进程
+//ResponseType Other2W_SaveDataResponse
+message W2Other_CloseRequest // IRequest
+{
+	//要关闭的进程ID, 小于0时全部关闭
+	int32 ProcessId = 1;
+}
+message W2Other_CloseResponse // IResponse
+{
+}
+
+//守护进程开启其他进程
+//ResponseType Other2W_SaveDataResponse
+message W2Other_OpenRequest // IRequest
+{
+	//要关闭的进程ID, 小于0时全部开启
+	int32 ProcessId = 1;
+}
+message W2Other_OpenResponse // IResponse
+{
+}
+
+//获取开服时间
+//ResponseType A2O_GetServerTime
+message O2A_GetServerTime // IRequest
+{
+	int32 ZoneId = 1;
+}
+message A2O_GetServerTime // IResponse
+{
+	int32 Status = 1;
+	int64 OpenTime = 2;
+	int64 EnterTime = 3;
+}

@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: wuti_00045
+  m_Shader: {fileID: 4800000, guid: 72b490376f9e6334f8c8b343eab9093d, type: 3}
+  m_ShaderKeywords: MainTex_On MaskMap_On
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3010
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Glittering:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IllumTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: ca0693252628d804a813563c353d8a41, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMap:
+        m_Texture: {fileID: 2800000, guid: 6a25dca5bea2bd548ac685fbb8555935, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 2800000, guid: 04f314276f87f5d47a23663eee0f8558, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseDissolveMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseMap:
+        m_Texture: {fileID: 2800000, guid: f0880f632d51adc4581f1a3a3fdce4f3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseVertexMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Atten: 0
+    - _BlurLength: 0
+    - _ColorMask: 15
+    - _DissolveOffset: 0
+    - _DissolveRange: 0
+    - _DstBlend: 1
+    - _FloatSpeedX: 0.3
+    - _FloatSpeedY: -3
+    - _IllumBreath: 0
+    - _Intensity: 1
+    - _InvFade: 1
+    - _MaxAlpha: 0
+    - _MinAlpha: 0
+    - _Mode: 1
+    - _RimLength: 0
+    - _RotateSpeed: 0
+    - _SpeedX: 0
+    - _SpeedY: 0
+    - _SrcBlend: 5
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _Threshold: 0.71
+    m_Colors:
+    - _Color: {r: 1, g: 0.4198113, b: 0.4198113, a: 1}
+    - _DissolveColor: {r: 0.0754717, g: 0, b: 0, a: 0.5}
+    - _DissolveFirstColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DissolveSecondColor: {r: 1.39772, g: 1.39772, b: 1.39772, a: 1}
+    - _GlitterColor: {r: 1, g: 1, b: 1, a: 1}
+    - _IllumColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutLineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

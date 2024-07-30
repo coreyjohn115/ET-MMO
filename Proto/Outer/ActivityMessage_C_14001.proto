@@ -1,0 +1,45 @@
+syntax = "proto3";
+package ET;
+
+message ActivityCfgProto
+{
+  int32 Id = 1;
+  int32 ActivityType = 2;
+  int32 Name = 3;
+  int32 Desc = 4;
+  string Icon = 5;
+  int32 HelpId = 6;
+  int32 WindowId = 7;
+  repeated string Args = 8;
+  string ShowItemList = 9;
+  repeated string Ext = 10;
+  repeated string DataList = 11;
+}
+
+message ActivityProto
+{
+  int32 Id = 1;
+  int32 Level = 2;
+  int64 OpenTime = 3;
+  int64 HideTime = 4;
+  int64 RealCloseTime = 5;
+  ActivityCfgProto Cfg = 6;
+}
+
+//更新活动显示
+message M2C_UpdateActivityList //IMessage
+{
+  repeated ActivityProto List = 1;
+}
+
+//活动关闭
+message M2C_UpdateActivityClose //IMessage
+{
+  int32 Id = 1;
+}
+
+//活动显示
+message M2C_UpdateActivity //IMessage
+{
+  ActivityProto Activity = 1;
+}
