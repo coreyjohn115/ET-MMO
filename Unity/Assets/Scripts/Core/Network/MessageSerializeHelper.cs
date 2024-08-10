@@ -38,7 +38,7 @@ namespace ET
 
             stream.GetBuffer().WriteTo(headOffset, opcode);
 
-            MessageSerializeHelper.Serialize(message, stream);
+            Serialize(message, stream);
 
             stream.Seek(0, SeekOrigin.Begin);
             return opcode;
@@ -62,8 +62,6 @@ namespace ET
                     break;
                 }
             }
-
-            ((MessageObject)message).Dispose(); // 回收message
 
             return (opcode, memoryBuffer);
         }
@@ -95,8 +93,6 @@ namespace ET
                     break;
                 }
             }
-
-            service.Recycle(memoryStream);
 
             return (actorId, message);
         }
