@@ -38,17 +38,17 @@ namespace ET.Server
         public HashSet<ChatChannelType> useWolrdChannel;
 
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<long, ChatUnit> unitDict = new Dictionary<long, ChatUnit>();
+        public Dictionary<long, ChatUnit> unitDict = new();
 
         [BsonIgnore]
         public string worldId;
     
         public int zone = 0;
 
-        public Dictionary<string, ChatGroup> groupDict = new Dictionary<string, ChatGroup>();
+        public Dictionary<string, ChatGroup> groupDict = new();
 
         [BsonIgnore]
-        public List<ChatSaveItem> saveList = new List<ChatSaveItem>();
+        public List<ChatSaveItem> saveList = new();
 
         [BsonIgnore]
         public long timer;

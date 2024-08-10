@@ -42,7 +42,7 @@ namespace ET
 
         public StartSceneConfig GetBySceneName(int zone, string name)
         {
-            return this.ClientScenesByName[zone][name];
+            return this.ClientScenesByName[zone].GetValueOrDefault(name);
         }
 
         public StartSceneConfig GetCache(int zone)

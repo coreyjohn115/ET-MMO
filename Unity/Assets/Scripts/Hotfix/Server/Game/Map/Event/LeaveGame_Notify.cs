@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace ET.Server
 {
@@ -7,14 +7,15 @@ namespace ET.Server
     {
         protected override async ETTask Run(Scene scene, UnitLeaveGame a)
         {
-            List<string> list = [SceneType.Chat.ToString()];
-            foreach (string t in list)
+            foreach (string t in Enum.GetNames(typeof (SceneType)))
             {
-                // 通知聊天服
-                var actorId = StartSceneConfigCategory.Instance.GetBySceneName(scene.Zone(), t).ActorId;
-                G2Other_LeaveRequest request = G2Other_LeaveRequest.Create();
-                request.PlayerId = a.Unit.Id;
-                scene.Root().GetComponent<MessageSender>().Call(actorId, request).NoContext();
+                var config = StartSceneConfigCategory.Instance.GetBySceneName(scene.Zone(), t);
+                if (config != default)
+                {
+                    G2Other_LeaveRequest request = G2Other_LeaveRequest.Create();
+                    request.PlayerId = a.Unit.Id;
+                    scene.Root().GetComponent<MessageSender>().Send(config.ActorId, request);
+                }
             }
 
             await ETTask.CompletedTask;

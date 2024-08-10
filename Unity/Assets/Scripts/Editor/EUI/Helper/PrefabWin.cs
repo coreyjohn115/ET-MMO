@@ -10,7 +10,7 @@ namespace ET.Client
 {
     public class PrefabWin: EditorWindow
     {
-        private class Item
+        private class PrefabWinItem
         {
             public GameObject prefab;
             public string guid;
@@ -73,7 +73,7 @@ namespace ET.Client
         private GUIContent mContent;
         private GUIStyle mStyle;
 
-        private BetterList<Item> mItems = new BetterList<Item>();
+        private BetterList<PrefabWinItem> mItems = new BetterList<PrefabWinItem>();
 
         private GameObject draggedObject
         {
@@ -130,7 +130,7 @@ namespace ET.Client
         private void OnDisable()
         {
             instance = null;
-            foreach (Item item in mItems)
+            foreach (PrefabWinItem item in mItems)
             {
                 DestroyTexture(item);
             }
@@ -145,7 +145,7 @@ namespace ET.Client
 
         public void Reset()
         {
-            foreach (Item item in mItems)
+            foreach (PrefabWinItem item in mItems)
             {
                 DestroyTexture(item);
             }
@@ -195,7 +195,7 @@ namespace ET.Client
                 if (string.IsNullOrEmpty(guid)) return;
             }
 
-            Item ent = new Item();
+            PrefabWinItem ent = new PrefabWinItem();
             ent.prefab = go;
             ent.guid = guid;
             GeneratePreview(ent);
@@ -206,7 +206,7 @@ namespace ET.Client
             Save();
         }
 
-        private Item AddGUID(string guid, int index)
+        private PrefabWinItem AddGUID(string guid, int index)
         {
             GameObject go = UIEditorHelper.GUIDToObject<GameObject>(guid);
             if (go == null)
@@ -214,7 +214,7 @@ namespace ET.Client
                 return null;
             }
 
-            Item ent = new();
+            PrefabWinItem ent = new();
             ent.prefab = go;
             ent.guid = guid;
             GeneratePreview(ent, false);
@@ -236,7 +236,7 @@ namespace ET.Client
             int index = (int)obj;
             if (index < mItems.size && index > -1)
             {
-                Item item = mItems[index];
+                PrefabWinItem item = mItems[index];
                 DestroyTexture(item);
                 mItems.RemoveAt(index);
             }
@@ -244,7 +244,7 @@ namespace ET.Client
             Save();
         }
 
-        private Item FindItem(GameObject go)
+        private PrefabWinItem FindItem(GameObject go)
         {
             for (int i = 0; i < mItems.size; ++i)
             {
@@ -298,7 +298,7 @@ namespace ET.Client
             mTab = EditorPrefs.GetInt("PrefabWin Prefab Tab", 0);
             SizePercent = EditorPrefs.GetFloat("PrefabWin_SizePercent", 0.5f);
 
-            foreach (Item item in mItems)
+            foreach (PrefabWinItem item in mItems)
             {
                 DestroyTexture(item);
             }
@@ -330,7 +330,7 @@ namespace ET.Client
             }
         }
 
-        private static void DestroyTexture(Item item)
+        private static void DestroyTexture(PrefabWinItem item)
         {
             if (item is not { dynamicTex: true } || item.tex == null)
             {
@@ -349,7 +349,7 @@ namespace ET.Client
             else DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
         }
 
-        private Item CreateItemByPath(string path)
+        private PrefabWinItem CreateItemByPath(string path)
         {
             if (!string.IsNullOrEmpty(path))
             {
@@ -359,7 +359,7 @@ namespace ET.Client
                 if (!string.IsNullOrEmpty(guid))
                 {
                     GameObject go = AssetDatabase.LoadAssetAtPath(path, typeof (GameObject)) as GameObject;
-                    Item ent = new Item();
+                    PrefabWinItem ent = new PrefabWinItem();
                     ent.prefab = go;
                     ent.guid = guid;
                     GeneratePreview(ent);
@@ -371,7 +371,7 @@ namespace ET.Client
             return null;
         }
 
-        private static void GeneratePreview(Item item, bool isReCreate = true)
+        private static void GeneratePreview(PrefabWinItem item, bool isReCreate = true)
         {
             if (item == null || item.prefab == null)
             {
@@ -464,7 +464,7 @@ namespace ET.Client
             GameObject dragged = draggedObject;
             bool isDragging = (dragged != null);
             int indexUnderMouse = GetCellUnderMouse(spacingX, spacingY);
-            Item selection = isDragging? FindItem(dragged) : null;
+            PrefabWinItem selection = isDragging? FindItem(dragged) : null;
             string searchFilter = EditorPrefs.GetString("PrefabWin_SearchFilter", null);
 
             int newTab = mTab;
@@ -486,7 +486,7 @@ namespace ET.Client
             if (mReset && type == EventType.Repaint)
             {
                 mReset = false;
-                foreach (Item item in mItems)
+                foreach (PrefabWinItem item in mItems)
                 {
                     GeneratePreview(item, false);
                 }
@@ -593,7 +593,7 @@ namespace ET.Client
                 for (int i = 0; i < indices.size; ++i)
                 {
                     int index = indices[i];
-                    Item ent = (index != -1)? mItems[index] : selection;
+                    PrefabWinItem ent = (index != -1)? mItems[index] : selection;
 
                     if (ent != null && ent.prefab == null)
                     {
@@ -630,7 +630,7 @@ namespace ET.Client
 
                             if (!string.IsNullOrEmpty(path))
                             {
-                                Item newEnt = CreateItemByPath(path);
+                                PrefabWinItem newEnt = CreateItemByPath(path);
 
                                 if (newEnt != null)
                                 {

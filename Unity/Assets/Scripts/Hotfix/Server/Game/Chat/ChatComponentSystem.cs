@@ -404,7 +404,7 @@ namespace ET.Server
 
             if (group.IsNullOrEmpty())
             {
-                return new List<ChatMsgProto>();
+                return [];
             }
 
             var zoneDB = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());

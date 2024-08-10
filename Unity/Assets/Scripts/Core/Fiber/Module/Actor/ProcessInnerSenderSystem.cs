@@ -46,7 +46,7 @@ namespace ET
             ActorId actorId = messageInfo.ActorId;
             MessageObject message = messageInfo.MessageObject;
 
-            MailBoxComponent mailBoxComponent = self.Fiber().Mailboxes.Get(actorId.InstanceId);
+            MailBoxComponent mailBoxComponent = fiber.Mailboxes.Get(actorId.InstanceId);
             if (mailBoxComponent == null)
             {
                 Log.Warning($"actor not found mailbox, from: {actorId} current: {fiber.Address} {message}");

@@ -34,18 +34,20 @@ namespace ET.Server
                     long unitId = session.GetComponent<SessionPlayerComponent>().Player.Id;
                     int rpcId = actorLocationRequest.RpcId; // 这里要保存客户端的rpcId
                     long instanceId = session.InstanceId;
-                    IResponse iResponse = await root.GetComponent<MessageLocationSenderComponent>().Get(LocationType.Unit).Call(unitId, actorLocationRequest);
+                    IResponse iResponse = await root.GetComponent<MessageLocationSenderComponent>().Get(LocationType.Unit)
+                            .Call(unitId, actorLocationRequest);
                     iResponse.RpcId = rpcId;
                     // session可能已经断开了，所以这里需要判断
                     if (session.InstanceId == instanceId)
                     {
                         session.Send(iResponse);
                     }
+
                     break;
                 }
                 case IChatRequest chatRequest:
                 {
-                    var id = StartSceneConfigCategory.Instance.GetBySceneName(session.Zone(), nameof(SceneType.Chat)).ActorId;
+                    ActorId id = StartSceneConfigCategory.Instance.GetBySceneName(session.Zone(), nameof (SceneType.Chat)).ActorId;
                     int rpcId = chatRequest.RpcId; // 这里要保存客户端的rpcId
                     long instanceId = session.InstanceId;
                     IResponse response = await root.GetComponent<MessageSender>().Call(id, chatRequest);
@@ -60,15 +62,15 @@ namespace ET.Server
                 }
                 case IChatMessage chatMessage:
                 {
-                    var id = StartSceneConfigCategory.Instance.GetBySceneName(session.Zone(), nameof(SceneType.Chat)).ActorId;
+                    ActorId id = StartSceneConfigCategory.Instance.GetBySceneName(session.Zone(), nameof (SceneType.Chat)).ActorId;
                     root.GetComponent<MessageSender>().Send(id, chatMessage);
                     break;
                 }
-                case IRequest actorRequest:  // 分发IActorRequest消息，目前没有用到，需要的自己添加
+                case IRequest actorRequest: // 分发IActorRequest消息，目前没有用到，需要的自己添加
                 {
                     break;
                 }
-                case IMessage actorMessage:  // 分发IActorMessage消息，目前没有用到，需要的自己添加
+                case IMessage actorMessage: // 分发IActorMessage消息，目前没有用到，需要的自己添加
                 {
                     break;
                 }

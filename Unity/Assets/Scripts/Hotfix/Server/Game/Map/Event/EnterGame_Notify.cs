@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace ET.Server
 {
@@ -7,15 +7,16 @@ namespace ET.Server
     {
         protected override async ETTask Run(Scene scene, UnitEnterGame a)
         {
-            List<string> list = [SceneType.Chat.ToString()];
-
             G2Other_EnterRequest request = G2Other_EnterRequest.Create();
             request.PlayerId = a.Unit.Id;
             request.RoleInfo = a.Unit.GetComponent<UnitBasic>().ToPlayerInfo();
-            foreach (string t in list)
+            foreach (string t in Enum.GetNames(typeof (SceneType)))
             {
-                var actorId = StartSceneConfigCategory.Instance.GetBySceneName(scene.Zone(), t).ActorId;
-                var resp = (Other2G_EnterResponse)await scene.Root().GetComponent<MessageSender>().Call(actorId, request);
+                var config = StartSceneConfigCategory.Instance.GetBySceneName(scene.Zone(), t);
+                if (config != default)
+                {
+                    var resp = (Other2G_EnterResponse)await scene.Root().GetComponent<MessageSender>().Call(config.ActorId, request);
+                }
             }
         }
     }
