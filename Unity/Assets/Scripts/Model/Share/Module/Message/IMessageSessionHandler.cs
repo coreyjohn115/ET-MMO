@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
@@ -10,7 +9,7 @@ namespace ET
 
         public List<string> Message;
 
-        public static MessageReturn Create(int errco, List<string> message = default) => new() { Errno = errco, Message = message ?? new(), };
+        public static MessageReturn Create(int errno, List<string> message = default) => new() { Errno = errno, Message = message ?? new(), };
 
         public static MessageReturn Success() => new() { Errno = ErrorCode.ERR_Success, Message = new(), };
     }
