@@ -6,23 +6,22 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace ET.Analyzer
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class StaticFieldDeclarationAnalyzer : DiagnosticAnalyzer
+    public class StaticFieldDeclarationAnalyzer: DiagnosticAnalyzer
     {
-        
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics =>ImmutableArray.Create(StaticFieldDeclarationAnalyzerRule.Rule);
-        
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(StaticFieldDeclarationAnalyzerRule.Rule);
+
         public override void Initialize(AnalysisContext context)
         {
             if (!AnalyzerGlobalSetting.EnableAnalyzer)
             {
                 return;
             }
-            
+
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
             context.RegisterSymbolAction(this.Analyzer, SymbolKind.NamedType);
         }
-        
+
         private void Analyzer(SymbolAnalysisContext context)
         {
             if (!AnalyzerHelper.IsAssemblyNeedAnalyze(context.Compilation.AssemblyName, AnalyzeAssembly.All))
@@ -37,7 +36,7 @@ namespace ET.Analyzer
 
             foreach (ISymbol? memberSymbol in namedTypeSymbol.GetMembers())
             {
-                if (memberSymbol is IFieldSymbol { IsConst: false,IsStatic:true } or IPropertySymbol { IsStatic: true })
+                if (memberSymbol is IFieldSymbol { IsConst: false, IsStatic: true } or IPropertySymbol { IsStatic: true, GetMethod: null })
                 {
                     bool hasAttr = memberSymbol.GetAttributes().Any(x => x.AttributeClass?.ToString() == Definition.StaticFieldAttribute);
                     if (!hasAttr)
@@ -51,12 +50,11 @@ namespace ET.Analyzer
             {
                 foreach (SyntaxReference? declaringSyntaxReference in symbol.DeclaringSyntaxReferences)
                 {
-                    Diagnostic diagnostic = Diagnostic.Create(StaticFieldDeclarationAnalyzerRule.Rule, declaringSyntaxReference.GetSyntax()?.GetLocation(), symbol.Name);
+                    Diagnostic diagnostic = Diagnostic.Create(StaticFieldDeclarationAnalyzerRule.Rule,
+                        declaringSyntaxReference.GetSyntax()?.GetLocation(), symbol.Name);
                     context.ReportDiagnostic(diagnostic);
                 }
             }
         }
-        
     }
 }
-
