@@ -4,32 +4,28 @@ using MongoDB.Bson.Serialization.Options;
 
 namespace ET.Server
 {
-    [UniqueId(0, 100)]
+    [UniqueId(0, 50)]
     public static class LocationType
     {
         public const int Unit = 0;
         public const int Player = 1;
         public const int GateSession = 2;
-        public const int Max = 100;
+        public const int Max = 50;
     }
-    
-    [ChildOf(typeof(LocationOneType))]
+
+    [ChildOf(typeof (LocationOneType))]
     public class LockInfo: Entity, IAwake<ActorId, CoroutineLock>, IDestroy
     {
-        public ActorId LockActorId;
+        public ActorId lockActorId;
 
-        public CoroutineLock CoroutineLock
-        {
-            get;
-            set;
-        }
+        public CoroutineLock CoroutineLock { get; set; }
     }
 
-    [ChildOf(typeof(LocationManagerComoponent))]
+    [ChildOf(typeof (LocationManagerComoponent))]
     public class LocationOneType: Entity, IAwake<int>, ISerializeToEntity
     {
-        public int LocationType;
-        
+        public int locationType;
+
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
         public Dictionary<long, ActorId> locations = new();
 
@@ -37,7 +33,7 @@ namespace ET.Server
         public Dictionary<long, LockInfo> lockInfos = new();
     }
 
-    [ComponentOf(typeof(Scene))]
+    [ComponentOf(typeof (Scene))]
     public class LocationManagerComoponent: Entity, IAwake
     {
     }

@@ -10,9 +10,7 @@
             root.AddComponent<TimerComponent>();
             root.AddComponent<CoroutineLockComponent>();
             root.AddComponent<ProcessInnerSender>();
-            root.AddComponent<MessageLocationSenderComponent>();
             root.AddComponent<MessageSender>();
-            root.AddComponent<LocationProxyComponent>();
             root.AddComponent<DBManagerComponent>();
 
             root.AddComponent<RankComponent>();

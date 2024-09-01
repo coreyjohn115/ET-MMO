@@ -3,11 +3,11 @@
 namespace ET.Server
 {
     [Event(SceneType.Map)]
-    public class EnterGame_Notify: AEvent<Scene, UnitEnterGame>
+    public class UnitUpdate_Notify: AEvent<Scene, UnitUpdate>
     {
-        protected override async ETTask Run(Scene scene, UnitEnterGame a)
+        protected override async ETTask Run(Scene scene, UnitUpdate a)
         {
-            G2Other_EnterRequest request = G2Other_EnterRequest.Create();
+            G2Other_UpdateRequest request = G2Other_UpdateRequest.Create();
             request.PlayerId = a.Unit.Id;
             request.RoleInfo = a.Unit.GetComponent<UnitBasic>().ToPlayerInfo();
             foreach (string t in Enum.GetNames(typeof (SceneType)))

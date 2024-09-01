@@ -13,8 +13,23 @@ namespace ET.Server
         [EntitySystem]
         private static void Awake(this ChatComponent self)
         {
-            self.zone = self.Zone();
-            self.worldId = ConstValue.ChatSendId;
+            self.worldId = ConstValue.ChatWorId;
+            self.AddComponent<ChatGroupComponent>();
+
+            self.Load();
+            self.CreateGroup(ChatChannelType.World);
+            self.LoadData().NoContext();
+        }
+
+        [EntitySystem]
+        private static void Destroy(this ChatComponent self)
+        {
+            self.Root().GetComponent<TimerComponent>().Remove(ref self.timer);
+        }
+
+        [EntitySystem]
+        private static void Load(this ChatComponent self)
+        {
             self.nSaveChannel = [ChatChannelType.TV];
             self.useWolrdChannel = [ChatChannelType.World, ChatChannelType.TV];
             self.findOption = new FindOptions<ChatSaveItem>()
@@ -30,15 +45,8 @@ namespace ET.Server
                 new CreateIndexModel<ChatSaveItem>(Builders<ChatSaveItem>.IndexKeys.Ascending(info => info.SendRoleId)),
             });
 
-            self.timer = self.Root().GetComponent<TimerComponent>().NewRepeatedTimer(1000, TimerInvokeType.ChatSaveCheck, self);
-            self.CreateGroup(ChatChannelType.World);
-            self.LoadData().NoContext();
-        }
-
-        [EntitySystem]
-        private static void Destroy(this ChatComponent self)
-        {
-            self.Root().GetComponent<TimerComponent>().Remove(ref self.timer);
+            self.Destroy();
+            self.timer = self.Root().GetComponent<TimerComponent>().NewRepeatedTimer(1000L, TimerInvokeType.ChatSaveCheck, self);
         }
 
         [Invoke(TimerInvokeType.ChatSaveCheck)]
@@ -63,61 +71,23 @@ namespace ET.Server
         {
             await self.SaveChat();
             var zoneDB = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
-            await zoneDB.Save(self);
-        }
-
-        private static async ETTask LoadData(this ChatComponent self)
-        {
-            var list = await self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone()).Query<ChatComponent>(d => d.zone == self.Zone());
-            if (list.Count == 0)
+            List<ChatUnit> list = [];
+            List<ChatGroup> groupList = [];
+            foreach (var child in self.Children)
             {
-                return;
-            }
-
-            var chat = list[0];
-            foreach ((long id, ChatUnit unit) in chat.unitDict)
-            {
-                unit.isOnline = false;
-                self.AddChild(unit);
-                self.unitDict.Add(id, unit);
-            }
-
-            foreach ((string guid, ChatGroup group) in chat.groupDict)
-            {
-                if (group.channel == ChatChannelType.Group)
+                switch (child.Value)
                 {
-                    self.AddChild(group);
-                    self.groupDict.Add(guid, group);
+                    case ChatUnit chatUnit:
+                        list.Add(chatUnit);
+                        break;
+                    case ChatGroup chatGroup:
+                        groupList.Add(chatGroup);
+                        break;
                 }
             }
-        }
 
-        private static async ETTask SaveChat(this ChatComponent self)
-        {
-            if (self.saveList.Count == 0)
-            {
-                return;
-            }
-
-            var newList = self.saveList.ToArray();
-            self.saveList.Clear();
-            var zoneDB = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
-            using var list = ListComponent<ETTask>.Create();
-            for (int i = 0; i < newList.Length; i++)
-            {
-                var item = newList[i];
-                list.Add(zoneDB.Save(item));
-            }
-
-            await ETTaskHelper.WaitAll(list);
-        }
-
-        private static async ETTask UpdateAllGroupChat(this ChatComponent self, long playerId)
-        {
-            var list = await self.CacheGet(playerId, (int)ChatChannelType.World, self.worldId, 0L);
-            C2C_UpdateChat proto = C2C_UpdateChat.Create();
-            proto.List = list;
-            self.Send2Client(playerId, proto);
+            await zoneDB.Save(self.Id, groupList);
+            await zoneDB.Save(self.Id, list);
         }
 
         // 进入聊天服
@@ -127,7 +97,6 @@ namespace ET.Server
 
             child.isOnline = true;
             self.AddMember(self.worldId, [playerId]);
-            self.unitDict.TryAdd(playerId, child);
             self.UpdateAllGroupChat(playerId).NoContext();
             return child;
         }
@@ -141,18 +110,13 @@ namespace ET.Server
         {
             var child = self.GetChild<ChatUnit>(playerId);
             child.isOnline = false;
-            self.RemoveMember(self.worldId, false, [playerId]);
+            self.RemoveMember(self.worldId, [playerId]);
             self.Scene().GetComponent<MessageLocationSenderComponent>().Get(LocationType.GateSession).Remove(playerId);
         }
 
-        private static string GetPersonGroup(long dstId, long roleId)
+        private static long GetPersonGroup(long dstId, long roleId)
         {
-            if (dstId > roleId)
-            {
-                return $"{dstId}_ss_{roleId}";
-            }
-
-            return $"{roleId}_ss_{dstId}";
+            return dstId > roleId? dstId : roleId;
         }
 
         private static PlayerInfoProto GetPlayerInfo(this ChatComponent self, long dstId)
@@ -160,28 +124,27 @@ namespace ET.Server
             var chatUnit = self.GetChild<ChatUnit>(dstId);
             if (chatUnit == null)
             {
-                //取离线数据
-                return null;
+                return default;
             }
 
             return chatUnit.ToPlayerInfo();
         }
 
-        public static MessageReturn SendMessage(this ChatComponent self, long sendRoleId, ChatChannelType channel, string message, string groupId)
+        public static MessageReturn SendMessage(this ChatComponent self, long sendRoleId, ChatChannelType channel, string message, long groupId)
         {
             if (self.useWolrdChannel.Contains(channel))
             {
                 groupId = self.worldId;
             }
 
-            if (channel == ChatChannelType.League && sendRoleId != 0)
+            if (channel == ChatChannelType.League && sendRoleId != 0L)
             {
                 //获取联盟Id
                 //groupId = 0;
             }
 
-            List<long> roleList = null;
-            string group = groupId;
+            List<long> roleList = default;
+            long group = groupId;
             if (channel == ChatChannelType.Personal)
             {
                 roleList = [sendRoleId, groupId.ToLong()];
@@ -189,15 +152,16 @@ namespace ET.Server
             }
             else
             {
-                if (!self.groupDict.TryGetValue(group, out var g))
+                ChatGroup g = self.GetChild<ChatGroup>(group);
+                if (g == null)
                 {
                     return MessageReturn.Create(ErrorCode.ERR_ChatCantFindGroup);
                 }
 
-                roleList = g.roleList;
+                roleList = [..g.Children.Keys];
             }
 
-            var proto = ChatMsgProto.Create();
+            ChatMsgProto proto = ChatMsgProto.Create();
             proto.Message = message;
             proto.Channel = (int)channel;
             long now = TimeInfo.Instance.FrameTime;
@@ -205,57 +169,64 @@ namespace ET.Server
             if (now != self.lastMsgTime)
             {
                 self.lastMsgTime = now;
-                self.count = 0;
+                self.count = 0L;
             }
 
             self.count++;
-            proto.Id = now * 10000 + self.count;
+            proto.Id = now * 10000L + self.count;
             proto.GroupId = groupId;
             if (channel == ChatChannelType.Personal)
             {
-                proto.RoleInfo = self.GetPlayerInfo(groupId.ToLong());
-                C2C_UpdateChat proto1 = C2C_UpdateChat.Create();
+                proto.RoleInfo = self.GetPlayerInfo(groupId);
+                Chat2C_UpdateChat proto1 = Chat2C_UpdateChat.Create();
                 proto1.List.Add(proto);
                 self.Send2Client(sendRoleId, proto1);
                 ChatMsgProto dstMsg = proto.Clone() as ChatMsgProto;
-                dstMsg.GroupId = sendRoleId.ToString();
+                dstMsg.GroupId = sendRoleId;
                 dstMsg.RoleInfo = self.GetPlayerInfo(sendRoleId);
-                C2C_UpdateChat proto2 = C2C_UpdateChat.Create();
+                Chat2C_UpdateChat proto2 = Chat2C_UpdateChat.Create();
                 proto2.List.Add(dstMsg);
-                self.Send2Client(groupId.ToLong(), proto2);
+                self.Send2Client(groupId, proto2);
             }
             else
             {
                 proto.RoleInfo = self.GetPlayerInfo(sendRoleId);
-                C2C_UpdateChat update = C2C_UpdateChat.Create();
+                Chat2C_UpdateChat update = Chat2C_UpdateChat.Create();
                 update.List.Add(proto);
                 self.Broadcast(roleList, update);
             }
 
-            if (!self.nSaveChannel.Contains(channel))
+            if (self.nSaveChannel.Contains(channel))
             {
-                using var item = self.AddChildWithId<ChatSaveItem>(proto.Id);
-                item.GroupId = group;
-                item.Time = proto.Time;
-                item.Channel = proto.Channel;
-                item.Message = proto.Message;
-                item.SendRoleId = proto.RoleInfo.Id;
-                self.saveList.Add(item);
+                return MessageReturn.Success();
             }
 
+            using var item = self.AddChildWithId<ChatSaveItem>(proto.Id);
+            item.GroupId = group;
+            item.Time = proto.Time;
+            item.Channel = proto.Channel;
+            item.Message = proto.Message;
+            item.SendRoleId = proto.RoleInfo.Id;
+            self.saveList.Add(item);
             return MessageReturn.Success();
         }
 
-        public static MessageReturn SetGroupName(this ChatComponent self, string groupId, string groupName)
+        public static MessageReturn SetGroupName(this ChatComponent self, long groupId, long roleId, string groupName)
         {
             if (groupName.IsNullOrEmpty())
             {
                 return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
             }
 
-            if (!self.groupDict.TryGetValue(groupId, out var group))
+            ChatGroup group = self.GetChild<ChatGroup>(groupId);
+            if (group == default)
             {
                 return MessageReturn.Create(ErrorCode.ERR_ChatCantFindGroup);
+            }
+
+            if (group.leaderId != roleId)
+            {
+                return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
             }
 
             group.name = groupName;
@@ -263,36 +234,43 @@ namespace ET.Server
             return MessageReturn.Success();
         }
 
-        public static MessageReturn CreateGroup(this ChatComponent self, ChatChannelType channel, long leaderId = 0, string groupId = default,
+        public static MessageReturn CreateGroup(this ChatComponent self, ChatChannelType channel, long leaderId = 0, long? groupId = null,
         List<long> memebrList = default)
         {
             if (self.useWolrdChannel.Contains(channel))
             {
                 groupId = self.worldId;
             }
+            else
+            {
+                if (memebrList.IsNullOrEmpty())
+                {
+                    return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                }
+            }
 
-            string guid = groupId ?? IdGenerater.Instance.GenerateId().ToString();
-            ChatGroup group = self.AddChild<ChatGroup, string>(guid);
+            long id = groupId ?? IdGenerater.Instance.GenerateId();
+            ChatGroup group = self.AddChildWithId<ChatGroup>(id);
             group.leaderId = leaderId;
             group.channel = channel;
             group.name = self.GetGroupName(channel, leaderId, memebrList);
 
-            self.groupDict.Add(guid, group);
-            if (leaderId > 0)
+            if (leaderId > 0L && !memebrList.Contains(leaderId))
             {
                 memebrList.Add(leaderId);
-                self.AddMember(guid, memebrList);
             }
 
-            Log.Info($"创建讨论组: {channel} {guid}");
+            self.AddMember(id, memebrList);
+            Log.Info($"创建讨论组: {channel} {id}");
             return MessageReturn.Success();
         }
 
-        public static void AddMember(this ChatComponent self, string groupId, List<long> memebrList)
+        public static MessageReturn AddMember(this ChatComponent self, long groupId, List<long> memebrList)
         {
-            if (!self.groupDict.TryGetValue(groupId, out ChatGroup group))
+            var group = self.GetChild<ChatGroup>(groupId);
+            if (group == default)
             {
-                return;
+                return MessageReturn.Create(ErrorCode.ERR_ChatCantFindGroup);
             }
 
             foreach (long l in memebrList)
@@ -302,8 +280,7 @@ namespace ET.Server
                     continue;
                 }
 
-                group.leaderId = group.leaderId == 0? l : group.leaderId;
-                group.roleList.Add(l);
+                group.leaderId = group.leaderId == 0L? l : group.leaderId;
                 var member = group.AddChildWithId<ChatGroupMember>(l);
                 member.sort = TimeInfo.Instance.FrameTime + group.Children.Count;
                 var roleInfo = self.GetPlayerInfo(l);
@@ -312,11 +289,29 @@ namespace ET.Server
             }
 
             self.GroupUpdate(groupId);
+            return MessageReturn.Success();
         }
 
-        public static MessageReturn RemoveMember(this ChatComponent self, string groupId, bool isKick, List<long> memebrList)
+        public static MessageReturn RemoveMember(this ChatComponent self, long groupId, long leaderId, List<long> memebrList)
         {
-            if (!self.groupDict.TryGetValue(groupId, out ChatGroup group))
+            var group = self.GetChild<ChatGroup>(groupId);
+            if (group == default)
+            {
+                return MessageReturn.Create(ErrorCode.ERR_ChatCantFindGroup);
+            }
+
+            if (group.leaderId != leaderId)
+            {
+                return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+            }
+            
+            return self.RemoveMember(groupId, memebrList);
+        }
+        
+        public static MessageReturn RemoveMember(this ChatComponent self, long groupId, List<long> memebrList)
+        {
+            var group = self.GetChild<ChatGroup>(groupId);
+            if (group == default)
             {
                 return MessageReturn.Create(ErrorCode.ERR_ChatCantFindGroup);
             }
@@ -328,15 +323,13 @@ namespace ET.Server
                     continue;
                 }
 
-                group.roleList.Remove(l);
                 group.RemoveChild(l);
                 if (group.leaderId == l)
                 {
                     long minSort = 0L;
                     long memberId = 0L;
-                    foreach (var v in group.Children.Values)
+                    foreach (ChatGroupMember member in group.Children.Values)
                     {
-                        var member = v as ChatGroupMember;
                         minSort = minSort == 0L? member.sort : minSort;
                         memberId = memberId == 0L? member.Id : memberId;
                         if (member.sort >= minSort)
@@ -351,7 +344,7 @@ namespace ET.Server
                     group.leaderId = memberId;
                 }
 
-                C2C_GroupDel del = C2C_GroupDel.Create();
+                Chat2C_UpdateGroupDel del = Chat2C_UpdateGroupDel.Create();
                 del.GroupId = groupId;
                 self.Send2Client(l, del);
             }
@@ -365,11 +358,10 @@ namespace ET.Server
             switch (group.Children.Count)
             {
                 case 1:
-                    self.RemoveMember(groupId, false, [group.leaderId]);
+                    self.RemoveMember(groupId, [group.leaderId]);
                     break;
                 case 0:
                     group.Dispose();
-                    self.groupDict.Remove(groupId);
                     Log.Info($"删除讨论组: {groupId}");
                     break;
             }
@@ -386,25 +378,17 @@ namespace ET.Server
         /// <param name="groupId"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static async ETTask<List<ChatMsgProto>> CacheGet(this ChatComponent self, long roleId, int channel, string groupId, long id)
+        public static async ETTask<List<ChatMsgProto>> CacheGet(this ChatComponent self, long roleId, int channel, long groupId, long id)
         {
-            string group = groupId;
+            long group = groupId;
             switch (channel)
             {
                 case (int)ChatChannelType.World:
                     group = self.worldId;
                     break;
-                case (int)ChatChannelType.League:
-                    group = "league";
-                    break;
                 case (int)ChatChannelType.Personal:
-                    group = GetPersonGroup(roleId, groupId.ToLong());
+                    group = GetPersonGroup(roleId, groupId);
                     break;
-            }
-
-            if (group.IsNullOrEmpty())
-            {
-                return [];
             }
 
             var zoneDB = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
@@ -422,7 +406,7 @@ namespace ET.Server
             var result = new List<ChatMsgProto>();
             foreach (ChatSaveItem item in list)
             {
-                var roleInfo = item.Channel == (int)ChatChannelType.Personal? self.GetPlayerInfo(group.ToLong())
+                var roleInfo = item.Channel == (int)ChatChannelType.Personal? self.GetPlayerInfo(group)
                         : self.GetPlayerInfo(item.SendRoleId);
                 ChatMsgProto proto = ChatMsgProto.Create();
                 proto.Id = item.Id;
@@ -458,52 +442,105 @@ namespace ET.Server
             return string.Empty;
         }
 
-        private static void GroupUpdate(this ChatComponent self, string groupId = default, long roleId = 0)
+        private static void GroupUpdate(this ChatComponent self, long? groupId = default, long roleId = 0)
         {
             List<long> roleList = [];
-            if (roleId > 0)
+            if (roleId > 0L)
             {
                 roleList.Add(roleId);
             }
 
             List<ChatGroupProto> list = [];
-            foreach (var group in self.groupDict.Values)
+            foreach (Entity g in self.Children.Values)
             {
-                if (group.guid == (groupId ?? group.guid) &&
-                    (roleId == 0 || group.HasChild(roleId)) &&
-                    group.channel != ChatChannelType.League && group.channel != ChatChannelType.World)
+                if (g is not ChatGroup group)
                 {
-                    var proto = ChatGroupProto.Create();
-                    proto.GroupId = group.guid;
-                    proto.Name = group.name;
-                    proto.LeaderId = group.leaderId;
-                    proto.MemberList = [];
-                    foreach (var entity in group.Children.Values)
-                    {
-                        var member = (ChatGroupMember)entity;
-                        ChatGroupMemberProto memberProto = ChatGroupMemberProto.Create();
-                        memberProto.RoleId = member.Id;
-                        memberProto.HeadIcon = member.headIcon;
-                        memberProto.NoDisturbing = member.noDisturbing;
-                        memberProto.Sort = member.sort;
-                        proto.MemberList.Add(memberProto);
-                    }
+                    continue;
+                }
 
-                    proto.MemberList.Sort((l, r) => l.Sort.CompareTo(r.Sort));
-                    list.Add(proto);
-                    if (roleList.Count == 0)
+                if (group.Id != (groupId ?? group.Id) ||
+                    (roleId != 0L && !group.HasChild(roleId)) ||
+                    group.channel == ChatChannelType.League || group.channel == ChatChannelType.World)
+                {
+                    continue;
+                }
+
+                ChatGroupProto proto = ChatGroupProto.Create();
+                proto.GroupId = group.Id;
+                proto.Name = group.name;
+                proto.LeaderId = group.leaderId;
+                List<long> mList = [];
+                foreach (ChatGroupMember member in group.Children.Values)
+                {
+                    ChatGroupMemberProto memberProto = ChatGroupMemberProto.Create();
+                    memberProto.RoleId = member.Id;
+                    memberProto.HeadIcon = member.headIcon;
+                    memberProto.NoDisturbing = member.noDisturbing;
+                    memberProto.Sort = member.sort;
+                    proto.MemberList.Add(memberProto);
+
+                    var chatUnit = self.GetChild<ChatUnit>(member.Id);
+                    if (chatUnit.isOnline)
                     {
-                        roleList.AddRange(group.roleList);
+                        mList.Add(member.Id);
                     }
+                }
+
+                proto.MemberList.Sort((l, r) => l.Sort.CompareTo(r.Sort));
+                list.Add(proto);
+                if (roleList.Count == 0)
+                {
+                    roleList.AddRange(mList);
                 }
             }
 
-            if (list.Count > 0)
+            if (list.Count <= 0)
             {
-                C2C_GroupUpdate del = C2C_GroupUpdate.Create();
-                del.List.AddRange(list);
-                self.Broadcast(roleList, del);
+                return;
             }
+
+            Chat2C_GroupUpdate update = Chat2C_GroupUpdate.Create();
+            update.List.AddRange(list);
+            self.Broadcast(roleList, update);
+        }
+
+        private static async ETTask LoadData(this ChatComponent self)
+        {
+            var chatUnits = await self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone()).Query<ChatUnit>(d => true);
+            foreach (ChatUnit unit in chatUnits)
+            {
+                unit.isOnline = false;
+                self.AddChild(unit);
+            }
+
+            var groupList = await self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone()).Query<ChatGroup>(d => true);
+            foreach (ChatGroup group in groupList)
+            {
+                if (group.channel == ChatChannelType.Group)
+                {
+                    self.AddChild(group);
+                }
+            }
+        }
+
+        private static async ETTask SaveChat(this ChatComponent self)
+        {
+            if (self.saveList.Count == 0)
+            {
+                return;
+            }
+
+            var zoneDB = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
+            await zoneDB.Save(self.Id, self.saveList);
+            self.saveList.Clear();
+        }
+
+        private static async ETTask UpdateAllGroupChat(this ChatComponent self, long playerId)
+        {
+            var list = await self.CacheGet(playerId, (int)ChatChannelType.World, self.worldId, 0L);
+            Chat2C_UpdateChat proto = Chat2C_UpdateChat.Create();
+            proto.List = list;
+            self.Send2Client(playerId, proto);
         }
 
         private static void Send2Client(this ChatComponent self, long id, IMessage message)

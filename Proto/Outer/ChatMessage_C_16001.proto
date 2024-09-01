@@ -1,0 +1,131 @@
+syntax = "proto3";
+package ET;
+
+message ChatMsgProto
+{
+  int64 Id = 1;
+  int64 Time = 2;
+  int32 Channel = 3;
+  //发送方信息
+  PlayerInfoProto RoleInfo = 4;
+  string Message = 5;
+  //讨论组id
+  int64 GroupId = 6;
+}
+
+//发送聊天消息
+//ResponseType Chat2C_SendResponse
+message C2Chat_SendRequest // IChatRequest
+{
+	int32 Channel = 1;
+	PlayerInfoProto RoleInfo = 2;
+	string Message = 3;
+	int64 GroupId = 4;
+}
+message Chat2C_SendResponse // IChatResponse
+{
+}
+
+//收到聊天信息
+message Chat2C_UpdateChat // IChatMessage
+{
+	repeated ChatMsgProto List = 1;
+}
+
+message ChatGroupMemberProto
+{
+  int64 RoleId = 1;
+  HeadProto HeadIcon = 2;
+  //消息免打扰
+  bool NoDisturbing = 3;
+  int64 Sort = 4;
+}
+
+message ChatGroupProto
+{
+  int64 GroupId = 1;
+  int64 LeaderId = 2;
+  string Name = 3;
+  repeated ChatGroupMemberProto MemberList = 4;
+}
+
+// 更新群组列表(上线和新进群聊时)
+message Chat2C_GroupUpdate // IChatMessage
+{
+  repeated ChatGroupProto List = 1;
+}
+
+// 创建群聊
+//ResponseType Chat2C_GroupCreate
+message C2Chat_GroupCreate // IChatRequest
+{
+  string Name = 1;
+  int64 LeaderId = 2;
+  repeated int64 MemberList = 3;
+}
+message Chat2C_GroupCreate // IChatResponse
+{
+}
+
+// 加入群聊
+//ResponseType Chat2C_GroupAddMember
+message C2Chat_GroupAddMember // IChatRequest
+{
+  int64 GroupId = 1;
+  repeated int64 MemberList = 2;
+}
+message Chat2C_GroupAddMember // IChatResponse
+{
+}
+
+// 踢出群聊
+//ResponseType Chat2C_GroupDelMember
+message C2Chat_GroupDelMember // IChatRequest
+{
+  int64 GroupId = 1;
+  int64 RoleId = 2;
+  repeated int64 MemberList = 3;
+}
+message Chat2C_GroupDelMember // IChatResponse
+{
+}
+
+// 删除群聊
+//ResponseType Chat2C_GroupDel
+message C2Chat_GroupDel // IChatRequest
+{
+  int64 GroupId = 1;
+  int64 RoleId = 2;
+}
+message Chat2C_GroupDel // IChatResponse
+{
+}
+
+// 修改群聊名称
+//ResponseType Chat2C_GroupName
+message C2Chat_GroupName // IChatRequest
+{
+  int64 GroupId = 1;
+  int64 RoleId = 2;
+  string Name = 3;
+}
+message Chat2C_GroupName // IChatResponse
+{
+}
+
+// 主动退出群聊
+//ResponseType Chat2C_GroupLeave
+message C2Chat_GroupLeave // IChatRequest
+{
+  int64 GroupId = 1;
+  int64 RoleId = 2;
+}
+message Chat2C_GroupLeave // IChatResponse
+{
+}
+
+// 更新删除群聊
+message Chat2C_UpdateGroupDel // IChatMessage
+{
+  int64 GroupId = 1;
+}

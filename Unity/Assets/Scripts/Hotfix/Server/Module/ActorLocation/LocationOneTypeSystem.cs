@@ -10,14 +10,14 @@ namespace ET.Server
         private static void Awake(this LockInfo self, ActorId lockActorId, CoroutineLock coroutineLock)
         {
             self.CoroutineLock = coroutineLock;
-            self.LockActorId = lockActorId;
+            self.lockActorId = lockActorId;
         }
         
         [EntitySystem]
         private static void Destroy(this LockInfo self)
         {
             self.CoroutineLock.Dispose();
-            self.LockActorId = default;
+            self.lockActorId = default;
         }
     }
     
@@ -30,38 +30,38 @@ namespace ET.Server
         [EntitySystem]
         private static void Awake(this LocationOneType self, int locationType)
         {
-            self.LocationType = locationType;
+            self.locationType = locationType;
         }
         
         public static async ETTask Add(this LocationOneType self, long key, ActorId instanceId)
         {
-            int coroutineLockType = (self.LocationType << 16) | CoroutineLockType.Location;
+            int coroutineLockType = (self.locationType << 16) | CoroutineLockType.Location;
             using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(coroutineLockType, key))
             {
                 self.locations[key] = instanceId;
-                Log.Info($"location add key: {self.LocationType} {key} instanceId: {instanceId}");
+                Log.Info($"location add key: {self.locationType} {key} instanceId: {instanceId}");
             }
         }
 
         public static async ETTask Remove(this LocationOneType self, long key)
         {
-            int coroutineLockType = (self.LocationType << 16) | CoroutineLockType.Location;
+            int coroutineLockType = (self.locationType << 16) | CoroutineLockType.Location;
             using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(coroutineLockType, key))
             {
                 self.locations.Remove(key);
-                Log.Info($"location remove key: {self.LocationType} {key}");
+                Log.Info($"location remove key: {self.locationType} {key}");
             }
         }
 
         public static async ETTask Lock(this LocationOneType self, long key, ActorId actorId, int time = 0)
         {
-            int coroutineLockType = (self.LocationType << 16) | CoroutineLockType.Location;
+            int coroutineLockType = (self.locationType << 16) | CoroutineLockType.Location;
             CoroutineLock coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(coroutineLockType, key);
 
             LockInfo lockInfo = self.AddChild<LockInfo, ActorId, CoroutineLock>(actorId, coroutineLock);
             self.lockInfos.Add(key, lockInfo);
 
-            Log.Info($"location lock key: {self.LocationType} {key} instanceId: {actorId}");
+            Log.Info($"location lock key: {self.locationType} {key} instanceId: {actorId}");
 
             if (time > 0)
             {
@@ -88,13 +88,13 @@ namespace ET.Server
                 return;
             }
 
-            if (oldActorId != lockInfo.LockActorId)
+            if (oldActorId != lockInfo.lockActorId)
             {
                 Log.Error($"location unlock oldInstanceId is different: {key} {oldActorId}");
                 return;
             }
 
-            Log.Info($"location unlock key: {self.LocationType} {key} oldInstanceId: {oldActorId} newInstanceId: {newInstanceId}");
+            Log.Info($"location unlock key: {self.locationType} {key} oldInstanceId: {oldActorId} newInstanceId: {newInstanceId}");
 
             self.locations[key] = newInstanceId;
 
@@ -106,11 +106,11 @@ namespace ET.Server
 
         public static async ETTask<ActorId> Get(this LocationOneType self, long key)
         {
-            int coroutineLockType = (self.LocationType << 16) | CoroutineLockType.Location;
+            int coroutineLockType = (self.locationType << 16) | CoroutineLockType.Location;
             using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(coroutineLockType, key))
             {
                 self.locations.TryGetValue(key, out ActorId actorId);
-                Log.Info($"location get key: {self.LocationType} {key} actorId: {actorId}");
+                Log.Info($"location get key: {self.locationType} {key} actorId: {actorId}");
                 return actorId;
             }
         }

@@ -97,66 +97,6 @@ message PlayerInfoProto
 	int32 Sex = 6;
 }
 
-message ChatMsgProto
-{
-  int64 Id = 1;
-  int64 Time = 2;
-  int32 Channel = 3;
-  //发送方信息
-  PlayerInfoProto RoleInfo = 4;
-  string Message = 5;
-  //讨论组id
-  string GroupId = 6;
-}
-
-//发送聊天消息
-//ResponseType C2C_SendResponse
-message C2Chat_SendRequest // IChatRequest
-{
-	int32 Channel = 1;
-	PlayerInfoProto RoleInfo = 2;
-	string Message = 3;
-	string GroupId = 4;
-}
-message C2C_SendResponse // IChatResponse
-{
-}
-
-//收到聊天信息
-message C2C_UpdateChat // IChatMessage
-{
-	repeated ChatMsgProto List = 1;
-}
-
-message ChatGroupMemberProto
-{
-  int64 RoleId = 1;
-  HeadProto HeadIcon = 2;
-  //消息免打扰
-  bool NoDisturbing = 3;
-  int64 Sort = 4;
-}
-
-message ChatGroupProto
-{
-  string GroupId = 1;
-  int64 LeaderId = 2;
-  string Name = 3;
-  repeated ChatGroupMemberProto MemberList = 4;
-}
-
-// 更新群组列表(上线和新进群聊时)
-message C2C_GroupUpdate // IChatMessage
-{
-  repeated ChatGroupProto List = 1;
-}
-
-// 删除群聊
-message C2C_GroupDel // IChatMessage
-{
-  string GroupId = 1;
-}
-
 //GM
 //ResponseType M2C_GMResponse
 message C2M_GMRequest //ILocationRequest

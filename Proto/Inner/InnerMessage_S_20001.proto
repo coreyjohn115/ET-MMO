@@ -133,7 +133,17 @@ message G2Other_EnterRequest // IRequest
 }
 message Other2G_EnterResponse // IResponse
 {
-	int64 Id = 1;
+}
+
+//玩家基础数据更新
+//ResponseType Other2G_UpdateResponse
+message G2Other_UpdateRequest // IRequest
+{
+	int64 PlayerId = 1;
+	PlayerInfoProto RoleInfo = 2;
+}
+message Other2G_UpdateResponse // IResponse
+{
 }
 
 //玩家退出游戏

@@ -95,7 +95,7 @@ namespace ET.Client
                 //世界
                 case 0:
                     chat.Channel = (int)ChatChannelType.World;
-                    chat.GroupId = ConstValue.ChatSendId;
+                    chat.GroupId = ConstValue.ChatWorId;
                     break;
                 //帮会
                 case 1:

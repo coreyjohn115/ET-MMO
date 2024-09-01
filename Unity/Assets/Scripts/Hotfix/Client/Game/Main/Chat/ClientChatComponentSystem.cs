@@ -56,14 +56,14 @@ namespace ET.Client
         {
             foreach (var group in groupList)
             {
-                var groupUnit = self.AddChild<ChatGroup, string>(group.GroupId);
+                var groupUnit = self.AddChildWithId<ChatGroup>(group.GroupId);
                 groupUnit.FromProto(group);
                 self.groupDict.Add(group.GroupId, groupUnit);
                 EventSystem.Instance.Publish(self.Scene(), new UpdateGroup() { Group = groupUnit });
             }
         }
 
-        public static void DelGroup(this ClientChatComponent self, string groupId)
+        public static void DelGroup(this ClientChatComponent self, long groupId)
         {
             if (!self.groupDict.Remove(groupId, out var group))
             {

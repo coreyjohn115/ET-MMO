@@ -8,7 +8,7 @@ namespace ET
         public ListComponent()
         {
         }
-        
+
         public static ListComponent<T> Create()
         {
             return ObjectPool.Instance.Fetch(typeof (ListComponent<T>)) as ListComponent<T>;
@@ -20,6 +20,7 @@ namespace ET
             {
                 return;
             }
+
             this.Clear();
             ObjectPool.Instance.Recycle(this);
         }

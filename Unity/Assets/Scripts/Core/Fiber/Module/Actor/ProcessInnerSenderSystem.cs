@@ -66,6 +66,7 @@ namespace ET
             {
                 return;
             }
+            
             Run(actorMessageSender, response);
         }
         
@@ -84,6 +85,7 @@ namespace ET
             }
 
             self.SetResult(response);
+            (response as MessageObject)?.Dispose();
         }
         
         public static void Reply(this ProcessInnerSender self, Address fromAddress, IResponse message)

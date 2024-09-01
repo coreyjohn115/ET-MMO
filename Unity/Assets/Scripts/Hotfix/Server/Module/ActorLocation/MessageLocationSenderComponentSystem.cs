@@ -28,17 +28,17 @@ namespace ET.Server
         [EntitySystem]
         private static void Awake(this MessageLocationSenderOneType self, int locationType)
         {
-            self.LocationType = locationType;
+            self.locationType = locationType;
             // 每10s扫描一次过期的actorproxy进行回收,过期时间是1分钟
             // 可能由于bug或者进程挂掉，导致ActorLocationSender发送的消息没有确认，结果无法自动删除，每一分钟清理一次这种ActorLocationSender
-            self.CheckTimer = self.Root().GetComponent<TimerComponent>()
+            self.checkTimer = self.Root().GetComponent<TimerComponent>()
                     .NewRepeatedTimer(10_1000, TimerInvokeType.MessageLocationSenderChecker, self);
         }
 
         [EntitySystem]
         private static void Destroy(this MessageLocationSenderOneType self)
         {
-            self.Root().GetComponent<TimerComponent>()?.Remove(ref self.CheckTimer);
+            self.Root().GetComponent<TimerComponent>()?.Remove(ref self.checkTimer);
         }
 
         private static void Check(this MessageLocationSenderOneType self)
@@ -112,7 +112,7 @@ namespace ET.Server
                 if (messageLocationSender.ActorId == default)
                 {
                     messageLocationSender.ActorId =
-                            await root.GetComponent<LocationProxyComponent>().Get(self.LocationType, messageLocationSender.Id);
+                            await root.GetComponent<LocationProxyComponent>().Get(self.locationType, messageLocationSender.Id);
                     if (messageLocationSender.InstanceId != instanceId)
                     {
                         throw new RpcException(ErrorCore.ERR_ActorLocationSenderTimeout2, $"{message}");
@@ -143,7 +143,7 @@ namespace ET.Server
                 if (messageLocationSender.ActorId == default)
                 {
                     messageLocationSender.ActorId =
-                            await root.GetComponent<LocationProxyComponent>().Get(self.LocationType, messageLocationSender.Id);
+                            await root.GetComponent<LocationProxyComponent>().Get(self.locationType, messageLocationSender.Id);
                     if (messageLocationSender.InstanceId != instanceId)
                     {
                         throw new RpcException(ErrorCore.ERR_ActorLocationSenderTimeout2, $"{request}");
@@ -207,7 +207,7 @@ namespace ET.Server
                 if (messageLocationSender.ActorId == default)
                 {
                     messageLocationSender.ActorId =
-                            await root.GetComponent<LocationProxyComponent>().Get(self.LocationType, messageLocationSender.Id);
+                            await root.GetComponent<LocationProxyComponent>().Get(self.locationType, messageLocationSender.Id);
                     if (messageLocationSender.InstanceId != instanceId)
                     {
                         throw new RpcException(ErrorCore.ERR_ActorLocationSenderTimeout2, $"{iRequest}");

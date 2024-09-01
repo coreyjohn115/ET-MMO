@@ -383,16 +383,16 @@ public static partial class ItemComponentSystem
         self.GetParent<Unit>().SendToClient(updateItem).NoContext();
     }
 
-    private static void PublishAddEvent(this ItemComponent self, ItemData item, long counnt, int logEvent)
+    private static void PublishAddEvent(this ItemComponent self, ItemData item, long count, int logEvent)
     {
         EventSystem.Instance.Publish(self.Scene(),
-            new AddItemEvent() { Unit = self.GetParent<Unit>(), Item = item, ChangeCount = counnt - item.Count, LogEvent = logEvent });
+            new AddItemEvent() { Unit = self.GetParent<Unit>(), Item = item, ChangeCount = count - item.Count, LogEvent = logEvent });
     }
 
-    private static void PublishRemoveEvent(this ItemComponent self, ItemData item, long counnt, int logEvent)
+    private static void PublishRemoveEvent(this ItemComponent self, ItemData item, long count, int logEvent)
     {
         EventSystem.Instance.Publish(self.Scene(),
-            new RemoveItemEvent() { Unit = self.GetParent<Unit>(), Item = item, Count = counnt, LogEvent = logEvent });
+            new RemoveItemEvent() { Unit = self.GetParent<Unit>(), Item = item, Count = count, LogEvent = logEvent });
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

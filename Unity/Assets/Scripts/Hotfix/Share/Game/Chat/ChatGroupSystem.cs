@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System.Collections.Generic;
+
+namespace ET
 {
     [EntitySystemOf(typeof (ChatGroup))]
     [FriendOf(typeof (ChatGroup))]
@@ -6,9 +8,19 @@
     public static partial class ChatGroupSystem
     {
         [EntitySystem]
-        private static void Awake(this ChatGroup self, string guid)
+        private static void Awake(this ChatGroup self)
         {
-            self.guid = guid;
+        }
+
+        public static List<long> RoleList(this ChatGroup self)
+        {
+            List<long> list = new();
+            foreach (long id in self.Children.Keys)
+            {
+                list.Add(id);
+            }
+
+            return list;
         }
 
         public static void FromProto(this ChatGroup self, ChatGroupProto proto)

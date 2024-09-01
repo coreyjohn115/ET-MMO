@@ -5,14 +5,14 @@
     {
         public const long TIMEOUT_TIME = 60_1000L;
 
-        public long CheckTimer;
+        public long checkTimer;
 
-        public int LocationType;
+        public int locationType;
     }
 
     [ComponentOf(typeof (Scene))]
     public class MessageLocationSenderComponent: Entity, IAwake
     {
-        public long CheckTimer;
+        public long checkTimer;
     }
 }

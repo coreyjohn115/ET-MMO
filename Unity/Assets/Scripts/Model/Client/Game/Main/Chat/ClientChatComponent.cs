@@ -23,11 +23,11 @@ namespace ET.Client
         /// <summary>
         /// 群组列表
         /// </summary>
-        public Dictionary<string, ChatGroup> groupDict = new();
+        public Dictionary<long, ChatGroup> groupDict = new();
 
         public List<ClientChatUnit> worldMsgList = new();
         public List<ClientChatUnit> leagueMsgList = new();
-        public Dictionary<string, List<ClientChatUnit>> groupMsgDict = new();
+        public Dictionary<long, List<ClientChatUnit>> groupMsgDict = new();
         
         public const float Gap = 5;
         public const float InitWidth = 372;

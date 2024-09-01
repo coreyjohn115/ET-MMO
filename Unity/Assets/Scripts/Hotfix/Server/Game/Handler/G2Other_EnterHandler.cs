@@ -10,7 +10,6 @@
                 case SceneType.Chat:
                     var unit = scene.GetComponent<ChatComponent>().Enter(request.PlayerId);
                     unit.UpdateInfo(request.RoleInfo);
-                    response.Id = unit.InstanceId;
                     break;
             }
 
