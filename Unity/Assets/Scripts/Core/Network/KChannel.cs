@@ -46,18 +46,16 @@ namespace ET
 			switch (this.Service.ServiceType)
 			{
 				case ServiceType.Inner:
-					this.kcp.SetNoDelay(1, 10, 2, true);
+					this.kcp.SetNoDelay(1, 10, 2, 1);
 					this.kcp.SetWindowSize(1024, 1024);
 					this.kcp.SetMtu(1400); // 默认1400
 					this.kcp.SetMinrto(30);
-					this.kcp.SetArrayPool(this.Service.byteArrayPool);
 					break;
 				case ServiceType.Outer:
-					this.kcp.SetNoDelay(1, 10, 2, true);
+					this.kcp.SetNoDelay(1, 10, 2, 1);
 					this.kcp.SetWindowSize(256, 256);
 					this.kcp.SetMtu(470);
 					this.kcp.SetMinrto(30);
-					this.kcp.SetArrayPool(this.Service.byteArrayPool);
 					break;
 			}
 
@@ -127,7 +125,7 @@ namespace ET
 			this.kcp = null;
 		}
 
-		public void HandleConnnect()
+		public void HandleConnect()
 		{
 			// 如果连接上了就不用处理了
 			if (this.IsConnected)
@@ -201,7 +199,7 @@ namespace ET
 			}
 		}
 
-		public void Update(uint timeNow)
+		public void Update(uint timeNow, byte[] bytes)
 		{
 			if (this.IsDisposed)
 			{
@@ -222,7 +220,7 @@ namespace ET
 			
 			try
 			{
-				this.kcp.Update(timeNow);
+				this.kcp.Update(timeNow, bytes);
 			}
 			catch (Exception e)
 			{
@@ -417,7 +415,7 @@ namespace ET
 				throw new Exception("kchannel connected but kcp is zero!");
 			}
 			// 检查等待发送的消息，如果超出最大等待大小，应该断开连接
-			int n = this.kcp.WaitSnd;
+			int n = (int)this.kcp.WaitSendCount;
 			int maxWaitSize = 0;
 			switch (this.Service.ServiceType)
 			{

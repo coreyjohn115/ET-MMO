@@ -112,6 +112,9 @@ namespace ET
 #endif
 
         private readonly Dictionary<long, Action<byte>> routerAckCallback = new();
+        
+        // mtu max: 1400
+        private readonly byte[] kcpBuffer = new byte[KCPBASIC.REVERSED_HEAD + (1400 + KCPBASIC.OVERHEAD) * 3];
 
         public void AddRouterAckCallback(long id, Action<byte> action)
         {
@@ -342,7 +345,7 @@ namespace ET
                             {
                                 Log.Info($"kservice ack: {localConn} {remoteConn}");
                                 kChannel.RemoteConn = remoteConn;
-                                kChannel.HandleConnnect();
+                                kChannel.HandleConnect();
                             }
 
                             break;
@@ -564,7 +567,7 @@ namespace ET
                     continue;
                 }
 
-                kChannel.Update(timeNow);
+                kChannel.Update(timeNow, this.kcpBuffer);
             }
             this.updateIds.Clear();
         }
