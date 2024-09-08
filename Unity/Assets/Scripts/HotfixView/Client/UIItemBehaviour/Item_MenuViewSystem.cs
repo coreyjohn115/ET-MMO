@@ -29,17 +29,17 @@ namespace ET.Client
             self.meunData = data;
             bool select = self.DataId == selectId;
             self.EG_SelectRectTransform.SetActive(select);
-            if (self.E_TextExtendText != null)
+            if (self.E_TextExtendText)
             {
                 self.E_TextExtendText.SetText(data.Config.Name);
             }
 
-            if (self.EG_LockRectTransform != null)
+            if (self.EG_LockRectTransform)
             {
                 self.EG_LockRectTransform.SetActive(false);
             }
 
-            if (self.E_IconExtendImage != null)
+            if (self.E_IconExtendImage)
             {
                 IconHelper.SetSprite(self, self.E_IconExtendImage, data.Config.Icon, AtlasType.Widget).NoContext();
             }

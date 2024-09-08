@@ -25,7 +25,7 @@ namespace ET.Client
         /// </summary>
         public Dictionary<int, UIBaseWindow> allWindowsDic = new();
 
-        public List<WindowID> uIBaseWindowlistCached = new();
+        public List<WindowID> uiBaseWindowListCached = new();
 
         /// <summary>
         /// 正在显示中的窗口

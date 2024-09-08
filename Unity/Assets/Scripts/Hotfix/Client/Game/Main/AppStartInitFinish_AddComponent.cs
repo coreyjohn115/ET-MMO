@@ -11,6 +11,7 @@
             scene.AddComponent<ClientItemComponent>();
             scene.AddComponent<ClientChatComponent>();
             scene.AddComponent<ClientEquipComponent>();
+            scene.AddComponent<CommandComponent>();
 
             if (!a.IsRobot)
             {

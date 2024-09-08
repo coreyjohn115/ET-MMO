@@ -32,7 +32,7 @@ namespace ET.Server
         /// <summary>
         /// 使用世界组的频道
         /// </summary>
-        public HashSet<ChatChannelType> useWolrdChannel;
+        public HashSet<ChatChannelType> useWorldChannel;
 
         public List<ChatSaveItem> saveList = [];
         public int worldId;

@@ -27,7 +27,7 @@ namespace ET
         }
 
         /// <summary>
-        /// 增加一个canceltoken，可以用新增的canceltoken取消协程，当然也可以用老的取消
+        /// 增加一个CancelToken，可以用新增的CancelToken取消协程，当然也可以用老的取消
         /// </summary>
         public static async ETTask AddCancel(this ETTask task, ETCancellationToken addCancelToken)
         {
@@ -43,7 +43,7 @@ namespace ET
         }
 
         /// <summary>
-        /// 增加一个canceltoken，可以用新增的canceltoken取消协程，当然也可以用老的取消
+        /// 增加一个CancelToken，可以用新增的CancelToken取消协程，当然也可以用老的取消
         /// </summary>
         public static async ETTask<T> AddCancel<T>(this ETTask<T> task, ETCancellationToken addCancelToken)
         {

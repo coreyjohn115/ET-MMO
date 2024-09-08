@@ -10,7 +10,7 @@ namespace ET.Client
                 return;
             }
 
-            await scene.GetComponent<UIComponent>().ShowWindowAsync(WindowID.Win_UIBag);
+            await scene.GetComponent<CommandComponent>().RunAsync(a.Data.Config.CmdList);
         }
     }
 }

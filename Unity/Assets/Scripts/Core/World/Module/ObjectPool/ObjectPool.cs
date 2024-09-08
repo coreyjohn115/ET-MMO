@@ -28,10 +28,10 @@ namespace ET
 
             return queue.Count;
         }
-        
-        public T Fetch<T>() where T : class
+
+        public T Fetch<T>(bool isFromPool = true) where T : class
         {
-            return this.Fetch(typeof (T)) as T;
+            return this.Fetch(typeof (T), isFromPool) as T;
         }
 
         public object Fetch(Type type, bool isFromPool = true)
@@ -40,13 +40,14 @@ namespace ET
             {
                 return Activator.CreateInstance(type);
             }
-            
+
             Pool pool = GetPool(type);
             object obj = pool.Get();
             if (obj is IPool p)
             {
                 p.IsFromPool = true;
             }
+
             return obj;
         }
 
@@ -80,7 +81,7 @@ namespace ET
         private class Pool
         {
             public int Count => this._items.Count;
-            
+
             private readonly Type ObjectType;
             private readonly int MaxCapacity;
             private int NumItems;

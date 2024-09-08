@@ -35,7 +35,7 @@ namespace ET.Client
             self.allWindowsDic?.Clear();
             self.visibleWindowsDic?.Clear();
             self.stackWindowsQueue?.Clear();
-            self.uIBaseWindowlistCached?.Clear();
+            self.uiBaseWindowListCached?.Clear();
             foreach (string name in Enum.GetNames(typeof (AtlasType)))
             {
                 self.atlasPath.Add(name, name.ToUISpriteAtlasPath());
@@ -557,7 +557,7 @@ namespace ET.Client
             self.allWindowsDic.Clear();
             self.visibleWindowsDic.Clear();
             self.stackWindowsQueue.Clear();
-            self.uIBaseWindowlistCached.Clear();
+            self.uiBaseWindowListCached.Clear();
         }
 
         /// <summary>
@@ -568,7 +568,7 @@ namespace ET.Client
         public static void HideAllShownWindow(this UIComponent self, bool includeFixed = false)
         {
             self.isPopStackWndStatus = false;
-            self.uIBaseWindowlistCached.Clear();
+            self.uiBaseWindowListCached.Clear();
             foreach (KeyValuePair<int, UIBaseWindow> window in self.visibleWindowsDic)
             {
                 if (window.Value.WindowData.WindowType == UIWindowType.Fixed && !includeFixed)
@@ -578,16 +578,16 @@ namespace ET.Client
                     continue;
                 }
 
-                self.uIBaseWindowlistCached.Add((WindowID)window.Key);
+                self.uiBaseWindowListCached.Add((WindowID)window.Key);
                 window.Value.UIPrefabGameObject?.SetActive(false);
                 UIEvent.Instance.GetUIEventHandler(window.Value.WindowID).OnHideWindow(window.Value);
             }
 
-            if (self.uIBaseWindowlistCached.Count > 0)
+            if (self.uiBaseWindowListCached.Count > 0)
             {
-                for (int i = 0; i < self.uIBaseWindowlistCached.Count; i++)
+                for (int i = 0; i < self.uiBaseWindowListCached.Count; i++)
                 {
-                    self.visibleWindowsDic.Remove((int)self.uIBaseWindowlistCached[i]);
+                    self.visibleWindowsDic.Remove((int)self.uiBaseWindowListCached[i]);
                 }
             }
 

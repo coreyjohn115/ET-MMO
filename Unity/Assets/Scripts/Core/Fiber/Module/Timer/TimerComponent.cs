@@ -20,9 +20,9 @@ namespace ET
             this.Time = time;
             this.Type = type;
         }
-        
+
         public TimerClass TimerClass;
-        
+
         public int Type;
 
         public object Object;
@@ -37,14 +37,14 @@ namespace ET
         public object Args;
     }
 
-    [EntitySystemOf(typeof(TimerComponent))]
+    [EntitySystemOf(typeof (TimerComponent))]
     public static partial class TimerComponentSystem
     {
         [EntitySystem]
         private static void Awake(this TimerComponent self)
         {
         }
-        
+
         [EntitySystem]
         private static void Update(this TimerComponent self)
         {
@@ -81,6 +81,7 @@ namespace ET
                     long timerId = list[i];
                     self.timeOutTimerIds.Enqueue(timerId);
                 }
+
                 self.timeId.Remove(time);
             }
 
@@ -97,11 +98,11 @@ namespace ET
                 {
                     continue;
                 }
-                
+
                 self.Run(timerId, ref timerAction);
             }
         }
-        
+
         private static long GetId(this TimerComponent self)
         {
             return ++self.idGenerator;
@@ -128,7 +129,7 @@ namespace ET
                     break;
                 }
                 case TimerClass.RepeatedTimer:
-                {                    
+                {
                     long timeNow = self.GetNow();
                     timerAction.StartTime = timeNow;
                     self.AddTimer(timerId, ref timerAction);
@@ -152,13 +153,13 @@ namespace ET
         public static bool Remove(this TimerComponent self, ref long id)
         {
             long i = id;
-            id = 0;
+            id = 0L;
             return self.Remove(i);
         }
 
         private static bool Remove(this TimerComponent self, long id)
         {
-            if (id == 0)
+            if (id == 0L)
             {
                 return false;
             }
@@ -167,6 +168,7 @@ namespace ET
             {
                 return false;
             }
+
             return true;
         }
 
@@ -210,7 +212,7 @@ namespace ET
 
         public static async ETTask WaitAsync(this TimerComponent self, long time)
         {
-            if (time == 0)
+            if (time == 0L)
             {
                 return;
             }
@@ -219,16 +221,8 @@ namespace ET
 
             ETTask tcs = ETTask.Create(true);
             long timerId = self.GetId();
-            TimerAction timer = new (TimerClass.OnceWaitTimer, timeNow, time, 0, tcs);
+            TimerAction timer = new(TimerClass.OnceWaitTimer, timeNow, time, 0, tcs);
             self.AddTimer(timerId, ref timer);
-
-            void CancelAction()
-            {
-                if (self.Remove(timerId))
-                {
-                    tcs.SetResult();
-                }
-            }
 
             ETCancellationToken cancellationToken = await ETTaskHelper.GetContextAsync<ETCancellationToken>();
             try
@@ -239,6 +233,16 @@ namespace ET
             finally
             {
                 cancellationToken?.Remove(CancelAction);
+            }
+
+            return;
+
+            void CancelAction()
+            {
+                if (self.Remove(timerId))
+                {
+                    tcs.SetResult();
+                }
             }
         }
 
@@ -252,8 +256,9 @@ namespace ET
             {
                 Log.Error($"new once time too small: {tillTime}");
             }
+
             long timerId = self.GetId();
-            TimerAction timer = new (TimerClass.OnceTimer, timeNow, tillTime - timeNow, type, args);
+            TimerAction timer = new(TimerClass.OnceTimer, timeNow, tillTime - timeNow, type, args);
             self.AddTimer(timerId, ref timer);
             return timerId;
         }
@@ -261,9 +266,9 @@ namespace ET
         public static long NewFrameTimer(this TimerComponent self, int type, object args)
         {
 #if DOTNET
-            return self.NewRepeatedTimerInner(100, type, args);
+            return self.NewRepeatedTimerInner(100L, type, args);
 #else
-            return self.NewRepeatedTimerInner(0, type, args);
+            return self.NewRepeatedTimerInner(0L, type, args);
 #endif
         }
 
@@ -273,15 +278,15 @@ namespace ET
         private static long NewRepeatedTimerInner(this TimerComponent self, long time, int type, object args)
         {
 #if DOTNET
-            if (time < 100)
+            if (time < 100L)
             {
                 throw new Exception($"repeated timer < 100, timerType: time: {time}");
             }
 #endif
-            
+
             long timeNow = self.GetNow();
             long timerId = self.GetId();
-            TimerAction timer = new (TimerClass.RepeatedTimer, timeNow, time, type, args);
+            TimerAction timer = new(TimerClass.RepeatedTimer, timeNow, time, type, args);
 
             // 每帧执行的不用加到timerId中，防止遍历
             self.AddTimer(timerId, ref timer);
@@ -290,17 +295,17 @@ namespace ET
 
         public static long NewRepeatedTimer(this TimerComponent self, long time, int type, object args)
         {
-            if (time < 100)
+            if (time < 100L)
             {
                 Log.Error($"time too small: {time}");
-                return 0;
+                return 0L;
             }
 
             return self.NewRepeatedTimerInner(time, type, args);
         }
     }
 
-    [ComponentOf(typeof(Scene))]
+    [ComponentOf(typeof (Scene))]
     public class TimerComponent: Entity, IAwake, IUpdate
     {
         /// <summary>

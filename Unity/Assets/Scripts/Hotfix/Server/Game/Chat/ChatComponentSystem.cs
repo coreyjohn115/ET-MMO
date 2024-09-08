@@ -31,7 +31,7 @@ namespace ET.Server
         private static void Load(this ChatComponent self)
         {
             self.nSaveChannel = [ChatChannelType.TV];
-            self.useWolrdChannel = [ChatChannelType.World, ChatChannelType.TV];
+            self.useWorldChannel = [ChatChannelType.World, ChatChannelType.TV];
             self.findOption = new FindOptions<ChatSaveItem>()
             {
                 Limit = ConstValue.ChatGetCount, Sort = Builders<ChatSaveItem>.Sort.Descending(item => item.Id),
@@ -132,7 +132,7 @@ namespace ET.Server
 
         public static MessageReturn SendMessage(this ChatComponent self, long sendRoleId, ChatChannelType channel, string message, long groupId)
         {
-            if (self.useWolrdChannel.Contains(channel))
+            if (self.useWorldChannel.Contains(channel))
             {
                 groupId = self.worldId;
             }
@@ -235,15 +235,15 @@ namespace ET.Server
         }
 
         public static MessageReturn CreateGroup(this ChatComponent self, ChatChannelType channel, long leaderId = 0, long? groupId = null,
-        List<long> memebrList = default)
+        List<long> memberList = default)
         {
-            if (self.useWolrdChannel.Contains(channel))
+            if (self.useWorldChannel.Contains(channel))
             {
                 groupId = self.worldId;
             }
             else
             {
-                if (memebrList.IsNullOrEmpty())
+                if (memberList.IsNullOrEmpty())
                 {
                     return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
                 }
@@ -253,27 +253,32 @@ namespace ET.Server
             ChatGroup group = self.AddChildWithId<ChatGroup>(id);
             group.leaderId = leaderId;
             group.channel = channel;
-            group.name = self.GetGroupName(channel, leaderId, memebrList);
+            group.name = self.GetGroupName(channel, leaderId, memberList);
 
-            if (leaderId > 0L && !memebrList.Contains(leaderId))
+            if (leaderId > 0L && !memberList.Contains(leaderId))
             {
-                memebrList.Add(leaderId);
+                memberList.Add(leaderId);
             }
 
-            self.AddMember(id, memebrList);
+            self.AddMember(id, memberList);
             Log.Info($"创建讨论组: {channel} {id}");
             return MessageReturn.Success();
         }
 
-        public static MessageReturn AddMember(this ChatComponent self, long groupId, List<long> memebrList)
+        public static MessageReturn AddMember(this ChatComponent self, long groupId, List<long> memberList)
         {
+            if (memberList.IsNullOrEmpty())
+            {
+                return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+            }
+
             var group = self.GetChild<ChatGroup>(groupId);
             if (group == default)
             {
                 return MessageReturn.Create(ErrorCode.ERR_ChatCantFindGroup);
             }
 
-            foreach (long l in memebrList)
+            foreach (long l in memberList)
             {
                 if (group.HasChild(l))
                 {
@@ -292,7 +297,7 @@ namespace ET.Server
             return MessageReturn.Success();
         }
 
-        public static MessageReturn RemoveMember(this ChatComponent self, long groupId, long leaderId, List<long> memebrList)
+        public static MessageReturn RemoveMember(this ChatComponent self, long groupId, long leaderId, List<long> memberList)
         {
             var group = self.GetChild<ChatGroup>(groupId);
             if (group == default)
@@ -304,11 +309,11 @@ namespace ET.Server
             {
                 return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
             }
-            
-            return self.RemoveMember(groupId, memebrList);
+
+            return self.RemoveMember(groupId, memberList);
         }
-        
-        public static MessageReturn RemoveMember(this ChatComponent self, long groupId, List<long> memebrList)
+
+        public static MessageReturn RemoveMember(this ChatComponent self, long groupId, List<long> memberList)
         {
             var group = self.GetChild<ChatGroup>(groupId);
             if (group == default)
@@ -316,7 +321,7 @@ namespace ET.Server
                 return MessageReturn.Create(ErrorCode.ERR_ChatCantFindGroup);
             }
 
-            foreach (long l in memebrList)
+            foreach (long l in memberList)
             {
                 if (!group.HasChild(l))
                 {
