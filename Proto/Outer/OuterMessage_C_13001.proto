@@ -66,7 +66,7 @@ message RankInfoProto
 //ResponseType Map2C_GetRankResponse
 message C2Map_GetRankRequest // ILocationRequest
 {
-	RankType Type = 2;
+	int32 Type = 2;
 	int32 SubType = 3;
 	int32 Page = 4;
 }
@@ -90,7 +90,7 @@ message HeadProto
 message PlayerInfoProto
 {
 	int64 Id = 1;
-  string Name = 2;
+  	string Name = 2;
 	HeadProto HeadIcon = 3;
 	int32 Level = 4;
 	int64 Fight = 5;

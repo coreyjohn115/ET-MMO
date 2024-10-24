@@ -10,7 +10,7 @@
             }
 
             var lastId = self.InstanceId;
-            await self.Fiber().Root.GetComponent<TimerComponent>().WaitAsync(1000);
+            await self.Root().GetComponent<TimerComponent>().WaitAsync(1000);
             if (lastId != self.InstanceId)
             {
                 return;

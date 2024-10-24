@@ -10,7 +10,7 @@
         /// <summary>
         /// 排行榜类型
         /// </summary>
-        public RankType RankType { get; set; }
+        public int RankType { get; set; }
 
         /// <summary>
         /// 子榜类型

@@ -10,7 +10,7 @@ namespace ET.Server
         {
             if (x.Score != y.Score)
             {
-                return x.Score.CompareTo(y.Score);
+                return y.Score.CompareTo(x.Score);
             }
 
             return x.Time.CompareTo(y.Time);
@@ -33,7 +33,7 @@ namespace ET.Server
         public long Timer = 0L;
 
         [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-        public Dictionary<RankType, RankItemConfig> loadRankDict = new();
+        public Dictionary<int, RankItemConfig> loadRankDict = new();
 
         [BsonIgnore]
         private IComparer<RankInfo> rankComparer;

@@ -44,7 +44,7 @@ message Cache2Other_DeleteCache // IResponse
 message O2Rank_GetRankRequest // IRequest
 {
 	int64 Id = 1;
-	RankType Type = 2;
+	int32 Type = 2;
 	int32 SubType = 3;
 	int32 Page = 4;
 }
@@ -61,7 +61,7 @@ message Rank2O_GetRankResponse // IResponse
 message O2Rank_UpdateRequest // IRequest
 {
 	int64 Id = 1;
-	RankType RankType = 2;
+	int32 RankType = 2;
 	repeated int32 SubTypes = 3;
 	int64 Score = 4;
 	repeated byte Info = 5;
@@ -86,7 +86,7 @@ message Rank2O_UpdateObjResponse // IResponse
 message O2Rank_QueryScoreRequest // IRequest
 {
 	int64 Id = 1;
-	RankType RankType = 2;
+	int32 RankType = 2;
 	int32 SubType = 3;
 }
 message Rank2O_QueryScoreResponse // IResponse
@@ -99,7 +99,7 @@ message Rank2O_QueryScoreResponse // IResponse
 //ResponseType Rank2O_ClearResponse
 message O2Rank_ClearRequest // IRequest
 {
-	RankType RankType = 1;
+	int32 RankType = 1;
 	repeated int32 SubTypes = 2;
 }
 message Rank2O_ClearResponse // IResponse

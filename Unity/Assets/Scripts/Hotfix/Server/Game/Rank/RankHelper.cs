@@ -2,9 +2,12 @@ using System.Collections.Generic;
 
 namespace ET.Server;
 
+/// <summary>
+/// 排行榜帮助类
+/// </summary>
 public static class RankHelper
 {
-    public static async ETTask<Rank2O_GetRankResponse> QueryRank(Scene scene, long unitId, RankType t, int page = 0, int subT = 0)
+    public static async ETTask<Rank2O_GetRankResponse> QueryRank(Scene scene, long unitId, int t, int page = 0, int subT = 0)
     {
         O2Rank_GetRankRequest request = O2Rank_GetRankRequest.Create();
         request.Id = unitId;
@@ -26,7 +29,7 @@ public static class RankHelper
         return [];
     }
 
-    public static void UpdateRank(Scene scene, long unitId, RankType t, long score, int subT = 0, RankObject info = null)
+    public static void UpdateRank(Scene scene, long unitId, int t, long score, int subT = 0, RankObject info = null)
     {
         O2Rank_UpdateRequest request = O2Rank_UpdateRequest.Create();
         request.RankType = t;
@@ -53,7 +56,7 @@ public static class RankHelper
         scene.GetComponent<MessageSender>().Send(rank.ActorId, request);
     }
 
-    public static void ClearRank(Scene scene, RankType t, List<int> subList)
+    public static void ClearRank(Scene scene, int t, List<int> subList)
     {
         O2Rank_ClearRequest request = O2Rank_ClearRequest.Create();
         request.RankType = t;
@@ -63,7 +66,7 @@ public static class RankHelper
         scene.GetComponent<MessageSender>().Send(rank.ActorId, request);
     }
 
-    public static async ETTask<Rank2O_QueryScoreResponse> QueryScore(Scene scene, long unitId, RankType t, int subT = 0)
+    public static async ETTask<Rank2O_QueryScoreResponse> QueryScore(Scene scene, long unitId, int t, int subT = 0)
     {
         O2Rank_QueryScoreRequest request = O2Rank_QueryScoreRequest.Create();
         request.RankType = t;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace ET.Server
 {
@@ -56,7 +57,7 @@ namespace ET.Server
 
         private static void Init(this RankComponent self)
         {
-            self.loadRankDict = new Dictionary<RankType, RankItemConfig>()
+            self.loadRankDict = new Dictionary<int, RankItemConfig>()
             {
                 { RankType.Fight, new RankItemConfig() { SubTypes = [0], IsIncrease = false } },
                 { RankType.Level, new RankItemConfig() { SubTypes = [0], IsIncrease = false } },
@@ -99,7 +100,7 @@ namespace ET.Server
         private static async ETTask LoadRank(this RankComponent self)
         {
             DBComponent zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
-            foreach ((RankType t, RankItemConfig config) in self.loadRankDict)
+            foreach ((int t, RankItemConfig config) in self.loadRankDict)
             {
                 foreach (int sub in config.SubTypes)
                 {
@@ -113,7 +114,6 @@ namespace ET.Server
 
         /// <summary>
         /// 保存排行榜数据
-        /// 
         /// </summary>
         /// <param name="self"></param>
         /// <returns></returns>
@@ -159,7 +159,7 @@ namespace ET.Server
 
         public static void UpdateRankObj(this RankComponent self, long unitId, RankObject obj)
         {
-            if (obj == null)
+            if (obj == default)
             {
                 return;
             }
@@ -188,7 +188,7 @@ namespace ET.Server
         /// <param name="info"></param>
         /// <param name="score">分数</param>
         /// <returns></returns>
-        public static void UpdateRank(this RankComponent self, long unitId, RankType t, int subT, long score, RankObject info = null,
+        public static void UpdateRank(this RankComponent self, long unitId, int t, int subT, long score, RankObject info = null,
         long? time = null)
         {
             self.UpdateRankObj(unitId, info);
@@ -206,11 +206,11 @@ namespace ET.Server
             }
 
             RankInfo oldInfo = null;
-            if (list.ContainsValue(unitId))
+            int index = list.IndexOfValue(unitId);
+            if (index >= 0)
             {
-                int index = list.IndexOfValue(unitId);
                 oldInfo = list.Keys[index];
-                list.RemoveAt(list.IndexOfValue(unitId));
+                list.RemoveAt(index);
                 item.RemoveChild(unitId);
             }
 
@@ -235,19 +235,24 @@ namespace ET.Server
             oldInfo?.Dispose();
         }
 
-        public static (int, long) GetRankScore(this RankComponent self, long unitId, RankType t, int subT)
+        public static (int, long) GetRankScore(this RankComponent self, long unitId, int t, int subT)
         {
             var rankName = GetRankName(t, subT, self.Zone());
             if (!self.rankDict.TryGetValue(rankName, out var sortList))
             {
-                return (0, 0L);
+                return (-1, 0L);
             }
 
             int index = sortList.IndexOfValue(unitId);
-            return (index, sortList.Keys[index].Score);
+            if (index >= 0)
+            {
+                return (index + 1, sortList.Keys[index].Score);
+            }
+
+            return (-1, 0L);
         }
 
-        public static async ETTask<(List<RankInfoProto>, RankInfoProto)> GetRank(this RankComponent self, long unitId, RankType t, int subT,
+        public static async ETTask<(List<RankInfoProto>, RankInfoProto)> GetRank(this RankComponent self, long unitId, int t, int subT,
         int page = 0)
         {
             var list = new List<RankInfoProto>();
@@ -263,19 +268,19 @@ namespace ET.Server
             for (int i = page * ConstValue.RankPage; i < Math.Min(sortList.Count, (page + 1) * ConstValue.RankPage); i++)
             {
                 var info = sortList.Keys[i];
-                list.Add(self.CreateProto(info, i));
+                list.Add(self.CreateProto(info, i + 1));
             }
 
-            if (sortList.ContainsValue(unitId))
+            int index = sortList.IndexOfValue(unitId);
+            if (index >= 0)
             {
-                var rank = sortList.IndexOfValue(unitId);
-                selfRank = self.CreateProto(sortList.Keys[rank], rank);
+                selfRank = self.CreateProto(sortList.Keys[index], index + 1);
             }
 
             return (list, selfRank);
         }
 
-        public static async ETTask ClearRank(this RankComponent self, RankType t, int subT)
+        public static async ETTask ClearRank(this RankComponent self, int t, int subT)
         {
             var rankName = GetRankName(t, subT, self.Zone());
             if (!self.rankDict.TryGetValue(rankName, out var sortList))
@@ -316,7 +321,8 @@ namespace ET.Server
             return proto;
         }
 
-        private static string GetRankName(RankType t, int subT, int zone)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static string GetRankName(int t, int subT, int zone)
         {
             return $"Rank_{t}_{subT}_{zone}";
         }

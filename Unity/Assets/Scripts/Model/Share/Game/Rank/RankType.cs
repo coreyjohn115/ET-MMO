@@ -3,17 +3,17 @@
     /// <summary>
     /// 排行榜类型
     /// </summary>
-    public enum RankType
+    public class RankType
     {
         /// <summary>
         /// 等级排行
         /// </summary>
-        Level = 1,
+        public const int Level = 1;
 
         /// <summary>
         /// 战斗力排行
         /// </summary>
-        Fight,
+        public const int Fight = 2;
     }
 
     public class RankSubType

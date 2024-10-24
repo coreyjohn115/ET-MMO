@@ -8,11 +8,11 @@ namespace ET
         public ActorId ActorId;
         public MessageObject MessageObject;
     }
-    
+
     public class MessageQueue: Singleton<MessageQueue>, ISingletonAwake
     {
         private readonly ConcurrentDictionary<int, ConcurrentQueue<MessageInfo>> messages = new();
-        
+
         public void Awake()
         {
         }
@@ -21,22 +21,23 @@ namespace ET
         {
             return this.Send(actorId.Address, actorId, messageObject);
         }
-        
+
         public void Reply(ActorId actorId, MessageObject messageObject)
         {
             this.Send(actorId.Address, actorId, messageObject);
         }
-        
+
         public bool Send(Address fromAddress, ActorId actorId, MessageObject messageObject)
         {
             if (!this.messages.TryGetValue(actorId.Address.Fiber, out var queue))
             {
                 return false;
             }
-            queue.Enqueue(new MessageInfo() {ActorId = new ActorId(fromAddress, actorId.InstanceId), MessageObject = messageObject});
+
+            queue.Enqueue(new MessageInfo() { ActorId = new ActorId(fromAddress, actorId.InstanceId), MessageObject = messageObject });
             return true;
         }
-        
+
         public void Fetch(int fiberId, int count, List<MessageInfo> list)
         {
             if (!this.messages.TryGetValue(fiberId, out var queue))
@@ -50,6 +51,7 @@ namespace ET
                 {
                     break;
                 }
+
                 list.Add(message);
             }
         }
@@ -59,7 +61,7 @@ namespace ET
             var queue = new ConcurrentQueue<MessageInfo>();
             this.messages[fiberId] = queue;
         }
-        
+
         public void RemoveQueue(int fiberId)
         {
             this.messages.TryRemove(fiberId, out _);
