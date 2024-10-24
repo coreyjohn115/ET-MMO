@@ -24,7 +24,7 @@ namespace ET.Client
             return self;
         }
 
-        public static void Refresh(this Scroll_Item_Menu self, MeunData data, int selectId)
+        public static void Refresh(this Scroll_Item_Menu self, MenuData data, int selectId)
         {
             self.meunData = data;
             bool select = self.DataId == selectId;

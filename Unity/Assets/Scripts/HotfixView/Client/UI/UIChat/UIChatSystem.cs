@@ -36,7 +36,7 @@ namespace ET.Client
 
             self.View.E_MenuListLoopHorizontalScrollRect.AddMenuRefreshListener(self, SystemMenuType.Chat);
             self.View.E_MsgListLoopVerticalScrollRect.AddItemRefreshListener(self.MsgListRefresh);
-            self.View.E_EmotionMeuListLoopHorizontalScrollRect.AddMenuRefreshListener(self, SystemMenuType.ChatEmojMenu);
+            self.View.E_EmotionMeuListLoopHorizontalScrollRect.AddMenuRefreshListener(self, SystemMenuType.ChatEmojiMenu);
             self.View.E_HistoryListLoopHorizontalScrollRect.AddItemRefreshListener(self.EmojHistoryRefresh);
             self.View.E_EmojListLoopVerticalScrollRect.AddItemRefreshListener(self.EmojRefresh);
 
@@ -52,7 +52,7 @@ namespace ET.Client
 
             //菜单列表
             self.View.E_MenuListLoopHorizontalScrollRect.SetMenuVisible(self, SystemMenuType.Chat);
-            self.View.E_EmotionMeuListLoopHorizontalScrollRect.SetMenuVisible(self, SystemMenuType.ChatEmojMenu);
+            self.View.E_EmotionMeuListLoopHorizontalScrollRect.SetMenuVisible(self, SystemMenuType.ChatEmojiMenu);
         }
 
         public static void BeforeUnload(this UIChat self)
@@ -127,7 +127,7 @@ namespace ET.Client
                 self.temphistoryEmojList.Clear();
             }
 
-            if (self.GetChild<MenuDict>(SystemMenuType.ChatEmojMenu).SelectId == 0)
+            if (self.GetChild<MenuDict>(SystemMenuType.ChatEmojiMenu).SelectId == 0)
             {
                 self.AddUIScrollItems(self.emojHistoryDict, self.historyEmojList.Count);
                 self.View.E_HistoryListLoopHorizontalScrollRect.SetVisible(true, self.historyEmojList.Count);
@@ -242,7 +242,7 @@ namespace ET.Client
         {
             Scroll_Item_Emoj item = self.emojDict[idx].BindTrans(transform);
             item.DataId = idx;
-            int group = self.GetChild<MenuDict>(SystemMenuType.ChatEmojMenu).GetGroupId();
+            int group = self.GetChild<MenuDict>(SystemMenuType.ChatEmojiMenu).GetGroupId();
             var list = EmojiConfigCategory.Instance.GetGroupList(group);
             int id = list[idx].Id;
             item.Refresh(id);
@@ -251,7 +251,7 @@ namespace ET.Client
 
         private static void EmojiItemClick(this UIChat self, int id)
         {
-            if (self.GetChild<MenuDict>(SystemMenuType.ChatEmojMenu).SelectId == 0)
+            if (self.GetChild<MenuDict>(SystemMenuType.ChatEmojiMenu).SelectId == 0)
             {
                 self.data.Emjo = 0;
                 var cfg = EmojiConfigCategory.Instance.Get(id);

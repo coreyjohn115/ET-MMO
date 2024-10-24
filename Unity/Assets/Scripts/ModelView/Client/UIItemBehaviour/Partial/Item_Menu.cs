@@ -5,8 +5,8 @@ namespace ET.Client
 {
     public partial class Scroll_Item_Menu
     {
-        public MeunData MeunData => this.meunData;
+        public MenuData MeunData => this.meunData;
 
-        public EntityRef<MeunData> meunData;
+        public EntityRef<MenuData> meunData;
     }
 }

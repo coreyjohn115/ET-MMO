@@ -60,7 +60,7 @@ namespace ET.Client
         private static void MenuBtnClick<T>(T self, int i, int menu) where T : Entity
         {
             var list = self.Scene().GetComponent<MenuComponent>().GetMenuList(menu);
-            MeunData data = list[i];
+            MenuData data = list[i];
             MenuDict c = self.GetChild<MenuDict>(menu);
             c.SelectId = i;
             Scroll_Item_Menu item = c.MenuDic[i];

@@ -2,6 +2,6 @@
 {
     public static partial class SystemMenuType
     {
-        public const int ChatEmojMenu = 10001;
+        public const int ChatEmojiMenu = 10001;
     }
 }

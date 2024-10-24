@@ -16,18 +16,12 @@ namespace ET.Client
 
         public static void ReloadUIEvent(this UIMain self)
         {
-            self.View.E_ChatButton.AddListenerAsync(self.ChatBtnClick);
             self.View.E_BottomMenuListLoopVerticalScrollRect.AddMenuRefreshListener(self, SystemMenuType.BottomMenu, MenuSelectMode.None);
         }
 
         public static void ShowWindow(this UIMain self, Entity contextData = null)
         {
             self.View.E_BottomMenuListLoopVerticalScrollRect.SetMenuVisible(self, SystemMenuType.BottomMenu);
-        }
-
-        private static async ETTask ChatBtnClick(this UIMain self)
-        {
-            await self.Scene().GetComponent<UIComponent>().ShowWindow<UIChat>();
         }
     }
 }

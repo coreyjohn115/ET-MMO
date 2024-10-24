@@ -1,7 +1,7 @@
 namespace ET.Client
 {
     [ChildOf(typeof (MenuComponent))]
-    public class MeunData: Entity, IAwake<int>
+    public class MenuData: Entity, IAwake<int>
     {
         public int cfgId;
 

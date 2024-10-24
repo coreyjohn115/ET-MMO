@@ -21,6 +21,7 @@ namespace ET.Client
         {
             base.Dispose();
 
+            this.Args?.Clear();
             this.Cmd = default;
             this.Args = default;
         }

@@ -5,7 +5,7 @@ namespace ET.Client
     {
         protected override async ETTask Run(Scene scene, MenuSelectEvent a)
         {
-            if (a.Data.Config.Classify != SystemMenuType.ChatEmojMenu)
+            if (a.Data.Config.Classify != SystemMenuType.ChatEmojiMenu)
             {
                 return;
             }

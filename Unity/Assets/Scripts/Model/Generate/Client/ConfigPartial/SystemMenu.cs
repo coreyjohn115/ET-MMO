@@ -24,13 +24,13 @@ namespace ET
             list.Add(config);
         }
 
-        public void AddDynamicMeun(SystemMenu config)
+        public void AddDynamicMenu(SystemMenu config)
         {
             this.dict.Add(config.Id, config);
             this.AddClassifyMenu(config);
         }
 
-        public void RemoveDynamicMeun(int id)
+        public void RemoveDynamicMenu(int id)
         {
             if (!this.dict.Remove(id, out SystemMenu config))
             {
@@ -45,12 +45,14 @@ namespace ET
 
         public void RemoveDynamicClassify(int classify)
         {
-            if (this.ClassifyDict.Remove(classify, out List<SystemMenu> list))
+            if (!this.ClassifyDict.Remove(classify, out List<SystemMenu> list))
             {
-                foreach (SystemMenu menu in list)
-                {
-                    this.dict.Remove(menu.Id);
-                }
+                return;
+            }
+
+            foreach (SystemMenu menu in list)
+            {
+                this.dict.Remove(menu.Id);
             }
         }
 
@@ -67,17 +69,8 @@ namespace ET
     {
         public int GroupId { get; set; }
 
-        public List<CmdArgs> ShowCmdList { get; private set; }
-
-        public List<CmdArgs> OpenCmdList { get; private set; }
-
-        public List<CmdArgs> CloseCmdList { get; private set; }
-
         public override void EndInit()
         {
-            ShowCmdList = this.ShowCmdStr.ParseCmdArgs();
-            OpenCmdList = this.OpenCmdStr.ParseCmdArgs();
-            CloseCmdList = this.CloseCmdStr.ParseCmdArgs();
         }
     }
 }

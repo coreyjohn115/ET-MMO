@@ -19,7 +19,7 @@ namespace ET.Client
             foreach (var v in EmojiConfigCategory.Instance.GetAll().Values.GroupBy(v => v.GroupId))
             {
                 EmojiConfig cfg = v.FirstOrDefault();
-                self.AddDynamicMenu(SystemMenuType.ChatEmojMenu, new SystemMenu()
+                self.AddDynamicMenu(SystemMenuType.ChatEmojiMenu, new SystemMenu()
                 {
                     Icon = cfg.Icon, Sort = cfg.Weight, Name = cfg.Name, GroupId = v.Key,
                 });
@@ -28,10 +28,10 @@ namespace ET.Client
 
         private static void InitMenu(this MenuComponent self, int classify, List<SystemMenu> list)
         {
-            var ll = new List<MeunData>();
+            var ll = new List<MenuData>();
             foreach (SystemMenu cfg in list)
             {
-                var menu = self.AddChild<MeunData, int>(cfg.Id);
+                var menu = self.AddChild<MenuData, int>(cfg.Id);
                 ll.Add(menu);
             }
 
@@ -39,28 +39,28 @@ namespace ET.Client
             self.menuDict.Add(classify, ll);
         }
 
-        public static List<MeunData> GetMenuList(this MenuComponent self, int type)
+        public static List<MenuData> GetMenuList(this MenuComponent self, int type)
         {
             if (self.menuDict.TryGetValue(type, out var list))
             {
                 return list;
             }
 
-            return new List<MeunData>();
+            return new List<MenuData>();
         }
 
         public static void AddDynamicMenu(this MenuComponent self, int type, SystemMenu config)
         {
             config.Classify = type;
             config.Id = RandomGenerator.RandInt32();
-            SystemMenuCategory.Instance.AddDynamicMeun(config);
+            SystemMenuCategory.Instance.AddDynamicMenu(config);
             if (!self.menuDict.TryGetValue(type, out var list))
             {
-                list = new List<MeunData>();
+                list = new List<MenuData>();
                 self.menuDict.Add(type, list);
             }
 
-            var menu = self.AddChild<MeunData, int>(config.Id);
+            var menu = self.AddChild<MenuData, int>(config.Id);
             list.Add(menu);
             list.Sort((a, b) => a.Config.Sort.CompareTo(b.Config.Sort));
         }
@@ -73,7 +73,7 @@ namespace ET.Client
                 return;
             }
 
-            foreach (MeunData v in list)
+            foreach (MenuData v in list)
             {
                 self.RemoveChild(v.Id);
             }
@@ -93,13 +93,13 @@ namespace ET.Client
                 return;
             }
 
-            MeunData d = list.FirstOrDefault(data => data.Id == id);
+            MenuData d = list.FirstOrDefault(data => data.Id == id);
             if (d != null)
             {
                 list.Remove(d);
             }
 
-            SystemMenuCategory.Instance.RemoveDynamicMeun(id);
+            SystemMenuCategory.Instance.RemoveDynamicMenu(id);
         }
     }
 }

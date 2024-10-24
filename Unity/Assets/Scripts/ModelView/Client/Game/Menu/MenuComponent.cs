@@ -9,9 +9,17 @@ namespace ET.Client
     {
         public int Index;
 
-        public MeunData Data;
+        public MenuData Data;
 
         public Entity ItemMenu;
+    }
+
+    /// <summary>
+    /// 菜单刷新事件
+    /// </summary>
+    public struct MenuRefreshEvent
+    {
+        public int MenuType;
     }
 
     /// <summary>
@@ -20,6 +28,6 @@ namespace ET.Client
     [ComponentOf(typeof (Scene))]
     public class MenuComponent: Entity, IAwake
     {
-        public Dictionary<int, List<MeunData>> menuDict = new();
+        public Dictionary<int, List<MenuData>> menuDict = new();
     }
 }
