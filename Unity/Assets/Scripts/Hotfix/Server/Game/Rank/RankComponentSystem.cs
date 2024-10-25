@@ -125,38 +125,38 @@ namespace ET.Server
             var zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
             if (self.needSaveObj.Count > 0)
             {
-                using var list = ListComponent<ETTask>.Create();
+                List<RankObject> list = [];
                 foreach (long l in self.needSaveObj)
                 {
                     if (self.rankObjDict.TryGetValue(l, out RankObject obj))
                     {
-                        list.Add(zoneDb.Save(obj));
+                        list.Add(obj);
                     }
                 }
 
                 self.needSaveObj.Clear();
-                await ETTaskHelper.WaitAll(list);
+                await zoneDb.Save(self.GetHashCode(), list);
             }
 
-            foreach ((_, RankItemComponent item) in self.rankItem)
+            foreach ((string name, RankItemComponent item) in self.rankItem)
             {
                 if (item.NeedSaveInfo.Count <= 0)
                 {
                     continue;
                 }
 
-                using var list = ListComponent<ETTask>.Create();
+                List<RankInfo> list = [];
                 foreach (long l in item.NeedSaveInfo)
                 {
                     var child = item.GetChild<RankInfo>(l);
                     if (child != null)
                     {
-                        list.Add(zoneDb.Save(child, GetRankName(child.RankType, child.SubType, child.Zone)));
+                        list.Add(child);
                     }
                 }
 
                 item.NeedSaveInfo.Clear();
-                await ETTaskHelper.WaitAll(list);
+                await zoneDb.Save(self.GetHashCode(), list, name);
             }
         }
 

@@ -208,9 +208,9 @@ namespace ET.Server
             }
         }
 
-        public static async ETTask Save<T>(this DBComponent self, long id, List<T> entities) where T : Entity
+        public static async ETTask Save<T>(this DBComponent self, long id, List<T> entities, string collectionName = default) where T : Entity
         {
-            if (entities == null)
+            if (entities == default)
             {
                 Log.Error($"save entity is null");
                 return;
@@ -218,6 +218,8 @@ namespace ET.Server
 
             using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, id % DBComponent.TaskCount))
             {
+                string name = collectionName ?? typeof (T).FullName;
+                var collection = self.GetCollection(name);
                 foreach (T entity in entities)
                 {
                     if (entity == null)
@@ -225,8 +227,7 @@ namespace ET.Server
                         continue;
                     }
 
-                    await self.GetCollection(entity.GetType().FullName)
-                            .ReplaceOneAsync(d => d.Id == entity.Id, entity, new ReplaceOptions { IsUpsert = true });
+                    await collection.ReplaceOneAsync(d => d.Id == entity.Id, entity, new ReplaceOptions { IsUpsert = true });
                 }
             }
         }
