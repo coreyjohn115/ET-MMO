@@ -70,25 +70,25 @@ namespace ET
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int ToInt(this string value)
+        public static int ToInt(this string value, int def = 0)
         {
             if (int.TryParse(value, out int v))
             {
                 return v;
             }
 
-            return 0;
+            return def;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long ToLong(this string value)
+        public static long ToLong(this string value, long def = 0)
         {
             if (long.TryParse(value, out long v))
             {
                 return v;
             }
 
-            return 0;
+            return def;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

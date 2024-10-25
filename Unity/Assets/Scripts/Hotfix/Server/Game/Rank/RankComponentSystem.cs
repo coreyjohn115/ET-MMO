@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace ET.Server
 {
@@ -70,7 +72,8 @@ namespace ET.Server
         /// <param name="self"></param>
         /// <param name="zoneDb"></param>
         /// <param name="rankName"></param>
-        private static async ETTask LoadSubRank(this RankComponent self, DBComponent zoneDb, string rankName)
+        /// <param name="subT"></param>
+        private static async ETTask LoadSubRank(this RankComponent self, DBComponent zoneDb, string rankName, int subT)
         {
             var rankList = await zoneDb.Query<RankInfo>(info => true, rankName);
             if (!self.rankDict.TryGetValue(rankName, out var list))
@@ -81,7 +84,7 @@ namespace ET.Server
 
             if (!self.rankItem.TryGetValue(rankName, out var item))
             {
-                item = self.AddChild<RankItemComponent>();
+                item = self.AddChild<RankItemComponent, int>(subT);
                 self.rankItem.Add(rankName, item);
             }
 
@@ -105,7 +108,7 @@ namespace ET.Server
                 foreach (int sub in config.SubTypes)
                 {
                     string rankName = GetRankName(t, sub, self.Zone());
-                    await self.LoadSubRank(zoneDb, rankName);
+                    await self.LoadSubRank(zoneDb, rankName, sub);
                 }
             }
 
@@ -201,7 +204,7 @@ namespace ET.Server
 
             if (!self.rankItem.TryGetValue(rankName, out RankItemComponent item))
             {
-                item = self.AddChild<RankItemComponent>();
+                item = self.AddChild<RankItemComponent, int>(subT);
                 self.rankItem.Add(rankName, item);
             }
 
@@ -260,7 +263,7 @@ namespace ET.Server
             if (!self.rankDict.TryGetValue(rankName, out var sortList))
             {
                 var zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
-                await self.LoadSubRank(zoneDb, rankName);
+                await self.LoadSubRank(zoneDb, rankName, subT);
                 sortList = self.rankDict[rankName];
             }
 
@@ -280,11 +283,50 @@ namespace ET.Server
             return (list, selfRank);
         }
 
+        /// <summary>
+        /// 清除指定排行榜下的全部子榜
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="t"></param>
+        public static async ETTask ClearRank(this RankComponent self, int t)
+        {
+            var zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
+            var options = new ListCollectionNamesOptions
+            {
+                Filter = Builders<BsonDocument>.Filter.Regex("name", new BsonRegularExpression($"^Rank_{t}_{self.Zone()}_"))
+            };
+            var collections = await zoneDb.GetCollections(self.GetHashCode(), options);
+            foreach (string rankName in collections)
+            {
+                if (!self.rankDict.Remove(rankName, out var sortList))
+                {
+                    await zoneDb.RemoveCollection<RankInfo>(self.GetHashCode(), rankName);
+                    return;
+                }
+
+                foreach (RankInfo info in sortList.Keys)
+                {
+                    info.Dispose();
+                }
+
+                sortList.Clear();
+                await zoneDb.RemoveCollection<RankInfo>(self.GetHashCode(), rankName);
+            }
+        }
+
+        /// <summary>
+        /// 清除指定排行榜下的指定子榜
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="t"></param>
+        /// <param name="subT"></param>
         public static async ETTask ClearRank(this RankComponent self, int t, int subT)
         {
             var rankName = GetRankName(t, subT, self.Zone());
-            if (!self.rankDict.TryGetValue(rankName, out var sortList))
+            var zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
+            if (!self.rankDict.Remove(rankName, out var sortList))
             {
+                await zoneDb.RemoveCollection<RankInfo>(self.GetHashCode(), rankName);
                 return;
             }
 
@@ -294,8 +336,7 @@ namespace ET.Server
             }
 
             sortList.Clear();
-            var zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
-            await zoneDb.Remove<RankInfo>(self.GetHashCode(), info => true, GetRankName(t, subT, self.Zone()));
+            await zoneDb.RemoveCollection<RankInfo>(self.GetHashCode(), rankName);
         }
 
         private static RankInfoProto CreateProto(this RankComponent self, RankInfo info, long rank)
@@ -324,7 +365,7 @@ namespace ET.Server
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static string GetRankName(int t, int subT, int zone)
         {
-            return $"Rank_{t}_{subT}_{zone}";
+            return $"Rank_{t}_{zone}_{subT}";
         }
     }
 }

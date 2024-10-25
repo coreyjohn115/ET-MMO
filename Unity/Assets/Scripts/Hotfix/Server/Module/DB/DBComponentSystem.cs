@@ -37,6 +37,21 @@ namespace ET.Server
             Log.Info(r2);
         }
 
+        /// <summary>
+        /// 获取数据库中的表名
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="taskId"></param>
+        /// <param name="options"></param>
+        public static async ETTask<List<string>> GetCollections(this DBComponent self, long taskId, ListCollectionNamesOptions options)
+        {
+            using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, taskId % DBComponent.TaskCount))
+            {
+                var ll = await self.database.ListCollectionNamesAsync(options);
+                return await ll.ToListAsync();
+            }
+        }
+
         #region Query
 
         public static async ETTask<T> Query<T>(this DBComponent self, long id, string collection = null) where T : Entity
@@ -295,6 +310,22 @@ namespace ET.Server
                 DeleteResult result = await self.GetCollection<T>(collection).DeleteManyAsync(filter);
 
                 return result.DeletedCount;
+            }
+        }
+
+        /// <summary>
+        /// 删除数据库中的表
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="taskId"></param>
+        /// <param name="collection"></param>
+        /// <typeparam name="T"></typeparam>
+        public static async ETTask RemoveCollection<T>(this DBComponent self, long taskId, string collection = null)
+                where T : Entity
+        {
+            using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, taskId % DBComponent.TaskCount))
+            {
+                await self.database.DropCollectionAsync(collection ?? typeof (T).FullName);
             }
         }
 

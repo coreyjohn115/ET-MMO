@@ -5,9 +5,17 @@ public class O2Rank_ClearHandler: MessageHandler<Scene, O2Rank_ClearRequest, Ran
 {
     protected override async ETTask Run(Scene scene, O2Rank_ClearRequest request, Rank2O_ClearResponse response)
     {
-        foreach (int subType in request.SubTypes)
+        if (request.SubTypes.Count == 0)
         {
-            await scene.GetComponent<RankComponent>().ClearRank(request.RankType, subType);
+            //全部清除
+            await scene.GetComponent<RankComponent>().ClearRank(request.RankType);
+        }
+        else
+        {
+            foreach (int subType in request.SubTypes)
+            {
+                await scene.GetComponent<RankComponent>().ClearRank(request.RankType, subType);
+            }
         }
     }
 }
