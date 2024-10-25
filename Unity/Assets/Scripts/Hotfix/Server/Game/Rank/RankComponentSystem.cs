@@ -180,6 +180,14 @@ namespace ET.Server
             self.needSaveObj.Add(unitId);
         }
 
+        public static void RemoveRankObj(this RankComponent self, long unitId)
+        {
+            if (self.rankObjDict.Remove(unitId, out RankObject info))
+            {
+                info.Dispose();
+            }
+        }
+
         /// <summary>
         /// 更新排行榜
         /// </summary>
@@ -191,15 +199,16 @@ namespace ET.Server
         /// <param name="info"></param>
         /// <param name="score">分数</param>
         /// <returns></returns>
-        public static void UpdateRank(this RankComponent self, long unitId, int t, int subT, long score, RankObject info = null,
+        public static async ETTask UpdateRank(this RankComponent self, long unitId, int t, int subT, long score, RankObject info = null,
         long? time = null)
         {
             self.UpdateRankObj(unitId, info);
             string rankName = GetRankName(t, subT, self.Zone());
             if (!self.rankDict.TryGetValue(rankName, out var list))
             {
-                list = new SortedList<RankInfo, long>(self.RankComparer);
-                self.rankDict.Add(rankName, list);
+                var zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
+                await self.LoadSubRank(zoneDb, rankName, subT);
+                list = self.rankDict[rankName];
             }
 
             if (!self.rankItem.TryGetValue(rankName, out RankItemComponent item))
@@ -236,6 +245,25 @@ namespace ET.Server
             item.NeedSaveInfo.Add(unitId);
 
             oldInfo?.Dispose();
+        }
+
+        public static async ETTask RemoveRank(this RankComponent self, long unitId, int t, int subT)
+        {
+            string rankName = GetRankName(t, subT, self.Zone());
+            if (!self.rankDict.TryGetValue(rankName, out var list))
+            {
+                var zoneDb = self.Scene().GetComponent<DBManagerComponent>().GetZoneDB(self.Zone());
+                await self.LoadSubRank(zoneDb, rankName, subT);
+                list = self.rankDict[rankName];
+            }
+
+            int index = list.IndexOfValue(unitId);
+            if (index >= 0)
+            {
+                RankInfo info = list.Keys[index];
+                list.RemoveAt(index);
+                info.Dispose();
+            }
         }
 
         public static (int, long) GetRankScore(this RankComponent self, long unitId, int t, int subT)

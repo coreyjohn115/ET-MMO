@@ -11,7 +11,7 @@ public class HttpTestHandler: IHttpHandler
     {
         for (int i = 0; i < 10000; i++)
         {
-            // RankHelper.UpdateRank(scene, i, RankType.Level, i, 1);
+            RankHelper.UpdateRank(scene, i, RankType.Fight, i);
         }
 
         int page = context.Request.QueryString["page"].ToInt();

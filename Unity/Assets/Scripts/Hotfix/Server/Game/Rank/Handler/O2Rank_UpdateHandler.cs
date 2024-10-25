@@ -14,7 +14,7 @@ public class O2Rank_UpdateHandler: MessageHandler<Scene, O2Rank_UpdateRequest, R
 
         foreach (int subType in request.SubTypes)
         {
-            rank.UpdateRank(request.Id, request.RankType, subType, request.Score, info);
+            await rank.UpdateRank(request.Id, request.RankType, subType, request.Score, info);
         }
 
         await ETTask.CompletedTask;

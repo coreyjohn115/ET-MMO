@@ -56,6 +56,17 @@ public static class RankHelper
         scene.GetComponent<MessageSender>().Send(rank.ActorId, request);
     }
 
+    public static void RemoveRank(Scene scene, long unitId, int t, int subT = 0, int? zoneId = default)
+    {
+        O2Rank_RemoveRequest request = O2Rank_RemoveRequest.Create();
+        request.RankType = t;
+        request.Id = unitId;
+        request.SubTypes.Add(subT);
+
+        var rank = StartSceneConfigCategory.Instance.GetBySceneName(zoneId ?? scene.Zone(), nameof (SceneType.Rank));
+        scene.GetComponent<MessageSender>().Send(rank.ActorId, request);
+    }
+
     /// <summary>
     /// 清除指定排行榜
     /// <para>subList不传时为清空全部子榜</para>
