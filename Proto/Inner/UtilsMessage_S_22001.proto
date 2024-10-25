@@ -95,6 +95,18 @@ message Rank2O_QueryScoreResponse // IResponse
 	int32 Rank = 2;
 }
 
+//移除单个排行榜数据
+//ResponseType Rank2O_RemoveResponse
+message O2Rank_RemoveRequest // IRequest
+{
+	int64 Id = 1;
+	int32 RankType = 2;
+	repeated int32 SubTypes = 3;
+}
+message Rank2O_RemoveResponse // IResponse
+{
+}
+
 //清除排行榜
 //ResponseType Rank2O_ClearResponse
 message O2Rank_ClearRequest // IRequest

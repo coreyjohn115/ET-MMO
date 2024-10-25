@@ -10,6 +10,40 @@ namespace ET.Server
     [FriendOf(typeof (ChatGroupMember))]
     public static partial class ChatComponentSystem
     {
+        [Event(SceneType.Chat)]
+        private class PlayerEnterEvent: AEvent<Scene, PlayerEnter>
+        {
+            protected override async ETTask Run(Scene scene, PlayerEnter a)
+            {
+                var unit = scene.GetComponent<ChatComponent>().Enter(a.UnitId);
+                unit.UpdateInfo(a.Info);
+
+                await ETTask.CompletedTask;
+            }
+        }
+
+        [Event(SceneType.Chat)]
+        private class PlayerUpdateEvent: AEvent<Scene, PlayerUpdate>
+        {
+            protected override async ETTask Run(Scene scene, PlayerUpdate a)
+            {
+                ChatUnit unit = scene.GetComponent<ChatComponent>().GetChild<ChatUnit>(a.UnitId);
+                unit.UpdateInfo(a.Info);
+
+                await ETTask.CompletedTask;
+            }
+        }
+
+        [Event(SceneType.Chat)]
+        private class PlayerLeaveEvent: AEvent<Scene, PlayerLeave>
+        {
+            protected override async ETTask Run(Scene scene, PlayerLeave a)
+            {
+                scene.GetComponent<ChatComponent>().Leave(a.UnitId);
+                await ETTask.CompletedTask;
+            }
+        }
+
         [EntitySystem]
         private static void Awake(this ChatComponent self)
         {

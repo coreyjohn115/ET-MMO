@@ -1,7 +1,7 @@
 ﻿namespace ET.Server
 {
     [ChildOf(typeof (ChatComponent))]
-    public class ChatUnit: Entity, IAwake, IDestroy
+    public class ChatUnit: Entity, IAwake
     {
         public string name;
         public HeadProto headIcon;

@@ -5,14 +5,7 @@
     {
         protected override async ETTask Run(Scene scene, G2Other_UpdateRequest request, Other2G_UpdateResponse response)
         {
-            switch (scene.SceneType)
-            {
-                case SceneType.Chat:
-                    ChatUnit unit = scene.GetComponent<ChatComponent>().GetChild<ChatUnit>(request.PlayerId);
-                    unit.UpdateInfo(request.RoleInfo);
-                    break;
-            }
-
+            EventSystem.Instance.Publish(scene, new PlayerUpdate() { UnitId = request.PlayerId, Info = request.RoleInfo });
             await ETTask.CompletedTask;
         }
     }

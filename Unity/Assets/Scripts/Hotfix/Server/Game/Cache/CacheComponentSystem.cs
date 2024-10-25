@@ -140,9 +140,9 @@ namespace ET.Server
 
         public static void DeleteCache(this CacheComponent self, long id)
         {
-            foreach (UnitCache unitCach in self.cacheDict.Values)
+            foreach (UnitCache unitCache in self.cacheDict.Values)
             {
-                unitCach.Delete(id);
+                unitCache.Delete(id);
             }
         }
 

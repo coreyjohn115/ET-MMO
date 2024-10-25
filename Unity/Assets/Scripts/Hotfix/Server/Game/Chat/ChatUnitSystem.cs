@@ -9,11 +9,6 @@
         {
         }
 
-        [EntitySystem]
-        private static void Destroy(this ChatUnit self)
-        {
-        }
-
         public static void UpdateInfo(this ChatUnit self, PlayerInfoProto playerInfo)
         {
             self.name = playerInfo.Name;
