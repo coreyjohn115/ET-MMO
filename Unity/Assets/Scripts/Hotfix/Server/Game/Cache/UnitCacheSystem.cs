@@ -37,7 +37,7 @@
                     continue;
                 }
 
-                if (TimeInfo.Instance.FrameTime - self.updateTimeDict.Get(id) <= UnitCache.Interval)
+                if (TimeInfo.Instance.Frame - self.updateTimeDict.Get(id) <= UnitCache.Interval)
                 {
                     continue;
                 }
@@ -67,14 +67,14 @@
             }
 
             self.componentDict.Add(entity.Id, entity);
-            self.updateTimeDict.Add(entity.Id, TimeInfo.Instance.FrameTime);
+            self.updateTimeDict.Add(entity.Id, TimeInfo.Instance.Frame);
         }
 
         public static async ETTask<Entity> Get(this UnitCache self, long id)
         {
             if (self.componentDict.TryGetValue(id, out var entity))
             {
-                self.updateTimeDict[entity.Id] = TimeInfo.Instance.FrameTime;
+                self.updateTimeDict[entity.Id] = TimeInfo.Instance.Frame;
                 return entity;
             }
 

@@ -198,7 +198,7 @@ namespace ET.Server
             ChatMsgProto proto = ChatMsgProto.Create();
             proto.Message = message;
             proto.Channel = (int)channel;
-            long now = TimeInfo.Instance.FrameTime;
+            long now = TimeInfo.Instance.Frame;
             proto.Time = now;
             if (now != self.lastMsgTime)
             {
@@ -249,7 +249,7 @@ namespace ET.Server
         {
             if (groupName.IsNullOrEmpty())
             {
-                return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
             }
 
             ChatGroup group = self.GetChild<ChatGroup>(groupId);
@@ -260,7 +260,7 @@ namespace ET.Server
 
             if (group.leaderId != roleId)
             {
-                return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
             }
 
             group.name = groupName;
@@ -279,7 +279,7 @@ namespace ET.Server
             {
                 if (memberList.IsNullOrEmpty())
                 {
-                    return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                    return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
                 }
             }
 
@@ -303,7 +303,7 @@ namespace ET.Server
         {
             if (memberList.IsNullOrEmpty())
             {
-                return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
             }
 
             var group = self.GetChild<ChatGroup>(groupId);
@@ -321,7 +321,7 @@ namespace ET.Server
 
                 group.leaderId = group.leaderId == 0L? l : group.leaderId;
                 var member = group.AddChildWithId<ChatGroupMember>(l);
-                member.sort = TimeInfo.Instance.FrameTime + group.Children.Count;
+                member.sort = TimeInfo.Instance.Frame + group.Children.Count;
                 var roleInfo = self.GetPlayerInfo(l);
                 member.headIcon = roleInfo.HeadIcon;
                 member.noDisturbing = false;
@@ -341,7 +341,7 @@ namespace ET.Server
 
             if (group.leaderId != leaderId)
             {
-                return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
             }
 
             return self.RemoveMember(groupId, memberList);

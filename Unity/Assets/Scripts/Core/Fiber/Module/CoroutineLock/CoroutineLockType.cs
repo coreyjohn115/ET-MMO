@@ -14,7 +14,7 @@ namespace ET
         public const int LoadUIBaseWindows = 20;
         public const int CreateRole = 21; //创建角色
         public const int Account = 22;
-        public const int InnerMessage = 23;
+        public const int CreateMap = 23;
 
         public const int Max = 100; // 这个必须最大
     }

@@ -110,7 +110,7 @@ namespace ET
 
         private static long GetNow(this TimerComponent self)
         {
-            return TimeInfo.Instance.ServerFrameTime();
+            return TimeInfo.Instance.Frame;
         }
 
         private static void Run(this TimerComponent self, long timerId, ref TimerAction timerAction)

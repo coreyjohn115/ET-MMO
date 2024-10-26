@@ -36,7 +36,7 @@ namespace ET.Server
                 Account acc = self.AddChild<Account>();
                 acc.AccountName = account;
                 acc.Password = password;
-                acc.CreateTime = TimeInfo.Instance.ServerFrameTime();
+                acc.CreateTime = TimeInfo.Instance.Frame;
                 acc.AccountType = AccountType.General;
                 await self.Scene().GetComponent<DBManagerComponent>().GetDB().Save(accountId, acc);
                 return acc;

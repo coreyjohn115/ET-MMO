@@ -1,28 +1,17 @@
-﻿using System;
+﻿namespace ET.Server;
 
-namespace ET.Server
+[MessageLocationHandler(SceneType.Map)]
+public class C2M_TransferMapHandler: MessageLocationHandler<Unit, C2M_TransferMap, M2C_TransferMap>
 {
-	[MessageLocationHandler(SceneType.Map)]
-	public class C2M_TransferMapHandler : MessageLocationHandler<Unit, C2M_TransferMap, M2C_TransferMap>
-	{
-		protected override async ETTask Run(Unit unit, C2M_TransferMap request, M2C_TransferMap response)
-		{
-			await ETTask.CompletedTask;
+    protected override async ETTask Run(Unit unit, C2M_TransferMap request, M2C_TransferMap response)
+    {
+        (int errno, ActorId mapActorId) r = await MapManagerHelper.GetMapActorId(unit.Scene(), request.MapId, request.Id);
+        if (r.errno != ErrorCode.ERR_Success)
+        {
+            response.Error = r.errno;
+            return;
+        }
 
-			string currentMap = unit.Scene().Name;
-			string toMap = null;
-			if (currentMap == "Map1")
-			{
-				toMap = "Map2";
-			}
-			else
-			{
-				toMap = "Map1";
-			}
-
-			StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(unit.Fiber().Zone, toMap);
-			
-			TransferHelper.TransferAtFrameFinish(unit, startSceneConfig.ActorId).NoContext();
-		}
-	}
+        TransferHelper.TransferAtFrameFinish(unit, r.mapActorId, request.MapId).NoContext();
+    }
 }

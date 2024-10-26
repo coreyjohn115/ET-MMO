@@ -21,7 +21,7 @@ namespace ET.Server
         {
             self.Timer = self.Fiber().Root.GetComponent<TimerComponent>().NewRepeatedTimer(5 * 1000, TimerInvokeType.WatcherCheck, self);
             self.Start();
-            self.lastGcTime = TimeInfo.Instance.FrameTime;
+            self.lastGcTime = TimeInfo.Instance.Frame;
         }
 
         [EntitySystem]
@@ -38,12 +38,12 @@ namespace ET.Server
             }
 
             self.Start();
-            if (TimeInfo.Instance.FrameTime - self.lastGcTime <= 10 * 60 * 1000)
+            if (TimeInfo.Instance.Frame - self.lastGcTime <= 10 * 60 * 1000)
             {
                 return;
             }
 
-            self.lastGcTime = TimeInfo.Instance.FrameTime;
+            self.lastGcTime = TimeInfo.Instance.Frame;
             self.FullGc().NoContext();
         }
 

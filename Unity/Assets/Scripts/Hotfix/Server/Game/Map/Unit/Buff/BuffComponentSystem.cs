@@ -100,13 +100,13 @@ namespace ET.Server
                     }
                     else
                     {
-                        if (buff.Interval <= 0 || buff.Interval + buff.LastUseTime >= TimeInfo.Instance.FrameTime)
+                        if (buff.Interval <= 0 || buff.Interval + buff.LastUseTime >= TimeInfo.Instance.Frame)
                         {
                             continue;
                         }
 
                         self.DoBuff(buff, BuffLife.OnUpdate, default, args);
-                        buff.LastUseTime = buff.LastUseTime <= 0? TimeInfo.Instance.FrameTime : buff.LastUseTime + buff.Interval;
+                        buff.LastUseTime = buff.LastUseTime <= 0? TimeInfo.Instance.Frame : buff.LastUseTime + buff.Interval;
                     }
                 }
                 else if (buff.ValidTime > 0)
@@ -246,10 +246,10 @@ namespace ET.Server
                 switch ((BuffAddType)buffConfig.AddType)
                 {
                     case BuffAddType.AddTime:
-                        playerBuff.ValidTime = Math.Max(playerBuff.ValidTime, TimeInfo.Instance.FrameTime) + ms;
+                        playerBuff.ValidTime = Math.Max(playerBuff.ValidTime, TimeInfo.Instance.Frame) + ms;
                         break;
                     case BuffAddType.ResetTime:
-                        playerBuff.ValidTime = TimeInfo.Instance.FrameTime + ms;
+                        playerBuff.ValidTime = TimeInfo.Instance.Frame + ms;
                         break;
                     case BuffAddType.Role:
                     {
@@ -267,9 +267,9 @@ namespace ET.Server
             if (isNew)
             {
                 playerBuff.Layer = 0;
-                playerBuff.ValidTime = TimeInfo.Instance.FrameTime + ms;
-                playerBuff.AddTime = TimeInfo.Instance.FrameTime;
-                playerBuff.LastUseTime = TimeInfo.Instance.FrameTime;
+                playerBuff.ValidTime = TimeInfo.Instance.Frame + ms;
+                playerBuff.AddTime = TimeInfo.Instance.Frame;
+                playerBuff.LastUseTime = TimeInfo.Instance.Frame;
                 playerBuff.Interval = buffConfig.Interval;
                 playerBuff.MaxLayer = buffConfig.MaxLayer;
                 playerBuff.ViewCmd = buffConfig.ViewCmd;
@@ -525,7 +525,7 @@ namespace ET.Server
 
         private static bool IsValid(BuffUnit buff)
         {
-            if (buff.Id > 0 && (buff.ValidTime >= TimeInfo.Instance.ServerFrameTime() || buff.Ms < 0))
+            if (buff.Id > 0 && (buff.ValidTime >= TimeInfo.Instance.Frame || buff.Ms < 0))
             {
                 return true;
             }
@@ -535,7 +535,7 @@ namespace ET.Server
 
         private static BuffUnit CreateBuff(this BuffComponent self, int id, long addRoleId, int ms)
         {
-            var playerBuff = self.AddChild<BuffUnit, int, long, long>(id, TimeInfo.Instance.FrameTime, addRoleId);
+            var playerBuff = self.AddChild<BuffUnit, int, long, long>(id, TimeInfo.Instance.Frame, addRoleId);
             playerBuff.effectDict = new Dictionary<string, IBuffEffect>();
             playerBuff.Ms = ms;
 

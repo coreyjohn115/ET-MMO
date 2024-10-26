@@ -78,6 +78,7 @@
     <type fullname="ET.AwakeSystem`3" preserve="all" />
     <type fullname="ET.BaseAttribute" preserve="all" />
     <type fullname="ET.ByteHelper" preserve="all" />
+    <type fullname="ET.ChannelType" preserve="all" />
     <type fullname="ET.ChildOfAttribute" preserve="all" />
     <type fullname="ET.CmdArgs" preserve="all" />
     <type fullname="ET.CodeAttribute" preserve="all" />
@@ -91,6 +92,7 @@
     <type fullname="ET.DestroySystem`1" preserve="all" />
     <type fullname="ET.DisableNewAttribute" preserve="all" />
     <type fullname="ET.DisposeObject" preserve="all" />
+    <type fullname="ET.ETCancellationTokenHelper" preserve="all" />
     <type fullname="ET.EnableAccessEntiyChildAttribute" preserve="all" />
     <type fullname="ET.EnableClassAttribute" preserve="all" />
     <type fullname="ET.EnableMethodAttribute" preserve="all" />
@@ -121,7 +123,6 @@
     <type fullname="ET.ILocationMessage" preserve="all" />
     <type fullname="ET.ILocationRequest" preserve="all" />
     <type fullname="ET.ILocationResponse" preserve="all" />
-    <type fullname="ET.ILog" preserve="all" />
     <type fullname="ET.IMHandler" preserve="all" />
     <type fullname="ET.IMerge" preserve="all" />
     <type fullname="ET.IMessage" preserve="all" />
@@ -176,7 +177,6 @@
     <type fullname="ET.Singleton`1" preserve="all" />
     <type fullname="ET.StaticFieldAttribute" preserve="all" />
     <type fullname="ET.StringHelper" preserve="all" />
-    <type fullname="ET.StringParseHelper" preserve="all" />
     <type fullname="ET.StructBsonSerialize`1" preserve="all" />
     <type fullname="ET.Thrower" preserve="all" />
     <type fullname="ET.TimeInfo" preserve="all" />
@@ -213,6 +213,7 @@
     <type fullname="ET.Client.UComTweener" preserve="all" />
     <type fullname="ET.Client.UGUIExtend" preserve="all" />
     <type fullname="ET.CodeLoader" preserve="all" />
+    <type fullname="ET.GameScriptObject" preserve="all" />
     <type fullname="ET.Global" preserve="all" />
     <type fullname="ET.GlobalConfig" preserve="all" />
     <type fullname="ET.LanguageLoader" preserve="all" />
@@ -250,12 +251,8 @@
     <type fullname="ET.ETAsyncTaskMethodBuilder`1" preserve="all" />
     <type fullname="ET.ETCancellationToken" preserve="all" />
     <type fullname="ET.ETTask" preserve="all" />
-    <type fullname="ET.ETTaskCompleted" preserve="all" />
     <type fullname="ET.ETTaskHelper" preserve="all" />
     <type fullname="ET.ETTask`1" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEditor.CoreModule">
-    <type fullname="UnityEditor.EditorApplication" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AnimationModule">
     <type fullname="UnityEngine.Animation" preserve="all" />
@@ -278,6 +275,7 @@
     <type fullname="UnityEngine.Color" preserve="all" />
     <type fullname="UnityEngine.Color32" preserve="all" />
     <type fullname="UnityEngine.Component" preserve="all" />
+    <type fullname="UnityEngine.Debug" preserve="all" />
     <type fullname="UnityEngine.Events.UnityAction" preserve="all" />
     <type fullname="UnityEngine.Events.UnityAction`1" preserve="all" />
     <type fullname="UnityEngine.Events.UnityEvent" preserve="all" />
@@ -287,6 +285,7 @@
     <type fullname="UnityEngine.KeyCode" preserve="all" />
     <type fullname="UnityEngine.LayerMask" preserve="all" />
     <type fullname="UnityEngine.Mathf" preserve="all" />
+    <type fullname="UnityEngine.Matrix4x4" preserve="all" />
     <type fullname="UnityEngine.Object" preserve="all" />
     <type fullname="UnityEngine.PlayerPrefs" preserve="all" />
     <type fullname="UnityEngine.Quaternion" preserve="all" />
@@ -321,6 +320,7 @@
     <type fullname="UnityEngine.EventSystems.EventTrigger/Entry" preserve="all" />
     <type fullname="UnityEngine.EventSystems.EventTrigger/TriggerEvent" preserve="all" />
     <type fullname="UnityEngine.EventSystems.EventTriggerType" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.RaycastResult" preserve="all" />
     <type fullname="UnityEngine.EventSystems.UIBehaviour" preserve="all" />
     <type fullname="UnityEngine.UI.Button" preserve="all" />
     <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="all" />
@@ -329,6 +329,7 @@
     <type fullname="UnityEngine.UI.InputField" preserve="all" />
     <type fullname="UnityEngine.UI.InputField/SubmitEvent" preserve="all" />
     <type fullname="UnityEngine.UI.LayoutElement" preserve="all" />
+    <type fullname="UnityEngine.UI.LayoutRebuilder" preserve="all" />
     <type fullname="UnityEngine.UI.RawImage" preserve="all" />
     <type fullname="UnityEngine.UI.Selectable" preserve="all" />
     <type fullname="UnityEngine.UI.Slider" preserve="all" />
@@ -373,6 +374,7 @@
     <type fullname="System.Collections.Generic.IDictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerable`1" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerator`1" preserve="all" />
+    <type fullname="System.Collections.Generic.IList`1" preserve="all" />
     <type fullname="System.Collections.Generic.IReadOnlyDictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.KeyValuePair`2" preserve="all" />
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
@@ -427,7 +429,6 @@
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter`1" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TupleElementNamesAttribute" preserve="all" />
-    <type fullname="System.Runtime.Versioning.TargetFrameworkAttribute" preserve="all" />
     <type fullname="System.RuntimeTypeHandle" preserve="all" />
     <type fullname="System.Security.Permissions.SecurityAction" preserve="all" />
     <type fullname="System.Security.Permissions.SecurityPermissionAttribute" preserve="all" />

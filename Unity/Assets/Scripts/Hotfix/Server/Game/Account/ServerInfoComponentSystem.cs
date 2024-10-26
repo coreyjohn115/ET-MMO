@@ -91,7 +91,7 @@ namespace ET.Server
             {
                 if (serverInfo.OpenTime == 0L)
                 {
-                    serverInfo.OpenTime = TimeInfo.Instance.FrameTime;
+                    serverInfo.OpenTime = TimeInfo.Instance.Frame;
                 }
 
                 self.AddChild(serverInfo);

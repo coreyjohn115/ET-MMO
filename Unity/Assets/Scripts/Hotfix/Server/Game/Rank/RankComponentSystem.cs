@@ -237,7 +237,7 @@ namespace ET.Server
                 child.Score = score;
             }
 
-            child.Time = oldInfo? oldInfo.Time : time ?? TimeInfo.Instance.FrameTime;
+            child.Time = oldInfo? oldInfo.Time : time ?? TimeInfo.Instance.Frame;
             child.RankType = t;
             child.SubType = subT;
             child.Zone = self.Zone();

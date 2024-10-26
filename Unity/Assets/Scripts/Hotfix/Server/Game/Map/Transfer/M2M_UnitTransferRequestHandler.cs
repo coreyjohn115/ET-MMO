@@ -20,7 +20,7 @@ namespace ET.Server
             }
 
             unit.AddComponent<MoveComponent>();
-            unit.AddComponent<PathfindingComponent, string>(scene.Name);
+            unit.AddComponent<PathfindingComponent, string>(MapConfigCategory.Instance.Get(request.MapId).PathName);
             unit.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.OrderedMessage);
             if (request.IsEnterGame)
             {
@@ -34,8 +34,8 @@ namespace ET.Server
             // 通知客户端开始切场景
             M2C_StartSceneChange m2CStartSceneChange = M2C_StartSceneChange.Create();
             m2CStartSceneChange.SceneInstanceId = scene.InstanceId;
-            m2CStartSceneChange.SceneName = scene.Name;
-            
+            m2CStartSceneChange.MapId = request.MapId;
+
             await unit.SendToClient(m2CStartSceneChange);
 
             // 通知客户端创建My Unit
@@ -46,7 +46,7 @@ namespace ET.Server
             // 加入aoi
             unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
             unit.AddComponent<PacketComponent>();
-            
+
             if (request.IsEnterGame)
             {
                 EventSystem.Instance.Publish(scene, new UnitEnterGame() { Unit = unit });

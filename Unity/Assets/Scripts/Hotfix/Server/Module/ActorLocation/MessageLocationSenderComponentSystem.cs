@@ -44,7 +44,7 @@ namespace ET.Server
         private static void Check(this MessageLocationSenderOneType self)
         {
             using ListComponent<long> list = ListComponent<long>.Create();
-            long timeNow = TimeInfo.Instance.ServerFrameTime();
+            long timeNow = TimeInfo.Instance.Frame;
             foreach ((long key, Entity value) in self.Children)
             {
                 MessageLocationSender messageLocationMessageSender = (MessageLocationSender)value;
@@ -119,7 +119,7 @@ namespace ET.Server
                     }
                 }
 
-                messageLocationSender.LastSendOrRecvTime = TimeInfo.Instance.ServerFrameTime();
+                messageLocationSender.LastSendOrRecvTime = TimeInfo.Instance.Frame;
                 root.GetComponent<MessageSender>().Send(messageLocationSender.ActorId, message);
             }
         }

@@ -39,7 +39,7 @@ namespace ET
         private static void Check(this SessionIdleCheckerComponent self)
         {
             Session session = self.GetParent<Session>();
-            long timeNow = TimeInfo.Instance.ClientNow();
+            long timeNow = TimeInfo.Instance.Now();
 
             if (timeNow - session.LastRecvTime < ConstValue.SessionTimeoutTime && timeNow - session.LastSendTime < ConstValue.SessionTimeoutTime)
             {

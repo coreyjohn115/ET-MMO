@@ -7,11 +7,6 @@ namespace ET.Server
 {
     public static class UnitHelper
     {
-        public static string GetMapName(Unit unit)
-        {
-            return ConstValue.StartMap;
-        }
-
         public static void AddHp(this Unit self, long hp, long srcId = 0, int id = 0)
         {
             if (!self.IsAlive() || hp == 0L)

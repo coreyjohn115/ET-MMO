@@ -14,7 +14,7 @@ namespace ET
                 self.Add(entry.Key, entry.Value);
             }
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsNullOrEmpty(this ICollection collection)
         {
@@ -82,9 +82,14 @@ namespace ET
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static V Get<T, V>(this Dictionary<T, V> dict, T key)
+        public static V Get<T, V>(this Dictionary<T, V> dict, T key, V def = default)
         {
-            return dict.GetValueOrDefault(key);
+            if (dict.TryGetValue(key, out V value))
+            {
+                return value;
+            }
+
+            return def;
         }
 
         /// <summary>

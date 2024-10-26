@@ -24,6 +24,9 @@ message M2C_EnterMapOk // ILocationResponse
 //ResponseType M2C_TransferMap
 message C2M_TransferMap // ILocationRequest
 {
+  int32 MapId = 1;
+  //地图唯一ID(可选)
+  int64 Id = 2;
 }
 message M2C_TransferMap // ILocationResponse
 {
@@ -90,7 +93,7 @@ message M2C_CreateMyUnit // IMessage
 message M2C_StartSceneChange // IMessage
 {
   int64 SceneInstanceId = 1;
-  string SceneName = 2;
+  int32 MapId = 2;
 }
 
 // 寻路请求

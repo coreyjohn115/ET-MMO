@@ -12,7 +12,7 @@ public class HttpAccountHandler: IHttpHandler
         string account = context.Request.QueryString["Account"];
         if (account.IsNullOrEmpty())
         {
-            resp.Error = ErrorCode.ERR_InputInvaid;
+            resp.Error = ErrorCode.ERR_InputInvalid;
             HttpHelper.Response(context, string.Empty);
             return;
         }

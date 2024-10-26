@@ -101,7 +101,7 @@ namespace ET
 
         private uint TimeSince2022()
         {
-            uint a = (uint)((TimeInfo.Instance.FrameTime - this.epoch2022) / 1000);
+            uint a = (uint)((TimeInfo.Instance.Frame - this.epoch2022) / 1000);
             return a;
         }
         

@@ -67,7 +67,7 @@ public static partial class EquipComponentSystem
         EquipConfig config = EquipConfigCategory.Instance.Get(item.Config.Id);
         if (!self.equipDict.TryGetValue((EquipPosType)config.EquipPos, out long dressId))
         {
-            return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+            return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
         }
 
         ItemData dress = unit.GetComponent<ItemComponent>().GetItem(dressId);

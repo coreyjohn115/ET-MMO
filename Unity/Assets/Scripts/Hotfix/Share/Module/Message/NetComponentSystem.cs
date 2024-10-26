@@ -71,7 +71,7 @@ namespace ET
                 return;
             }
 
-            session.LastRecvTime = TimeInfo.Instance.ClientNow();
+            session.LastRecvTime = TimeInfo.Instance.Now();
 
             (ActorId _, object message) = MessageSerializeHelper.ToMessage(self.AService, memoryBuffer);
             self.AService.Recycle(memoryBuffer);

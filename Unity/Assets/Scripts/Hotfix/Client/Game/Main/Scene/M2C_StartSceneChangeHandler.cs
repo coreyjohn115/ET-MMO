@@ -9,7 +9,8 @@
             CurrentScenesComponent currentScenesComponent = root.GetComponent<CurrentScenesComponent>();
             bool isFirst = currentScenesComponent.Scene == null;
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
-            Scene currentScene = CurrentSceneFactory.Create(message.SceneInstanceId, message.SceneName, currentScenesComponent);
+            MapConfig config = MapConfigCategory.Instance.Get(message.MapId);
+            Scene currentScene = CurrentSceneFactory.Create(message.SceneInstanceId, config.ResPath, currentScenesComponent);
             UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
 
             // 可以订阅这个事件中创建Loading界面

@@ -61,7 +61,7 @@ namespace ET.Client
                     
                     Log.Info($"get recvLocalConn ok: {root.Id} {routerAddress} {realAddress} {recvLocalConn} {localConn} {remoteConn}");
                     
-                    session.LastRecvTime = TimeInfo.Instance.ClientNow();
+                    session.LastRecvTime = TimeInfo.Instance.Now();
                     
                     session.AService.ChangeAddress(sessionId, routerAddress);
                 }

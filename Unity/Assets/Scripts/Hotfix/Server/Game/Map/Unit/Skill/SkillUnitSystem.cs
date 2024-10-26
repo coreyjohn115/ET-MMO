@@ -10,7 +10,7 @@ public static partial class SkillUnitSystem
         self.layer = self.MasterConfig.MaxLayer;
         for (int i = self.cdList.Count; i < self.layer; i++)
         {
-            self.cdList.Add(TimeInfo.Instance.FrameTime);
+            self.cdList.Add(TimeInfo.Instance.Frame);
         }
     }
 

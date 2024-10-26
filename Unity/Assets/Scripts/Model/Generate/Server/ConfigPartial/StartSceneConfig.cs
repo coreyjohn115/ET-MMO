@@ -27,9 +27,9 @@ namespace ET
         /// </summary>
         public Dictionary<int, StartSceneConfig> Caches = new Dictionary<int, StartSceneConfig>();
 
-        public List<StartSceneConfig> Routers = new();
+        public Dictionary<int, StartSceneConfig> MapManagers = new Dictionary<int, StartSceneConfig>();
 
-        public List<StartSceneConfig> Maps = new();
+        public List<StartSceneConfig> Routers = new();
 
         public StartSceneConfig Match;
 
@@ -77,8 +77,8 @@ namespace ET
                     case SceneType.Router:
                         this.Routers.Add(startSceneConfig);
                         break;
-                    case SceneType.Map:
-                        this.Maps.Add(startSceneConfig);
+                    case SceneType.MapManager:
+                        this.MapManagers.Add(startSceneConfig.Zone, startSceneConfig);
                         break;
                     case SceneType.Match:
                         this.Match = startSceneConfig;

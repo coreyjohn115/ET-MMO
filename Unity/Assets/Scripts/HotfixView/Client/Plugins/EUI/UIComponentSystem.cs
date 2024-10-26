@@ -306,7 +306,7 @@ namespace ET.Client
                 }
             }
 
-            baseWindow.WindowData.lastCheckTime = TimeInfo.Instance.FrameTime;
+            baseWindow.WindowData.lastCheckTime = TimeInfo.Instance.Frame;
             self.PopNextStackUIBaseWindow(id);
         }
 
@@ -675,7 +675,7 @@ namespace ET.Client
             {
                 UIBaseWindow baseWindow = window.Value;
                 if (baseWindow.WindowData.CheckDispose && !self.visibleWindowsDic.ContainsKey((int)baseWindow.WindowID) &&
-                    TimeInfo.Instance.FrameTime - baseWindow.WindowData.lastCheckTime > t)
+                    TimeInfo.Instance.Frame - baseWindow.WindowData.lastCheckTime > t)
                 {
                     list.Add(baseWindow.WindowID);
                 }

@@ -42,7 +42,7 @@ namespace ET
         private static void Awake(this Session self, AService aService)
         {
             self.AService = aService;
-            long timeNow = TimeInfo.Instance.ClientNow();
+            long timeNow = TimeInfo.Instance.Now();
             self.LastRecvTime = timeNow;
             self.LastSendTime = timeNow;
 
@@ -62,7 +62,7 @@ namespace ET
             }
 
             Log.Info(
-                $"session dispose: {self.RemoteAddress} id: {self.Id} ErrorCode: {self.Error}, please see ErrorCode.cs! {TimeInfo.Instance.ClientNow()}");
+                $"session dispose: {self.RemoteAddress} id: {self.Id} ErrorCode: {self.Error}, please see ErrorCode.cs! {TimeInfo.Instance.Now()}");
 
             self.requestCallbacks.Clear();
         }
@@ -126,7 +126,7 @@ namespace ET
 
         public static void Send(this Session self, ActorId actorId, IMessage message)
         {
-            self.LastSendTime = TimeInfo.Instance.ClientNow();
+            self.LastSendTime = TimeInfo.Instance.Now();
             LogMsg.Instance.Debug(self.Fiber(), message);
 
             (ushort opcode, MemoryBuffer memoryBuffer) = MessageSerializeHelper.ToMemoryBuffer(self.AService, actorId, message);

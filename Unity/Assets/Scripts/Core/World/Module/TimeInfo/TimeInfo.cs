@@ -5,20 +5,17 @@ namespace ET
     public class TimeInfo: Singleton<TimeInfo>, ISingletonAwake
     {
         private int timeZone;
-        
+
         public int TimeZone
         {
-            get
-            {
-                return this.timeZone;
-            }
+            get => this.timeZone;
             set
             {
                 this.timeZone = value;
                 dt = dt1970.AddHours(this.timeZone);
             }
         }
-        
+
         private DateTime dt1970;
         private DateTime dt;
         
@@ -26,41 +23,48 @@ namespace ET
         public long ServerMinusClientTime { private get; set; }
 
         /// <summary>
-        ///  当前时间戳(MS级)
+        /// 当前时间戳(MS)
         /// </summary>
-        public long FrameTime { get; private set; }
-        
+        public long Frame { get; private set; }
+
+        /// <summary>
+        /// 当前时间戳
+        /// </summary>
+        public long Second => Frame / 1000L;
+
         public void Awake()
         {
             this.dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             this.dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            this.FrameTime = this.ClientNow();
+            TimeSpan offset = TimeZoneInfo.Local.GetUtcOffset(System.DateTime.UtcNow);
+            TimeZone = (int)offset.TotalHours;
+            this.Frame = this.Now();
         }
 
         public void Update()
         {
             // 赋值long型是原子操作，线程安全
-            this.FrameTime = this.ClientNow();
+            this.Frame = this.Now();
         }
-        
+
         /// <summary> 
         /// 根据时间戳获取时间 
         /// </summary>  
-        public DateTime Time(long? timeStamp = null)
+        public DateTime DateTime(long? timeStamp = null)
         {
-            timeStamp ??= FrameTime;
-            return dt.AddTicks(timeStamp.Value * 10000L);
+            timeStamp ??= Second;
+            return dt.AddTicks(timeStamp.Value * 10000_000L);
         }
-        
+
+        public string DateString(long? timeStamp = null, string format = "yyyy-MM-dd HH:mm:ss")
+        {
+            return this.DateTime(timeStamp).ToString(format);
+        }
+
         // 线程安全
-        public long ClientNow()
+        public long Now()
         {
-            return (DateTime.UtcNow.Ticks - this.dt1970.Ticks) / 10000L;
-        }
-        
-        public long ClientFrameTime()
-        {
-            return this.FrameTime;
+            return (System.DateTime.Now.Ticks - this.dt.Ticks) / 10000L;
         }
         
         /// <summary>
@@ -69,51 +73,56 @@ namespace ET
         /// <returns></returns>
         public long ServerNow()
         {
-            return ClientNow() + this.ServerMinusClientTime;
+            return Now() + this.ServerMinusClientTime;
         }
-        
-        public long ServerFrameTime()
+
+        public long ClientFrameTime()
         {
-            return this.FrameTime + this.ServerMinusClientTime;
+            return this.Frame;
         }
-        
+
         public long Transition(DateTime d)
         {
             return (d.Ticks - dt.Ticks) / 10000L;
         }
-        
-        public long GetSecond()
+
+        public long ToUnixTimeSeconds(DateTime dateTime)
         {
-            return this.FrameTime / 1000L;
+            return (dateTime.Ticks - this.dt.Ticks) / 10000_000L;
         }
-        
-        public long GetMinute()
+
+        public int GetSecond()
         {
-            return this.FrameTime / 1000L / 60L;
+            return (int)Second;
         }
-        
-        public long GetHour()
+
+        public int GetMinute()
         {
-            return this.FrameTime / 1000L / 3600L;
+            return (int)(this.Frame / 1000L / 60L);
         }
-        
+
+        public int GetHour()
+        {
+            return (int)(this.Frame / 1000L / 3600L);
+        }
+
         /// <summary>
-        ///  获取当天
+        /// 获取utc零点到今天的天数
         /// </summary>
         /// <returns></returns>
-        public long GetDay()
+        public int GetDay()
         {
-            return this.FrameTime / 1000L / 3600L / 24L;
+            return (int)(this.Frame / 1000L / 3600L / 24L);
         }
-        
+
         /// <summary>
         /// 获取当天的秒数
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        public long GetSecondSinceZero(long time)
+        public int GetSecondSinceZero(long time)
         {
-            var d = this.Time(time);
+            var d = this.DateTime(time);
             return d.Hour * 3600 + d.Minute * 60 + d.Second;
         }
 
@@ -122,10 +131,10 @@ namespace ET
         /// </summary>
         /// <param name="time"></param>
         /// <returns></returns>
-        public long GetZeroSecond(long? time = null)
+        public int GetZeroSecond(long? time = null)
         {
-            time ??= FrameTime;
-            return (long)time - GetSecondSinceZero(time.Value);
+            time ??= Second;
+            return (int)(time - GetSecondSinceZero(time.Value));
         }
     }
 }

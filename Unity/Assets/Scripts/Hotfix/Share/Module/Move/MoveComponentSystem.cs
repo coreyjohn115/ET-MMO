@@ -110,7 +110,7 @@ namespace ET
         {
             Unit unit = self.GetParent<Unit>();
             
-            long timeNow = TimeInfo.Instance.ClientNow();
+            long timeNow = TimeInfo.Instance.Now();
             long moveTime = timeNow - self.StartTime;
 
             while (true)
@@ -178,7 +178,7 @@ namespace ET
 
         private static void StartMove(this MoveComponent self)
         {
-            self.BeginTime = TimeInfo.Instance.ClientNow();
+            self.BeginTime = TimeInfo.Instance.Now();
             self.StartTime = self.BeginTime;
             self.SetNextTarget();
 

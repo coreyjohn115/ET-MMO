@@ -28,6 +28,10 @@ namespace ET
         Router = 1 << 8,
         RouterManager = 1 << 9,
         Robot = 1 << 10,
+        /// <summary>
+        /// 地图管理器
+        /// </summary>
+        MapManager = 1 << 11,
         Match = 1 << 14,
 
         /// <summary>

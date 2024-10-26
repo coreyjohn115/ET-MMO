@@ -101,14 +101,14 @@ namespace ET.Client
             }
 
             self.useSkill = true;
-            if (TimeInfo.Instance.ServerFrameTime() - self.lastAttackTime > 3000L)
+            if (TimeInfo.Instance.Frame - self.lastAttackTime > 3000L)
             {
                 self.index = 0;
             }
 
             var skill = self.GetChild<ClientSkillUnit>(self.normalSkillList[self.index]);
             self.index++;
-            self.lastAttackTime = TimeInfo.Instance.ServerFrameTime();
+            self.lastAttackTime = TimeInfo.Instance.Frame;
             if (self.index >= self.normalSkillList.Count)
             {
                 self.index = 0;

@@ -252,7 +252,7 @@ public static partial class SkillComponentSystem
         if (effectCfg.Ms > 0)
         {
             self.effectTimer = self.Scene().GetComponent<TimerComponent>()
-                    .NewOnceTimer(TimeInfo.Instance.FrameTime + effectCfg.Ms, TimerInvokeType.SKillEffect, self);
+                    .NewOnceTimer(TimeInfo.Instance.Frame + effectCfg.Ms, TimerInvokeType.SKillEffect, self);
             return;
         }
 
@@ -283,7 +283,7 @@ public static partial class SkillComponentSystem
             case (int)RangeType.Single:
                 if (dyna.DstList.IsNullOrEmpty())
                 {
-                    return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                    return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
                 }
 
                 break;
@@ -291,7 +291,7 @@ public static partial class SkillComponentSystem
             case (int)RangeType.DstLine:
                 if (dyna.DstPosition.Count == 0)
                 {
-                    return MessageReturn.Create(ErrorCode.ERR_InputInvaid);
+                    return MessageReturn.Create(ErrorCode.ERR_InputInvalid);
                 }
 
                 break;
@@ -310,7 +310,7 @@ public static partial class SkillComponentSystem
         }
 
         skill.cdList.Sort((l, r) => l.CompareTo(r));
-        skill.cdList[0] = Math.Max(TimeInfo.Instance.FrameTime, skill.cdList.Last()) + cdTime;
+        skill.cdList[0] = Math.Max(TimeInfo.Instance.Frame, skill.cdList.Last()) + cdTime;
 
         if (cdTime > 0)
         {
@@ -344,7 +344,7 @@ public static partial class SkillComponentSystem
         if (skill.Config.SingTime > 0)
         {
             self.singTimer = self.Scene().GetComponent<TimerComponent>()
-                    .NewOnceTimer(TimeInfo.Instance.FrameTime + skill.Config.SingTime, TimerInvokeType.SkillSing, self);
+                    .NewOnceTimer(TimeInfo.Instance.Frame + skill.Config.SingTime, TimerInvokeType.SkillSing, self);
             return MessageReturn.Success();
         }
 

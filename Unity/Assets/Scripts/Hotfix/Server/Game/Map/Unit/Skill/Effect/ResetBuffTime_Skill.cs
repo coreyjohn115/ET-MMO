@@ -19,7 +19,7 @@ namespace ET.Server
                     continue;
                 }
 
-                buff.ValidTime = TimeInfo.Instance.FrameTime + buff.Ms;
+                buff.ValidTime = TimeInfo.Instance.Frame + buff.Ms;
                 unit.GetComponent<BuffComponent>().SyncBuffToClient(buff).NoContext();
             }
 

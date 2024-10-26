@@ -633,7 +633,7 @@ namespace ET
                 return false;
             }
 
-            return this.Children.ContainsKey(id);
+            return this.children.ContainsKey(id);
         }
 
         public void RemoveComponent<K>() where K : Entity

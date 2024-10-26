@@ -174,11 +174,11 @@ namespace ET
 
             Timeout().NoContext();
 
-            long beginTime = TimeInfo.Instance.ServerFrameTime();
+            long beginTime = TimeInfo.Instance.Frame;
 
             response = await messageSenderStruct.Wait();
 
-            long endTime = TimeInfo.Instance.ServerFrameTime();
+            long endTime = TimeInfo.Instance.Frame;
 
             long costTime = endTime - beginTime;
             if (costTime > 200)

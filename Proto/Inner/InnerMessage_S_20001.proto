@@ -112,9 +112,11 @@ message M2G_RequestEnterGameState // ILocationResponse
 
 }
 
+//玩家数据传送
 //ResponseType M2M_UnitTransferResponse
 message M2M_UnitTransferRequest // IRequest
 {
+	int32 MapId = 1;
 	ActorId OldActorId = 2;
 	bytes Unit = 3;
 	repeated bytes Entitys = 4;
@@ -122,6 +124,18 @@ message M2M_UnitTransferRequest // IRequest
 }
 message M2M_UnitTransferResponse // IResponse
 {
+}
+
+//获取地图地址
+//ResponseType M2O_GetMapActorIdResponse
+message O2M_GetMapActorIdRequest // IRequest
+{
+	int32 MapId = 1;
+	int64 Id = 2;
+}
+message M2O_GetMapActorIdResponse // IResponse
+{
+	ActorId ActorId = 1;
 }
 
 //玩家进入游戏

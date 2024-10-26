@@ -247,7 +247,7 @@ namespace ET.Server
 
                 task = self.AddChildWithId<TaskUnit>(taskId);
                 task.Status = TaskStatus.Accept;
-                task.AcceptTime = TimeInfo.Instance.ServerFrameTime();
+                task.AcceptTime = TimeInfo.Instance.Frame;
                 EventSystem.Instance.Publish(self.Scene(), new AddUpdateTask() { TaskUnit = task });
                 if (!data.NotUpdate)
                 {
@@ -299,7 +299,7 @@ namespace ET.Server
 
             //计算奖励
             task.Status = TaskStatus.Commit;
-            task.CommitTime = TimeInfo.Instance.ServerFrameTime();
+            task.CommitTime = TimeInfo.Instance.Frame;
             self.UpdateTask(task);
             EventSystem.Instance.Publish(self.Scene(), new CommitTask() { TaskUnit = task });
             if (!task.Config.FinishShow)
@@ -407,7 +407,7 @@ namespace ET.Server
 
             task.Args[0] = task.Config.Args[0];
             task.Status = TaskStatus.Finish;
-            task.FinishTime = TimeInfo.Instance.ServerFrameTime();
+            task.FinishTime = TimeInfo.Instance.Frame;
             EventSystem.Instance.Publish(self.Scene(), new FinishTask() { TaskUnit = task });
             self.UpdateTask(task);
             if (task.Config.AutoCommit)

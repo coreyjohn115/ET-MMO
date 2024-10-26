@@ -21,8 +21,14 @@ namespace ET.Server
                 await CacheHelper.InitUnit(unit, player, isNewPlayer);
 
                 // 等到一帧的最后面再传送，先让G2C_EnterMap返回，否则传送消息可能比G2C_EnterMap还早
-                StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(player.Zone(), UnitHelper.GetMapName(unit));
-                await TransferHelper.TransferAtFrameFinish(unit, startSceneConfig.ActorId, true);
+                (int errno, ActorId mapActorId) r = await MapManagerHelper.GetMapActorId(session.Scene(), ConstValue.StartMap);
+                if (r.errno != ErrorCode.ERR_Success)
+                {
+                    response.Error = r.errno;
+                    return;
+                }
+
+                await TransferHelper.TransferAtFrameFinish(unit, r.mapActorId, ConstValue.StartMap, true);
             }
             catch (Exception e)
             {

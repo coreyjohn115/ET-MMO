@@ -6,7 +6,7 @@ namespace ET.Client
     {
         public override int Check(AIComponent aiComponent, AIConfig aiConfig)
         {
-            long sec = TimeInfo.Instance.ServerFrameTime() / 1000L % 15L;
+            long sec = TimeInfo.Instance.Frame / 1000L % 15L;
             if (sec < 10L)
             {
                 return 0;

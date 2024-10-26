@@ -42,7 +42,7 @@ public class EventSelfAddBuff: ABuffEffect
             return;
         }
 
-        if (effectArgs.Args[1].IsHit() && dyna.Args[1].ToLong() < TimeInfo.Instance.FrameTime)
+        if (effectArgs.Args[1].IsHit() && dyna.Args[1].ToLong() < TimeInfo.Instance.Frame)
         {
             int id = effectArgs.Args[2];
             int ms = effectArgs.Args[3];
@@ -54,7 +54,7 @@ public class EventSelfAddBuff: ABuffEffect
                     break;
             }
 
-            dyna.Args[1] = TimeInfo.Instance.FrameTime + effectArgs.Args[0];
+            dyna.Args[1] = TimeInfo.Instance.Frame + effectArgs.Args[0];
         }
     }
 

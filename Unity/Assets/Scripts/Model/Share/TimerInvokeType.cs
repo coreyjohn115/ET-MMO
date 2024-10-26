@@ -36,6 +36,7 @@
         public const int ServerCheck = 313;
         public const int CacheCheck = 314;
         public const int ChatSaveCheck = 315;
+        public const int MapCloseCheck = 316;
 
         // 客户端1000起
         public const int ClientServerCheck = 1000;
