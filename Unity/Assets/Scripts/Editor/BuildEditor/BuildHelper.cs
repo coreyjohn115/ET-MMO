@@ -7,7 +7,7 @@ using YooAsset.Editor;
 using BuildReport = UnityEditor.Build.Reporting.BuildReport;
 using BuildResult = UnityEditor.Build.Reporting.BuildResult;
 
-namespace ET
+namespace ET.Client
 {
     public static class BuildHelper
     {
@@ -115,6 +115,7 @@ namespace ET
 
         private static void BuildInternal(bool forceRebuild)
         {
+            AssemblyTool.MenuItemOfCompile();
             var buildTarget = EditorUserBuildSettings.activeBuildTarget;
             var isWebGL = buildTarget == BuildTarget.WebGL;
             Debug.Log($"开始构建 : {buildTarget}");
@@ -139,7 +140,7 @@ namespace ET
 
             Directory.Delete($"{buildParameters.BuildOutputRoot}/{buildTarget}", true);
             // 执行构建
-            ScriptableBuildPipeline pipeline = new();
+            ETBuildPipeline pipeline = new();
             var buildResult = pipeline.Run(buildParameters, true);
             if (buildResult.Success)
             {
@@ -154,7 +155,7 @@ namespace ET
             }
         }
 
-        [MenuItem("ET/Pkg/打包(Yoo)", false)]
+        [MenuItem("ET/Pkg/打包(Yoo) _F5", false)]
         public static void BuildPackage()
         {
             BuildInternal(false);

@@ -59,7 +59,7 @@ namespace ET.Client
             self.itemData = item;
         }
 
-        public static async ETTask RefreShIcon(this ESItem self)
+        public static async ETTask RefreshIcon(this ESItem self)
         {
             if ((self.tagType & ItemTagType.Icon) == 0)
             {

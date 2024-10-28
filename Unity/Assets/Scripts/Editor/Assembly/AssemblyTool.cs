@@ -28,7 +28,7 @@ namespace ET.Client
         /// 菜单和快捷键编译按钮
         /// </summary>
         [MenuItem("ET/Compile _F6", false, ETMenuItemPriority.Compile)]
-        static void MenuItemOfCompile()
+        public static void MenuItemOfCompile()
         {
             // 强制刷新一下，防止关闭auto refresh，文件修改时间不准确
             AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);

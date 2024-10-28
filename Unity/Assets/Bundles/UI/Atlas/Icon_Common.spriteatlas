@@ -25,28 +25,50 @@ SpriteAtlas:
       m_BuildTarget: iPhone
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
-      m_TextureFormat: 56
+      m_TextureFormat: 50
       m_TextureCompression: 1
-      m_CompressionQuality: 50
-      m_CrunchedCompression: 0
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
       m_AllowsAlphaSplitting: 0
-      m_Overridden: 0
-      m_IgnorePlatformSupport: 0
+      m_Overridden: 1
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 1
     - serializedVersion: 3
       m_BuildTarget: Android
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
-      m_TextureFormat: 56
+      m_TextureFormat: 50
       m_TextureCompression: 1
-      m_CompressionQuality: 50
-      m_CrunchedCompression: 0
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
       m_AllowsAlphaSplitting: 0
       m_Overridden: 1
-      m_IgnorePlatformSupport: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 1
+    - serializedVersion: 3
+      m_BuildTarget: WebGL
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 50
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 12
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -62,46 +84,6 @@ SpriteAtlas:
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
-    packedSpriteRenderDataKeys:
-    - 322521009b867a447a2ad5186ecd67d6: 21300000
-    - 8b439760984bf264b9ddb3d0461289b9: 21300000
-    - 3a569f701c3a14d4284de5651b98ba20: 21300000
-    - 941fc3b05d7435243ae1936a6a49a062: 21300000
-    - 76adfcb0db068724186ef0468dafa7ff: 21300000
-    - c4a142212b1b7274ba0874073376782c: 21300000
-    - dfa683213f9ab34469e013097fb4e980: 21300000
-    - da1925211f9479042848c797a8e87ccf: 21300000
-    - 49477f510894d4e47826a3ee5d76d8f6: 21300000
-    - 63d2d2614ffd2b545bd6148b41af4d16: 21300000
-    - 183f742275ee0f444ba56f63b4a0ae97: 21300000
-    - a844bf7374f31314ba7d9f1c9ab50dfe: 21300000
-    - 50551ad3d2794b442bb18efe960a4756: 21300000
-    - 0571d674f37bb1c43a1e05a9bee374bd: 21300000
-    - a4edf90540c6c2d408e06f77fd02143d: 21300000
-    - 0c15d5451f908df44836f700dafd924d: 21300000
-    - 93750265532bb3f499850538bc069249: 21300000
-    - 23e922a5392dd064d9c3b2e57051ae1c: 21300000
-    - 6bb204a5f88c89c4591a9801fdd97586: 21300000
-    - 6ddcb81684c2fdf43977b2e98337fd1d: 21300000
-    - 4ea8eca61307cb1438fa5f5c99b8e503: 21300000
-    - c40ec8577cd99b340aecdfa818646dc1: 21300000
-    - 2fea41a7ae10cd94a9f85b57ecc5470d: 21300000
-    - b6e76d58306163f44b01c5dc1e11f761: 21300000
-    - fc3c8e986705bf649b1e13724f747a74: 21300000
-    - aa101339459e55b4bb52d2e74f5ae68a: 21300000
-    - 241c44b9d76e0944cbd0560266b9aea9: 21300000
-    - 8bf3df1a92165fa4ba9a423a7f4636ec: 21300000
-    - 4d8f545b3e3a90d4c93cf07197d04952: 21300000
-    - d244510ce4ddfa443ab5b5031822da35: 21300000
-    - 508302fc95f505a4a9b77ab57e8468d1: 21300000
-    - 486f712d5a8e242419fcfc76df0949ef: 21300000
-    - 81c432cdd2bf0b74f8c55dc938da35fe: 21300000
-    - 15322a0eddb48a04f95a86c36c2ee7e5: 21300000
-    - 4d69ee2e06fac304ea6a4a9c9173db27: 21300000
-    - d96c156e7319c79479835596ce949b01: 21300000
-    - d075df7e31cdcb949a0951a085186535: 21300000
-    - 6e6a5b9f20d9a794f949abd8225d7ebf: 21300000
-    - b1426aaf6192a254b9e1971126588960: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 322521009b867a447a2ad5186ecd67d6, type: 3}

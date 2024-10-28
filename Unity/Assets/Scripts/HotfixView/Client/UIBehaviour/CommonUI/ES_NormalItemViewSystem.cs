@@ -43,7 +43,7 @@ namespace ET.Client
 
             self.ESItem.SetItemData(self.itemData);
             await self.ESItem.RefreshFrame();
-            await self.ESItem.RefreShIcon();
+            await self.ESItem.RefreshIcon();
         }
     }
 }

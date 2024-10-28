@@ -22,7 +22,7 @@ namespace ET.Client
         {
             self.ESItem.SetItemData(item);
             await self.ESItem.RefreshFrame();
-            await self.ESItem.RefreShIcon();
+            await self.ESItem.RefreshIcon();
             self.ESItem.RefreshCount();
         }
 

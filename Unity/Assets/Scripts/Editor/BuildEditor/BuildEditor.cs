@@ -2,7 +2,7 @@
 using UnityEngine;
 using YooAsset;
 
-namespace ET
+namespace ET.Client
 {
     public enum PlatformType
     {

@@ -261,6 +261,8 @@ namespace ET.Client
             errno = await DownloadPatch();
             if (errno != 0)
             {
+                await this.hotPop.ShowWait("热更异常, 请重试!", "退 出");
+                ExitGame();
                 return errno;
             }
 
