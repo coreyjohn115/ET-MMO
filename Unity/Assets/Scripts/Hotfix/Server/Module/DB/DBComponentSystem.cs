@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -17,11 +18,13 @@ namespace ET.Server
             self.database = self.mongoClient.GetDatabase(dbName);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IMongoCollection<T> GetCollection<T>(this DBComponent self, string collection = null)
         {
             return self.database.GetCollection<T>(collection ?? typeof (T).FullName);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IMongoCollection<Entity> GetCollection(this DBComponent self, string name)
         {
             return self.database.GetCollection<Entity>(name);
@@ -197,11 +200,7 @@ namespace ET.Server
                 return;
             }
 
-            if (collection == null)
-            {
-                collection = entity.GetType().FullName;
-            }
-
+            collection ??= entity.GetType().FullName;
             using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, taskId % DBComponent.TaskCount))
             {
                 await self.GetCollection(collection).ReplaceOneAsync(d => d.Id == entity.Id, entity, new ReplaceOptions { IsUpsert = true });
@@ -218,8 +217,6 @@ namespace ET.Server
 
             using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.DB, id % DBComponent.TaskCount))
             {
-                string name = collectionName ?? typeof (T).FullName;
-                var collection = self.GetCollection(name);
                 foreach (T entity in entities)
                 {
                     if (entity == null)
@@ -227,7 +224,8 @@ namespace ET.Server
                         continue;
                     }
 
-                    await collection.ReplaceOneAsync(d => d.Id == entity.Id, entity, new ReplaceOptions { IsUpsert = true });
+                    await self.GetCollection(collectionName ?? entity.GetType().FullName)
+                            .ReplaceOneAsync(d => d.Id == entity.Id, entity, new ReplaceOptions { IsUpsert = true });
                 }
             }
         }

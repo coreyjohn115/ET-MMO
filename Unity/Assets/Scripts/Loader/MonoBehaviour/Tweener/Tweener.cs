@@ -267,7 +267,6 @@ namespace ET.Client
                 Log.Error(e);
             }
 
-            ObjectPool.Instance?.Recycle(this);
             kill = true;
         }
 

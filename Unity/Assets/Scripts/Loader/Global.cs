@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace ET
 {
-    [Code]
     public class Global: Singleton<Global>, ISingletonAwake
     {
         public Transform GlobalTrans { get; private set; }
@@ -42,7 +41,7 @@ namespace ET
         /// 摄像机配置
         /// </summary>
         public CameraScriptObject CameraConfig { get; private set; }
-        
+
         public GameScriptObject GameConfig { get; private set; }
 
         private ReferenceCollector collector;

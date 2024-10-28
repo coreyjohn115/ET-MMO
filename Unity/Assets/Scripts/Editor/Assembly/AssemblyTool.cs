@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.Build.Player;
 using UnityEngine;
 
-namespace ET
+namespace ET.Client
 {
     public static class AssemblyTool
     {

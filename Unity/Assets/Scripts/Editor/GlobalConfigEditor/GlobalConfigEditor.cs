@@ -1,7 +1,7 @@
 using System;
 using UnityEditor;
 
-namespace ET
+namespace ET.Client
 {
     [CustomEditor(typeof(GlobalConfig))]
     public class GlobalConfigEditor : Editor

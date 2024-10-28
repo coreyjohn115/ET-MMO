@@ -1,7 +1,11 @@
+using System;
+using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.Build.Reporting;
 using UnityEngine;
+using YooAsset.Editor;
+using BuildReport = UnityEditor.Build.Reporting.BuildReport;
+using BuildResult = UnityEditor.Build.Reporting.BuildResult;
 
 namespace ET
 {
@@ -101,6 +105,73 @@ namespace ET
 
             Debug.Log("finish build exe");
             EditorUtility.OpenWithDefaultApp(relativeDirPrefix);
+        }
+
+        private static string GetDefaultPackageVersion()
+        {
+            int totalMinutes = DateTime.Now.Hour * 60 + DateTime.Now.Minute;
+            return DateTime.Now.ToString("yyyy-MM-dd") + "-" + totalMinutes;
+        }
+
+        private static void BuildInternal(bool forceRebuild)
+        {
+            var buildTarget = EditorUserBuildSettings.activeBuildTarget;
+            var isWebGL = buildTarget == BuildTarget.WebGL;
+            Debug.Log($"开始构建 : {buildTarget}");
+
+            var streamingAssetsRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
+
+            // 构建参数
+            ScriptableBuildParameters buildParameters = new();
+            buildParameters.BuildOutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
+            buildParameters.BuildinFileRoot = streamingAssetsRoot;
+            buildParameters.BuildPipeline = EBuildPipeline.ScriptableBuildPipeline.ToString();
+            buildParameters.BuildTarget = buildTarget;
+            buildParameters.BuildMode = forceRebuild? EBuildMode.ForceRebuild : EBuildMode.IncrementalBuild;
+            buildParameters.PackageName = "DefaultPackage";
+            buildParameters.PackageVersion = GetDefaultPackageVersion();
+            buildParameters.VerifyBuildingResult = true;
+            buildParameters.EnableSharePackRule = true; //启用共享资源构建模式，兼容1.5x版本
+            buildParameters.FileNameStyle = EFileNameStyle.BundleName_HashName;
+            buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.None;
+            buildParameters.BuildinFileCopyParams = string.Empty;
+            buildParameters.CompressOption = ECompressOption.LZ4;
+
+            Directory.Delete($"{buildParameters.BuildOutputRoot}/{buildTarget}", true);
+            // 执行构建
+            ScriptableBuildPipeline pipeline = new();
+            var buildResult = pipeline.Run(buildParameters, true);
+            if (buildResult.Success)
+            {
+                Debug.Log($"构建成功 : {buildResult.OutputPackageDirectory}");
+                string dstPath = @"E:\Download\Bundles\PC\1.0.0\";
+                Directory.Delete(dstPath, true);
+                FileHelper.CopyDirectory(buildResult.OutputPackageDirectory, dstPath);
+            }
+            else
+            {
+                Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
+            }
+        }
+
+        [MenuItem("ET/Pkg/打包(Yoo)", false)]
+        public static void BuildPackage()
+        {
+            BuildInternal(false);
+        }
+
+        [MenuItem("ET/Pkg/强制重新打包(Yoo)", false)]
+        public static void BuildPackageForce()
+        {
+            BuildInternal(true);
+        }
+
+        [MenuItem("ET/Pkg/清理下载缓存", false)]
+        public static void ClearCache()
+        {
+            string projectPath = Path.GetDirectoryName(Application.dataPath);
+            string p = Path.Combine(projectPath, "Bundles/DefaultPackage");
+            Directory.Delete(p, true);
         }
     }
 }

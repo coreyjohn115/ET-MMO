@@ -14,15 +14,6 @@
             root.AddComponent<CurrentScenesComponent>();
             root.AddComponent<ObjectWait>();
 
-            string url = StartSceneConfigCategory.Instance.Account.InnerIp;
-            int error = await LoginHelper.GetAppSetting(root, true, url);
-            if (error != ErrorCode.ERR_Success)
-            {
-                Log.Error($"GetAppSetting error {error}!");
-                await FiberManager.Instance.Remove(fiberInit.Fiber.Id);
-                return;
-            }
-
             root.SceneType = SceneType.Client;
             await EventSystem.Instance.PublishAsync(root, new AppStartInitFinish() { IsRobot = true });
             root.AddComponent<AIComponent, int>(1);

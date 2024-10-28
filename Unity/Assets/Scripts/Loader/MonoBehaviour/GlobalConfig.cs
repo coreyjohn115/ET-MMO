@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using YooAsset;
 
 namespace ET
@@ -9,13 +10,13 @@ namespace ET
         Server = 2,
         ClientServer = 3,
     }
-    
+
     public enum BuildType
     {
         Debug,
         Release,
     }
-    
+
     [CreateAssetMenu(menuName = "ET/CreateGlobalConfig", fileName = "GlobalConfig", order = 0)]
     public class GlobalConfig: ScriptableObject
     {
@@ -28,7 +29,5 @@ namespace ET
         public AppType AppType;
 
         public EPlayMode EPlayMode;
-        
-        public string AppsettingUrl = "http://127.0.0.1";
     }
 }

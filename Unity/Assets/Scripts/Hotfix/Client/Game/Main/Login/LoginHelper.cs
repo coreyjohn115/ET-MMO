@@ -5,32 +5,6 @@ namespace ET.Client
     [FriendOf(typeof (Account))]
     public static class LoginHelper
     {
-        public static async ETTask<int> GetAppSetting(Scene root, bool isRobot, string urlBase = "")
-        {
-            GetAppSetting getAppSetting = new() { IsRobot = isRobot };
-            if (!isRobot)
-            {
-                urlBase = EventSystem.Instance.Invoke<GetAppSetting, string>((long)SceneType.Client, getAppSetting);
-            }
-
-            string url = $"{urlBase}:{ConstValue.RouterHttpPort}/appsetting";
-            string str = string.Empty;
-            try
-            {
-                str = await HttpClientHelper.Get(url);
-            }
-            catch (Exception e)
-            {
-                Log.Error(e);
-                return ErrorCode.ERR_NetWorkError;
-            }
-
-            AppSetting appSetting = MongoHelper.FromJson<AppSetting>(str);
-            Log.Info(appSetting);
-            root.AddComponent(appSetting);
-            return ErrorCode.ERR_Success;
-        }
-
         /// <summary>
         /// 登录游戏
         /// </summary>
@@ -66,8 +40,8 @@ namespace ET.Client
         /// <returns></returns>
         public static async ETTask<int> QueryAccount(Scene root, string account, string password)
         {
-            string accountttpHost = root.GetComponent<AppSetting>().AccountHost;
-            string url = $"{accountttpHost}:{ConstValue.AccoutHttpPort}/account?Account={account}&Password={password}";
+            string accountHost = AppSetting.Instance.AccountHost;
+            string url = $"{accountHost}:{ConstValue.AccoutHttpPort}/account?Account={account}&Password={password}";
             string str = string.Empty;
             try
             {
@@ -108,8 +82,8 @@ namespace ET.Client
         /// <returns></returns>
         public static async ETTask<int> GetServerInfos(Scene root, string account)
         {
-            string accountttpHost = root.GetComponent<AppSetting>().AccountHost;
-            string url = $"{accountttpHost}:{ConstValue.AccoutHttpPort}/server_list?ServerType=1";
+            string accountHost = AppSetting.Instance.AccountHost;
+            string url = $"{accountHost}:{ConstValue.AccoutHttpPort}/server_list?ServerType=1";
             string str = string.Empty;
             try
             {

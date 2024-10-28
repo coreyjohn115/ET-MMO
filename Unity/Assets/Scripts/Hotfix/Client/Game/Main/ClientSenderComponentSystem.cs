@@ -45,7 +45,7 @@
             m.Account = account;
             m.Password = password;
             m.Id = accoutId;
-            m.RouterHttpHost = self.Root().GetComponent<AppSetting>().RouterHttpHost;
+            m.RouterHttpHost = AppSetting.Instance.RouterHttpHost;
             NetClient2Main_Login response = await self.Root().GetComponent<ProcessInnerSender>().Call(self.netClientActorId, m) as NetClient2Main_Login;
             
             EventSystem.Instance.Publish(self.Scene(), new NetError(){ Error = response.Error, Message = response.Message });

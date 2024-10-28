@@ -7,7 +7,6 @@ namespace ET.Client
     /// <summary>
     /// 动画管理器
     /// </summary>
-    [Code]
     public class TweenManager: Singleton<TweenManager>, ISingletonAwake, ISingletonUpdate, ISingletonLateUpdate
     {
         /// <summary>
@@ -16,10 +15,10 @@ namespace ET.Client
         /// <returns></returns>
         public T CreateTweener<T>() where T : Tweener
         {
-            var t = ObjectPool.Instance.Fetch(typeof (T));
-            var tweener = (T)t;
-            tweener.Init();
-            return tweener;
+            var t = Activator.CreateInstance(typeof (T));
+            var tween = (T)t;
+            tween.Init();
+            return tween;
         }
 
         /// <summary>

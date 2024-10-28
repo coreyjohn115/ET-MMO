@@ -55,11 +55,6 @@
     <type fullname="System.Linq.Enumerable" preserve="all" />
     <type fullname="System.Linq.IGrouping`2" preserve="all" />
   </assembly>
-  <assembly fullname="System.Net.Http">
-    <type fullname="System.Net.Http.HttpClient" preserve="all" />
-    <type fullname="System.Net.Http.HttpContent" preserve="all" />
-    <type fullname="System.Net.Http.HttpResponseMessage" preserve="all" />
-  </assembly>
   <assembly fullname="System.Runtime.CompilerServices.Unsafe">
     <type fullname="System.Runtime.CompilerServices.Unsafe" preserve="all" />
   </assembly>
@@ -71,6 +66,7 @@
     <type fullname="ET.ATimer`1" preserve="all" />
     <type fullname="ET.ActorId" preserve="all" />
     <type fullname="ET.Address" preserve="all" />
+    <type fullname="ET.AppSetting" preserve="all" />
     <type fullname="ET.AppType" preserve="all" />
     <type fullname="ET.AttrArgs" preserve="all" />
     <type fullname="ET.AwakeSystem`1" preserve="all" />
@@ -110,6 +106,7 @@
     <type fullname="ET.FiberInit" preserve="all" />
     <type fullname="ET.FiberManager" preserve="all" />
     <type fullname="ET.FriendOfAttribute" preserve="all" />
+    <type fullname="ET.HttpClientHelper" preserve="all" />
     <type fullname="ET.IAwake" preserve="all" />
     <type fullname="ET.IAwake`1" preserve="all" />
     <type fullname="ET.IAwake`2" preserve="all" />
@@ -275,7 +272,6 @@
     <type fullname="UnityEngine.Color" preserve="all" />
     <type fullname="UnityEngine.Color32" preserve="all" />
     <type fullname="UnityEngine.Component" preserve="all" />
-    <type fullname="UnityEngine.Debug" preserve="all" />
     <type fullname="UnityEngine.Events.UnityAction" preserve="all" />
     <type fullname="UnityEngine.Events.UnityAction`1" preserve="all" />
     <type fullname="UnityEngine.Events.UnityEvent" preserve="all" />
@@ -387,11 +383,8 @@
     <type fullname="System.Delegate" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
-    <type fullname="System.Diagnostics.DebuggerBrowsableAttribute" preserve="all" />
-    <type fullname="System.Diagnostics.DebuggerBrowsableState" preserve="all" />
     <type fullname="System.Diagnostics.DebuggerDisplayAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggerHiddenAttribute" preserve="all" />
-    <type fullname="System.Diagnostics.DebuggerStepThroughAttribute" preserve="all" />
     <type fullname="System.Double" preserve="all" />
     <type fullname="System.Enum" preserve="all" />
     <type fullname="System.Exception" preserve="all" />
@@ -428,7 +421,6 @@
     <type fullname="System.Runtime.CompilerServices.RuntimeCompatibilityAttribute" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter`1" preserve="all" />
-    <type fullname="System.Runtime.CompilerServices.TupleElementNamesAttribute" preserve="all" />
     <type fullname="System.RuntimeTypeHandle" preserve="all" />
     <type fullname="System.Security.Permissions.SecurityAction" preserve="all" />
     <type fullname="System.Security.Permissions.SecurityPermissionAttribute" preserve="all" />
@@ -442,7 +434,6 @@
     <type fullname="System.Threading.Tasks.Task" preserve="all" />
     <type fullname="System.Threading.Tasks.TaskFactory" preserve="all" />
     <type fullname="System.Threading.Tasks.Task`1" preserve="all" />
-    <type fullname="System.TimeSpan" preserve="all" />
     <type fullname="System.Type" preserve="all" />
     <type fullname="System.UInt16" preserve="all" />
     <type fullname="System.UInt32" preserve="all" />

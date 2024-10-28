@@ -10,12 +10,6 @@ namespace ET.Client
             root.AddComponent<ClientPlayerComponent>();
             root.AddComponent<CurrentScenesComponent>();
 
-            int error = await LoginHelper.GetAppSetting(root, false);
-            if (error != ErrorCode.ERR_Success)
-            {
-                Log.Error($"GetAppSetting error {error}!");
-            }
-            
             root.AddComponent<DataSaveComponent>();
             root.AddComponent<OperaComponent>();
             await root.AddComponent<RedDotComponent>().PreLoadGameObject();

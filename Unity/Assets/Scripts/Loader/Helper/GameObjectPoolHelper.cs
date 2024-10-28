@@ -19,7 +19,7 @@ namespace ET.Client
         public static async ETTask<GameObject> GetGameObjectAsync(string gameObjectPath)
         {
             GameObject pb = null;
-            pb = await ResourcesComponent.Instance.LoadAssetAsync<GameObject>(gameObjectPath);
+            pb = await ResourcesComponent.LoadAssetAsync<GameObject>(gameObjectPath);
             return pb;
         }
 

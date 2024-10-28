@@ -48,6 +48,9 @@ namespace ET.Client
                         break;
                 }
             }
+            
+            self.handlers.Clear();
+            self.package.UnloadUnusedAssets();
         }
         
         public static async ETTask<T> LoadAssetAsync<T>(this ResourcesLoaderComponent self, string location) where T: UnityEngine.Object

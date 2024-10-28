@@ -2,7 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace ET
+namespace ET.Client
 {
     public static class AssemblyEditor
     {

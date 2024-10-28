@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CodeMode: 1
   EnableDll: 1
-  BuildType: 0
+  BuildType: 1
   AppType: 5
-  EPlayMode: 0
-  AppsettingUrl: http://127.0.0.1
+  EPlayMode: 2
