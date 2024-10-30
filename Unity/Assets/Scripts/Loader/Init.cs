@@ -27,7 +27,8 @@ namespace ET.Client
 
             World.Instance.AddSingleton<Logger>().Log = new UnityLogger();
             ETTask.ExceptionHandler += Log.Error;
-
+            
+            World.Instance.AddSingleton<SDK>();
             World.Instance.AddSingleton<TimeInfo>();
             World.Instance.AddSingleton<FiberManager>();
             TextAsset asset = Resources.Load<TextAsset>("Config");
@@ -41,7 +42,7 @@ namespace ET.Client
                 Log.Error($"资源初始化失败: {errno}");
                 return;
             }
-
+            
             CodeLoader codeLoader = World.Instance.AddSingleton<CodeLoader>();
             await codeLoader.DownloadAsync();
 

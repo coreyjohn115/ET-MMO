@@ -9,15 +9,15 @@ namespace ET
         {
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-            EditorApplication.update += CheckCompolingFinish;
+            EditorApplication.update += CheckCompilingFinish;
         }
 
-        private static void CheckCompolingFinish()
+        private static void CheckCompilingFinish()
         {
             if (!EditorApplication.isCompiling)
             {
                 CreateLog();
-                EditorApplication.update -= CheckCompolingFinish;
+                EditorApplication.update -= CheckCompilingFinish;
             }
         }
 
