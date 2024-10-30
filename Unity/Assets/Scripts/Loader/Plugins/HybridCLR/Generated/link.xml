@@ -181,6 +181,7 @@
     <type fullname="ET.TimerComponentSystem" preserve="all" />
     <type fullname="ET.UniqueIdAttribute" preserve="all" />
     <type fullname="ET.UpdateSystem`1" preserve="all" />
+    <type fullname="ET.WService" preserve="all" />
     <type fullname="ET.WeightArgs" preserve="all" />
     <type fullname="ET.WinPeriod" preserve="all" />
     <type fullname="ET.World" preserve="all" />

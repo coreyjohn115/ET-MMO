@@ -159,8 +159,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.StateMachineWrap<ET.Client.DelGroupHandler.<Run>d__0>
 	// ET.StateMachineWrap<ET.Client.DeleteTask_Event.<Run>d__0>
 	// ET.StateMachineWrap<ET.Client.ESItemSystem.<ItemClick>d__7>
-	// ET.StateMachineWrap<ET.Client.ESItemSystem.<RefreShIcon>d__4>
 	// ET.StateMachineWrap<ET.Client.ESItemSystem.<RefreshFrame>d__5>
+	// ET.StateMachineWrap<ET.Client.ESItemSystem.<RefreshIcon>d__4>
 	// ET.StateMachineWrap<ET.Client.ES_EquipItemSystem.<Show>d__3>
 	// ET.StateMachineWrap<ET.Client.ES_NormalItemSystem.<Show>d__3>
 	// ET.StateMachineWrap<ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d>
@@ -805,8 +805,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.DelGroupHandler.<Run>d__0>(object&,ET.Client.DelGroupHandler.<Run>d__0&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.DeleteTask_Event.<Run>d__0>(object&,ET.Client.DeleteTask_Event.<Run>d__0&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ESItemSystem.<ItemClick>d__7>(object&,ET.Client.ESItemSystem.<ItemClick>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ESItemSystem.<RefreShIcon>d__4>(object&,ET.Client.ESItemSystem.<RefreShIcon>d__4&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ESItemSystem.<RefreshFrame>d__5>(object&,ET.Client.ESItemSystem.<RefreshFrame>d__5&)
+		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ESItemSystem.<RefreshIcon>d__4>(object&,ET.Client.ESItemSystem.<RefreshIcon>d__4&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ES_EquipItemSystem.<Show>d__3>(object&,ET.Client.ES_EquipItemSystem.<Show>d__3&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ES_NormalItemSystem.<Show>d__3>(object&,ET.Client.ES_NormalItemSystem.<Show>d__3&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d>(object&,ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d&)
@@ -976,8 +976,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.DelGroupHandler.<Run>d__0>(ET.Client.DelGroupHandler.<Run>d__0&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.DeleteTask_Event.<Run>d__0>(ET.Client.DeleteTask_Event.<Run>d__0&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ESItemSystem.<ItemClick>d__7>(ET.Client.ESItemSystem.<ItemClick>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ESItemSystem.<RefreShIcon>d__4>(ET.Client.ESItemSystem.<RefreShIcon>d__4&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ESItemSystem.<RefreshFrame>d__5>(ET.Client.ESItemSystem.<RefreshFrame>d__5&)
+		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ESItemSystem.<RefreshIcon>d__4>(ET.Client.ESItemSystem.<RefreshIcon>d__4&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ES_EquipItemSystem.<Show>d__3>(ET.Client.ES_EquipItemSystem.<Show>d__3&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ES_NormalItemSystem.<Show>d__3>(ET.Client.ES_NormalItemSystem.<Show>d__3&)
 		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d>(ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d&)

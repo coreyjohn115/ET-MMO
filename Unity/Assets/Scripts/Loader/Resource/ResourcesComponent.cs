@@ -205,11 +205,17 @@ namespace ET.Client
                 }
                 case EPlayMode.HostPlayMode:
                 {
-                    string defaultHostServer = GetHostServerURL();
-                    string fallbackHostServer = GetHostServerURL();
                     HostPlayModeParameters createParameters = new();
                     createParameters.BuildinQueryServices = new GameQueryServices();
-                    createParameters.RemoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
+                    createParameters.RemoteServices = new RemoteServices(GetHostServerURL(), GetHostServerURL());
+                    await package.InitializeAsync(createParameters).Task;
+                    break;
+                }
+                case EPlayMode.WebPlayMode:
+                {
+                    var createParameters = new WebPlayModeParameters();
+                    createParameters.BuildinQueryServices = new GameQueryServices();
+                    createParameters.RemoteServices = new RemoteServices(GetHostServerURL(), GetHostServerURL());
                     await package.InitializeAsync(createParameters).Task;
                     break;
                 }

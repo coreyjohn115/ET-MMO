@@ -163,7 +163,7 @@ namespace ET.Client
         /// </summary>
         static void CopyHotUpdateDlls()
         {
-            FileHelper.CleanDirectory(Define.CodeDir);
+            FileHelper.ClearDirectory(Define.CodeDir);
             foreach (string dllName in DllNames)
             {
                 string sourceDll = $"{Define.BuildOutputDir}/{dllName}.dll";

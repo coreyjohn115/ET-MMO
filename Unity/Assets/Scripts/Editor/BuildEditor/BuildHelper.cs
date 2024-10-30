@@ -148,7 +148,7 @@ namespace ET.Client
             buildParameters.VerifyBuildingResult = true;
             buildParameters.EnableSharePackRule = true; //启用共享资源构建模式，兼容1.5x版本
             buildParameters.FileNameStyle = EFileNameStyle.BundleName_HashName;
-            buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
+            buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.None;
             buildParameters.BuildinFileCopyParams = string.Empty;
             buildParameters.CompressOption = ECompressOption.LZ4;
 
@@ -204,6 +204,25 @@ namespace ET.Client
         public static void BuildPackageForce()
         {
             BuildInternal(true);
+        }
+
+        [MenuItem("ET/Pkg/ClearAndCopyAll", false)]
+        public static void ClearAndCopyAll()
+        {
+            var buildTarget = EditorUserBuildSettings.activeBuildTarget;
+            string dstPath = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
+            FileHelper.ClearDirectory(dstPath);
+            string outPath = $"{AssetBundleBuilderHelper.GetDefaultBuildOutputRoot()}/{buildTarget}/DefaultPackage";
+            foreach (string directory in Directory.GetDirectories(outPath))
+            {
+                var p = PathHelper.NormalizePath(directory).Split("/").Last();
+                if (p.StartsWith(DateTime.Now.ToString("yyyy-MM-dd")))
+                {
+                    FileHelper.CopyDirectory(directory, dstPath);
+                }
+            }
+
+            AssetDatabase.Refresh();
         }
 
         [MenuItem("ET/Pkg/清理下载缓存", false)]

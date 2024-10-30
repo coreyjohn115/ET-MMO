@@ -28,16 +28,16 @@ namespace ET
             }
         }
 
-        public static void CleanDirectory(string dir)
+        public static void ClearDirectory(string dir)
         {
             if (!Directory.Exists(dir))
             {
                 return;
             }
 
-            foreach (string subdir in Directory.GetDirectories(dir))
+            foreach (string subDir in Directory.GetDirectories(dir))
             {
-                Directory.Delete(subdir, true);
+                Directory.Delete(subDir, true);
             }
 
             foreach (string subFile in Directory.GetFiles(dir))
