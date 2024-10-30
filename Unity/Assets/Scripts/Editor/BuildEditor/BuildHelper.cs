@@ -34,6 +34,20 @@ namespace ET.Client
             EnableDefineSymbols("ENABLE_VIEW", true);
         }
 #endif
+
+#if UNITY_WEBGL
+        [MenuItem("ET/ChangeDefine/Remove UNITY_WEBGL", false, ETMenuItemPriority.ChangeDefine)]
+        public static void RemoveUnityWebGL()
+        {
+            EnableDefineSymbols("UNITY_WEBGL", false);
+        }
+#else
+        [MenuItem("ET/ChangeDefine/Add UNITY_WEBGL", false, ETMenuItemPriority.ChangeDefine)]
+        public static void AddUnityWebGL()
+        {
+            EnableDefineSymbols("UNITY_WEBGL", true);
+        }
+#endif
         public static void EnableDefineSymbols(string symbols, bool enable)
         {
             Debug.Log($"EnableDefineSymbols {symbols} {enable}");
@@ -134,19 +148,44 @@ namespace ET.Client
             buildParameters.VerifyBuildingResult = true;
             buildParameters.EnableSharePackRule = true; //启用共享资源构建模式，兼容1.5x版本
             buildParameters.FileNameStyle = EFileNameStyle.BundleName_HashName;
-            buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.None;
+            buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
             buildParameters.BuildinFileCopyParams = string.Empty;
             buildParameters.CompressOption = ECompressOption.LZ4;
 
-            Directory.Delete($"{buildParameters.BuildOutputRoot}/{buildTarget}", true);
+            string outPath = $"{buildParameters.BuildOutputRoot}/{buildTarget}";
+            if (Directory.Exists(outPath))
+            {
+                Directory.Delete($"{buildParameters.BuildOutputRoot}/{buildTarget}", true);
+            }
+
             // 执行构建
             ETBuildPipeline pipeline = new();
             var buildResult = pipeline.Run(buildParameters, true);
             if (buildResult.Success)
             {
                 Debug.Log($"构建成功 : {buildResult.OutputPackageDirectory}");
-                string dstPath = @"E:\Download\Bundles\PC\1.0.0\";
-                Directory.Delete(dstPath, true);
+                string dstPath = "";
+                switch (buildTarget)
+                {
+                    case BuildTarget.Android:
+                        dstPath = @"E:\Download\Bundles\Android\1.0.0\";
+                        break;
+                    case BuildTarget.iOS:
+                        dstPath = @"E:\Download\Bundles\IPhone\1.0.0\";
+                        break;
+                    case BuildTarget.WebGL:
+                        dstPath = @"E:\Download\Bundles\WebGL\1.0.0\";
+                        break;
+                    default:
+                        dstPath = @"E:\Download\Bundles\PC\1.0.0\";
+                        break;
+                }
+
+                if (Directory.Exists(dstPath))
+                {
+                    Directory.Delete(dstPath, true);
+                }
+
                 FileHelper.CopyDirectory(buildResult.OutputPackageDirectory, dstPath);
             }
             else

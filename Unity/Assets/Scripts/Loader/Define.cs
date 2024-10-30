@@ -41,5 +41,11 @@
 #else
         public static bool EnableIL2CPP = false;
 #endif
+            
+#if UNITY_WEBGL
+        public static bool WebGl = true;
+#else
+        public static bool WebGl = false;
+#endif
     }
 }

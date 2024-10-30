@@ -34,7 +34,7 @@
             self.Dispose();
         }
 
-        public static async ETTask<(bool, long)> LoginAsync(this ClientSenderComponent self, int zone, string account, string password, long accoutId)
+        public static async ETTask<(bool, long)> LoginAsync(this ClientSenderComponent self, int zone, string account, string password, long accountId)
         {
             self.fiberId = await FiberManager.Instance.Create(SchedulerType.ThreadPool, 0, SceneType.NetClient, "");
             self.netClientActorId = new ActorId(self.Fiber().Process, self.fiberId);
@@ -44,7 +44,7 @@
             m.Zone = zone;
             m.Account = account;
             m.Password = password;
-            m.Id = accoutId;
+            m.Id = accountId;
             m.RouterHttpHost = AppSetting.Instance.RouterHttpHost;
             NetClient2Main_Login response = await self.Root().GetComponent<ProcessInnerSender>().Call(self.netClientActorId, m) as NetClient2Main_Login;
             

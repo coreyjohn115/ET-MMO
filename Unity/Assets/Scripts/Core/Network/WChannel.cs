@@ -21,9 +21,9 @@ namespace ET
         private bool isSending;
 
         private bool isConnected;
-        
+
         private CancellationTokenSource cancellationTokenSource = new();
-        
+
         public WChannel(long id, HttpListenerWebSocketContext webSocketContext, WService service)
         {
             this.Service = service;
@@ -33,8 +33,8 @@ namespace ET
             this.webSocket = webSocketContext.WebSocket;
 
             isConnected = true;
-            
-            this.Service.ThreadSynchronizationContext.Post(()=>
+
+            this.Service.ThreadSynchronizationContext.Post(() =>
             {
                 this.StartRecv().NoContext();
                 this.StartSend().NoContext();
@@ -49,8 +49,7 @@ namespace ET
             this.webSocket = webSocket;
 
             isConnected = false;
-            
-            this.Service.ThreadSynchronizationContext.Post(()=>this.ConnectAsync($"ws://{ipEndPoint}").NoContext());
+            this.Service.ThreadSynchronizationContext.Post(() => this.ConnectAsync($"ws://{ipEndPoint}").NoContext());
         }
 
         public override void Dispose()
@@ -71,9 +70,9 @@ namespace ET
         {
             try
             {
-                await ((ClientWebSocket) this.webSocket).ConnectAsync(new Uri(url), cancellationTokenSource.Token);
+                await ((ClientWebSocket)this.webSocket).ConnectAsync(new Uri(url), cancellationTokenSource.Token);
                 isConnected = true;
-                
+
                 this.StartRecv().NoContext();
                 this.StartSend().NoContext();
             }
@@ -119,13 +118,13 @@ namespace ET
                     }
 
                     MemoryBuffer stream = this.queue.Dequeue();
-            
+
                     try
                     {
                         await this.webSocket.SendAsync(stream.GetMemory(), WebSocketMessageType.Binary, true, cancellationTokenSource.Token);
-                        
+
                         this.Service.Recycle(stream);
-                        
+
                         if (this.IsDisposed)
                         {
                             return;
@@ -166,8 +165,7 @@ namespace ET
                     int receiveCount = 0;
                     do
                     {
-                        receiveResult = await this.webSocket.ReceiveAsync(
-                            new Memory<byte>(cache, receiveCount, this.cache.Length - receiveCount),
+                        receiveResult = await this.webSocket.ReceiveAsync(new Memory<byte>(cache, receiveCount, this.cache.Length - receiveCount),
                             cancellationTokenSource.Token);
                         if (this.IsDisposed)
                         {
@@ -205,7 +203,7 @@ namespace ET
                 this.OnError(ErrorCore.ERR_WebsocketRecvError);
             }
         }
-        
+
         private void OnRead(MemoryBuffer memoryStream)
         {
             try
@@ -218,15 +216,15 @@ namespace ET
                 this.OnError(ErrorCore.ERR_PacketParserError);
             }
         }
-        
+
         private void OnError(int error)
         {
             Log.Info($"WChannel error: {error} {this.RemoteAddress}");
-			
+
             long channelId = this.Id;
-			
+
             this.Service.Remove(channelId);
-			
+
             this.Service.ErrorCallback(channelId, error);
         }
     }

@@ -80,6 +80,9 @@ Publish/
 /Unity/Assets/效果图.meta
 WebGL
 Unity/Bundles
+Unity/Config
+
+Tools/Openresty/logs
 
 Config/Excel
 Config/Json
