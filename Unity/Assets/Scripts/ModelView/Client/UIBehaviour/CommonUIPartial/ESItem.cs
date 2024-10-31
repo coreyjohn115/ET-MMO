@@ -18,7 +18,7 @@ namespace ET.Client
     {
         public EntityRef<ItemData> itemData;
 
-        public Dictionary<ItemTagType, Pair<UObject, GameObject>> insts = new(3);
+        public Dictionary<ItemTagType, Pair<UObject, GameObject>> instDict = new(3);
         public ItemTagType tagType = ItemTagType.Frame | ItemTagType.Icon;
         public ItemMonoView itemView;
     }

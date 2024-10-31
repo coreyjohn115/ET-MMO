@@ -21,12 +21,12 @@ namespace ET.Client
         {
             self.itemData = default;
             self.DestroyWidget();
-            foreach (var pair in self.insts.Values)
+            foreach (var pair in self.instDict.Values)
             {
                 GameObjectPoolHelper.ReturnObjectToPool(pair.Value);
             }
 
-            self.insts.Clear();
+            self.instDict.Clear();
         }
 
         /// <summary>
@@ -40,12 +40,12 @@ namespace ET.Client
                 self.tagType |= ItemTagType.Count;
             }
 
-            if (!self.insts.TryGetValue(ItemTagType.Count, out var pair))
+            if (!self.instDict.TryGetValue(ItemTagType.Count, out var pair))
             {
                 GameObject go = GameObjectPoolHelper.GetObjectFromPool(UIHelper.GetItemPoolName(ItemTagType.Count));
                 go.transform.SetParent(self.itemView.Content, false);
                 pair = new Pair<UObject, GameObject>() { Key = go.GetComponent<ExtendText>(), Value = go };
-                self.insts.Add(ItemTagType.Count, pair);
+                self.instDict.Add(ItemTagType.Count, pair);
             }
 
             ItemData item = self.itemData;
@@ -66,12 +66,12 @@ namespace ET.Client
                 self.tagType |= ItemTagType.Icon;
             }
 
-            if (!self.insts.TryGetValue(ItemTagType.Icon, out var pair))
+            if (!self.instDict.TryGetValue(ItemTagType.Icon, out var pair))
             {
                 GameObject go = GameObjectPoolHelper.GetObjectFromPool(UIHelper.GetItemPoolName(ItemTagType.Icon));
                 go.transform.SetParent(self.itemView.Content, false);
                 pair = new Pair<UObject, GameObject>() { Key = go.GetComponent<ExtendImage>(), Value = go };
-                self.insts.Add(ItemTagType.Icon, pair);
+                self.instDict.Add(ItemTagType.Icon, pair);
             }
 
             ItemData item = self.itemData;
@@ -91,12 +91,12 @@ namespace ET.Client
                 self.tagType |= ItemTagType.Frame;
             }
 
-            if (!self.insts.TryGetValue(ItemTagType.Frame, out var pair))
+            if (!self.instDict.TryGetValue(ItemTagType.Frame, out var pair))
             {
                 GameObject go = GameObjectPoolHelper.GetObjectFromPool(UIHelper.GetItemPoolName(ItemTagType.Frame));
                 go.transform.SetParent(self.itemView.Content, false);
                 pair = new Pair<UObject, GameObject>() { Key = go.GetComponent<ExtendImage>(), Value = go };
-                self.insts.Add(ItemTagType.Frame, pair);
+                self.instDict.Add(ItemTagType.Frame, pair);
             }
 
             ItemData item = self.itemData;
@@ -107,7 +107,7 @@ namespace ET.Client
                 return;
             }
 
-            await self.SetSprite(img, item.Config.Icon);
+            await self.SetSprite(img, qualityCfg.ItemFrame);
         }
 
         public static void RefreshName(this ESItem self)
@@ -117,12 +117,12 @@ namespace ET.Client
                 self.tagType |= ItemTagType.Name;
             }
 
-            if (!self.insts.TryGetValue(ItemTagType.Name, out var pair))
+            if (!self.instDict.TryGetValue(ItemTagType.Name, out var pair))
             {
                 GameObject go = GameObjectPoolHelper.GetObjectFromPool(UIHelper.GetItemPoolName(ItemTagType.Name));
                 go.transform.SetParent(self.itemView.Content, false);
                 pair = new Pair<UObject, GameObject>() { Key = go.GetComponent<ExtendImage>(), Value = go };
-                self.insts.Add(ItemTagType.Name, pair);
+                self.instDict.Add(ItemTagType.Name, pair);
             }
 
             ItemData item = self.itemData;
