@@ -27,7 +27,7 @@ namespace ET.Client
         public static void Refresh(this Scroll_Item_Emoj self, int id)
         {
             var cfg = EmojiConfigCategory.Instance.Get(id);
-            IconHelper.SetSprite(self, self.E_IconExtendImage, cfg.Icon, AtlasType.Emotion).NoContext();
+            self.SetSprite(self.E_IconExtendImage, cfg.Icon).NoContext();
         }
     }
 }

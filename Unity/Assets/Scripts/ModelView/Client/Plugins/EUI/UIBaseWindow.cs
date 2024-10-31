@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace ET.Client
 {
@@ -32,7 +33,7 @@ namespace ET.Client
             {
                 if (this.UIPrefabGameObject)
                 {
-                    return (RectTransform) this.UIPrefabGameObject.transform;
+                    return (RectTransform)this.UIPrefabGameObject.transform;
                 }
 
                 return null;
@@ -73,5 +74,6 @@ namespace ET.Client
         public WindowID m_preWindowID = WindowID.Win_Invaild;
         public WindowID m_windowID = WindowID.Win_Invaild;
         public GameObject UIPrefabGameObject = null;
+        public Dictionary<string, int> spriteRefCount = new();
     }
 }

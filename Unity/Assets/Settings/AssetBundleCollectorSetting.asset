@@ -56,7 +56,7 @@ MonoBehaviour:
       ActiveRuleName: EnableGroup
       Collectors:
       - CollectPath: Assets/Bundles/Config
-        CollectorGUID: ff3acf49577de0f44b9e1e1afc6f131e
+        CollectorGUID: 
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
@@ -162,6 +162,19 @@ MonoBehaviour:
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Raw
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Bundles/Raw
+        CollectorGUID: ede1c64b3f511bc4a83f63c02aa87f8a
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackRawFile
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

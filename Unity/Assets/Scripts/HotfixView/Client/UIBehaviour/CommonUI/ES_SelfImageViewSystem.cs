@@ -23,7 +23,7 @@ namespace ET.Client
         public static Vector2 Refresh(this ES_SelfImage self, Scroll_Item_Chat item)
         {
             EmojiConfig config = EmojiConfigCategory.Instance.Get(item.Data.Emjo);
-            IconHelper.SetSprite(self, self.E_IconExtendImage, config.Icon, AtlasType.Emotion).NoContext();
+            self.SetSprite(self.E_IconExtendImage, config.Icon).NoContext();
             RectTransform trans = self.E_IconExtendImage.rectTransform;
             return new Vector2(trans.sizeDelta.x, trans.rect.height + Mathf.Abs(trans.anchoredPosition.y) + ClientChatComponent.Gap);
         }

@@ -64,6 +64,7 @@ namespace ET.Client
             this.okButton.gameObject.SetActive(!ok.IsNullOrEmpty());
             this.cancelButton.gameObject.SetActive(!cancel.IsNullOrEmpty());
 
+            this.root.SetActive(true);
             this.tcs = ETTask<int>.Create();
             return await this.tcs;
         }
@@ -73,6 +74,12 @@ namespace ET.Client
             UpdateMsg(msg);
             this.okButton.gameObject.SetActive(!ok.IsNullOrEmpty());
             this.cancelButton.gameObject.SetActive(!cancel.IsNullOrEmpty());
+            this.root.SetActive(true);
+        }
+
+        public void Close()
+        {
+            this.root.SetActive(false);
         }
 
         public void Release()
@@ -175,6 +182,8 @@ namespace ET.Client
                         ExitGame();
                         return errno;
                     }
+
+                    this.hotPop.Close();
                 }
                 else
                 {

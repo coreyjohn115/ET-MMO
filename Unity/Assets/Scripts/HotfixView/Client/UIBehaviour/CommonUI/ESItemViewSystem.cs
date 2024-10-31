@@ -81,7 +81,7 @@ namespace ET.Client
                 return;
             }
 
-            img.sprite = await self.LoadIconSpriteAsync(item.Config.Icon);
+            await self.SetSprite(img, item.Config.Icon);
         }
 
         public static async ETTask RefreshFrame(this ESItem self)
@@ -107,7 +107,7 @@ namespace ET.Client
                 return;
             }
 
-            img.sprite = await self.LoadWidgetSpriteAsync(qualityCfg.ItemFrame);
+            await self.SetSprite(img, item.Config.Icon);
         }
 
         public static void RefreshName(this ESItem self)

@@ -4,14 +4,6 @@ using System.Collections.Generic;
 
 namespace ET.Client
 {
-    public enum AtlasType
-    {
-        Icon_Common,
-        Widget,
-        ArtText,
-        Emotion,
-    }
-
     [FriendOf(typeof (WindowCoreData))]
     [FriendOf(typeof (UIBaseWindow))]
     [FriendOf(typeof (UIComponent))]
@@ -36,11 +28,6 @@ namespace ET.Client
             self.visibleWindowsDic?.Clear();
             self.stackWindowsQueue?.Clear();
             self.uiBaseWindowListCached?.Clear();
-            foreach (string name in Enum.GetNames(typeof (AtlasType)))
-            {
-                self.atlasPath.Add(name, name.ToUISpriteAtlasPath());
-            }
-
             self.Root().GetComponent<TimerComponent>().NewRepeatedTimer(1000L, TimerInvokeType.CheckUICache, self);
         }
 
@@ -67,11 +54,6 @@ namespace ET.Client
                 string path = $"Assets/Bundles/UI/Common/Item/{t}.prefab";
                 await GameObjectPoolHelper.InitPoolWithPathAsync(UIHelper.GetItemPoolName(t), path, 5, PoolInflationType.INCREMENT);
             }
-        }
-
-        public static string GetAtlasPath(this UIComponent self, AtlasType t)
-        {
-            return self.atlasPath[t.ToString()];
         }
 
         /// <summary>
@@ -295,7 +277,7 @@ namespace ET.Client
                 for (int i = 0; i < self.showWindowsList.Count; i++)
                 {
                     UIBaseWindow win = self.showWindowsList[i];
-                    if (!win.WindowData.TriggerFoucs)
+                    if (!win.WindowData.TriggerFocus)
                     {
                         continue;
                     }
@@ -458,12 +440,12 @@ namespace ET.Client
             baseWindow.UITransform.SetAsLastSibling();
             baseWindow.UITransform.SetActive(true);
             UIEvent.Instance.GetUIEventHandler(id).OnShowWindow(baseWindow, showData);
-            if (self.showWindowsList.Count > 0 && baseWindow.WindowData.TriggerFoucs)
+            if (self.showWindowsList.Count > 0 && baseWindow.WindowData.TriggerFocus)
             {
                 for (int i = 0; i < self.showWindowsList.Count; i++)
                 {
                     UIBaseWindow win = self.showWindowsList[i];
-                    if (!win.WindowData.TriggerFoucs)
+                    if (!win.WindowData.TriggerFocus)
                     {
                         continue;
                     }
@@ -474,7 +456,7 @@ namespace ET.Client
                 }
             }
 
-            if (baseWindow.WindowData.TriggerFoucs)
+            if (baseWindow.WindowData.TriggerFocus)
             {
                 UIEvent.Instance.GetUIEventHandler(id).OnFocus(baseWindow);
             }

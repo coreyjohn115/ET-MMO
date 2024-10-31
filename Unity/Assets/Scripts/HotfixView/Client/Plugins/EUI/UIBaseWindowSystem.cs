@@ -18,24 +18,48 @@ namespace ET.Client
         {
             self.WindowID = WindowID.Win_Invaild;
             self.IsInStackQueue = false;
-            if (self.UIPrefabGameObject != null)
+            self.Root().GetComponent<ResourcesAtlasComponent>().OnWindowDispose(self.spriteRefCount);
+            self.spriteRefCount.Clear();
+            if (!self.UIPrefabGameObject)
             {
-                UnityEngine.Object.Destroy(self.UIPrefabGameObject);
-                self.UIPrefabGameObject = null;
+                return;
             }
+
+            UnityEngine.Object.Destroy(self.UIPrefabGameObject);
+            self.UIPrefabGameObject = null;
+        }
+
+        public static async ETTask SetSprite(this UIBaseWindow self, ExtendImage image, string spriteName)
+        {
+            Sprite sp = await self.Root().GetComponent<ResourcesAtlasComponent>().LoadSpriteAsync(spriteName);
+            if (!sp)
+            {
+                return;
+            }
+
+            if (!self.spriteRefCount.TryGetValue(spriteName, out _))
+            {
+                self.spriteRefCount.Add(spriteName, 1);
+            }
+            else
+            {
+                self.spriteRefCount[spriteName]++;
+            }
+
+            image.sprite = sp;
         }
 
         public static void SetRoot(this UIBaseWindow self, Transform rootTransform)
         {
-            if (self.UITransform == null)
+            if (!self.UITransform)
             {
-                Log.Error($"uibaseWindows {self.WindowID} uiTransform is null!!!");
+                Log.Error($"uiBaseWindows {self.WindowID} uiTransform is null!!!");
                 return;
             }
 
-            if (rootTransform == null)
+            if (!rootTransform)
             {
-                Log.Error($"uibaseWindows {self.WindowID} rootTransform is null!!!");
+                Log.Error($"uiBaseWindows {self.WindowID} rootTransform is null!!!");
                 return;
             }
 

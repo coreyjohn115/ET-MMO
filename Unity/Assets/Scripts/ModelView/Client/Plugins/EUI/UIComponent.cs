@@ -41,6 +41,5 @@ namespace ET.Client
 
         public long timer;
         public bool isPopStackWndStatus = false;
-        public Dictionary<string, string> atlasPath = new();
     }
 }

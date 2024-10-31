@@ -132,7 +132,7 @@ namespace ET.Client
         {
             UnityEngine.Debug.Log("SpriteAtlasToJson Start:");
 
-            var dict = new Dictionary<string, List<string>>();
+            SpriteToAtlas config = new ();
             var atlasPath = AssetDatabase.FindAssets("t:spriteatlas", new[] { "Assets/Bundles/UI/Atlas" })
                     .Select(AssetDatabase.GUIDToAssetPath)
                     .Where(x => x != "ArtText_en");
@@ -160,11 +160,13 @@ namespace ET.Client
                 var p2 = p.Replace('\\', '/').Replace("Assets/Bundles/UI/Atlas/", "");
                 const string ext = ".spriteatlas";
                 p2 = p2.Remove(p2.Length - ext.Length);
-                dict.Add(p2, spList);
+                config.NameList.Add(p2);
+                config.AtlasList.Add(spList);
             }
 
-            var jsonPath = $"{Application.dataPath}/Resources/SpriteToAtlas.json";
-            File.WriteAllText(jsonPath, MongoHelper.ToJson(dict), System.Text.Encoding.UTF8);
+            var jsonPath = $"{Application.dataPath}/Bundles/Raw/SpriteToAtlas.json";
+            File.WriteAllText(jsonPath, MongoHelper.ToJson(config), System.Text.Encoding.UTF8);
+            AssetDatabase.Refresh();
         }
     }
 }

@@ -9,7 +9,7 @@
         {
             uiBaseWindow.WindowData.WindowType = UIWindowType.Normal;
             uiBaseWindow.WindowData.NeedMask = false;
-            uiBaseWindow.WindowData.TriggerFoucs = false;
+            uiBaseWindow.WindowData.TriggerFocus = false;
             uiBaseWindow.WindowData.IsStatic = true;
         }
 

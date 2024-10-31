@@ -20,6 +20,8 @@ namespace ET
         public string HostServerHost => this.appSetting.GetElement("HostServerHost").Value.AsString;
 
         public string AppVersion => this.appSetting.GetElement("AppVersion").Value.AsString;
+        
+        public bool Debug => this.appSetting.GetElement("Debug").Value.AsBoolean;
 
         public BsonDocument AppSettings => this.appSetting;
 

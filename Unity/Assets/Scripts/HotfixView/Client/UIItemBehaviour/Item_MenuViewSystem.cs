@@ -41,7 +41,7 @@ namespace ET.Client
 
             if (self.E_IconExtendImage)
             {
-                IconHelper.SetSprite(self, self.E_IconExtendImage, data.Config.Icon, AtlasType.Widget).NoContext();
+                self.SetSprite(self.E_IconExtendImage, data.Config.Icon).NoContext();
             }
 
             if (select)

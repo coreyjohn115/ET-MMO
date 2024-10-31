@@ -1,4 +1,6 @@
-﻿namespace ET.Client
+﻿using UnityEngine.Serialization;
+
+namespace ET.Client
 {
     public enum UIWindowType
     {
@@ -36,8 +38,8 @@
         public bool MaskClose = true;
 
         /// <summary>
-        /// 是否触发Foucs事件
+        /// 是否触发Focus事件
         /// </summary>
-        public bool TriggerFoucs = true;
+        public bool TriggerFocus = true;
     }
 }

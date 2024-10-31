@@ -12,6 +12,8 @@
         /// </summary>
         public const string BuildOutputDir = "Temp/Bin/Debug";
 
+        public const string DefPackageName = "DefaultPackage";
+
 #if DEBUG
         public static bool IsDebug = true;
 #else
@@ -41,7 +43,7 @@
 #else
         public static bool EnableIL2CPP = false;
 #endif
-            
+
 #if UNITY_WEBGL
         public static bool WebGl = true;
 #else

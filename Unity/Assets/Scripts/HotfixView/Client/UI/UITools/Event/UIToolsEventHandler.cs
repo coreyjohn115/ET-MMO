@@ -10,7 +10,7 @@
 			uiBaseWindow.WindowData.WindowType = UIWindowType.Other; 
 			uiBaseWindow.WindowData.IsStatic = true;
 			uiBaseWindow.WindowData.NeedMask = false;
-			uiBaseWindow.WindowData.TriggerFoucs = false;
+			uiBaseWindow.WindowData.TriggerFocus = false;
 		}
 
 		public void OnInitComponent(UIBaseWindow uiBaseWindow)

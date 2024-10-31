@@ -7,6 +7,7 @@ namespace ET.Client
         {
             root.AddComponent<UIComponent>();
             root.AddComponent<ResourcesLoaderComponent>();
+            root.AddComponent<ResourcesAtlasComponent>();
             root.AddComponent<ClientPlayerComponent>();
             root.AddComponent<CurrentScenesComponent>();
 
@@ -14,9 +15,6 @@ namespace ET.Client
             root.AddComponent<OperaComponent>();
             await root.AddComponent<RedDotComponent>().PreLoadGameObject();
             await root.GetComponent<UIComponent>().PreloadUI();
-
-            await IconHelper.LoadAtlas(root, AtlasType.Widget);
-            await IconHelper.LoadAtlas(root, AtlasType.Icon_Common);
 
             // 根据配置修改掉Main Fiber的SceneType
             SceneType sceneType = EnumHelper.FromString<SceneType>(Global.Instance.GlobalConfig.AppType.ToString());

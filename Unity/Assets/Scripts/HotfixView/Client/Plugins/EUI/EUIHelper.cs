@@ -21,7 +21,7 @@ namespace ET.Client
 
             Label.text = content;
         }
-        
+
         public static void SetText(this Text Label, string content, Color color)
         {
             if (null == Label)
@@ -33,7 +33,7 @@ namespace ET.Client
             Label.text = content;
             Label.color = color;
         }
-        
+
         public static void SetText(this Text Label, int id, Color color)
         {
             if (null == Label)
@@ -85,8 +85,8 @@ namespace ET.Client
                 Log.Error("label is null");
                 return;
             }
-            
-            int id = isBind ? 200018 : 200019;
+
+            int id = isBind? 200018 : 200019;
             var language = LanguageCategory.Instance.Get2(id);
             if (language == null)
             {
@@ -269,7 +269,7 @@ namespace ET.Client
         {
             GameObjectPoolHelper.ClearPool(scrollRect.prefabSource.prefabName);
         }
-        
+
         public static void ReturnPool(this LoopScrollRect scrollRect)
         {
             GameObjectPoolHelper.ReturnPool(scrollRect.prefabSource.prefabName);
@@ -304,7 +304,7 @@ namespace ET.Client
                 {
                     Log.Error(e);
                 }
-                
+
                 UIEvent.Instance.SetUIClick(false);
             }
         }
@@ -334,7 +334,7 @@ namespace ET.Client
                 {
                     Log.Error(e);
                 }
-                
+
                 UIEvent.Instance.SetUIClick(false);
             }
         }
@@ -442,5 +442,26 @@ namespace ET.Client
         }
 
         #endregion
+
+        public static async ETTask SetSprite(this Entity self, ExtendImage image, string spriteName)
+        {
+            Entity entity = self.Parent;
+            while (entity != null)
+            {
+                if (entity.GetType().Name.StartsWith("UI"))
+                {
+                    break;
+                }
+
+                entity = entity.Parent;
+            }
+
+            if (!entity)
+            {
+                return;
+            }
+
+            await entity.GetParent<UIBaseWindow>().SetSprite(image, spriteName);
+        }
     }
 }

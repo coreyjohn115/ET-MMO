@@ -13,8 +13,6 @@ namespace ET.Client
     {
         private const string relativeDirPrefix = "../Release";
 
-        public static string BuildFolder = "../Release/{0}/StreamingAssets/";
-
         [InitializeOnLoadMethod]
         public static void ReGenerateProjectFiles()
         {
@@ -130,6 +128,7 @@ namespace ET.Client
         private static void BuildInternal(bool forceRebuild)
         {
             AssemblyTool.MenuItemOfCompile();
+            ResCheck.SpriteAtlasToJson();
             var buildTarget = EditorUserBuildSettings.activeBuildTarget;
             var isWebGL = buildTarget == BuildTarget.WebGL;
             Debug.Log($"开始构建 : {buildTarget}");
@@ -231,6 +230,13 @@ namespace ET.Client
             string projectPath = Path.GetDirectoryName(Application.dataPath);
             string p = Path.Combine(projectPath, "Bundles/DefaultPackage");
             Directory.Delete(p, true);
+        }
+
+        [MenuItem("YooAsset/打开构建目录", false)]
+        public static void OpenBundleDirectory()
+        {
+            string path = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
+            EditorUtility.RevealInFinder($"{path}/{EditorUserBuildSettings.activeBuildTarget}/");
         }
     }
 }

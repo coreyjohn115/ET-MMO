@@ -43,10 +43,11 @@
 
         // 战斗飘字
         public const int BattleText = 1001;
-
         public const int CheckAnimation = 1002;
 
         // 检测ui缓存
         public const int CheckUICache = 1003;
+        //检测资源缓存
+        public const int CheckAtlasCache = 1004;
     }
 }
