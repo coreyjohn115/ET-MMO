@@ -211,13 +211,13 @@ namespace ET.Client
             var buildTarget = EditorUserBuildSettings.activeBuildTarget;
             string dstPath = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
             FileHelper.ClearDirectory(dstPath);
-            string outPath = $"{AssetBundleBuilderHelper.GetDefaultBuildOutputRoot()}/{buildTarget}/DefaultPackage";
+            string outPath = $"{AssetBundleBuilderHelper.GetDefaultBuildOutputRoot()}/{buildTarget}/{Define.DefPackageName}";
             foreach (string directory in Directory.GetDirectories(outPath))
             {
                 var p = PathHelper.NormalizePath(directory).Split("/").Last();
                 if (p.StartsWith(DateTime.Now.ToString("yyyy-MM-dd")))
                 {
-                    FileHelper.CopyDirectory(directory, dstPath);
+                    FileHelper.CopyDirectory(directory, $"{dstPath}/{Define.DefPackageName}");
                 }
             }
 
@@ -228,7 +228,7 @@ namespace ET.Client
         public static void ClearCache()
         {
             string projectPath = Path.GetDirectoryName(Application.dataPath);
-            string p = Path.Combine(projectPath, "Bundles/DefaultPackage");
+            string p = Path.Combine(projectPath, $"Bundles/{Define.DefPackageName}");
             Directory.Delete(p, true);
         }
 
