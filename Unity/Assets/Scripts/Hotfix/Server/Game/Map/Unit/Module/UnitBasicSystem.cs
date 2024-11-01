@@ -13,7 +13,7 @@ namespace ET.Server
             }
         }
 
-        public static void Initlize(this UnitBasic self, Player Player)
+        public static void Initialize(this UnitBasic self, Player Player)
         {
             
         }

@@ -10,7 +10,7 @@ namespace ET.Server
             M2C_UpdateHp pkg = M2C_UpdateHp.Create();
             pkg.RoleId = unit.Id;
             pkg.Hp = args.New;
-            MapMessageHelper.Broadcast(unit, pkg);
+            MapHelper.Broadcast(unit, pkg);
         }
     }
 
@@ -89,7 +89,7 @@ namespace ET.Server
             M2C_UpdateShield pkg = M2C_UpdateShield.Create();
             pkg.RoleId = self.Id;
             pkg.KV = new Dictionary<int, long>(self.shieldIdDict);
-            MapMessageHelper.Broadcast(self.GetParent<Unit>(), pkg);
+            MapHelper.Broadcast(self.GetParent<Unit>(), pkg);
         }
     }
 }

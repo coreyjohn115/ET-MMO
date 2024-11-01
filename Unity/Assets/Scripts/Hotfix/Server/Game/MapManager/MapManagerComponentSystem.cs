@@ -27,7 +27,17 @@ public static partial class MapManagerComponentSystem
         }
     }
 
-    public static async ETTask<MapUnit> CreateMapAsync(this MapManagerComponent self, int mapId)
+    [Event(SceneType.MapManager)]
+    private class PlayerLeaveEvent: AEvent<Scene, PlayerLeave>
+    {
+        protected override async ETTask Run(Scene scene, PlayerLeave a)
+        {
+            scene.GetComponent<MapManagerComponent>().ExitMap(a.UnitId);
+            await ETTask.CompletedTask;
+        }
+    }
+
+    public static async ETTask<MapUnit> CreateMapAsync(this MapManagerComponent self, int mapId, CreateMapCtx ctx = default)
     {
         using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.CreateMap, mapId))
         {
@@ -49,9 +59,10 @@ public static partial class MapManagerComponentSystem
 
             unit.fiberId = id;
             unit.actorId = new ActorId(self.Fiber().Process, id);
-            if (config.ValidTime > 0)
+            long t = ctx.ExpiredTime > 0? ctx.ExpiredTime : config.ValidTime;
+            if (t > 0)
             {
-                unit.closeTime = TimeInfo.Instance.Frame + config.ValidTime * 1000;
+                unit.closeTime = TimeInfo.Instance.Frame + t * 1000;
             }
 
             if (!self.mapCfgDict.TryGetValue(mapId, out var list))
@@ -60,42 +71,57 @@ public static partial class MapManagerComponentSystem
                 self.mapCfgDict.Add(mapId, list);
             }
 
+            M2M_InitMap initMap = M2M_InitMap.Create();
+            initMap.Ctx = ctx;
+            self.Root().GetComponent<MessageSender>().Send(unit.actorId, initMap);
             list.Add(unit.Id);
-            Log.Console($"地图{unit.Id} {mapId}创建成功, fiberId:{unit.fiberId}");
+            Log.Console($"地图 {mapId}创建成功, fiberId:{unit.fiberId}");
             return unit;
         }
     }
 
-    public static async ETTask EnterMapAsync(this MapManagerComponent self, long id, int mapId)
+    public static void EnterMap(this MapManagerComponent self, O2M_EnterMap message)
     {
-        await ETTask.CompletedTask;
+        self.ExitMap(message.Id);
+        foreach (long l in self.mapCfgDict[message.MapId])
+        {
+            MapUnit unit = self.GetChild<MapUnit>(l);
+            if (unit.actorId == message.MapActorId)
+            {
+                unit.count++;
+                self.roleMapDict.Add(message.Id, unit.Id);
+                break;
+            }
+        }
     }
 
     public static async ETTask<(int, ActorId)> GetMapActorId(this MapManagerComponent self, int mapId, long id = 0)
     {
         using (await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.CreateMap, mapId))
         {
-            //指定地图
-            if (id > 0)
-            {
-                MapUnit unit = self.GetChild<MapUnit>(id);
-                if (unit == default)
-                {
-                    return (ErrorCode.ERR_CantFindMap, default);
-                }
-
-                return (ErrorCode.ERR_Success, unit.actorId);
-            }
-
             //在当前所在地图中找
             if (self.mapCfgDict.TryGetValue(mapId, out var list))
             {
-                foreach (long l in list)
+                if (id > 0)
                 {
-                    MapUnit unit = self.GetChild<MapUnit>(l);
-                    if (unit.IsAvailable())
+                    foreach (long l in list)
                     {
-                        return (ErrorCode.ERR_Success, unit.actorId);
+                        MapUnit unit = self.GetChild<MapUnit>(l);
+                        if (unit.fiberId == id && unit.IsAvailable())
+                        {
+                            return (ErrorCode.ERR_Success, unit.actorId);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (long l in list)
+                    {
+                        MapUnit unit = self.GetChild<MapUnit>(l);
+                        if (unit.IsAvailable())
+                        {
+                            return (ErrorCode.ERR_Success, unit.actorId);
+                        }
                     }
                 }
             }
@@ -107,6 +133,15 @@ public static partial class MapManagerComponentSystem
             }
 
             return (ErrorCode.ERR_LoginError, default);
+        }
+    }
+
+    private static void ExitMap(this MapManagerComponent self, long id)
+    {
+        if (self.roleMapDict.Remove(id, out long value))
+        {
+            MapUnit unit = self.GetChild<MapUnit>(value);
+            unit.count--;
         }
     }
 

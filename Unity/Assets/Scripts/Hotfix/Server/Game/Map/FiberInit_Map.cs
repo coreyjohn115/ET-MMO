@@ -11,11 +11,12 @@
             root.AddComponent<CoroutineLockComponent>();
             root.AddComponent<ProcessInnerSender>();
             root.AddComponent<MessageSender>();
-            root.AddComponent<UnitComponent>();
-            root.AddComponent<AOIManagerComponent>();
             root.AddComponent<LocationProxyComponent>();
             root.AddComponent<MessageLocationSenderComponent>();
 
+            root.AddComponent<AOIManagerComponent>();
+            root.AddComponent<UnitComponent>();
+            root.AddComponent<MapComponent>();
             await ETTask.CompletedTask;
         }
     }

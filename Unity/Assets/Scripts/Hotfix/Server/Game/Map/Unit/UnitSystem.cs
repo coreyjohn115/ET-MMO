@@ -14,7 +14,7 @@ namespace ET.Server
             hurtList.RoleId = self.Id;
             hurtList.HurtList.AddRange(pkg.HurtInfos);
             hurtList.ViewCmd = pkg.ViewCmd;
-            MapMessageHelper.Broadcast(self, hurtList);
+            MapHelper.Broadcast(self, hurtList);
         }
 
         public static void SyncBasicInfo(this Unit self)

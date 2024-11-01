@@ -21,7 +21,7 @@
 
             Unit ub = b.GetParent<Unit>();
 
-            MapMessageHelper.NoticeUnitAdd(ua, ub);
+            MapHelper.NoticeUnitAdd(ua, ub);
             
             await ETTask.CompletedTask;
         }

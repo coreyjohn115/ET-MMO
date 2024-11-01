@@ -26,7 +26,7 @@ namespace ET.Server
 
             // 广播寻路路径
             m2CPathfindingResult.Id = unit.Id;
-            MapMessageHelper.Broadcast(unit, m2CPathfindingResult);
+            MapHelper.Broadcast(unit, m2CPathfindingResult);
 
             MoveComponent moveComponent = unit.GetComponent<MoveComponent>();
 
@@ -51,7 +51,7 @@ namespace ET.Server
             stop.Id = unit.Id;
             stop.Position = unit.Position;
             stop.Rotation = unit.Rotation;
-            MapMessageHelper.Broadcast(unit, stop);
+            MapHelper.Broadcast(unit, stop);
         }
     }
 }

@@ -17,6 +17,7 @@ public class MapUnit: Entity, IAwake<int>, IDestroy, ISerializeToEntity
 
     public int fiberId;
     public ActorId actorId;
+    public CreateMapCtx ctx;
 
     /// <summary>
     /// 当前地图人数

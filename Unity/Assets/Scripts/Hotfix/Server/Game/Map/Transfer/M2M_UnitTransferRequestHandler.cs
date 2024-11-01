@@ -19,6 +19,9 @@ namespace ET.Server
                 unit.AddComponent(entity);
             }
 
+            unit.LastMapId = unit.MapId;
+            unit.MapId = request.MapId;
+            unit.MapUid = scene.Fiber.Id;
             unit.AddComponent<MoveComponent>();
             unit.AddComponent<PathfindingComponent, string>(MapConfigCategory.Instance.Get(request.MapId).PathName);
             unit.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.OrderedMessage);
@@ -40,7 +43,7 @@ namespace ET.Server
 
             // 通知客户端创建My Unit
             M2C_CreateMyUnit m2CCreateUnits = new();
-            m2CCreateUnits.Unit = MapMessageHelper.CreateUnitInfo(unit);
+            m2CCreateUnits.Unit = MapHelper.CreateUnitInfo(unit);
             await unit.SendToClient(m2CCreateUnits);
 
             // 加入aoi

@@ -10,5 +10,8 @@ public class MapManagerComponent: Entity, IAwake, IDestroy
     public long timer;
 
     [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
-    public Dictionary<int, HashSet<long>> mapCfgDict = new();
+    public Dictionary<int, HashSet<long>> mapCfgDict = [];
+
+    [BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
+    public Dictionary<long, long> roleMapDict = [];
 }

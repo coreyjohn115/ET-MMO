@@ -46,6 +46,23 @@ namespace ET
             }
         }
 
+        /// <summary>
+        /// 当前所在地图
+        /// </summary>
+        public int MapId { get; set; }
+
+        /// <summary>
+        /// 上次离开的地图
+        /// </summary>
+        public int LastMapId { get; set; }
+
+        public int MapUid { get; set; }
+
+        /// <summary>
+        /// 玩家阵营
+        /// </summary>
+        public CampType Camp { get; set; }
+
         protected override string ViewName
         {
             get

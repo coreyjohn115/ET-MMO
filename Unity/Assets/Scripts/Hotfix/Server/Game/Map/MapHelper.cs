@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 
 namespace ET.Server
 {
     [FriendOf(typeof (MoveComponent))]
     [FriendOf(typeof (NumericComponent))]
-    public static partial class MapMessageHelper
+    public static partial class MapHelper
     {
         public static UnitInfo CreateUnitInfo(Unit unit)
         {

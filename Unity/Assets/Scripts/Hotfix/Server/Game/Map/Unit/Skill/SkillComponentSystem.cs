@@ -332,7 +332,7 @@ public static partial class SkillComponentSystem
         }
 
         useSkill.Forward = dyna.Forward;
-        MapMessageHelper.Broadcast(unit, useSkill);
+        MapHelper.Broadcast(unit, useSkill);
 
         self.dyna = dyna;
         self.oft = 0;
@@ -380,7 +380,7 @@ public static partial class SkillComponentSystem
             M2C_BreakSkill breakSkill = M2C_BreakSkill.Create();
             breakSkill.Id = self.usingSkillId;
             breakSkill.RoleId = unit.Id;
-            MapMessageHelper.Broadcast(unit, breakSkill);
+            MapHelper.Broadcast(unit, breakSkill);
             self.UseSuccess();
         }
 

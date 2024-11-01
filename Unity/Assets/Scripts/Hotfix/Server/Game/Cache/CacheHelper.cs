@@ -81,7 +81,7 @@ namespace ET.Server
             
             if (isNewPlayer)
             {
-                unit.GetComponent<UnitBasic>().Initlize(player);
+                unit.GetComponent<UnitBasic>().Initialize(player);
                 UpdateAllCache(unit.Scene(), unit);
             }
 

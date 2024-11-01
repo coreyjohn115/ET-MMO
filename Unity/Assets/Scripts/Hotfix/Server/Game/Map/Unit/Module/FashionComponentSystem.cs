@@ -30,7 +30,7 @@ namespace ET.Server
             Unit unit = self.GetParent<Unit>();
             message.RoleId = unit.Id;
             message.KV.AddRange(self.FashionEffects);
-            MapMessageHelper.Broadcast(unit, message);
+            MapHelper.Broadcast(unit, message);
         }
     }
 }

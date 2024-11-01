@@ -126,6 +126,11 @@ message M2M_UnitTransferResponse // IResponse
 {
 }
 
+message M2M_InitMap // IMessage
+{
+	CreateMapCtx Ctx = 1;
+}
+
 //获取地图地址
 //ResponseType M2O_GetMapActorIdResponse
 message O2M_GetMapActorIdRequest // IRequest
@@ -134,6 +139,26 @@ message O2M_GetMapActorIdRequest // IRequest
 	int64 Id = 2;
 }
 message M2O_GetMapActorIdResponse // IResponse
+{
+	ActorId ActorId = 1;
+}
+
+//进入地图
+message O2M_EnterMap // IMessage
+{
+	int32 MapId = 1;
+	int64 Id = 2;
+	ActorId MapActorId = 3;
+}
+
+//创建地图
+//ResponseType M2O_CreateMapResponse
+message O2M_CreateMapRequest // IRequest
+{
+	int32 MapId = 1;
+	CreateMapCtx Ctx = 2;
+}
+message M2O_CreateMapResponse // IResponse
 {
 	ActorId ActorId = 1;
 }

@@ -1,7 +1,7 @@
 ﻿namespace ET.Server;
 
 [MessageHandler(SceneType.Map)]
-public class A2M_UnitQueryRequest: MessageHandler<Scene, UnitQueryRequest, UnitQueryResponse>
+public class A2M_UnitQueryHandler: MessageHandler<Scene, UnitQueryRequest, UnitQueryResponse>
 {
     protected override async ETTask Run(Scene scene, UnitQueryRequest request, UnitQueryResponse response)
     {

@@ -2,9 +2,9 @@
 
 namespace ET.Server
 {
-    [FriendOf(typeof(AOIManagerComponent))]
-    [FriendOf(typeof(AOIEntity))]
-    [FriendOf(typeof(Cell))]
+    [FriendOf(typeof (AOIManagerComponent))]
+    [FriendOf(typeof (AOIEntity))]
+    [FriendOf(typeof (Cell))]
     public static partial class AOIManagerComponentSystem
     {
         public static void Add(this AOIManagerComponent self, AOIEntity aoiEntity, float x, float y)
@@ -71,7 +71,7 @@ namespace ET.Server
                 Cell cell = self.GetCell(cellId);
                 aoiEntity.UnSubLeave(cell);
             }
-    
+
             // 检查
             if (aoiEntity.SeeUnits.Count > 1)
             {
@@ -95,7 +95,7 @@ namespace ET.Server
             return cell;
         }
 
-        public static void Move(AOIEntity aoiEntity, Cell newCell, Cell preCell)
+        private static void Move(AOIEntity aoiEntity, Cell newCell, Cell preCell)
         {
             aoiEntity.Cell = newCell;
             preCell.Remove(aoiEntity);
