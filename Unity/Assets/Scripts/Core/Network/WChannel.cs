@@ -36,7 +36,7 @@ namespace ET
 
             this.Service.ThreadSynchronizationContext.Post(() =>
             {
-                this.StartRecv().NoContext();
+                this.StartReceive().NoContext();
                 this.StartSend().NoContext();
             });
         }
@@ -73,7 +73,7 @@ namespace ET
                 await ((ClientWebSocket)this.webSocket).ConnectAsync(new Uri(url), cancellationTokenSource.Token);
                 isConnected = true;
 
-                this.StartRecv().NoContext();
+                this.StartReceive().NoContext();
                 this.StartSend().NoContext();
             }
             catch (Exception e)
@@ -86,7 +86,6 @@ namespace ET
         public void Send(MemoryBuffer memoryBuffer)
         {
             this.queue.Enqueue(memoryBuffer);
-
             if (this.isConnected)
             {
                 this.StartSend().NoContext();
@@ -108,7 +107,6 @@ namespace ET
                 }
 
                 this.isSending = true;
-
                 while (true)
                 {
                     if (this.queue.Count == 0)
@@ -122,9 +120,7 @@ namespace ET
                     try
                     {
                         await this.webSocket.SendAsync(stream.GetMemory(), WebSocketMessageType.Binary, true, cancellationTokenSource.Token);
-
                         this.Service.Recycle(stream);
-
                         if (this.IsDisposed)
                         {
                             return;
@@ -150,7 +146,7 @@ namespace ET
 
         private readonly byte[] cache = new byte[ushort.MaxValue];
 
-        public async ETTask StartRecv()
+        private async ETTask StartReceive()
         {
             if (this.IsDisposed)
             {
@@ -222,9 +218,7 @@ namespace ET
             Log.Info($"WChannel error: {error} {this.RemoteAddress}");
 
             long channelId = this.Id;
-
             this.Service.Remove(channelId);
-
             this.Service.ErrorCallback(channelId, error);
         }
     }

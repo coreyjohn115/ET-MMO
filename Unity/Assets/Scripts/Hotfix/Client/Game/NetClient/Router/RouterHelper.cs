@@ -41,7 +41,7 @@ namespace ET.Client
         // 向router申请
         private static async ETTask<uint> Connect(this NetComponent netComponent, IPEndPoint routerAddress, IPEndPoint realAddress, uint localConn, uint remoteConn)
         {
-            uint synFlag = remoteConn == 0? KcpProtocalType.RouterSYN : KcpProtocalType.RouterReconnectSYN;
+            uint synFlag = remoteConn == 0? KcpProtoType.RouterSYN : KcpProtoType.RouterReconnectSYN;
 
             // 注意，session也以localConn作为id，所以这里不能用localConn作为id
             long id = (long)(((ulong)localConn << 32) | remoteConn);

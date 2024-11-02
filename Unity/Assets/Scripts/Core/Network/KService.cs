@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace ET
 {
-    public static class KcpProtocalType
+    public static class KcpProtoType
     {
         public const byte SYN = 1;
         public const byte ACK = 2;
@@ -41,7 +41,7 @@ namespace ET
         {
             get
             {
-                return (uint)(TimeInfo.Instance.ClientFrameTime() - this.startTime);
+                return (uint)(TimeInfo.Instance.Frame - this.startTime);
             }
         }
 
@@ -113,12 +113,6 @@ namespace ET
         // 记录最小时间，不用每次都去MultiMap取第一个值
         private long minTime;
 
-#if !UNITY
-        public readonly ArrayPool<byte> byteArrayPool = ArrayPool<byte>.Create(2048, 3000);
-#else
-        public readonly ArrayPool<byte> byteArrayPool = ArrayPool<byte>.Create(2048, 200);
-#endif
-
         private readonly Dictionary<long, Action<byte>> routerAckCallback = new();
 
         // mtu max: 1400
@@ -188,7 +182,7 @@ namespace ET
 
             while (this.Transport != null && this.Transport.Available() > 0)
             {
-                int messageLength = this.Transport.Recv(this.cache, ref this.ipEndPoint);
+                int messageLength = this.Transport.Receive(this.cache, ref this.ipEndPoint);
                 // 长度小于1，不是正常的消息
                 if (messageLength < 1)
                 {
@@ -206,8 +200,8 @@ namespace ET
                     KChannel kChannel = null;
                     switch (flag)
                     {
-                        case KcpProtocalType.RouterACK:
-                        case KcpProtocalType.RouterReconnectACK:
+                        case KcpProtoType.RouterACK:
+                        case KcpProtoType.RouterReconnectACK:
                         {
                             remoteConn = BitConverter.ToUInt32(this.cache, 1);
                             localConn = BitConverter.ToUInt32(this.cache, 5);
@@ -220,7 +214,7 @@ namespace ET
 
                             break;
                         }
-                        case KcpProtocalType.RouterReconnectSYN:
+                        case KcpProtoType.RouterReconnectSYN:
                         {
                             // 长度!=5，不是RouterReconnectSYN消息
                             if (messageLength != 9)
@@ -261,7 +255,7 @@ namespace ET
                             try
                             {
                                 byte[] buffer = this.cache;
-                                buffer.WriteTo(0, KcpProtocalType.RouterReconnectACK);
+                                buffer.WriteTo(0, KcpProtoType.RouterReconnectACK);
                                 buffer.WriteTo(1, kChannel.LocalConn);
                                 buffer.WriteTo(5, kChannel.RemoteConn);
                                 this.Transport.Send(buffer, 0, 9, this.ipEndPoint, ChannelType.Accept);
@@ -274,7 +268,7 @@ namespace ET
 
                             break;
                         }
-                        case KcpProtocalType.SYN: // accept
+                        case KcpProtoType.SYN: // accept
                         {
                             // 长度!=5，不是SYN消息
                             if (messageLength < 9)
@@ -329,7 +323,7 @@ namespace ET
                             try
                             {
                                 byte[] buffer = this.cache;
-                                buffer.WriteTo(0, KcpProtocalType.ACK);
+                                buffer.WriteTo(0, KcpProtoType.ACK);
                                 buffer.WriteTo(1, kChannel.LocalConn);
                                 buffer.WriteTo(5, kChannel.RemoteConn);
                                 Log.Info($"kservice syn: {kChannel.Id} {remoteConn} {localConn} {kChannel.RemoteAddress}");
@@ -344,7 +338,7 @@ namespace ET
 
                             break;
                         }
-                        case KcpProtocalType.ACK: // connect返回
+                        case KcpProtoType.ACK: // connect返回
                             // 长度!=9，不是connect消息
                             if (messageLength != 9)
                             {
@@ -362,7 +356,7 @@ namespace ET
                             }
 
                             break;
-                        case KcpProtocalType.FIN: // 断开
+                        case KcpProtoType.FIN: // 断开
                             // 长度!=13，不是DisConnect消息
                             if (messageLength != 13)
                             {
@@ -390,7 +384,7 @@ namespace ET
                             kChannel.OnError(ErrorCore.ERR_PeerDisconnect);
 
                             break;
-                        case KcpProtocalType.MSG: // 断开
+                        case KcpProtoType.MSG: // 断开
                             // 长度<9，不是Msg消息
                             if (messageLength < 9)
                             {
@@ -456,7 +450,7 @@ namespace ET
             }
             catch (Exception e)
             {
-                Log.Error($"kservice get error: {id}\n{e}");
+                Log.Error($"KService get error: {id}\n{e}");
             }
         }
 
@@ -469,7 +463,7 @@ namespace ET
 
             kChannel.Error = error;
 
-            Log.Debug($"kservice remove channel: {id} {kChannel.LocalConn} {kChannel.RemoteConn} {error}");
+            Log.Debug($"KService remove channel: {id} {kChannel.LocalConn} {kChannel.RemoteConn} {error}");
             this.localConnChannels.Remove(kChannel.LocalConn);
             if (this.waitAcceptChannels.TryGetValue(kChannel.RemoteConn, out KChannel waitChannel))
             {
@@ -493,7 +487,7 @@ namespace ET
                 }
 
                 byte[] buffer = this.cache;
-                buffer.WriteTo(0, KcpProtocalType.FIN);
+                buffer.WriteTo(0, KcpProtoType.FIN);
                 buffer.WriteTo(1, localConn);
                 buffer.WriteTo(5, remoteConn);
                 buffer.WriteTo(9, (uint)error);

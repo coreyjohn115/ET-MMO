@@ -181,7 +181,7 @@ namespace ET
 				}
 				
 				byte[] buffer = sendCache;
-				buffer.WriteTo(0, KcpProtocalType.SYN);
+				buffer.WriteTo(0, KcpProtoType.SYN);
 				buffer.WriteTo(1, this.LocalConn);
 				buffer.WriteTo(5, this.RemoteConn);
 				this.Service.Transport.Send(buffer, 0, 9, this.RemoteAddress, ChannelType.Connect);
@@ -347,7 +347,7 @@ namespace ET
 					return;
 				}
 
-				bytes.WriteTo(0, KcpProtocalType.MSG);
+				bytes.WriteTo(0, KcpProtoType.MSG);
 				// 每个消息头部写下该channel的id;
 				bytes.WriteTo(1, this.LocalConn);
 				this.Service.Transport.Send(bytes, 0, count + 5, this.RemoteAddress, this.ChannelType);

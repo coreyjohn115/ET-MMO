@@ -51,14 +51,12 @@ namespace ET
 
         public override void Remove(long id, int error = 0)
         {
-            WChannel channel;
-            if (!this.channels.TryGetValue(id, out channel))
+            if (!this.channels.TryGetValue(id, out WChannel channel))
             {
                 return;
             }
 
             channel.Error = error;
-
             this.channels.Remove(id);
             channel.Dispose();
         }
@@ -78,8 +76,7 @@ namespace ET
 
         public WChannel Get(long id)
         {
-            WChannel channel = null;
-            this.channels.TryGetValue(id, out channel);
+            this.channels.TryGetValue(id, out WChannel channel);
             return channel;
         }
 

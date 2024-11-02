@@ -25,11 +25,11 @@ namespace ET
     public abstract class AChannel: IDisposable
     {
         public long Id;
-		
+
         public ChannelType ChannelType { get; protected set; }
 
         public int Error { get; set; }
-		
+
         private IPEndPoint remoteAddress;
 
         public IPEndPoint RemoteAddress
@@ -48,7 +48,7 @@ namespace ET
         {
             get
             {
-                return this.Id == 0;	
+                return this.Id == 0;
             }
         }
 

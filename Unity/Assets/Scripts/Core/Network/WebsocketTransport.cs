@@ -76,7 +76,7 @@ namespace ET
             this.readWriteTime[id] = timeNow;
         }
 
-        public int Recv(byte[] buffer, ref EndPoint endPoint)
+        public int Receive(byte[] buffer, ref EndPoint endPoint)
         {
             return RecvNonAlloc(buffer, ref endPoint);
         }
