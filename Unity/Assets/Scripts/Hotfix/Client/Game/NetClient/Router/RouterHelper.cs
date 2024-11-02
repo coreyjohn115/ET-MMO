@@ -15,38 +15,40 @@ namespace ET.Client
             {
                 throw new Exception($"get router fail: {netComponent.Root().Id} {address}");
             }
-            
+
             Log.Info($"get router: {recvLocalConn} {routerAddress}");
 
             Session routerSession = netComponent.Create(routerAddress, address, recvLocalConn);
             routerSession.AddComponent<PingComponent>();
             routerSession.AddComponent<RouterCheckComponent>();
-            
+
             return routerSession;
         }
-        
-        public static async ETTask<(uint, IPEndPoint)> GetRouterAddress(this NetComponent netComponent, IPEndPoint address, uint localConn, uint remoteConn)
+
+        public static async ETTask<(uint, IPEndPoint)> GetRouterAddress(this NetComponent netComponent, IPEndPoint address, uint localConn,
+        uint remoteConn)
         {
             Log.Info($"start get router address: {netComponent.Root().Id} {address} {localConn} {remoteConn}");
             //return (RandomHelper.RandUInt32(), address);
             RouterAddressComponent routerAddressComponent = netComponent.Root().GetComponent<RouterAddressComponent>();
             IPEndPoint routerInfo = routerAddressComponent.GetAddress();
-            
+
             uint recvLocalConn = await netComponent.Connect(routerInfo, address, localConn, remoteConn);
-            
+
             Log.Info($"finish get router address: {netComponent.Root().Id} {address} {localConn} {remoteConn} {recvLocalConn} {routerInfo}");
             return (recvLocalConn, routerInfo);
         }
 
         // 向router申请
-        private static async ETTask<uint> Connect(this NetComponent netComponent, IPEndPoint routerAddress, IPEndPoint realAddress, uint localConn, uint remoteConn)
+        private static async ETTask<uint> Connect(this NetComponent netComponent, IPEndPoint routerAddress, IPEndPoint realAddress, uint localConn,
+        uint remoteConn)
         {
             uint synFlag = remoteConn == 0? KcpProtoType.RouterSYN : KcpProtoType.RouterReconnectSYN;
 
             // 注意，session也以localConn作为id，所以这里不能用localConn作为id
             long id = (long)(((ulong)localConn << 32) | remoteConn);
             using RouterConnector routerConnector = netComponent.AddChildWithId<RouterConnector>(id);
-            
+
             int count = 20;
             byte[] sendCache = new byte[512];
 
@@ -64,7 +66,7 @@ namespace ET.Client
 
             while (true)
             {
-                long timeNow = TimeInfo.Instance.ClientFrameTime();
+                long timeNow = TimeInfo.Instance.Frame;
                 if (timeNow - lastSendTimer > 300)
                 {
                     if (--count < 0)
@@ -79,7 +81,7 @@ namespace ET.Client
                 }
 
                 await timerComponent.WaitFrameAsync();
-                
+
                 if (routerConnector.Flag == 0)
                 {
                     continue;

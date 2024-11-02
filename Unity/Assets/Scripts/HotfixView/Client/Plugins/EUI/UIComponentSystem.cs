@@ -10,12 +10,13 @@ namespace ET.Client
     [EntitySystemOf(typeof (UIComponent))]
     public static partial class UIComponentSystem
     {
-        [Invoke(TimerInvokeType.CheckUICache)]
-        private class _: ATimer<UIComponent>
+        [Event(SceneType.Client)]
+        private class _: AEvent<Scene, ClientHeart1>
         {
-            protected override void Run(UIComponent self)
+            protected override async ETTask Run(Scene scene, ClientHeart1 a)
             {
-                self.CheckUICache();
+                await ETTask.CompletedTask;
+                scene.GetComponent<UIComponent>().CheckUICache();
             }
         }
 
@@ -28,7 +29,6 @@ namespace ET.Client
             self.visibleWindowsDic?.Clear();
             self.stackWindowsQueue?.Clear();
             self.uiBaseWindowListCached?.Clear();
-            self.Root().GetComponent<TimerComponent>().NewRepeatedTimer(1000L, TimerInvokeType.CheckUICache, self);
         }
 
         [EntitySystem]
@@ -397,7 +397,7 @@ namespace ET.Client
             CoroutineLock coroutineLock = null;
             try
             {
-                coroutineLock = await self.Fiber().Root.GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.LoadUIBaseWindows, (int)id);
+                coroutineLock = await self.Root().GetComponent<CoroutineLockComponent>().Wait(CoroutineLockType.LoadUIBaseWindows, (int)id);
                 UIBaseWindow baseWindow = self.GetUIBaseWindow(id);
                 if (baseWindow == null)
                 {

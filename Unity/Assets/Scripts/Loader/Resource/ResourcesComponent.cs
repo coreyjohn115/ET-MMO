@@ -147,14 +147,6 @@ namespace ET.Client
             return 0;
         }
 
-        private static void ExitGame()
-        {
-            Application.Quit();
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
-        }
-
         private void CheckHotPop()
         {
             if (this.hotPop != default)
@@ -179,7 +171,7 @@ namespace ET.Client
                     errno = await this.hotPop.ShowWait("网络异常, 请重试!", "确 定", "取 消");
                     if (errno != 0)
                     {
-                        ExitGame();
+                        Init.ExitGame();
                         return errno;
                     }
 
@@ -268,7 +260,7 @@ namespace ET.Client
             errno = await this.hotPop.ShowWait(msg, "确 定", "取 消");
             if (errno != 0)
             {
-                ExitGame();
+                Init.ExitGame();
                 return errno;
             }
 
@@ -277,7 +269,7 @@ namespace ET.Client
             if (errno != 0)
             {
                 await this.hotPop.ShowWait("热更异常, 请重试!", "退 出");
-                ExitGame();
+                Init.ExitGame();
                 return errno;
             }
 

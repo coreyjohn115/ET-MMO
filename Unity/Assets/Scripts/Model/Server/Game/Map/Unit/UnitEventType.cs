@@ -15,6 +15,11 @@ namespace ET.Server
         public Unit Unit;
     }
 
+    public struct NetDisconnect
+    {
+        public Unit Unit;
+    }
+
     /// <summary>
     /// 玩家离开游戏
     /// </summary>

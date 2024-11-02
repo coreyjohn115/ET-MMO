@@ -6,6 +6,14 @@ namespace ET.Client
 {
     public class Init: MonoBehaviour
     {
+        public static void ExitGame()
+        {
+            Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+        
         private void Start()
         {
             Application.targetFrameRate = 120;

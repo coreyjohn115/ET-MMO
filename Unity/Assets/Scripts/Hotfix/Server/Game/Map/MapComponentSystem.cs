@@ -14,4 +14,4 @@ public static partial class MapComponentSystem
         self.ctx = ctx;
         await ETTask.CompletedTask;
     }
-}
+}   

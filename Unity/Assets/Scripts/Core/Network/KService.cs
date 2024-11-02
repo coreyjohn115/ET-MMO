@@ -52,7 +52,7 @@ namespace ET
         public KService(IPEndPoint ipEndPoint, NetworkProtocol protocol, ServiceType serviceType)
         {
             this.ServiceType = serviceType;
-            this.startTime = TimeInfo.Instance.ClientFrameTime();
+            this.startTime = TimeInfo.Instance.Frame;
             this.Protocol = protocol;
             switch (this.Protocol)
             {
@@ -73,7 +73,7 @@ namespace ET
         public KService(AddressFamily addressFamily, NetworkProtocol protocol, ServiceType serviceType)
         {
             this.ServiceType = serviceType;
-            this.startTime = TimeInfo.Instance.ClientFrameTime();
+            this.startTime = TimeInfo.Instance.Frame;
             this.Transport = new TcpTransport(addressFamily);
             this.Protocol = protocol;
             switch (this.Protocol)

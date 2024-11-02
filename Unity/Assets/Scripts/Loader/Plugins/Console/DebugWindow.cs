@@ -68,10 +68,10 @@ namespace ET.Client
 
         private void Awake()
         {
-            Application.logMessageReceived += OnlogMessageReceived;
+            Application.logMessageReceived += OnLogMessageReceived;
         }
 
-        private void OnlogMessageReceived(string condition, string stacktrace, LogType type)
+        private static void OnLogMessageReceived(string condition, string stacktrace, LogType type)
         {
             ConsoleLogs.Instance.Add(condition, stacktrace, type);
         }

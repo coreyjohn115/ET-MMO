@@ -6,8 +6,6 @@ namespace ET.Client
     [ComponentOf(typeof (Scene))]
     public class ResourcesAtlasComponent: Entity, IAwake, IDestroy
     {
-        public long timer;
-
         /// <summary>
         /// 常驻图集名称
         /// </summary>

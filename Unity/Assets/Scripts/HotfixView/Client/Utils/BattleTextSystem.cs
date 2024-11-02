@@ -27,7 +27,7 @@ namespace ET.Client
         }
 
         [Invoke(TimerInvokeType.BattleText)]
-        public class BattleTextTimer: ATimer<BattleText>
+        private class BattleTextEvent: ATimer<BattleText>
         {
             protected override void Run(BattleText self)
             {
@@ -42,7 +42,7 @@ namespace ET.Client
                 return;
             }
 
-            using ListComponent<long> dels = ListComponent<long>.Create();
+            using ListComponent<long> delList = ListComponent<long>.Create();
             foreach ((long dstId, List<Pair<long, string>> list) in self.waitPopDict)
             {
                 long id = list[0].Key;
@@ -51,11 +51,11 @@ namespace ET.Client
                 list.RemoveAt(0);
                 if (list.Count == 0)
                 {
-                    dels.Add(dstId);
+                    delList.Add(dstId);
                 }
             }
 
-            foreach (long l in dels)
+            foreach (long l in delList)
             {
                 self.waitPopDict.Remove(l);
             }

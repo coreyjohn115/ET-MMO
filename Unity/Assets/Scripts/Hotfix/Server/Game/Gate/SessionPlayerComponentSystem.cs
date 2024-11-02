@@ -7,7 +7,7 @@
         private static void Destroy(this SessionPlayerComponent self)
         {
             Scene root = self.Root();
-            if (root.IsDisposed)
+            if (root.IsDisposed || self.Kick)
             {
                 return;
             }
@@ -29,6 +29,7 @@
         [EntitySystem]
         private static void Awake(this SessionPlayerComponent self)
         {
+            self.Kick = false;
         }
     }
 }

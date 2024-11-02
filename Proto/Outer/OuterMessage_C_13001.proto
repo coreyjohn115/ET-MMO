@@ -5,7 +5,6 @@ package ET;
 message C2G_Ping // ISessionRequest
 {
 }
-
 message G2C_Ping // ISessionResponse
 {
   int64 Time = 4;
@@ -18,7 +17,6 @@ message C2R_Login // ISessionRequest
   string Account = 2;  // 帐号
   string Password = 3;  // 密码
 }
-
 message R2C_Login // ISessionResponse
 {
   string Address = 4;
@@ -33,10 +31,14 @@ message C2G_LoginGate // ISessionRequest
   int64 Key = 2;
   int64 GateId = 3;
 }
-
 message G2C_LoginGate // ISessionResponse
 {
   int64 PlayerId = 4;
+}
+
+message G2C_Kick // IMessage
+{
+	int KickType = 1;
 }
 
 message RankRoleInfoProto

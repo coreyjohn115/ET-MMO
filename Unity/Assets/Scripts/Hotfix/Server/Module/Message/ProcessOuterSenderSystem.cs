@@ -50,7 +50,7 @@ namespace ET.Server
                 return;
             }
             
-            session.LastRecvTime = TimeInfo.Instance.ClientFrameTime();
+            session.LastRecvTime = TimeInfo.Instance.Frame;
 
             (ActorId actorId, object message) = MessageSerializeHelper.ToMessage(self.AService, memoryBuffer);
             self.AService.Recycle(memoryBuffer);

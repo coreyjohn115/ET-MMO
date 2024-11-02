@@ -22,22 +22,21 @@ namespace ET.Client
                 }
             }
 
-            self.timer = self.Root().GetComponent<TimerComponent>().NewRepeatedTimer(5000L, TimerInvokeType.CheckAtlasCache, self);
             self.LoadAtlasConfig().NoContext();
         }
 
         [EntitySystem]
         private static void Destroy(this ResourcesAtlasComponent self)
         {
-            self.Root().GetComponent<TimerComponent>().Remove(ref self.timer);
         }
 
-        [Invoke(TimerInvokeType.CheckAtlasCache)]
-        private class CheckAssetTimer: ATimer<ResourcesAtlasComponent>
+        [Event(SceneType.Client)]
+        private class CheckAssetEvent: AEvent<Scene, ClientHeart5>
         {
-            protected override void Run(ResourcesAtlasComponent self)
+            protected override async ETTask Run(Scene scene, ClientHeart5 a)
             {
-                self.Check();
+                await ETTask.CompletedTask;
+                scene.GetComponent<ResourcesAtlasComponent>().Check();
             }
         }
 

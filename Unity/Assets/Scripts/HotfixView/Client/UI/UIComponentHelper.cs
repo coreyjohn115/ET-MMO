@@ -38,15 +38,15 @@ namespace ET.Client
             }
         }
 
-        public static async ETTask<UIConfirmType> OpenConfirm(Entity entity, int title, int desc, UIConfirmExtra extra, params ConfirmBtn[] btns)
+        public static async ETTask<UIConfirmType> OpenConfirm(Entity entity, int title, int desc, UIConfirmExtra extra, params ConfirmBtn[] btnList)
         {
             string t = LanguageCategory.Instance.Contain(title)? LanguageCategory.Instance.Get2(title).Msg : title.ToString();
             string d = LanguageCategory.Instance.Contain(desc)? LanguageCategory.Instance.Get2(desc).Msg : desc.ToString();
-            return await OpenConfirm(entity, t, d, extra, btns);
+            return await OpenConfirm(entity, t, d, extra, btnList);
         }
 
         public static async ETTask<UIConfirmType> OpenConfirm(Entity entity, string title, string desc, UIConfirmExtra extra,
-        params ConfirmBtn[] btns)
+        params ConfirmBtn[] btnList)
         {
             UIConfirm win = entity.Root().GetComponent<UIComponent>().GetDlgLogic<UIConfirm>();
             if (win)
@@ -61,7 +61,7 @@ namespace ET.Client
             data.Title = title;
             data.Desc = desc;
             data.BtnList.Clear();
-            data.BtnList.AddRange(btns);
+            data.BtnList.AddRange(btnList);
             data.Extra = extra;
             await entity.Root().GetComponent<UIComponent>().ShowWindow<UIConfirm>(data);
             Wait_CloseConfirm w = await entity.Root().GetComponent<ObjectWait>().Wait<Wait_CloseConfirm>();

@@ -76,9 +76,9 @@ namespace ET
             return Now() + this.ServerMinusClientTime;
         }
 
-        public long ClientFrameTime()
+        public long ServerFrame()
         {
-            return this.Frame;
+            return this.Frame + this.ServerMinusClientTime;
         }
 
         public long Transition(DateTime d)

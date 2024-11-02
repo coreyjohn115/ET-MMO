@@ -16,6 +16,7 @@ namespace ET.Client
             await root.AddComponent<RedDotComponent>().PreLoadGameObject();
             await root.GetComponent<UIComponent>().PreloadUI();
 
+            root.AddComponent<ClientTimerComponent>();
             // 根据配置修改掉Main Fiber的SceneType
             SceneType sceneType = EnumHelper.FromString<SceneType>(Global.Instance.GlobalConfig.AppType.ToString());
             root.SceneType = sceneType;

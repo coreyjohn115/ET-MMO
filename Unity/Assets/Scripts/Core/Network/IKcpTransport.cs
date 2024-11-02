@@ -110,7 +110,7 @@ namespace ET
         private void OnAccept(long id, IPEndPoint ipEndPoint)
         {
             TChannel channel = this.tService.Get(id);
-            long timeNow = TimeInfo.Instance.ClientFrameTime();
+            long timeNow = TimeInfo.Instance.Frame;
             this.readWriteTime[id] = timeNow;
             this.channelIds.Enqueue(id);
             this.idEndpoints.Add(id, channel.RemoteAddress);
@@ -126,7 +126,7 @@ namespace ET
 
         private void OnRead(long id, MemoryBuffer memoryBuffer)
         {
-            long timeNow = TimeInfo.Instance.ClientFrameTime();
+            long timeNow = TimeInfo.Instance.Frame;
             this.readWriteTime[id] = timeNow;
             TChannel channel = this.tService.Get(id);
             channelRecvDatas.Enqueue((channel.RemoteAddress, memoryBuffer));
@@ -155,7 +155,7 @@ namespace ET
             memoryBuffer.Seek(0, SeekOrigin.Begin);
             this.tService.Send(id, memoryBuffer);
 
-            long timeNow = TimeInfo.Instance.ClientFrameTime();
+            long timeNow = TimeInfo.Instance.Frame;
             this.readWriteTime[id] = timeNow;
         }
 
@@ -181,7 +181,7 @@ namespace ET
         public void Update()
         {
             // 检查长时间不读写的TChannel, 超时断开, 一次update检查10个
-            long timeNow = TimeInfo.Instance.ClientFrameTime();
+            long timeNow = TimeInfo.Instance.Frame;
             const int MaxCheckNum = 10;
             int n = this.channelIds.Count < MaxCheckNum? this.channelIds.Count : MaxCheckNum;
             for (int i = 0; i < n; ++i)

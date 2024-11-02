@@ -7,7 +7,7 @@ namespace ET.Client
     {
         public long timer;
 
-        public HashSet<string> hudNameSet = new HashSet<string>();
-        public Dictionary<long, List<Pair<long, string>>> waitPopDict = new Dictionary<long, List<Pair<long, string>>>();
+        public HashSet<string> hudNameSet = new();
+        public Dictionary<long, List<Pair<long, string>>> waitPopDict = new();
     }
 }

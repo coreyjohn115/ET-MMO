@@ -12,6 +12,11 @@ message G2C_EnterMap // ISessionResponse
   int64 MyId = 4;
 }
 
+message G2M_ReEnterMap // ILocationMessage
+{
+  int64 Id = 4;
+}
+
 // 进入地图成功
 //ResponseType M2C_EnterMapOk
 message C2M_EnterMapOk // ILocationRequest

@@ -35,7 +35,7 @@ namespace ET
             self.queue.Enqueue(waitCoroutineLock);
             if (time > 0)
             {
-                long tillTime = TimeInfo.Instance.ClientFrameTime() + time;
+                long tillTime = TimeInfo.Instance.Frame + time;
                 self.Root().GetComponent<TimerComponent>().NewOnceTimer(tillTime, TimerCoreInvokeType.CoroutineTimeout, waitCoroutineLock);
             }
 
