@@ -9,8 +9,8 @@ namespace ET
         Action MoveNext { get; }
         void Recycle();
     }
-    
-    public class StateMachineWrap<T>: IStateMachineWrap where T: IAsyncStateMachine
+
+    public class StateMachineWrap<T>: IStateMachineWrap where T : IAsyncStateMachine
     {
         private static readonly ConcurrentQueue<StateMachineWrap<T>> queue = new();
 
@@ -20,16 +20,19 @@ namespace ET
             {
                 stateMachineWrap = new StateMachineWrap<T>();
             }
+
             stateMachineWrap.StateMachine = stateMachine;
             return stateMachineWrap;
         }
-        
+
         public void Recycle()
         {
-            if (queue.Count > 1000)
+            if (queue.Count > 100)
             {
                 return;
             }
+
+            this.StateMachine = default;
             queue.Enqueue(this);
         }
 
