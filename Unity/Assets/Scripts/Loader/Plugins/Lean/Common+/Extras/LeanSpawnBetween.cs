@@ -55,7 +55,7 @@ namespace Lean.Common
 
 				if (rigidbody3D != null)
 				{
-					rigidbody3D.velocity = direction * force;
+					rigidbody3D.linearVelocity = direction * force;
 				}
 
 				// Apply 2D force?
@@ -63,7 +63,7 @@ namespace Lean.Common
 
 				if (rigidbody2D != null)
 				{
-					rigidbody2D.velocity = direction * force;
+					rigidbody2D.linearVelocity = direction * force;
 				}
 			}
 		}

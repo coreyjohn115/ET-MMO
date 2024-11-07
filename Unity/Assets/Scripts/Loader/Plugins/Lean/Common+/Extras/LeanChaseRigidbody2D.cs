@@ -59,14 +59,14 @@ namespace Lean.Common
 
 				if (axis == AxisType.Horizontal)
 				{
-					velocity.y = cachedRigidbody.velocity.y;
+					velocity.y = cachedRigidbody.linearVelocity.y;
 				}
 				else if (axis == AxisType.Vertical)
 				{
-					velocity.x = cachedRigidbody.velocity.x;
+					velocity.x = cachedRigidbody.linearVelocity.x;
 				}
 
-				cachedRigidbody.velocity = velocity;
+				cachedRigidbody.linearVelocity = velocity;
 
 				fixedUpdateCalled = true;
 			}

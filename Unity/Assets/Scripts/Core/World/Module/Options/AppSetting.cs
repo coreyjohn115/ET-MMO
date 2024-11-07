@@ -12,16 +12,76 @@ namespace ET
         /// <summary>
         /// 是否开启热更新
         /// </summary>
-        public bool HotUpdate => this.appSetting.GetElement("HotUpdate").Value.AsBoolean;
+        public bool HotUpdate
+        {
+            get
+            {
+                if (this.appSetting.TryGetElement("HotUpdate", out BsonElement v))
+                {
+                    return v.Value.AsBoolean;
+                }
+
+                return false;
+            }
+        }
 
         /// <summary>
         /// 热更新地址
         /// </summary>
-        public string HostServerHost => this.appSetting.GetElement("HostServerHost").Value.AsString;
+        public string HostServerHost
+        {
+            get
+            {
+                if (this.appSetting.TryGetElement("HostServerHost", out BsonElement v))
+                {
+                    return v.Value.AsString;
+                }
 
-        public string AppVersion => this.appSetting.GetElement("AppVersion").Value.AsString;
-        
-        public bool Debug => this.appSetting.GetElement("Debug").Value.AsBoolean;
+                return string.Empty;
+            }
+        }
+
+        public string AppVersion
+        {
+            get
+            {
+                if (this.appSetting.TryGetElement("AppVersion", out BsonElement v))
+                {
+                    return v.Value.AsString;
+                }
+
+                return string.Empty;
+            }
+        }
+
+        public bool Debug
+        {
+            get
+            {
+                if (this.appSetting.TryGetElement("Debug", out BsonElement v))
+                {
+                    return v.Value.AsBoolean;
+                }
+
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// 是否使用UDP连接
+        /// </summary>
+        public bool UseUdp
+        {
+            get
+            {
+                if (this.appSetting.TryGetElement("UseUdp", out BsonElement v))
+                {
+                    return v.Value.AsBoolean;
+                }
+
+                return true;
+            }
+        }
 
         public BsonDocument AppSettings => this.appSetting;
 

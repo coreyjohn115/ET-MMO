@@ -59,7 +59,7 @@ namespace Lean.Common
 				velocity *= LeanHelper.GetDampenFactor(damping, Time.fixedDeltaTime);
 				velocity  = Vector3.MoveTowards(velocity, Vector3.zero, linear * Time.fixedDeltaTime);
 
-				cachedRigidbody.velocity = velocity;
+				cachedRigidbody.linearVelocity = velocity;
 				Debug.Log(velocity);
 
 				/*

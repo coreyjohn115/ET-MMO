@@ -15,7 +15,7 @@ namespace ET.Server
         public IKcpTransport InnerSocket;
         public EndPoint IPEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
-        public byte[] Cache = new byte[1500];
+        public byte[] Cache = new byte[1024 * 2];
 
         public Queue<uint> checkTimeout = new();
 

@@ -5,7 +5,7 @@ namespace ET
 {
 	public enum ParserState
 	{
-		PacketSize,
+		PacketHead,
 		PacketBody
 	}
 
@@ -32,7 +32,7 @@ namespace ET
 			{
 				switch (this.state)
 				{
-					case ParserState.PacketSize:
+					case ParserState.PacketHead:
 					{
 						if (this.service.ServiceType == ServiceType.Inner)
 						{
@@ -47,7 +47,7 @@ namespace ET
 							this.packetSize = BitConverter.ToInt32(this.cache, 0);
 							if (this.packetSize > ushort.MaxValue * 16 || this.packetSize < Packet.MinPacketSize)
 							{
-								throw new Exception($"recv packet size error, 可能是外网探测端口: {this.packetSize}");
+								throw new Exception($"receive packet size error, 可能是外网探测端口: {this.packetSize}");
 							}
 						}
 						else
@@ -63,7 +63,7 @@ namespace ET
 							this.packetSize = BitConverter.ToUInt16(this.cache, 0);
 							if (this.packetSize < Packet.MinPacketSize)
 							{
-								throw new Exception($"recv packet size error, 可能是外网探测端口: {this.packetSize}");
+								throw new Exception($"receive packet size error, 可能是外网探测端口: {this.packetSize}");
 							}
 						}
 
@@ -84,7 +84,7 @@ namespace ET
 
 						memoryBuffer.Seek(0, SeekOrigin.Begin);
 
-						this.state = ParserState.PacketSize;
+						this.state = ParserState.PacketHead;
 						return true;
 					}
 					default:

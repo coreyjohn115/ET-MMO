@@ -115,10 +115,10 @@ namespace Lean.Common
 			{
 				if (ResetVelocityInUpdate == true)
 				{
-					rigidbody.velocity = Vector3.zero;
+					rigidbody.linearVelocity = Vector3.zero;
 				}
 
-				rigidbody.velocity += (remainingDelta - newRemainingDelta) / Time.deltaTime;
+				rigidbody.linearVelocity += (remainingDelta - newRemainingDelta) / Time.deltaTime;
 			}
 
 			if (controlling == false && Inertia > 0.0f && Damping > 0.0f)

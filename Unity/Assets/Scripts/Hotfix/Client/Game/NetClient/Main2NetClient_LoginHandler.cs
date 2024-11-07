@@ -15,15 +15,13 @@ namespace ET.Client
             RouterAddressComponent routerAddressComponent =
                     root.AddComponent<RouterAddressComponent, string, int>(request.RouterHttpHost, ConstValue.RouterHttpPort);
             await routerAddressComponent.Init();
-            NetworkProtocol protocol = NetworkProtocol.UDP;
+            NetworkProtocol protocol = AppSetting.Instance.UseUdp? NetworkProtocol.UDP : NetworkProtocol.TCP;
 #if UNITY_WEBGL
             protocol = NetworkProtocol.Websocket;
 #endif
-            root.AddComponent<NetComponent, AddressFamily, NetworkProtocol>(routerAddressComponent.RouterManagerIPAddress.AddressFamily,
-                protocol);
+            NetComponent netComponent = root.AddComponent<NetComponent, AddressFamily, NetworkProtocol>(
+                routerAddressComponent.RouterManagerIPAddress.AddressFamily, protocol);
             root.GetComponent<FiberParentComponent>().ParentFiberId = request.OwnerFiberId;
-
-            NetComponent netComponent = root.GetComponent<NetComponent>();
             IPEndPoint realmAddress = routerAddressComponent.GetRealmAddress(account);
 
             R2C_Login r2CLogin;
