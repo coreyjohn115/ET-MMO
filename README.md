@@ -99,6 +99,12 @@ public class HttpSaveDataRequestHandler: IHttpHandler
         }
     }
 ```
+
+**本项目中使用了如下插件（仅供学习交流使用，请务必支持正版！）**
+
+-  **[Odin](https://odininspector.com/)**
+-  **[Animancer](https://kybernetik.com.au/animancer/)**
+
 交流群: 951617541
 ## 友情链接
 
