@@ -58,7 +58,7 @@ namespace ET.Client
         static public Font GetDefaultFont()
         {
             if (DefaultFont == null)
-                DefaultFont = UnityEngine.Object.FindObjectOfType<Font>();
+                DefaultFont = UnityEngine.Object.FindAnyObjectByType<Font>();
             return DefaultFont;
         }
 

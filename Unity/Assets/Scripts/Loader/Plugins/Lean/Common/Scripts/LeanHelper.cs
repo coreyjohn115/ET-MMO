@@ -58,7 +58,7 @@ namespace Lean.Common
 			// Auto attach to canvas?
 			if (parent == null || parent.GetComponentInParent<Canvas>() == null)
 			{
-				var canvas = Object.FindObjectOfType<Canvas>();
+				var canvas = Object.FindAnyObjectByType<Canvas>();
 
 				if (canvas == null)
 				{

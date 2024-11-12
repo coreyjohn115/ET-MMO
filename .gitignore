@@ -34,15 +34,11 @@ _ReSharper.CSharp/
 /.vs
 /Server/.vs/
 /Unity/.vs/
-/Tools/MongoDB
-/Excel/md5.txt
 /Release
 .idea/
 /Unity/Logs
 /Unity/Assets/StreamingAssets/
 /Unity/Assets/StreamingAssets.meta
-.DS_Store
-Server/.DS_Store
 /Server/.vscode/
 .vs/
 .objs/
@@ -81,6 +77,7 @@ Publish/
 WebGL
 Unity/Bundles
 Unity/Config
+Unity/SerializedBuildInfo
 
 Tools/Openresty/logs
 

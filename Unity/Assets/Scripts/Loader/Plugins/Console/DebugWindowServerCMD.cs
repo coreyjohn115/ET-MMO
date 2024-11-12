@@ -23,12 +23,12 @@ namespace ET.Client
 
         protected override void OnDrawWindow(int id)
         {
-            if (!this._isInEditor)
-                GUI.DragWindow(new Rect(0, 0, _windowRect.width - 20, 20));
+            if (!this.isInEditor)
+                GUI.DragWindow(new Rect(0, 0, this.windowRect.width - 20, 20));
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Clear"))
             {
-                ServerMessageLogs.Instance.Msgs.Clear();
+                ServerMessageLogs.Instance.MsgList.Clear();
             }
 
             this._searchStr = GUILayout.TextField(this._searchStr, GUILayout.Width(100));
@@ -40,7 +40,7 @@ namespace ET.Client
             this._selectedIndex = GUILayout.Toolbar(this._selectedIndex, this._tabNames);
             GUILayout.EndHorizontal();
 
-            var list = ServerMessageLogs.Instance.Msgs;
+            var list = ServerMessageLogs.Instance.MsgList;
             var flag = this._tabVals[this._selectedIndex];
 
             if (this._locked)
@@ -49,7 +49,7 @@ namespace ET.Client
             }
 
             GUILayout.BeginHorizontal();
-            this._scrollPos = GUILayout.BeginScrollView(this._scrollPos, GUILayout.Width(0.6f * this._windowRect.width));
+            this._scrollPos = GUILayout.BeginScrollView(this._scrollPos, GUILayout.Width(0.6f * this.windowRect.width));
             for (int i = 0; i < list.Count; i++)
             {
                 ServerMessageLogs.MsgContent content = list[i];
@@ -77,7 +77,7 @@ namespace ET.Client
             GUILayout.EndScrollView();
 
             GUILayout.BeginVertical();
-            var height = this._showStack? this._windowRect.height * 0.5f : this._windowRect.height;
+            var height = this._showStack? this.windowRect.height * 0.5f : this.windowRect.height;
             this._scrollPos2 = GUILayout.BeginScrollView(this._scrollPos2, GUILayout.Height(height));
             if (this._selectedLog >= 0 && this._selectedLog < list.Count)
             {

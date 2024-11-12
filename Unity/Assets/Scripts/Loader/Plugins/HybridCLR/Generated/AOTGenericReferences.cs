@@ -23,6 +23,48 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// }} 
 
 	// {{ AOT generic types
+	// ET.AEvent.<Handle>d__3<object,ET.AddItemEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.AddUpdateTask>
+	// ET.AEvent.<Handle>d__3<object,ET.AfterCreateCurrentScene>
+	// ET.AEvent.<Handle>d__3<object,ET.AfterUnitCreate>
+	// ET.AEvent.<Handle>d__3<object,ET.AppStartInitFinish>
+	// ET.AEvent.<Handle>d__3<object,ET.BasicChangeEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.ChangePosition>
+	// ET.AEvent.<Handle>d__3<object,ET.ChangeRotation>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.AddBuffView>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.ClientHeart0_1>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.ClientHeart0_5>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.ClientHeart1>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.ClientHeart5>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.ClientUseSkill>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.DelGroup>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.EquipUpdateEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.FightStateChange>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.HotKeyEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.InitTask>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.MenuSelectEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.NetError>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.PlayActionEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.PopHurtHud>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.PushActionEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.RemoveBuffView>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.UpdateGroup>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.UpdateMsg>
+	// ET.AEvent.<Handle>d__3<object,ET.Client.UpdateShield>
+	// ET.AEvent.<Handle>d__3<object,ET.DeleteTask>
+	// ET.AEvent.<Handle>d__3<object,ET.EnterMapFinish>
+	// ET.AEvent.<Handle>d__3<object,ET.EntryEvent1>
+	// ET.AEvent.<Handle>d__3<object,ET.EntryEvent2>
+	// ET.AEvent.<Handle>d__3<object,ET.EntryEvent3>
+	// ET.AEvent.<Handle>d__3<object,ET.LoadingProgress>
+	// ET.AEvent.<Handle>d__3<object,ET.LoginFinish>
+	// ET.AEvent.<Handle>d__3<object,ET.MoveStart>
+	// ET.AEvent.<Handle>d__3<object,ET.MoveStop>
+	// ET.AEvent.<Handle>d__3<object,ET.NumericChange>
+	// ET.AEvent.<Handle>d__3<object,ET.RemoveItemEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.SceneChangeFinish>
+	// ET.AEvent.<Handle>d__3<object,ET.SceneChangeStart>
+	// ET.AEvent.<Handle>d__3<object,ET.UpdateFashionEffectEvent>
 	// ET.AEvent<object,ET.AddItemEvent>
 	// ET.AEvent<object,ET.AddUpdateTask>
 	// ET.AEvent<object,ET.AfterCreateCurrentScene>
@@ -32,6 +74,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.AEvent<object,ET.ChangePosition>
 	// ET.AEvent<object,ET.ChangeRotation>
 	// ET.AEvent<object,ET.Client.AddBuffView>
+	// ET.AEvent<object,ET.Client.ClientHeart0_1>
+	// ET.AEvent<object,ET.Client.ClientHeart0_5>
+	// ET.AEvent<object,ET.Client.ClientHeart1>
+	// ET.AEvent<object,ET.Client.ClientHeart5>
 	// ET.AEvent<object,ET.Client.ClientUseSkill>
 	// ET.AEvent<object,ET.Client.DelGroup>
 	// ET.AEvent<object,ET.Client.EquipUpdateEvent>
@@ -50,8 +96,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.AEvent<object,ET.DeleteTask>
 	// ET.AEvent<object,ET.EnterMapFinish>
 	// ET.AEvent<object,ET.EntryEvent1>
+	// ET.AEvent<object,ET.EntryEvent2>
 	// ET.AEvent<object,ET.EntryEvent3>
 	// ET.AEvent<object,ET.LoadingProgress>
+	// ET.AEvent<object,ET.LoginFinish>
 	// ET.AEvent<object,ET.MoveStart>
 	// ET.AEvent<object,ET.MoveStop>
 	// ET.AEvent<object,ET.NumericChange>
@@ -81,6 +129,27 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.ETAsyncTaskMethodBuilder<int>
 	// ET.ETAsyncTaskMethodBuilder<object>
 	// ET.ETAsyncTaskMethodBuilder<uint>
+	// ET.ETCancellationTokenHelper.<TimeoutAsync>d__6<object>
+	// ET.ETTask.<InnerCoroutine>d__8<ET.Client.Wait_CloseConfirm>
+	// ET.ETTask.<InnerCoroutine>d__8<ET.Client.Wait_CreateMyUnit>
+	// ET.ETTask.<InnerCoroutine>d__8<ET.Client.Wait_SceneChangeFinish>
+	// ET.ETTask.<InnerCoroutine>d__8<ET.Client.Wait_UnitStop>
+	// ET.ETTask.<InnerCoroutine>d__8<System.ValueTuple<byte,long>>
+	// ET.ETTask.<InnerCoroutine>d__8<System.ValueTuple<uint,object>>
+	// ET.ETTask.<InnerCoroutine>d__8<byte>
+	// ET.ETTask.<InnerCoroutine>d__8<int>
+	// ET.ETTask.<InnerCoroutine>d__8<object>
+	// ET.ETTask.<InnerCoroutine>d__8<uint>
+	// ET.ETTask.<NewContext>d__11<ET.Client.Wait_CloseConfirm>
+	// ET.ETTask.<NewContext>d__11<ET.Client.Wait_CreateMyUnit>
+	// ET.ETTask.<NewContext>d__11<ET.Client.Wait_SceneChangeFinish>
+	// ET.ETTask.<NewContext>d__11<ET.Client.Wait_UnitStop>
+	// ET.ETTask.<NewContext>d__11<System.ValueTuple<byte,long>>
+	// ET.ETTask.<NewContext>d__11<System.ValueTuple<uint,object>>
+	// ET.ETTask.<NewContext>d__11<byte>
+	// ET.ETTask.<NewContext>d__11<int>
+	// ET.ETTask.<NewContext>d__11<object>
+	// ET.ETTask.<NewContext>d__11<uint>
 	// ET.ETTask<ET.Client.Wait_CloseConfirm>
 	// ET.ETTask<ET.Client.Wait_CreateMyUnit>
 	// ET.ETTask<ET.Client.Wait_SceneChangeFinish>
@@ -92,6 +161,14 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.ETTask<object>
 	// ET.ETTask<uint>
 	// ET.EntityRef<object>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.AppStartInitFinish>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.Client.ClientUseSkill>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.EnterMapFinish>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent1>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent2>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent3>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.LoginFinish>
+	// ET.EventSystem.<PublishAsync>d__4<object,ET.SceneChangeFinish>
 	// ET.IAwake<byte>
 	// ET.IAwake<int,int>
 	// ET.IAwake<int>
@@ -112,176 +189,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.Pair<long,object>
 	// ET.Pair<object,object>
 	// ET.Singleton<object>
-	// ET.StateMachineWrap<ET.Client.A2NetClient_MessageHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.A2NetClient_RequestHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AAction.<OnExecute>d__1>
-	// ET.StateMachineWrap<ET.Client.AI_Attack.<Execute>d__1>
-	// ET.StateMachineWrap<ET.Client.AI_XunLuo.<Execute>d__1>
-	// ET.StateMachineWrap<ET.Client.ActionComponentSystem.<PlayAction>d__3>
-	// ET.StateMachineWrap<ET.Client.ActionComponentSystem.<PushAction>d__4>
-	// ET.StateMachineWrap<ET.Client.ActionUnitSystem.<WaitFinishAsync>d__3>
-	// ET.StateMachineWrap<ET.Client.AddBuffViewEvent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AddItemEvent_Watcher.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AddUpdateTask_Event.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AfterCreateCurrentScene_AddComponent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AfterUnitCreate_AddComponent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AfterUnitCreate_CreateUnitView.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AnimationAction.<OnExecute>d__2>
-	// ET.StateMachineWrap<ET.Client.AnimatorAction.<OnExecute>d__0>
-	// ET.StateMachineWrap<ET.Client.AppStartInitFinish_AddComponent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AppStartInitFinish_CreateHudUI.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AppStartInitFinish_CreateLoginUI.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AppStartInitFinish_CreatePop.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AppStartInitFinish_CreateTools.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.AppStartInitFinish_Menu.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.BasicChange_RefreshHud.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.BattleTextSystem.<PopHud>d__7>
-	// ET.StateMachineWrap<ET.Client.C2C_GroupDelHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.C2C_GroupUpdateHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.C2C_UpdateChatHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ChangePosition_SyncGameObjectPos.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ChangeRotation_SyncGameObjectRotation.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ChatEmojoMenuSelectEventHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ChatMenuSelectEventHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ClientSenderComponentSystem.<Call>d__6>
-	// ET.StateMachineWrap<ET.Client.ClientSenderComponentSystem.<DisposeClientSender>d__3>
-	// ET.StateMachineWrap<ET.Client.ClientSenderComponentSystem.<LoginAsync>d__4>
-	// ET.StateMachineWrap<ET.Client.ClientSenderComponentSystem.<RemoveFiberAsync>d__2>
-	// ET.StateMachineWrap<ET.Client.ClientSkillComponentSystem.<NormalAttack>d__6>
-	// ET.StateMachineWrap<ET.Client.ClientSkillComponentSystem.<UseSkill>d__7>
-	// ET.StateMachineWrap<ET.Client.ClientUseSkillEvent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.CommandComponentSystem.<RunAsync>d__3>
-	// ET.StateMachineWrap<ET.Client.CommandComponentSystem.<RunAsync>d__4>
-	// ET.StateMachineWrap<ET.Client.CommandOpenWin.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.CommandUnitSystem.<RunAsync>d__2>
-	// ET.StateMachineWrap<ET.Client.DataSaveComponentSystem.<GetAsync>d__6<object>>
-	// ET.StateMachineWrap<ET.Client.DataSaveComponentSystem.<SaveAsync>d__5<object>>
-	// ET.StateMachineWrap<ET.Client.DelGroupHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.DeleteTask_Event.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ESItemSystem.<ItemClick>d__7>
-	// ET.StateMachineWrap<ET.Client.ESItemSystem.<RefreshFrame>d__5>
-	// ET.StateMachineWrap<ET.Client.ESItemSystem.<RefreshIcon>d__4>
-	// ET.StateMachineWrap<ET.Client.ES_EquipItemSystem.<Show>d__3>
-	// ET.StateMachineWrap<ET.Client.ES_NormalItemSystem.<Show>d__3>
-	// ET.StateMachineWrap<ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d>
-	// ET.StateMachineWrap<ET.Client.EUIHelper.<>c__DisplayClass20_0.<<AddListenerAsync>g__clickActionAsync|1>d>
-	// ET.StateMachineWrap<ET.Client.EUIHelper.<SetSprite>d__30>
-	// ET.StateMachineWrap<ET.Client.EnterMapFinish_CreateMainUI.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.EnterMapFinish_InitUnit.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.EnterMapFinish_SendGameOk.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.EnterMapHelper.<EnterMapAsync>d__0>
-	// ET.StateMachineWrap<ET.Client.EntryEvent3_InitClient.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.FiberInit_NetClient.<Handle>d__0>
-	// ET.StateMachineWrap<ET.Client.HotKeyEvent_Handler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.HotKeyEvent_UseSkill.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.InitTask_Event.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.LoadingProgress_Update.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.LoginHelper.<GetRoles>d__3>
-	// ET.StateMachineWrap<ET.Client.LoginHelper.<GetServerInfos>d__2>
-	// ET.StateMachineWrap<ET.Client.LoginHelper.<Login>d__0>
-	// ET.StateMachineWrap<ET.Client.LoginHelper.<QueryAccount>d__1>
-	// ET.StateMachineWrap<ET.Client.M2C_BreakSkillHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_CreateMyUnitHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_CreateUnitsHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_DelBuffHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_DelSkillListHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_DeleteTaskHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_HurtListHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_PathfindingResultHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_RemoveUnitsHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_StartSceneChangeHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_StopHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateBasicInfoHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateBuffHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateEquipHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateFashionEffectHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateFightDataInfoHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateHpHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateItemHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateNumericHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdatePlayerDataHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateShieldHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateSkillHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateSkillListHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UpdateTaskHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.M2C_UseSkillHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.Main2NetClient_LoginHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.MainBottomMenuSelectHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.MenuSelectHandler.<OnMenuClick>d__2>
-	// ET.StateMachineWrap<ET.Client.MenuSelectHandler.<Run>d__3>
-	// ET.StateMachineWrap<ET.Client.MoveHelper.<MoveToAsync>d__0>
-	// ET.StateMachineWrap<ET.Client.MoveHelper.<MoveToAsync>d__1>
-	// ET.StateMachineWrap<ET.Client.MoveStart_Animator.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.MoveStop_Animator.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.NetClient2Main_SessionDisposeHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ParticleAction.<OnExecute>d__0>
-	// ET.StateMachineWrap<ET.Client.PingComponentSystem.<PingAsync>d__2>
-	// ET.StateMachineWrap<ET.Client.PlayActionEventHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.PopHurtHud_Handler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.PopMsg_EventHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.PushActionEventHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.RedDotComponentSystem.<PreLoadGameObject>d__11>
-	// ET.StateMachineWrap<ET.Client.RemoveBuffViewEvent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.RemoveItemEvent_Watcher.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.ResourcesAtlasComponentSystem.<LoadAsset>d__5>
-	// ET.StateMachineWrap<ET.Client.ResourcesAtlasComponentSystem.<LoadAtlasConfig>d__7>
-	// ET.StateMachineWrap<ET.Client.ResourcesAtlasComponentSystem.<LoadSpriteAsync>d__4>
-	// ET.StateMachineWrap<ET.Client.ResourcesLoaderComponentSystem.<LoadAllAssetsAsync>d__4<object>>
-	// ET.StateMachineWrap<ET.Client.ResourcesLoaderComponentSystem.<LoadAssetAsync>d__3<object>>
-	// ET.StateMachineWrap<ET.Client.ResourcesLoaderComponentSystem.<LoadSceneAsync>d__5>
-	// ET.StateMachineWrap<ET.Client.RouterAddressComponentSystem.<GetAllRouter>d__2>
-	// ET.StateMachineWrap<ET.Client.RouterAddressComponentSystem.<Init>d__1>
-	// ET.StateMachineWrap<ET.Client.RouterAddressComponentSystem.<WaitTenMinGetAllRouter>d__3>
-	// ET.StateMachineWrap<ET.Client.RouterCheckComponentSystem.<CheckAsync>d__1>
-	// ET.StateMachineWrap<ET.Client.RouterHelper.<Connect>d__2>
-	// ET.StateMachineWrap<ET.Client.RouterHelper.<CreateRouterSession>d__0>
-	// ET.StateMachineWrap<ET.Client.RouterHelper.<GetRouterAddress>d__1>
-	// ET.StateMachineWrap<ET.Client.SceneChangeFinish_AddComponent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.SceneChangeFinish_CloseLoading.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.SceneChangeStart_AddComponent.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.Scroll_Item_BagSystem.<Refresh>d__2>
-	// ET.StateMachineWrap<ET.Client.UIBaseWindowSystem.<SetSprite>d__2>
-	// ET.StateMachineWrap<ET.Client.UIChatSystem.<LoadData>d__0>
-	// ET.StateMachineWrap<ET.Client.UIComponentHelper.<CheckCloseUI>d__2>
-	// ET.StateMachineWrap<ET.Client.UIComponentHelper.<OpenConfirm>d__3>
-	// ET.StateMachineWrap<ET.Client.UIComponentHelper.<OpenConfirm>d__4>
-	// ET.StateMachineWrap<ET.Client.UIComponentHelper.<PopItemTips>d__1>
-	// ET.StateMachineWrap<ET.Client.UIComponentSystem.<LoadBaseWindowsAsync>d__30>
-	// ET.StateMachineWrap<ET.Client.UIComponentSystem.<PreLoadWindowsItemAsync>d__31>
-	// ET.StateMachineWrap<ET.Client.UIComponentSystem.<PreloadUI>d__4>
-	// ET.StateMachineWrap<ET.Client.UIComponentSystem.<ShowBaseWindowAsync>d__22>
-	// ET.StateMachineWrap<ET.Client.UIComponentSystem.<ShowWindow>d__13<object>>
-	// ET.StateMachineWrap<ET.Client.UIComponentSystem.<ShowWindowAsync>d__14>
-	// ET.StateMachineWrap<ET.Client.UIItemTipSystem.<CreateTip>d__4>
-	// ET.StateMachineWrap<ET.Client.UILoginSystem.<OnEnterGameClick>d__12>
-	// ET.StateMachineWrap<ET.Client.UILoginSystem.<OnLoginClick>d__9>
-	// ET.StateMachineWrap<ET.Client.UILoginSystem.<OnServerClick>d__10>
-	// ET.StateMachineWrap<ET.Client.UILoginSystem.<QueryAccount>d__8>
-	// ET.StateMachineWrap<ET.Client.UILoginSystem.<QueryServer>d__7>
-	// ET.StateMachineWrap<ET.Client.UnitWeaponComponentSystem.<RefreshWeapon>d__2>
-	// ET.StateMachineWrap<ET.Client.UpdateFashionEffectEvent_Handler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.UpdateGroupHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.UpdateMsgHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.Client.UpdateShield_RefreshHud.<Run>d__0>
-	// ET.StateMachineWrap<ET.ConsoleComponentSystem.<Start>d__1>
-	// ET.StateMachineWrap<ET.Entry.<StartAsync>d__2>
-	// ET.StateMachineWrap<ET.EntryEvent1_InitShare.<Run>d__0>
-	// ET.StateMachineWrap<ET.FiberInit_Main.<Handle>d__0>
-	// ET.StateMachineWrap<ET.MailBoxType_OrderedMessageHandler.<HandleInner>d__1>
-	// ET.StateMachineWrap<ET.MailBoxType_UnOrderedMessageHandler.<HandleAsync>d__1>
-	// ET.StateMachineWrap<ET.MessageHandler.<Handle>d__1<object,object,object>>
-	// ET.StateMachineWrap<ET.MessageHandler.<Handle>d__1<object,object>>
-	// ET.StateMachineWrap<ET.MessageSessionHandler.<HandleAsync>d__2<object,object>>
-	// ET.StateMachineWrap<ET.MessageSessionHandler.<HandleAsync>d__2<object>>
-	// ET.StateMachineWrap<ET.MoveComponentSystem.<MoveToAsync>d__5>
-	// ET.StateMachineWrap<ET.NumericChangeEvent_NotifyWatcher.<Run>d__0>
-	// ET.StateMachineWrap<ET.ObjectWaitSystem.<Wait>d__4<object>>
-	// ET.StateMachineWrap<ET.ReloadConfigConsoleHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.ReloadDllConsoleHandler.<Run>d__0>
-	// ET.StateMachineWrap<ET.RpcInfo.<Wait>d__7>
-	// ET.StateMachineWrap<ET.Server.TestConsoleHanlder.<Run>d__0>
-	// ET.StateMachineWrap<ET.SessionSystem.<Call>d__3>
-	// ET.StateMachineWrap<ET.SessionSystem.<Call>d__4>
+	// ET.StateMachineWrap<object>
 	// ET.StructBsonSerialize<ET.ActorId>
 	// ET.StructBsonSerialize<ET.Address>
 	// ET.StructBsonSerialize<ET.MessageReturn>
@@ -292,6 +200,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.StructBsonSerialize<Unity.Mathematics.quaternion>
 	// ET.StructBsonSerialize<object>
 	// ET.UpdateSystem<object>
+	// MemoryPack.Formatters.ArrayFormatter<ET.CreateMapCtx>
 	// MemoryPack.Formatters.ArrayFormatter<byte>
 	// MemoryPack.Formatters.ArrayFormatter<object>
 	// MemoryPack.Formatters.DictionaryFormatter<int,long>
@@ -304,7 +213,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// MemoryPack.IMemoryPackFormatter<int>
 	// MemoryPack.IMemoryPackFormatter<long>
 	// MemoryPack.IMemoryPackFormatter<object>
+	// MemoryPack.IMemoryPackable<ET.CreateMapCtx>
 	// MemoryPack.IMemoryPackable<object>
+	// MemoryPack.MemoryPackFormatter<ET.CreateMapCtx>
 	// MemoryPack.MemoryPackFormatter<System.UIntPtr>
 	// MemoryPack.MemoryPackFormatter<int>
 	// MemoryPack.MemoryPackFormatter<object>
@@ -759,365 +670,28 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public void RefMethods()
 	{
 		// object ET.Client.TweenManager.CreateTweener<object>()
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,ET.Client.DataSaveComponentSystem.<SaveAsync>d__5<object>>(System.Runtime.CompilerServices.TaskAwaiter&,ET.Client.DataSaveComponentSystem.<SaveAsync>d__5<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,ET.Client.ResourcesAtlasComponentSystem.<LoadAtlasConfig>d__7>(System.Runtime.CompilerServices.TaskAwaiter&,ET.Client.ResourcesAtlasComponentSystem.<LoadAtlasConfig>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,ET.Client.ResourcesLoaderComponentSystem.<LoadSceneAsync>d__5>(System.Runtime.CompilerServices.TaskAwaiter&,ET.Client.ResourcesLoaderComponentSystem.<LoadSceneAsync>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter<object>,ET.Client.MenuSelectHandler.<OnMenuClick>d__2>(System.Runtime.CompilerServices.TaskAwaiter<object>&,ET.Client.MenuSelectHandler.<OnMenuClick>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter<object>,ET.ConsoleComponentSystem.<Start>d__1>(System.Runtime.CompilerServices.TaskAwaiter<object>&,ET.ConsoleComponentSystem.<Start>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.A2NetClient_MessageHandler.<Run>d__0>(object&,ET.Client.A2NetClient_MessageHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.A2NetClient_RequestHandler.<Run>d__0>(object&,ET.Client.A2NetClient_RequestHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AAction.<OnExecute>d__1>(object&,ET.Client.AAction.<OnExecute>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AI_Attack.<Execute>d__1>(object&,ET.Client.AI_Attack.<Execute>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AI_XunLuo.<Execute>d__1>(object&,ET.Client.AI_XunLuo.<Execute>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ActionComponentSystem.<PlayAction>d__3>(object&,ET.Client.ActionComponentSystem.<PlayAction>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ActionComponentSystem.<PushAction>d__4>(object&,ET.Client.ActionComponentSystem.<PushAction>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ActionUnitSystem.<WaitFinishAsync>d__3>(object&,ET.Client.ActionUnitSystem.<WaitFinishAsync>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AddBuffViewEvent.<Run>d__0>(object&,ET.Client.AddBuffViewEvent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AddItemEvent_Watcher.<Run>d__0>(object&,ET.Client.AddItemEvent_Watcher.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AddUpdateTask_Event.<Run>d__0>(object&,ET.Client.AddUpdateTask_Event.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AfterCreateCurrentScene_AddComponent.<Run>d__0>(object&,ET.Client.AfterCreateCurrentScene_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AfterUnitCreate_AddComponent.<Run>d__0>(object&,ET.Client.AfterUnitCreate_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AfterUnitCreate_CreateUnitView.<Run>d__0>(object&,ET.Client.AfterUnitCreate_CreateUnitView.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AnimationAction.<OnExecute>d__2>(object&,ET.Client.AnimationAction.<OnExecute>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AnimatorAction.<OnExecute>d__0>(object&,ET.Client.AnimatorAction.<OnExecute>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AppStartInitFinish_AddComponent.<Run>d__0>(object&,ET.Client.AppStartInitFinish_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AppStartInitFinish_CreateHudUI.<Run>d__0>(object&,ET.Client.AppStartInitFinish_CreateHudUI.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AppStartInitFinish_CreateLoginUI.<Run>d__0>(object&,ET.Client.AppStartInitFinish_CreateLoginUI.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AppStartInitFinish_CreatePop.<Run>d__0>(object&,ET.Client.AppStartInitFinish_CreatePop.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AppStartInitFinish_CreateTools.<Run>d__0>(object&,ET.Client.AppStartInitFinish_CreateTools.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.AppStartInitFinish_Menu.<Run>d__0>(object&,ET.Client.AppStartInitFinish_Menu.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.BasicChange_RefreshHud.<Run>d__0>(object&,ET.Client.BasicChange_RefreshHud.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.BattleTextSystem.<PopHud>d__7>(object&,ET.Client.BattleTextSystem.<PopHud>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.C2C_GroupDelHandler.<Run>d__0>(object&,ET.Client.C2C_GroupDelHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.C2C_GroupUpdateHandler.<Run>d__0>(object&,ET.Client.C2C_GroupUpdateHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.C2C_UpdateChatHandler.<Run>d__0>(object&,ET.Client.C2C_UpdateChatHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ChangePosition_SyncGameObjectPos.<Run>d__0>(object&,ET.Client.ChangePosition_SyncGameObjectPos.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ChangeRotation_SyncGameObjectRotation.<Run>d__0>(object&,ET.Client.ChangeRotation_SyncGameObjectRotation.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ChatEmojoMenuSelectEventHandler.<Run>d__0>(object&,ET.Client.ChatEmojoMenuSelectEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ChatMenuSelectEventHandler.<Run>d__0>(object&,ET.Client.ChatMenuSelectEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ClientSenderComponentSystem.<DisposeClientSender>d__3>(object&,ET.Client.ClientSenderComponentSystem.<DisposeClientSender>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ClientSenderComponentSystem.<RemoveFiberAsync>d__2>(object&,ET.Client.ClientSenderComponentSystem.<RemoveFiberAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ClientSkillComponentSystem.<NormalAttack>d__6>(object&,ET.Client.ClientSkillComponentSystem.<NormalAttack>d__6&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ClientSkillComponentSystem.<UseSkill>d__7>(object&,ET.Client.ClientSkillComponentSystem.<UseSkill>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ClientUseSkillEvent.<Run>d__0>(object&,ET.Client.ClientUseSkillEvent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.CommandComponentSystem.<RunAsync>d__3>(object&,ET.Client.CommandComponentSystem.<RunAsync>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.CommandComponentSystem.<RunAsync>d__4>(object&,ET.Client.CommandComponentSystem.<RunAsync>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.CommandOpenWin.<Run>d__0>(object&,ET.Client.CommandOpenWin.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.CommandUnitSystem.<RunAsync>d__2>(object&,ET.Client.CommandUnitSystem.<RunAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.DelGroupHandler.<Run>d__0>(object&,ET.Client.DelGroupHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.DeleteTask_Event.<Run>d__0>(object&,ET.Client.DeleteTask_Event.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ESItemSystem.<ItemClick>d__7>(object&,ET.Client.ESItemSystem.<ItemClick>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ESItemSystem.<RefreshFrame>d__5>(object&,ET.Client.ESItemSystem.<RefreshFrame>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ESItemSystem.<RefreshIcon>d__4>(object&,ET.Client.ESItemSystem.<RefreshIcon>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ES_EquipItemSystem.<Show>d__3>(object&,ET.Client.ES_EquipItemSystem.<Show>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ES_NormalItemSystem.<Show>d__3>(object&,ET.Client.ES_NormalItemSystem.<Show>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d>(object&,ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EUIHelper.<>c__DisplayClass20_0.<<AddListenerAsync>g__clickActionAsync|1>d>(object&,ET.Client.EUIHelper.<>c__DisplayClass20_0.<<AddListenerAsync>g__clickActionAsync|1>d&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EUIHelper.<SetSprite>d__30>(object&,ET.Client.EUIHelper.<SetSprite>d__30&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EnterMapFinish_CreateMainUI.<Run>d__0>(object&,ET.Client.EnterMapFinish_CreateMainUI.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EnterMapFinish_InitUnit.<Run>d__0>(object&,ET.Client.EnterMapFinish_InitUnit.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EnterMapFinish_SendGameOk.<Run>d__0>(object&,ET.Client.EnterMapFinish_SendGameOk.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.EntryEvent3_InitClient.<Run>d__0>(object&,ET.Client.EntryEvent3_InitClient.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.FiberInit_NetClient.<Handle>d__0>(object&,ET.Client.FiberInit_NetClient.<Handle>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.HotKeyEvent_Handler.<Run>d__0>(object&,ET.Client.HotKeyEvent_Handler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.HotKeyEvent_UseSkill.<Run>d__0>(object&,ET.Client.HotKeyEvent_UseSkill.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.InitTask_Event.<Run>d__0>(object&,ET.Client.InitTask_Event.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.LoadingProgress_Update.<Run>d__0>(object&,ET.Client.LoadingProgress_Update.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_BreakSkillHandler.<Run>d__0>(object&,ET.Client.M2C_BreakSkillHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_CreateMyUnitHandler.<Run>d__0>(object&,ET.Client.M2C_CreateMyUnitHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_CreateUnitsHandler.<Run>d__0>(object&,ET.Client.M2C_CreateUnitsHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_DelBuffHandler.<Run>d__0>(object&,ET.Client.M2C_DelBuffHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_DelSkillListHandler.<Run>d__0>(object&,ET.Client.M2C_DelSkillListHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_DeleteTaskHandler.<Run>d__0>(object&,ET.Client.M2C_DeleteTaskHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_HurtListHandler.<Run>d__0>(object&,ET.Client.M2C_HurtListHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_PathfindingResultHandler.<Run>d__0>(object&,ET.Client.M2C_PathfindingResultHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_RemoveUnitsHandler.<Run>d__0>(object&,ET.Client.M2C_RemoveUnitsHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_StartSceneChangeHandler.<Run>d__0>(object&,ET.Client.M2C_StartSceneChangeHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_StopHandler.<Run>d__0>(object&,ET.Client.M2C_StopHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateBasicInfoHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateBasicInfoHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateBuffHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateBuffHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateEquipHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateEquipHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateFashionEffectHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateFashionEffectHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateFightDataInfoHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateFightDataInfoHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateHpHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateHpHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateItemHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateItemHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateNumericHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateNumericHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdatePlayerDataHandler.<Run>d__0>(object&,ET.Client.M2C_UpdatePlayerDataHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateShieldHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateShieldHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateSkillHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateSkillHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateSkillListHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateSkillListHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UpdateTaskHandler.<Run>d__0>(object&,ET.Client.M2C_UpdateTaskHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.M2C_UseSkillHandler.<Run>d__0>(object&,ET.Client.M2C_UseSkillHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.Main2NetClient_LoginHandler.<Run>d__0>(object&,ET.Client.Main2NetClient_LoginHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.MainBottomMenuSelectHandler.<Run>d__0>(object&,ET.Client.MainBottomMenuSelectHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.MenuSelectHandler.<Run>d__3>(object&,ET.Client.MenuSelectHandler.<Run>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.MoveHelper.<MoveToAsync>d__1>(object&,ET.Client.MoveHelper.<MoveToAsync>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.MoveStart_Animator.<Run>d__0>(object&,ET.Client.MoveStart_Animator.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.MoveStop_Animator.<Run>d__0>(object&,ET.Client.MoveStop_Animator.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.NetClient2Main_SessionDisposeHandler.<Run>d__0>(object&,ET.Client.NetClient2Main_SessionDisposeHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ParticleAction.<OnExecute>d__0>(object&,ET.Client.ParticleAction.<OnExecute>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.PingComponentSystem.<PingAsync>d__2>(object&,ET.Client.PingComponentSystem.<PingAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.PlayActionEventHandler.<Run>d__0>(object&,ET.Client.PlayActionEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.PopHurtHud_Handler.<Run>d__0>(object&,ET.Client.PopHurtHud_Handler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.PopMsg_EventHandler.<Run>d__0>(object&,ET.Client.PopMsg_EventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.PushActionEventHandler.<Run>d__0>(object&,ET.Client.PushActionEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.RedDotComponentSystem.<PreLoadGameObject>d__11>(object&,ET.Client.RedDotComponentSystem.<PreLoadGameObject>d__11&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.RemoveBuffViewEvent.<Run>d__0>(object&,ET.Client.RemoveBuffViewEvent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.RemoveItemEvent_Watcher.<Run>d__0>(object&,ET.Client.RemoveItemEvent_Watcher.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.ResourcesLoaderComponentSystem.<LoadSceneAsync>d__5>(object&,ET.Client.ResourcesLoaderComponentSystem.<LoadSceneAsync>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.RouterAddressComponentSystem.<GetAllRouter>d__2>(object&,ET.Client.RouterAddressComponentSystem.<GetAllRouter>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.RouterAddressComponentSystem.<Init>d__1>(object&,ET.Client.RouterAddressComponentSystem.<Init>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.RouterAddressComponentSystem.<WaitTenMinGetAllRouter>d__3>(object&,ET.Client.RouterAddressComponentSystem.<WaitTenMinGetAllRouter>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.RouterCheckComponentSystem.<CheckAsync>d__1>(object&,ET.Client.RouterCheckComponentSystem.<CheckAsync>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.SceneChangeFinish_AddComponent.<Run>d__0>(object&,ET.Client.SceneChangeFinish_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.SceneChangeFinish_CloseLoading.<Run>d__0>(object&,ET.Client.SceneChangeFinish_CloseLoading.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.SceneChangeStart_AddComponent.<Run>d__0>(object&,ET.Client.SceneChangeStart_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.Scroll_Item_BagSystem.<Refresh>d__2>(object&,ET.Client.Scroll_Item_BagSystem.<Refresh>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIBaseWindowSystem.<SetSprite>d__2>(object&,ET.Client.UIBaseWindowSystem.<SetSprite>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIChatSystem.<LoadData>d__0>(object&,ET.Client.UIChatSystem.<LoadData>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentHelper.<CheckCloseUI>d__2>(object&,ET.Client.UIComponentHelper.<CheckCloseUI>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentHelper.<PopItemTips>d__1>(object&,ET.Client.UIComponentHelper.<PopItemTips>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentSystem.<LoadBaseWindowsAsync>d__30>(object&,ET.Client.UIComponentSystem.<LoadBaseWindowsAsync>d__30&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentSystem.<PreLoadWindowsItemAsync>d__31>(object&,ET.Client.UIComponentSystem.<PreLoadWindowsItemAsync>d__31&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentSystem.<PreloadUI>d__4>(object&,ET.Client.UIComponentSystem.<PreloadUI>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UIItemTipSystem.<CreateTip>d__4>(object&,ET.Client.UIItemTipSystem.<CreateTip>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UILoginSystem.<OnEnterGameClick>d__12>(object&,ET.Client.UILoginSystem.<OnEnterGameClick>d__12&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UILoginSystem.<OnLoginClick>d__9>(object&,ET.Client.UILoginSystem.<OnLoginClick>d__9&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UILoginSystem.<OnServerClick>d__10>(object&,ET.Client.UILoginSystem.<OnServerClick>d__10&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UnitWeaponComponentSystem.<RefreshWeapon>d__2>(object&,ET.Client.UnitWeaponComponentSystem.<RefreshWeapon>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UpdateFashionEffectEvent_Handler.<Run>d__0>(object&,ET.Client.UpdateFashionEffectEvent_Handler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UpdateGroupHandler.<Run>d__0>(object&,ET.Client.UpdateGroupHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UpdateMsgHandler.<Run>d__0>(object&,ET.Client.UpdateMsgHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Client.UpdateShield_RefreshHud.<Run>d__0>(object&,ET.Client.UpdateShield_RefreshHud.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.ConsoleComponentSystem.<Start>d__1>(object&,ET.ConsoleComponentSystem.<Start>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Entry.<StartAsync>d__2>(object&,ET.Entry.<StartAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.EntryEvent1_InitShare.<Run>d__0>(object&,ET.EntryEvent1_InitShare.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.FiberInit_Main.<Handle>d__0>(object&,ET.FiberInit_Main.<Handle>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.MailBoxType_OrderedMessageHandler.<HandleInner>d__1>(object&,ET.MailBoxType_OrderedMessageHandler.<HandleInner>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.MailBoxType_UnOrderedMessageHandler.<HandleAsync>d__1>(object&,ET.MailBoxType_UnOrderedMessageHandler.<HandleAsync>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.MessageHandler.<Handle>d__1<object,object,object>>(object&,ET.MessageHandler.<Handle>d__1<object,object,object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.MessageHandler.<Handle>d__1<object,object>>(object&,ET.MessageHandler.<Handle>d__1<object,object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.MessageSessionHandler.<HandleAsync>d__2<object,object>>(object&,ET.MessageSessionHandler.<HandleAsync>d__2<object,object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.MessageSessionHandler.<HandleAsync>d__2<object>>(object&,ET.MessageSessionHandler.<HandleAsync>d__2<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.NumericChangeEvent_NotifyWatcher.<Run>d__0>(object&,ET.NumericChangeEvent_NotifyWatcher.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.ReloadConfigConsoleHandler.<Run>d__0>(object&,ET.ReloadConfigConsoleHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.ReloadDllConsoleHandler.<Run>d__0>(object&,ET.ReloadDllConsoleHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,ET.Server.TestConsoleHanlder.<Run>d__0>(object&,ET.Server.TestConsoleHanlder.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<byte,long>>.AwaitUnsafeOnCompleted<object,ET.Client.ClientSenderComponentSystem.<LoginAsync>d__4>(object&,ET.Client.ClientSenderComponentSystem.<LoginAsync>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<uint,object>>.AwaitUnsafeOnCompleted<object,ET.Client.RouterHelper.<GetRouterAddress>d__1>(object&,ET.Client.RouterHelper.<GetRouterAddress>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.AwaitUnsafeOnCompleted<object,ET.Client.UILoginSystem.<QueryAccount>d__8>(object&,ET.Client.UILoginSystem.<QueryAccount>d__8&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.AwaitUnsafeOnCompleted<object,ET.Client.UILoginSystem.<QueryServer>d__7>(object&,ET.Client.UILoginSystem.<QueryServer>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.AwaitUnsafeOnCompleted<object,ET.MoveComponentSystem.<MoveToAsync>d__5>(object&,ET.MoveComponentSystem.<MoveToAsync>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.EnterMapHelper.<EnterMapAsync>d__0>(object&,ET.Client.EnterMapHelper.<EnterMapAsync>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.LoginHelper.<GetRoles>d__3>(object&,ET.Client.LoginHelper.<GetRoles>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.LoginHelper.<GetServerInfos>d__2>(object&,ET.Client.LoginHelper.<GetServerInfos>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.LoginHelper.<Login>d__0>(object&,ET.Client.LoginHelper.<Login>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.LoginHelper.<QueryAccount>d__1>(object&,ET.Client.LoginHelper.<QueryAccount>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.MoveHelper.<MoveToAsync>d__0>(object&,ET.Client.MoveHelper.<MoveToAsync>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentHelper.<OpenConfirm>d__3>(object&,ET.Client.UIComponentHelper.<OpenConfirm>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentHelper.<OpenConfirm>d__4>(object&,ET.Client.UIComponentHelper.<OpenConfirm>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,ET.Client.ResourcesAtlasComponentSystem.<LoadAsset>d__5>(System.Runtime.CompilerServices.TaskAwaiter&,ET.Client.ResourcesAtlasComponentSystem.<LoadAsset>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,ET.Client.ResourcesLoaderComponentSystem.<LoadAllAssetsAsync>d__4<object>>(System.Runtime.CompilerServices.TaskAwaiter&,ET.Client.ResourcesLoaderComponentSystem.<LoadAllAssetsAsync>d__4<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,ET.Client.ResourcesLoaderComponentSystem.<LoadAssetAsync>d__3<object>>(System.Runtime.CompilerServices.TaskAwaiter&,ET.Client.ResourcesLoaderComponentSystem.<LoadAssetAsync>d__3<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter<object>,ET.Client.DataSaveComponentSystem.<GetAsync>d__6<object>>(System.Runtime.CompilerServices.TaskAwaiter<object>&,ET.Client.DataSaveComponentSystem.<GetAsync>d__6<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.ClientSenderComponentSystem.<Call>d__6>(object&,ET.Client.ClientSenderComponentSystem.<Call>d__6&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.ResourcesAtlasComponentSystem.<LoadAsset>d__5>(object&,ET.Client.ResourcesAtlasComponentSystem.<LoadAsset>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.ResourcesAtlasComponentSystem.<LoadSpriteAsync>d__4>(object&,ET.Client.ResourcesAtlasComponentSystem.<LoadSpriteAsync>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.ResourcesLoaderComponentSystem.<LoadAllAssetsAsync>d__4<object>>(object&,ET.Client.ResourcesLoaderComponentSystem.<LoadAllAssetsAsync>d__4<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.ResourcesLoaderComponentSystem.<LoadAssetAsync>d__3<object>>(object&,ET.Client.ResourcesLoaderComponentSystem.<LoadAssetAsync>d__3<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.RouterHelper.<CreateRouterSession>d__0>(object&,ET.Client.RouterHelper.<CreateRouterSession>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentSystem.<ShowBaseWindowAsync>d__22>(object&,ET.Client.UIComponentSystem.<ShowBaseWindowAsync>d__22&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentSystem.<ShowWindow>d__13<object>>(object&,ET.Client.UIComponentSystem.<ShowWindow>d__13<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.UIComponentSystem.<ShowWindowAsync>d__14>(object&,ET.Client.UIComponentSystem.<ShowWindowAsync>d__14&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.ObjectWaitSystem.<Wait>d__4<object>>(object&,ET.ObjectWaitSystem.<Wait>d__4<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.RpcInfo.<Wait>d__7>(object&,ET.RpcInfo.<Wait>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.SessionSystem.<Call>d__3>(object&,ET.SessionSystem.<Call>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.SessionSystem.<Call>d__4>(object&,ET.SessionSystem.<Call>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<uint>.AwaitUnsafeOnCompleted<object,ET.Client.RouterHelper.<Connect>d__2>(object&,ET.Client.RouterHelper.<Connect>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.A2NetClient_MessageHandler.<Run>d__0>(ET.Client.A2NetClient_MessageHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.A2NetClient_RequestHandler.<Run>d__0>(ET.Client.A2NetClient_RequestHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AAction.<OnExecute>d__1>(ET.Client.AAction.<OnExecute>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AI_Attack.<Execute>d__1>(ET.Client.AI_Attack.<Execute>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AI_XunLuo.<Execute>d__1>(ET.Client.AI_XunLuo.<Execute>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ActionComponentSystem.<PlayAction>d__3>(ET.Client.ActionComponentSystem.<PlayAction>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ActionComponentSystem.<PushAction>d__4>(ET.Client.ActionComponentSystem.<PushAction>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ActionUnitSystem.<WaitFinishAsync>d__3>(ET.Client.ActionUnitSystem.<WaitFinishAsync>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AddBuffViewEvent.<Run>d__0>(ET.Client.AddBuffViewEvent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AddItemEvent_Watcher.<Run>d__0>(ET.Client.AddItemEvent_Watcher.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AddUpdateTask_Event.<Run>d__0>(ET.Client.AddUpdateTask_Event.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AfterCreateCurrentScene_AddComponent.<Run>d__0>(ET.Client.AfterCreateCurrentScene_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AfterUnitCreate_AddComponent.<Run>d__0>(ET.Client.AfterUnitCreate_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AfterUnitCreate_CreateUnitView.<Run>d__0>(ET.Client.AfterUnitCreate_CreateUnitView.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AnimationAction.<OnExecute>d__2>(ET.Client.AnimationAction.<OnExecute>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AnimatorAction.<OnExecute>d__0>(ET.Client.AnimatorAction.<OnExecute>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AppStartInitFinish_AddComponent.<Run>d__0>(ET.Client.AppStartInitFinish_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AppStartInitFinish_CreateHudUI.<Run>d__0>(ET.Client.AppStartInitFinish_CreateHudUI.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AppStartInitFinish_CreateLoginUI.<Run>d__0>(ET.Client.AppStartInitFinish_CreateLoginUI.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AppStartInitFinish_CreatePop.<Run>d__0>(ET.Client.AppStartInitFinish_CreatePop.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AppStartInitFinish_CreateTools.<Run>d__0>(ET.Client.AppStartInitFinish_CreateTools.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.AppStartInitFinish_Menu.<Run>d__0>(ET.Client.AppStartInitFinish_Menu.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.BasicChange_RefreshHud.<Run>d__0>(ET.Client.BasicChange_RefreshHud.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.BattleTextSystem.<PopHud>d__7>(ET.Client.BattleTextSystem.<PopHud>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.C2C_GroupDelHandler.<Run>d__0>(ET.Client.C2C_GroupDelHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.C2C_GroupUpdateHandler.<Run>d__0>(ET.Client.C2C_GroupUpdateHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.C2C_UpdateChatHandler.<Run>d__0>(ET.Client.C2C_UpdateChatHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ChangePosition_SyncGameObjectPos.<Run>d__0>(ET.Client.ChangePosition_SyncGameObjectPos.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ChangeRotation_SyncGameObjectRotation.<Run>d__0>(ET.Client.ChangeRotation_SyncGameObjectRotation.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ChatEmojoMenuSelectEventHandler.<Run>d__0>(ET.Client.ChatEmojoMenuSelectEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ChatMenuSelectEventHandler.<Run>d__0>(ET.Client.ChatMenuSelectEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ClientSenderComponentSystem.<DisposeClientSender>d__3>(ET.Client.ClientSenderComponentSystem.<DisposeClientSender>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ClientSenderComponentSystem.<RemoveFiberAsync>d__2>(ET.Client.ClientSenderComponentSystem.<RemoveFiberAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ClientSkillComponentSystem.<NormalAttack>d__6>(ET.Client.ClientSkillComponentSystem.<NormalAttack>d__6&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ClientSkillComponentSystem.<UseSkill>d__7>(ET.Client.ClientSkillComponentSystem.<UseSkill>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ClientUseSkillEvent.<Run>d__0>(ET.Client.ClientUseSkillEvent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.CommandComponentSystem.<RunAsync>d__3>(ET.Client.CommandComponentSystem.<RunAsync>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.CommandComponentSystem.<RunAsync>d__4>(ET.Client.CommandComponentSystem.<RunAsync>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.CommandOpenWin.<Run>d__0>(ET.Client.CommandOpenWin.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.CommandUnitSystem.<RunAsync>d__2>(ET.Client.CommandUnitSystem.<RunAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.DataSaveComponentSystem.<SaveAsync>d__5<object>>(ET.Client.DataSaveComponentSystem.<SaveAsync>d__5<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.DelGroupHandler.<Run>d__0>(ET.Client.DelGroupHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.DeleteTask_Event.<Run>d__0>(ET.Client.DeleteTask_Event.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ESItemSystem.<ItemClick>d__7>(ET.Client.ESItemSystem.<ItemClick>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ESItemSystem.<RefreshFrame>d__5>(ET.Client.ESItemSystem.<RefreshFrame>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ESItemSystem.<RefreshIcon>d__4>(ET.Client.ESItemSystem.<RefreshIcon>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ES_EquipItemSystem.<Show>d__3>(ET.Client.ES_EquipItemSystem.<Show>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ES_NormalItemSystem.<Show>d__3>(ET.Client.ES_NormalItemSystem.<Show>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d>(ET.Client.EUIHelper.<>c__DisplayClass19_0.<<AddListenerAsyncWithId>g__clickActionAsync|1>d&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EUIHelper.<>c__DisplayClass20_0.<<AddListenerAsync>g__clickActionAsync|1>d>(ET.Client.EUIHelper.<>c__DisplayClass20_0.<<AddListenerAsync>g__clickActionAsync|1>d&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EUIHelper.<SetSprite>d__30>(ET.Client.EUIHelper.<SetSprite>d__30&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EnterMapFinish_CreateMainUI.<Run>d__0>(ET.Client.EnterMapFinish_CreateMainUI.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EnterMapFinish_InitUnit.<Run>d__0>(ET.Client.EnterMapFinish_InitUnit.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EnterMapFinish_SendGameOk.<Run>d__0>(ET.Client.EnterMapFinish_SendGameOk.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.EntryEvent3_InitClient.<Run>d__0>(ET.Client.EntryEvent3_InitClient.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.FiberInit_NetClient.<Handle>d__0>(ET.Client.FiberInit_NetClient.<Handle>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.HotKeyEvent_Handler.<Run>d__0>(ET.Client.HotKeyEvent_Handler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.HotKeyEvent_UseSkill.<Run>d__0>(ET.Client.HotKeyEvent_UseSkill.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.InitTask_Event.<Run>d__0>(ET.Client.InitTask_Event.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.LoadingProgress_Update.<Run>d__0>(ET.Client.LoadingProgress_Update.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_BreakSkillHandler.<Run>d__0>(ET.Client.M2C_BreakSkillHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_CreateMyUnitHandler.<Run>d__0>(ET.Client.M2C_CreateMyUnitHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_CreateUnitsHandler.<Run>d__0>(ET.Client.M2C_CreateUnitsHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_DelBuffHandler.<Run>d__0>(ET.Client.M2C_DelBuffHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_DelSkillListHandler.<Run>d__0>(ET.Client.M2C_DelSkillListHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_DeleteTaskHandler.<Run>d__0>(ET.Client.M2C_DeleteTaskHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_HurtListHandler.<Run>d__0>(ET.Client.M2C_HurtListHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_PathfindingResultHandler.<Run>d__0>(ET.Client.M2C_PathfindingResultHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_RemoveUnitsHandler.<Run>d__0>(ET.Client.M2C_RemoveUnitsHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_StartSceneChangeHandler.<Run>d__0>(ET.Client.M2C_StartSceneChangeHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_StopHandler.<Run>d__0>(ET.Client.M2C_StopHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateBasicInfoHandler.<Run>d__0>(ET.Client.M2C_UpdateBasicInfoHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateBuffHandler.<Run>d__0>(ET.Client.M2C_UpdateBuffHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateEquipHandler.<Run>d__0>(ET.Client.M2C_UpdateEquipHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateFashionEffectHandler.<Run>d__0>(ET.Client.M2C_UpdateFashionEffectHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateFightDataInfoHandler.<Run>d__0>(ET.Client.M2C_UpdateFightDataInfoHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateHpHandler.<Run>d__0>(ET.Client.M2C_UpdateHpHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateItemHandler.<Run>d__0>(ET.Client.M2C_UpdateItemHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateNumericHandler.<Run>d__0>(ET.Client.M2C_UpdateNumericHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdatePlayerDataHandler.<Run>d__0>(ET.Client.M2C_UpdatePlayerDataHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateShieldHandler.<Run>d__0>(ET.Client.M2C_UpdateShieldHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateSkillHandler.<Run>d__0>(ET.Client.M2C_UpdateSkillHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateSkillListHandler.<Run>d__0>(ET.Client.M2C_UpdateSkillListHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UpdateTaskHandler.<Run>d__0>(ET.Client.M2C_UpdateTaskHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.M2C_UseSkillHandler.<Run>d__0>(ET.Client.M2C_UseSkillHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.Main2NetClient_LoginHandler.<Run>d__0>(ET.Client.Main2NetClient_LoginHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.MainBottomMenuSelectHandler.<Run>d__0>(ET.Client.MainBottomMenuSelectHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.MenuSelectHandler.<OnMenuClick>d__2>(ET.Client.MenuSelectHandler.<OnMenuClick>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.MenuSelectHandler.<Run>d__3>(ET.Client.MenuSelectHandler.<Run>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.MoveHelper.<MoveToAsync>d__1>(ET.Client.MoveHelper.<MoveToAsync>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.MoveStart_Animator.<Run>d__0>(ET.Client.MoveStart_Animator.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.MoveStop_Animator.<Run>d__0>(ET.Client.MoveStop_Animator.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.NetClient2Main_SessionDisposeHandler.<Run>d__0>(ET.Client.NetClient2Main_SessionDisposeHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ParticleAction.<OnExecute>d__0>(ET.Client.ParticleAction.<OnExecute>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.PingComponentSystem.<PingAsync>d__2>(ET.Client.PingComponentSystem.<PingAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.PlayActionEventHandler.<Run>d__0>(ET.Client.PlayActionEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.PopHurtHud_Handler.<Run>d__0>(ET.Client.PopHurtHud_Handler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.PopMsg_EventHandler.<Run>d__0>(ET.Client.PopMsg_EventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.PushActionEventHandler.<Run>d__0>(ET.Client.PushActionEventHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.RedDotComponentSystem.<PreLoadGameObject>d__11>(ET.Client.RedDotComponentSystem.<PreLoadGameObject>d__11&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.RemoveBuffViewEvent.<Run>d__0>(ET.Client.RemoveBuffViewEvent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.RemoveItemEvent_Watcher.<Run>d__0>(ET.Client.RemoveItemEvent_Watcher.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ResourcesAtlasComponentSystem.<LoadAtlasConfig>d__7>(ET.Client.ResourcesAtlasComponentSystem.<LoadAtlasConfig>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.ResourcesLoaderComponentSystem.<LoadSceneAsync>d__5>(ET.Client.ResourcesLoaderComponentSystem.<LoadSceneAsync>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.RouterAddressComponentSystem.<GetAllRouter>d__2>(ET.Client.RouterAddressComponentSystem.<GetAllRouter>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.RouterAddressComponentSystem.<Init>d__1>(ET.Client.RouterAddressComponentSystem.<Init>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.RouterAddressComponentSystem.<WaitTenMinGetAllRouter>d__3>(ET.Client.RouterAddressComponentSystem.<WaitTenMinGetAllRouter>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.RouterCheckComponentSystem.<CheckAsync>d__1>(ET.Client.RouterCheckComponentSystem.<CheckAsync>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.SceneChangeFinish_AddComponent.<Run>d__0>(ET.Client.SceneChangeFinish_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.SceneChangeFinish_CloseLoading.<Run>d__0>(ET.Client.SceneChangeFinish_CloseLoading.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.SceneChangeStart_AddComponent.<Run>d__0>(ET.Client.SceneChangeStart_AddComponent.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.Scroll_Item_BagSystem.<Refresh>d__2>(ET.Client.Scroll_Item_BagSystem.<Refresh>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIBaseWindowSystem.<SetSprite>d__2>(ET.Client.UIBaseWindowSystem.<SetSprite>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIChatSystem.<LoadData>d__0>(ET.Client.UIChatSystem.<LoadData>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIComponentHelper.<CheckCloseUI>d__2>(ET.Client.UIComponentHelper.<CheckCloseUI>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIComponentHelper.<PopItemTips>d__1>(ET.Client.UIComponentHelper.<PopItemTips>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIComponentSystem.<LoadBaseWindowsAsync>d__30>(ET.Client.UIComponentSystem.<LoadBaseWindowsAsync>d__30&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIComponentSystem.<PreLoadWindowsItemAsync>d__31>(ET.Client.UIComponentSystem.<PreLoadWindowsItemAsync>d__31&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIComponentSystem.<PreloadUI>d__4>(ET.Client.UIComponentSystem.<PreloadUI>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UIItemTipSystem.<CreateTip>d__4>(ET.Client.UIItemTipSystem.<CreateTip>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UILoginSystem.<OnEnterGameClick>d__12>(ET.Client.UILoginSystem.<OnEnterGameClick>d__12&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UILoginSystem.<OnLoginClick>d__9>(ET.Client.UILoginSystem.<OnLoginClick>d__9&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UILoginSystem.<OnServerClick>d__10>(ET.Client.UILoginSystem.<OnServerClick>d__10&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UnitWeaponComponentSystem.<RefreshWeapon>d__2>(ET.Client.UnitWeaponComponentSystem.<RefreshWeapon>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UpdateFashionEffectEvent_Handler.<Run>d__0>(ET.Client.UpdateFashionEffectEvent_Handler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UpdateGroupHandler.<Run>d__0>(ET.Client.UpdateGroupHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UpdateMsgHandler.<Run>d__0>(ET.Client.UpdateMsgHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Client.UpdateShield_RefreshHud.<Run>d__0>(ET.Client.UpdateShield_RefreshHud.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.ConsoleComponentSystem.<Start>d__1>(ET.ConsoleComponentSystem.<Start>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Entry.<StartAsync>d__2>(ET.Entry.<StartAsync>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EntryEvent1_InitShare.<Run>d__0>(ET.EntryEvent1_InitShare.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.AppStartInitFinish>>(ET.EventSystem.<PublishAsync>d__4<object,ET.AppStartInitFinish>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.Client.ClientUseSkill>>(ET.EventSystem.<PublishAsync>d__4<object,ET.Client.ClientUseSkill>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.EnterMapFinish>>(ET.EventSystem.<PublishAsync>d__4<object,ET.EnterMapFinish>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent1>>(ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent1>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent2>>(ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent2>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent3>>(ET.EventSystem.<PublishAsync>d__4<object,ET.EntryEvent3>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.LoginFinish>>(ET.EventSystem.<PublishAsync>d__4<object,ET.LoginFinish>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.EventSystem.<PublishAsync>d__4<object,ET.SceneChangeFinish>>(ET.EventSystem.<PublishAsync>d__4<object,ET.SceneChangeFinish>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.FiberInit_Main.<Handle>d__0>(ET.FiberInit_Main.<Handle>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.MailBoxType_OrderedMessageHandler.<HandleInner>d__1>(ET.MailBoxType_OrderedMessageHandler.<HandleInner>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.MailBoxType_UnOrderedMessageHandler.<HandleAsync>d__1>(ET.MailBoxType_UnOrderedMessageHandler.<HandleAsync>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.MessageHandler.<Handle>d__1<object,object,object>>(ET.MessageHandler.<Handle>d__1<object,object,object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.MessageHandler.<Handle>d__1<object,object>>(ET.MessageHandler.<Handle>d__1<object,object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.MessageSessionHandler.<HandleAsync>d__2<object,object>>(ET.MessageSessionHandler.<HandleAsync>d__2<object,object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.MessageSessionHandler.<HandleAsync>d__2<object>>(ET.MessageSessionHandler.<HandleAsync>d__2<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.NumericChangeEvent_NotifyWatcher.<Run>d__0>(ET.NumericChangeEvent_NotifyWatcher.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.ReloadConfigConsoleHandler.<Run>d__0>(ET.ReloadConfigConsoleHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.ReloadDllConsoleHandler.<Run>d__0>(ET.ReloadDllConsoleHandler.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder.Start<ET.Server.TestConsoleHanlder.<Run>d__0>(ET.Server.TestConsoleHanlder.<Run>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_CloseConfirm>.Start<ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_CloseConfirm>>(ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_CloseConfirm>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_CreateMyUnit>.Start<ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_CreateMyUnit>>(ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_CreateMyUnit>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_SceneChangeFinish>.Start<ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_SceneChangeFinish>>(ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_SceneChangeFinish>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_UnitStop>.Start<ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_UnitStop>>(ET.ObjectWaitSystem.<Wait>d__4<ET.Client.Wait_UnitStop>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<byte,long>>.Start<ET.Client.ClientSenderComponentSystem.<LoginAsync>d__4>(ET.Client.ClientSenderComponentSystem.<LoginAsync>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<uint,object>>.Start<ET.Client.RouterHelper.<GetRouterAddress>d__1>(ET.Client.RouterHelper.<GetRouterAddress>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.Start<ET.Client.UILoginSystem.<QueryAccount>d__8>(ET.Client.UILoginSystem.<QueryAccount>d__8&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.Start<ET.Client.UILoginSystem.<QueryServer>d__7>(ET.Client.UILoginSystem.<QueryServer>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.Start<ET.MoveComponentSystem.<MoveToAsync>d__5>(ET.MoveComponentSystem.<MoveToAsync>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.EnterMapHelper.<EnterMapAsync>d__0>(ET.Client.EnterMapHelper.<EnterMapAsync>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.LoginHelper.<GetRoles>d__3>(ET.Client.LoginHelper.<GetRoles>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.LoginHelper.<GetServerInfos>d__2>(ET.Client.LoginHelper.<GetServerInfos>d__2&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.LoginHelper.<Login>d__0>(ET.Client.LoginHelper.<Login>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.LoginHelper.<QueryAccount>d__1>(ET.Client.LoginHelper.<QueryAccount>d__1&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.MoveHelper.<MoveToAsync>d__0>(ET.Client.MoveHelper.<MoveToAsync>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.UIComponentHelper.<OpenConfirm>d__3>(ET.Client.UIComponentHelper.<OpenConfirm>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<ET.Client.UIComponentHelper.<OpenConfirm>d__4>(ET.Client.UIComponentHelper.<OpenConfirm>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.ClientSenderComponentSystem.<Call>d__6>(ET.Client.ClientSenderComponentSystem.<Call>d__6&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.DataSaveComponentSystem.<GetAsync>d__6<object>>(ET.Client.DataSaveComponentSystem.<GetAsync>d__6<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.ResourcesAtlasComponentSystem.<LoadAsset>d__5>(ET.Client.ResourcesAtlasComponentSystem.<LoadAsset>d__5&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.ResourcesAtlasComponentSystem.<LoadSpriteAsync>d__4>(ET.Client.ResourcesAtlasComponentSystem.<LoadSpriteAsync>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.ResourcesLoaderComponentSystem.<LoadAllAssetsAsync>d__4<object>>(ET.Client.ResourcesLoaderComponentSystem.<LoadAllAssetsAsync>d__4<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.ResourcesLoaderComponentSystem.<LoadAssetAsync>d__3<object>>(ET.Client.ResourcesLoaderComponentSystem.<LoadAssetAsync>d__3<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.RouterHelper.<CreateRouterSession>d__0>(ET.Client.RouterHelper.<CreateRouterSession>d__0&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.UIComponentSystem.<ShowBaseWindowAsync>d__22>(ET.Client.UIComponentSystem.<ShowBaseWindowAsync>d__22&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.UIComponentSystem.<ShowWindow>d__13<object>>(ET.Client.UIComponentSystem.<ShowWindow>d__13<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.Client.UIComponentSystem.<ShowWindowAsync>d__14>(ET.Client.UIComponentSystem.<ShowWindowAsync>d__14&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.ETCancellationTokenHelper.<TimeoutAsync>d__6<object>>(ET.ETCancellationTokenHelper.<TimeoutAsync>d__6<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.ETTaskHelper.<GetContextAsync>d__0<object>>(ET.ETTaskHelper.<GetContextAsync>d__0<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.ObjectWaitSystem.<Wait>d__4<object>>(ET.ObjectWaitSystem.<Wait>d__4<object>&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.RpcInfo.<Wait>d__7>(ET.RpcInfo.<Wait>d__7&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.SessionSystem.<Call>d__3>(ET.SessionSystem.<Call>d__3&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<ET.SessionSystem.<Call>d__4>(ET.SessionSystem.<Call>d__4&)
-		// System.Void ET.ETAsyncTaskMethodBuilder<uint>.Start<ET.Client.RouterHelper.<Connect>d__2>(ET.Client.RouterHelper.<Connect>d__2&)
+		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,object>(System.Runtime.CompilerServices.TaskAwaiter&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter<object>,object>(System.Runtime.CompilerServices.TaskAwaiter<object>&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<byte,long>>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<uint,object>>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<int>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter,object>(System.Runtime.CompilerServices.TaskAwaiter&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter<object>,object>(System.Runtime.CompilerServices.TaskAwaiter<object>&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<uint>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_CloseConfirm>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_CreateMyUnit>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_SceneChangeFinish>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<ET.Client.Wait_UnitStop>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<byte,long>>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<System.ValueTuple<uint,object>>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<byte>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<int>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<object>.Start<object>(object&)
+		// System.Void ET.ETAsyncTaskMethodBuilder<uint>.Start<object>(object&)
 		// ET.ETTask<object> ET.ETCancellationTokenHelper.TimeoutAsync<object>(ET.ETTask<object>,long)
 		// object ET.Entity.AddChild<object,int>(int,bool)
 		// object ET.Entity.AddChild<object,object,int>(object,int,bool)
@@ -1160,6 +734,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void ET.EventSystem.Publish<object,ET.ChangePosition>(object,ET.ChangePosition)
 		// System.Void ET.EventSystem.Publish<object,ET.ChangeRotation>(object,ET.ChangeRotation)
 		// System.Void ET.EventSystem.Publish<object,ET.Client.AddBuffView>(object,ET.Client.AddBuffView)
+		// System.Void ET.EventSystem.Publish<object,ET.Client.ClientHeart0_1>(object,ET.Client.ClientHeart0_1)
+		// System.Void ET.EventSystem.Publish<object,ET.Client.ClientHeart0_5>(object,ET.Client.ClientHeart0_5)
+		// System.Void ET.EventSystem.Publish<object,ET.Client.ClientHeart1>(object,ET.Client.ClientHeart1)
+		// System.Void ET.EventSystem.Publish<object,ET.Client.ClientHeart5>(object,ET.Client.ClientHeart5)
 		// System.Void ET.EventSystem.Publish<object,ET.Client.ClientUseSkill>(object,ET.Client.ClientUseSkill)
 		// System.Void ET.EventSystem.Publish<object,ET.Client.DelGroup>(object,ET.Client.DelGroup)
 		// System.Void ET.EventSystem.Publish<object,ET.Client.EquipUpdateEvent>(object,ET.Client.EquipUpdateEvent)
@@ -1202,8 +780,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// byte[] MemoryPack.Internal.MemoryMarshalEx.AllocateUninitializedArray<byte>(int,bool)
 		// byte& MemoryPack.Internal.MemoryMarshalEx.GetArrayDataReference<byte>(byte[])
 		// MemoryPack.MemoryPackFormatter<object> MemoryPack.MemoryPackFormatterProvider.GetFormatter<object>()
+		// bool MemoryPack.MemoryPackFormatterProvider.IsRegistered<ET.CreateMapCtx>()
 		// bool MemoryPack.MemoryPackFormatterProvider.IsRegistered<int>()
 		// bool MemoryPack.MemoryPackFormatterProvider.IsRegistered<object>()
+		// System.Void MemoryPack.MemoryPackFormatterProvider.Register<ET.CreateMapCtx>(MemoryPack.MemoryPackFormatter<ET.CreateMapCtx>)
 		// System.Void MemoryPack.MemoryPackFormatterProvider.Register<int>(MemoryPack.MemoryPackFormatter<int>)
 		// System.Void MemoryPack.MemoryPackFormatterProvider.Register<object>(MemoryPack.MemoryPackFormatter<object>)
 		// System.Void MemoryPack.MemoryPackReader.DangerousReadUnmanagedArray<byte>(byte[]&)
@@ -1249,6 +829,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long,long,int,int>(long&,long&,int&,int&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long,long,int,long,long>(long&,long&,int&,long&,long&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long,long,int>(long&,long&,int&)
+		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long,long>(long&,long&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long>(long&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<uint>(uint&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanagedArray<byte>(byte[]&)
@@ -1297,6 +878,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedWithObjectHeader<byte,uint>(byte,byte&,uint&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedWithObjectHeader<byte>(byte,byte&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedWithObjectHeader<long,byte,int,long>(byte,long&,byte&,int&,long&)
+		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedWithObjectHeader<long,long>(byte,long&,long&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteValue<object>(object&)
 		// object MongoDB.Bson.Serialization.BsonSerializer.Deserialize<object>(MongoDB.Bson.IO.IBsonReader,System.Action<MongoDB.Bson.Serialization.BsonDeserializationContext.Builder>)
 		// object MongoDB.Bson.Serialization.BsonSerializer.Deserialize<object>(string,System.Action<MongoDB.Bson.Serialization.BsonDeserializationContext.Builder>)
@@ -1325,8 +907,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// ET.RpcInfo[] System.Linq.Enumerable.ToArray<ET.RpcInfo>(System.Collections.Generic.IEnumerable<ET.RpcInfo>)
 		// System.Collections.Generic.List<object> System.Linq.Enumerable.ToList<object>(System.Collections.Generic.IEnumerable<object>)
 		// System.Span<byte> System.MemoryExtensions.AsSpan<byte>(byte[])
-		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,ET.Client.UIHelper.<LoadComUI>d__0>(object&,ET.Client.UIHelper.<LoadComUI>d__0&)
-		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.Start<ET.Client.UIHelper.<LoadComUI>d__0>(ET.Client.UIHelper.<LoadComUI>d__0&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
+		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.Start<object>(object&)
 		// byte& System.Runtime.CompilerServices.Unsafe.Add<byte>(byte&,int)
 		// byte& System.Runtime.CompilerServices.Unsafe.As<byte,byte>(byte&)
 		// object& System.Runtime.CompilerServices.Unsafe.AsRef<object>(object&)

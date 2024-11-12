@@ -43,7 +43,7 @@ namespace ET.Client
                     : SceneManager.GetSceneAt(this._selectedScene - 1).GetRootGameObjects();
 
             GUILayout.BeginHorizontal();
-            this._scrollPos = GUILayout.BeginScrollView(this._scrollPos, GUILayout.Width(this._windowRect.width * 0.49f));
+            this._scrollPos = GUILayout.BeginScrollView(this._scrollPos, GUILayout.Width(this.windowRect.width * 0.49f));
             foreach (GameObject node in rootGameObjects)
             {
                 for (int i = 0; i < node.transform.childCount; i++)
@@ -75,7 +75,7 @@ namespace ET.Client
             }
 
             GUILayout.EndScrollView();
-            this._scrollPos2 = GUILayout.BeginScrollView(this._scrollPos2, GUILayout.Width(this._windowRect.width * 0.49f));
+            this._scrollPos2 = GUILayout.BeginScrollView(this._scrollPos2, GUILayout.Width(this.windowRect.width * 0.49f));
             if (this._selectedObj != null)
             {
                 var components = this._selectedObj.GetComponents<Component>();
@@ -88,7 +88,7 @@ namespace ET.Client
                 if (this._selectedComponent >= components.Length)
                     this._selectedComponent = 0;
 
-                var lineCount = Mathf.FloorToInt(_windowRect.width / 100);
+                var lineCount = Mathf.FloorToInt(this.windowRect.width / 100);
                 var lines = Mathf.CeilToInt(1f * names.Count / lineCount);
                 for (int i = 0; i < lines; i++)
                 {
@@ -217,7 +217,7 @@ namespace ET.Client
         private GameObject[] getDontDestroyOnLoadGameObjects()
         {
             var allGameObjects = new List<GameObject>();
-            allGameObjects.AddRange(UnityEngine.Object.FindObjectsOfType<GameObject>());
+            allGameObjects.AddRange(UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None));
             //移除所有场景包含的对象
             for (var i = 0; i < SceneManager.sceneCount; i++)
             {

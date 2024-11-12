@@ -44,7 +44,7 @@ namespace ET
             this.LocalConn = localConn;
             this.ChannelType = ChannelType.Connect;
 
-            Log.Console($"KChannel create1: {this.LocalConn} {remoteEndPoint} {this.ChannelType}");
+            Log.Console($"KChannel connect: {this.LocalConn} {remoteEndPoint} {this.ChannelType}");
 
             this.RemoteAddress = remoteEndPoint;
             this.CreateTime = kService.TimeNow;
@@ -58,7 +58,7 @@ namespace ET
             this.Service = kService;
             this.ChannelType = ChannelType.Accept;
 
-            Log.Console($"KChannel create2: {localConn} {remoteConn} {remoteEndPoint} {this.ChannelType}");
+            Log.Console($"KChannel accept: {localConn} {remoteConn} {remoteEndPoint} {this.ChannelType}");
             this.LocalConn = localConn;
             this.RemoteConn = remoteConn;
             this.RemoteAddress = remoteEndPoint;
@@ -102,7 +102,7 @@ namespace ET
             this.Service.AddToUpdate(nextUpdateTime, this.Id);
         }
 
-        public void HandleRecv(byte[] date, int offset, int length)
+        public void HandleReceive(byte[] date, int offset, int length)
         {
             if (this.IsDisposed)
             {
@@ -439,6 +439,8 @@ namespace ET
 
         public void OnError(int error)
         {
+            Log.Console($"KChannel OnError: {error} {this.RemoteAddress}");
+
             long channelId = this.Id;
             this.Service.Remove(channelId, error);
             this.Service.ErrorCallback(channelId, error);

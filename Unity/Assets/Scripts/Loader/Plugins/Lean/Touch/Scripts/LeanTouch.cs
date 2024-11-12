@@ -274,7 +274,7 @@ namespace Lean.Touch
 
 			if (currentEventSystem == null)
 			{
-				currentEventSystem = FindObjectOfType<EventSystem>();
+				currentEventSystem = FindAnyObjectByType<EventSystem>();
 			}
 
 			if (currentEventSystem != null)

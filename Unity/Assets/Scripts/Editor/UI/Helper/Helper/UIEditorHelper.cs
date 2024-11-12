@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEditor;
@@ -137,7 +136,7 @@ namespace ET.Client
         {
             GameObject testUI = GetUIRootNode();
             List<RectTransform> list = new List<RectTransform>();
-            Canvas[] containers = UObject.FindObjectsOfType<Canvas>();
+            Canvas[] containers = UObject.FindObjectsByType<Canvas>(FindObjectsSortMode.None);
             Vector3[] corners = new Vector3[4];
             foreach (var item in containers)
             {
@@ -189,8 +188,7 @@ namespace ET.Client
             string filePath = Path.Combine(Configure.ResAssetsPath, "Decorate.prefab");
             filePath = FileUtil.GetProjectRelativePath(filePath);
             GameObject decorate_prefab = AssetDatabase.LoadAssetAtPath(filePath, typeof (Object)) as GameObject;
-            GameObject decorate = UObject.Instantiate(decorate_prefab);
-            decorate.transform.SetParent(parent);
+            GameObject decorate = UObject.Instantiate(decorate_prefab, parent, true);
             RectTransform rectTrans = decorate.transform as RectTransform;
             if (rectTrans != null)
             {
@@ -343,7 +341,7 @@ namespace ET.Client
                     {
                         string select_path = FileUtil.GetProjectRelativePath(layoutInfo.LayoutPath);
                         var prefab = AssetDatabase.LoadAssetAtPath(select_path, typeof (UObject));
-                        GameObject newView = PrefabUtility.InstantiateAttachedAsset(prefab) as GameObject;
+                        GameObject newView = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
                         if (newView != null)
                         {
                             newView.transform.SetParent(layoutInfo.transform);
@@ -381,7 +379,7 @@ namespace ET.Client
                 asset_relate_path = FileUtil.GetProjectRelativePath(selectPath);
 
             var prefab = AssetDatabase.LoadAssetAtPath(asset_relate_path, typeof (UObject));
-            GameObject newView = PrefabUtility.InstantiateAttachedAsset(prefab) as GameObject;
+            GameObject newView = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
             if (newView != null)
             {
                 newView.transform.SetParent(newLayout.transform);
@@ -513,7 +511,7 @@ namespace ET.Client
             byte[] bytes = new byte[fileStream.Length];
 
             //读取文件
-            fileStream.Read(bytes, 0, (int)fileStream.Length);
+            int read = fileStream.Read(bytes, 0, (int)fileStream.Length);
 
             //创建Texture
             Texture2D texture = new Texture2D(300, 372);

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UnityEditor.UI
 {
-    static internal class SGMenuOptions
+    internal static class SGMenuOptions
     {
         #region code from MenuOptions.cs
         private const string kUILayerName = "UI";
@@ -17,9 +17,9 @@ namespace UnityEditor.UI
         private const string kDropdownArrowPath = "UI/Skin/DropdownArrow.psd";
         private const string kMaskPath = "UI/Skin/UIMask.psd";
 
-        static private DefaultControls.Resources s_StandardResources;
+        private static DefaultControls.Resources s_StandardResources;
 
-        static private DefaultControls.Resources GetStandardResources()
+        private static DefaultControls.Resources GetStandardResources()
         {
             if (s_StandardResources.standard == null)
             {
@@ -98,7 +98,7 @@ namespace UnityEditor.UI
             Selection.activeGameObject = element;
         }
 
-        static public GameObject CreateNewUI()
+        public static GameObject CreateNewUI()
         {
             // Root for the UI
             var root = new GameObject("Canvas");
@@ -115,7 +115,7 @@ namespace UnityEditor.UI
         }
 
         // Helper function that returns a Canvas GameObject; preferably a parent of the selection, or other existing Canvas.
-        static public GameObject GetOrCreateCanvasGameObject()
+        private static GameObject GetOrCreateCanvasGameObject()
         {
             GameObject selectedGo = Selection.activeGameObject;
 
@@ -125,7 +125,7 @@ namespace UnityEditor.UI
                 return canvas.gameObject;
 
             // No canvas in selection or its parents? Then use just any canvas..
-            canvas = Object.FindObjectOfType(typeof(Canvas)) as Canvas;
+            canvas = Object.FindAnyObjectByType(typeof(Canvas)) as Canvas;
             if (canvas != null && canvas.gameObject.activeInHierarchy)
                 return canvas.gameObject;
 
@@ -135,14 +135,14 @@ namespace UnityEditor.UI
         #endregion
         
         [MenuItem("GameObject/UI/Loop Horizontal Scroll Rect", false, 2151)]
-        static public void AddLoopHorizontalScrollRect(MenuCommand menuCommand)
+        public static void AddLoopHorizontalScrollRect(MenuCommand menuCommand)
         {
             GameObject go = SGDefaultControls.CreateLoopHorizontalScrollRect(GetStandardResources());
             PlaceUIElementRoot(go, menuCommand);
         }
 
         [MenuItem("GameObject/UI/Loop Vertical Scroll Rect", false, 2152)]
-        static public void AddLoopVerticalScrollRect(MenuCommand menuCommand)
+        public static void AddLoopVerticalScrollRect(MenuCommand menuCommand)
         {
             GameObject go = SGDefaultControls.CreateLoopVerticalScrollRect(GetStandardResources());
             PlaceUIElementRoot(go, menuCommand);

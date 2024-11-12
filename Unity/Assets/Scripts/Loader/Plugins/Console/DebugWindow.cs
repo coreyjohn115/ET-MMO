@@ -8,32 +8,34 @@ namespace ET.Client
 {
     public abstract class DebugWindowBase
     {
-        protected Rect _windowRect;
-        protected bool _isInEditor;
-        private float _scale = 1.8f;
+        protected Rect windowRect;
+        protected bool isInEditor;
+        private float scale = 1.8f;
 
-        private bool _controlSize;
-        private Vector2 _startPos;
-        private Vector2 _startSize;
+        private bool controlSize;
+        private Vector2 startPos;
+        private Vector2 startSize;
 
-        public void Init(Rect winRect, bool isInEditor)
+        public void Init(Rect winRect, bool inEditor)
         {
-            this._windowRect = new Rect(winRect.position / this._scale, winRect.size / this._scale);
-            this._isInEditor = isInEditor;
-            if (this._isInEditor)
-                this._windowRect = winRect;
+            this.windowRect = new Rect(winRect.position / this.scale, winRect.size / this.scale);
+            this.isInEditor = inEditor;
+            if (this.isInEditor)
+            {
+                this.windowRect = winRect;
+            }
         }
 
         public void Draw()
         {
-            if (this._isInEditor)
+            if (this.isInEditor)
             {
                 OnDrawWindow(0);
             }
             else
             {
-                GUI.matrix = Matrix4x4.Scale(new Vector3(_scale, _scale, 1f));
-                GUI.Window(0, this._windowRect, OnDrawWindow, "Debug");
+                GUI.matrix = Matrix4x4.Scale(new Vector3(this.scale, this.scale, 1f));
+                GUI.Window(0, this.windowRect, OnDrawWindow, "Debug");
                 GUI.matrix = Matrix4x4.Scale(new Vector3(1, 1, 1f));
             }
         }
@@ -43,28 +45,25 @@ namespace ET.Client
 
     public class DebugWindow: MonoBehaviour
     {
-        private float _fps;
-        private float _lastRefresh;
-        private bool _beginDrag;
-        private Vector2 _beginPos;
-        private Vector2 _dragPos;
-        private bool _isClick;
-        private float _scale = 1.5f;
+        private float fps;
+        private float lastRefresh;
+        private bool beginDrag;
+        private Vector2 beginPos;
+        private Vector2 dragPos;
+        private bool isClick;
+        private const float scale = 1.5f;
 
         private Vector2 minBtnPos;
+        private Image block;
+        private DebugWindowBase[] windows;
+        private int showIndex = 0;
 
-        private Image _block;
-
-        private DebugWindowBase[] _windows;
-
-        private int _showIndex = 0;
-
-        private Type[] _windowTypes = new[]
+        private readonly Type[] windowTypes =
         {
             typeof (DebugWindowLog), typeof (DebugWindowTools), typeof (DebugWindowServerCMD), typeof (UnityObjectViewer)
         };
 
-        private string[] _showNames = new[] { "X", "Log", "工具", "协议", "属性" };
+        private readonly string[] showNames = { "X", "Log", "工具", "协议", "属性" };
 
         private void Awake()
         {
@@ -78,17 +77,19 @@ namespace ET.Client
 
         private void Start()
         {
-            this._windows = new DebugWindowBase[this._windowTypes.Length];
-            for (int i = 0; i < this._windowTypes.Length; i++)
+            this.windows = new DebugWindowBase[this.windowTypes.Length];
+            for (int i = 0; i < this.windowTypes.Length; i++)
             {
-                Type windowType = this._windowTypes[i];
-                this._windows[i] = Activator.CreateInstance(windowType) as DebugWindowBase;
-                this._windows[i].Init(new Rect(20, 40, Screen.width - 40, Screen.height - 60), false);
+                Type windowType = this.windowTypes[i];
+                this.windows[i] = Activator.CreateInstance(windowType) as DebugWindowBase;
+                this.windows[i].Init(new Rect(20, 40, Screen.width - 40, Screen.height - 60), false);
             }
 
-            this.minBtnPos = new Vector2((Screen.width / 2f - 25), 10) / _scale;
+            this.minBtnPos = new Vector2((Screen.width / 2f - 25), 10) / scale;
 
-            var can = new GameObject("BlockCanvas").AddComponent<Canvas>();
+            Canvas can = new GameObject("BlockCanvas").AddComponent<Canvas>();
+            can.vertexColorAlwaysGammaSpace = true;
+            can.gameObject.layer = LayerMask.NameToLayer("UI");
             can.transform.SetParent(this.transform);
             can.worldCamera = GameObject.Find("Global/UICamera").GetComponent<Camera>();
             can.renderMode = RenderMode.ScreenSpaceCamera;
@@ -96,55 +97,57 @@ namespace ET.Client
 
             can.gameObject.AddComponent<GraphicRaycaster>();
 
-            this._block = new GameObject("Block").AddComponent<Image>();
-            this._block.color = new Color(0, 0, 0, 0.6f);
-            this._block.transform.SetParent(can.transform, false);
-            this._block.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+            this.block = new GameObject("Block").AddComponent<Image>();
+            this.block.gameObject.layer = LayerMask.NameToLayer("UI");
+            this.block.color = new Color(0, 0, 0, 0.6f);
+            this.block.transform.SetParent(can.transform, false);
+            this.block.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+            this.block.gameObject.SetActive(false);
         }
 
         private void OnGUI()
         {
-            GUI.matrix = Matrix4x4.Scale(new Vector3(_scale, _scale, 1f));
-            this._block.gameObject.SetActive(this._showIndex != 0);
-            if (this._showIndex != 0)
+            GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1f));
+            this.block.gameObject.SetActive(this.showIndex != 0);
+            if (this.showIndex != 0)
             {
-                var win = this._windows[this._showIndex - 1];
+                var win = this.windows[this.showIndex - 1];
                 win.Draw();
                 this.DrawTab();
             }
             else
             {
                 var area = new Rect(this.minBtnPos, new Vector2(50, 20));
-                GUI.Box(area, this._fps.ToString("f0"));
+                GUI.Box(area, this.fps.ToString("f0"));
                 Vector2 pos = Event.current.mousePosition;
                 switch (Event.current.type)
                 {
                     case EventType.MouseDown:
                         if (Event.current.button == 0 && area.Contains(pos))
                         {
-                            this._beginDrag = true;
-                            this._beginPos = pos;
-                            this._dragPos = this.minBtnPos;
-                            this._isClick = true;
+                            this.beginDrag = true;
+                            this.beginPos = pos;
+                            this.dragPos = this.minBtnPos;
+                            this.isClick = true;
                         }
 
                         break;
                     case EventType.MouseDrag:
-                        if (this._beginDrag)
+                        if (this.beginDrag)
                         {
-                            this.minBtnPos = this._dragPos + (pos - this._beginPos);
-                            this._isClick = false;
+                            this.minBtnPos = this.dragPos + (pos - this.beginPos);
+                            this.isClick = false;
                         }
 
                         break;
                     case EventType.MouseUp:
-                        if (this._isClick)
+                        if (this.isClick)
                         {
-                            this._showIndex = 1;
-                            this._isClick = false;
+                            this.showIndex = 1;
+                            this.isClick = false;
                         }
 
-                        this._beginDrag = false;
+                        this.beginDrag = false;
                         break;
                 }
             }
@@ -152,18 +155,18 @@ namespace ET.Client
 
         private void DrawTab()
         {
-            GUI.matrix = Matrix4x4.Scale(new Vector3(_scale, _scale, 1f));
-            var half = 60 * (this._windowTypes.Length);
-            this._showIndex = GUI.Toolbar(new Rect((Screen.width / 2 - half) / _scale, 10 / this._scale, 60 * this._windows.Length, 20),
-                this._showIndex, this._showNames);
+            GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1f));
+            var half = 60 * (this.windowTypes.Length);
+            this.showIndex = GUI.Toolbar(new Rect((Screen.width / 2f - half) / scale, 10 / scale, 60 * this.windows.Length, 20),
+                this.showIndex, this.showNames);
         }
 
         private void Update()
         {
-            if (Time.time - this._lastRefresh > 1)
+            if (Time.time - this.lastRefresh > 1)
             {
-                this._fps = 1 / Time.deltaTime;
-                this._lastRefresh = Time.time;
+                this.fps = 1 / Time.deltaTime;
+                this.lastRefresh = Time.time;
             }
 
 #if UNITY_EDITOR

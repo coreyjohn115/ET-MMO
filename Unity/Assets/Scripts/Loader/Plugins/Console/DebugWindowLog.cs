@@ -12,24 +12,26 @@ namespace ET.Client
 {
     public class DebugWindowLog: DebugWindowBase
     {
-        public static string[] IgnoreStackType = new[] { "ET.UnityLogger", "ET.Log", "ET.Logger" };
+        private static readonly string[] IgnoreStackType = { "ET.UnityLogger", "ET.Log", "ET.Logger" };
 
-        private bool _logShow = true;
-        private bool _warningShow = false;
-        private bool _errorShow = true;
-        private bool _fatalShow = true;
-        private bool _locked = true;
+        private bool logShow = true;
+        private bool warningShow;
+        private bool errorShow = true;
+        private bool fatalShow = true;
+        private bool locked = true;
 
-        private Vector2 _scrollPos1;
-        private Vector2 _scrollPos2;
-        private int _selectedIndex;
+        private Vector2 scrollPos1;
+        private Vector2 scrollPos2;
+        private int selectedIndex;
 
-        private static Regex _atFile = new Regex(@"at (.*) in (.*)\:(\d+)");
+        private static readonly Regex atFile = new Regex(@"at (.*) in (.*)\:(\d+)");
 
         protected override void OnDrawWindow(int id)
         {
-            if (!this._isInEditor)
-                GUI.DragWindow(new Rect(0, 0, _windowRect.width - 20, 20));
+            if (!this.isInEditor)
+            {
+                GUI.DragWindow(new Rect(0, 0, this.windowRect.width - 20, 20));
+            }
 
             GUILayout.BeginHorizontal();
             {
@@ -38,76 +40,98 @@ namespace ET.Client
                     ConsoleLogs.Instance.Clear();
                 }
 
-                this._locked = GUILayout.Toggle(this._locked, "Lock");
+                this.locked = GUILayout.Toggle(this.locked, "Lock");
 
                 GUILayout.FlexibleSpace();
                 GUI.contentColor = Color.white;
-                this._logShow = GUILayout.Toggle(this._logShow, ConsoleLogs.Instance.logCount.ToString(), GUILayout.MinWidth(40));
+                this.logShow = GUILayout.Toggle(this.logShow, ConsoleLogs.Instance.logCount.ToString(), GUILayout.MinWidth(40));
                 GUI.contentColor = Color.yellow;
-                this._warningShow = GUILayout.Toggle(this._warningShow, ConsoleLogs.Instance.warnCount.ToString(), GUILayout.MinWidth(40));
+                this.warningShow = GUILayout.Toggle(this.warningShow, ConsoleLogs.Instance.warnCount.ToString(), GUILayout.MinWidth(40));
                 GUI.contentColor = new Color(0.9f, 0.3f, 0.3f, 1);
-                this._errorShow = GUILayout.Toggle(this._errorShow, ConsoleLogs.Instance.errorCount.ToString(), GUILayout.MinWidth(40));
+                this.errorShow = GUILayout.Toggle(this.errorShow, ConsoleLogs.Instance.errorCount.ToString(), GUILayout.MinWidth(40));
                 GUI.contentColor = Color.red;
-                this._fatalShow = GUILayout.Toggle(this._fatalShow, ConsoleLogs.Instance.fatalCount.ToString(), GUILayout.MinWidth(40));
+                this.fatalShow = GUILayout.Toggle(this.fatalShow, ConsoleLogs.Instance.fatalCount.ToString(), GUILayout.MinWidth(40));
                 GUI.contentColor = Color.white;
             }
             GUILayout.EndHorizontal();
 
-            this._scrollPos1 = GUILayout.BeginScrollView(this._scrollPos1, GUILayout.Height(this._windowRect.height * 0.6f));
+            this.scrollPos1 = GUILayout.BeginScrollView(this.scrollPos1, GUILayout.Height(this.windowRect.height * 0.6f));
             {
                 for (int i = 0; i < ConsoleLogs.Instance.Logs.Count; i++)
                 {
                     ConsoleLogs.LogInfo logInfo = ConsoleLogs.Instance.Logs[i];
-                    if (!this._logShow && logInfo.logType == LogType.Log)
+                    if (!this.logShow && logInfo.logType == LogType.Log)
+                    {
                         continue;
-                    if (!this._warningShow && logInfo.logType == LogType.Warning)
+                    }
+
+                    if (!this.warningShow && logInfo.logType == LogType.Warning)
+                    {
                         continue;
-                    if (!this._errorShow && logInfo.logType == LogType.Error)
+                    }
+
+                    if (!this.errorShow && logInfo.logType == LogType.Error)
+                    {
                         continue;
-                    if (!this._fatalShow && logInfo.logType == LogType.Exception)
+                    }
+
+                    if (!this.fatalShow && logInfo.logType == LogType.Exception)
+                    {
                         continue;
+                    }
 
                     GUILayout.BeginHorizontal(GUILayout.Height(30));
                     GUI.contentColor = logInfo.logType == LogType.Warning? Color.yellow
                             : logInfo.logType == LogType.Error? new Color(0.9f, 0.3f, 0.3f, 1)
                             : logInfo.logType == LogType.Exception? Color.red : Color.white;
                     var titles = logInfo.title.Split('\n');
-                    var res = GUILayout.Toggle(this._selectedIndex == i,
+                    var res = GUILayout.Toggle(this.selectedIndex == i,
                         $"[{logInfo.Hour:00}:{logInfo.Minute:00}:{logInfo.Second:00}]{titles[0]}");
                     GUI.contentColor = Color.white;
                     if (res)
-                        this._selectedIndex = i;
+                    {
+                        this.selectedIndex = i;
+                    }
+
                     if (logInfo.repeated > 0)
+                    {
                         GUILayout.Label(logInfo.repeated.ToString(), GUILayout.MaxWidth(60));
+                    }
+
                     GUILayout.EndHorizontal();
                 }
             }
 
             GUILayout.EndScrollView();
-            if (this._locked)
+            if (this.locked)
             {
-                this._scrollPos1 = new Vector2(0, 10000);
+                this.scrollPos1 = new Vector2(0, 10000);
             }
 
-            this._scrollPos2 = GUILayout.BeginScrollView(this._scrollPos2, GUILayout.Height(this._windowRect.height * 0.4f - 40));
+            this.scrollPos2 = GUILayout.BeginScrollView(this.scrollPos2, GUILayout.Height(this.windowRect.height * 0.4f - 40));
             {
-                if (this._selectedIndex >= 0 && this._selectedIndex < ConsoleLogs.Instance.Logs.Count)
+                if (this.selectedIndex >= 0 && this.selectedIndex < ConsoleLogs.Instance.Logs.Count)
                 {
-                    var log = ConsoleLogs.Instance.Logs[this._selectedIndex];
+                    var log = ConsoleLogs.Instance.Logs[this.selectedIndex];
                     var logs = log.stack.Split('\n');
                     var style = new GUIStyle() { wordWrap = true, stretchWidth = true, richText = true, };
                     var titles = log.title.Split('\n');
                     foreach (string title in titles)
                     {
                         if (IgnoreTrack(title))
+                        {
                             continue;
+                        }
+
                         var color = "#ffffff";
                         var msg = StacktraceWithHyperlinks(title, out var file, out var line);
                         if (GUILayout.Button($"<color={color}>{msg}</color>", style))
                         {
 #if UNITY_EDITOR
                             if (!string.IsNullOrEmpty(file))
+                            {
                                 InternalEditorUtility.OpenFileAtLineExternal(file, line);
+                            }
 #endif
                         }
                     }
@@ -115,14 +139,19 @@ namespace ET.Client
                     foreach (string str in logs)
                     {
                         if (IgnoreTrack(str))
+                        {
                             continue;
+                        }
+
                         var color = "#ffffff";
                         var msg = StacktraceWithHyperlinks(str, out var file, out var line);
                         if (GUILayout.Button($"<color={color}>{msg}</color>", style))
                         {
 #if UNITY_EDITOR
                             if (!string.IsNullOrEmpty(file))
+                            {
                                 InternalEditorUtility.OpenFileAtLineExternal(file, line);
+                            }
 #endif
                         }
                     }
@@ -136,7 +165,9 @@ namespace ET.Client
             foreach (string s in IgnoreStackType)
             {
                 if (line.StartsWith(s))
+                {
                     return true;
+                }
             }
 
             return false;
@@ -173,9 +204,9 @@ namespace ET.Client
                     }
                 }
             }
-            else if (_atFile.IsMatch(stacktraceText))
+            else if (atFile.IsMatch(stacktraceText))
             {
-                var result = _atFile.Match(stacktraceText);
+                var result = atFile.Match(stacktraceText);
                 stringBuilder.Append(result.Groups[1]);
                 stringBuilder.Append($"(at <a href=\"{result.Groups[2]}\" line=\"{result.Groups[3]}\">{result.Groups[2]}:{result.Groups[3]}</a>)");
                 file = result.Groups[2].Value;

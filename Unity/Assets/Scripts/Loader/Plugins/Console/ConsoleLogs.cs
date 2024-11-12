@@ -10,8 +10,8 @@ namespace ET.Client
         {
             get
             {
-                _instance ??= new ConsoleLogs();
-                return _instance;
+                instance ??= new ConsoleLogs();
+                return instance;
             }
         }
 
@@ -19,12 +19,12 @@ namespace ET.Client
         public int warnCount => this._warnCount;
         public int errorCount => this._errorCount;
         public int fatalCount => this._fatalCount;
-        public List<LogInfo> Logs => this._logs;
+        public List<LogInfo> Logs => this.logs;
 
-        private static ConsoleLogs _instance;
-        private List<LogInfo> _logs = new List<LogInfo>();
+        private static ConsoleLogs instance;
+        private readonly List<LogInfo> logs = new();
 
-        private LogInfo _last;
+        private LogInfo last;
 
         private int _logCount;
         private int _warnCount;
@@ -59,16 +59,16 @@ namespace ET.Client
             var hour = DateTime.Now.Hour;
             var min = DateTime.Now.Minute;
             var second = DateTime.Now.Second;
-            if (title == this._last.title && stack == this._last.stack && type == this._last.logType
-                && hour == this._last.Hour && min == this._last.Minute && second == this._last.Second)
+            if (title == this.last.title && stack == this.last.stack && type == this.last.logType
+                && hour == this.last.Hour && min == this.last.Minute && second == this.last.Second)
             {
-                this._last.repeated += 1;
-                this._logs[^1] = this._last;
+                this.last.repeated += 1;
+                this.logs[^1] = this.last;
             }
             else
             {
-                var id = this._logs.Count;
-                this._logs.Add(new LogInfo()
+                var id = this.logs.Count;
+                this.logs.Add(new LogInfo()
                 {
                     stack = stack,
                     title = title,
@@ -78,13 +78,13 @@ namespace ET.Client
                     Second = second,
                     id = id
                 });
-                this._last = this._logs[^1];
+                this.last = this.logs[^1];
             }
         }
 
         public void Clear()
         {
-            this._logs.Clear();
+            this.logs.Clear();
             this._warnCount = 0;
             this._errorCount = 0;
             this._fatalCount = 0;

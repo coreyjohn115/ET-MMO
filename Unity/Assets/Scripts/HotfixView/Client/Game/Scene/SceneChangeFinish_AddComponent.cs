@@ -38,8 +38,6 @@ namespace ET.Client
                         break;
                     case RuntimePlatform.Switch:
                         break;
-                    case RuntimePlatform.Stadia:
-                        break;
                     case RuntimePlatform.GameCoreXboxSeries:
                         break;
                     case RuntimePlatform.GameCoreXboxOne:

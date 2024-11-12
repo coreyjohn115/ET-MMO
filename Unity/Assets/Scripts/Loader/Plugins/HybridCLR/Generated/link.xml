@@ -199,6 +199,7 @@
     <type fullname="ET.Client.ExtendImage" preserve="all" />
     <type fullname="ET.Client.ExtendText" preserve="all" />
     <type fullname="ET.Client.GameObjectPoolHelper" preserve="all" />
+    <type fullname="ET.Client.Init" preserve="all" />
     <type fullname="ET.Client.ItemMonoView" preserve="all" />
     <type fullname="ET.Client.LayerHelper" preserve="all" />
     <type fullname="ET.Client.LongClickButton" preserve="all" />
@@ -389,8 +390,11 @@
     <type fullname="System.Delegate" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
+    <type fullname="System.Diagnostics.DebuggerBrowsableAttribute" preserve="all" />
+    <type fullname="System.Diagnostics.DebuggerBrowsableState" preserve="all" />
     <type fullname="System.Diagnostics.DebuggerDisplayAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggerHiddenAttribute" preserve="all" />
+    <type fullname="System.Diagnostics.DebuggerStepThroughAttribute" preserve="all" />
     <type fullname="System.Double" preserve="all" />
     <type fullname="System.Enum" preserve="all" />
     <type fullname="System.Exception" preserve="all" />
@@ -428,6 +432,7 @@
     <type fullname="System.Runtime.CompilerServices.RuntimeHelpers" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter`1" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.TupleElementNamesAttribute" preserve="all" />
     <type fullname="System.RuntimeFieldHandle" preserve="all" />
     <type fullname="System.RuntimeTypeHandle" preserve="all" />
     <type fullname="System.Security.Permissions.SecurityAction" preserve="all" />

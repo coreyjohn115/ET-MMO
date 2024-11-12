@@ -117,8 +117,7 @@ namespace ET
             {
                 if (e.ErrorCode == 5)
                 {
-                    throw new Exception($"CMD管理员中输入: netsh http add urlacl url=http://*:8080/ user=Everyone   {prefix}",
-                        e);
+                    throw new Exception($"请先在cmd中运行: netsh http add urlacl url=http://*:你的address中的端口/ user=Everyone, address: {prefix}", e);
                 }
 
                 Log.Error(e);

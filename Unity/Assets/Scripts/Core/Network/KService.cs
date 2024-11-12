@@ -551,7 +551,7 @@ namespace ET
                                 this.waitAcceptChannels.Remove(kChannel.RemoteConn);
                             }
 
-                            kChannel.HandleRecv(this.cache, 5, messageLength - 5);
+                            kChannel.HandleReceive(this.cache, 5, messageLength - 5);
                             break;
                     }
                 }

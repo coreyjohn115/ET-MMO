@@ -1,12 +1,13 @@
+using System;
 using UnityEngine;
 
 namespace ET.Client
 {
     public class DebugWindowTools: DebugWindowBase
     {
-        private Vector2 _scrollPos;
+        private Vector2 scrollPos;
 
-        private float _timeScale = 1;
+        private float timeScale = 1;
 
         protected override void OnDrawWindow(int id)
         {
@@ -16,17 +17,17 @@ namespace ET.Client
             GUILayout.Label($"<color=white>TimeScale   {Time.timeScale:F2}</color>", richText);
             if (GUILayout.Button("reset", GUILayout.Width(60)))
             {
-                _timeScale = 1;
+                this.timeScale = 1;
             }
 
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
             GUILayout.Label("0", GUILayout.Width(20));
-            _timeScale = GUILayout.HorizontalSlider(_timeScale, 0.01f, 2f);
+            this.timeScale = GUILayout.HorizontalSlider(this.timeScale, 0.01f, 2f);
             GUILayout.Label("2", GUILayout.Width(20));
             GUILayout.EndHorizontal();
 
-            _scrollPos = GUILayout.BeginScrollView(_scrollPos, GUILayout.MinHeight(200), GUILayout.MaxHeight(_windowRect.height - 300));
+            this.scrollPos = GUILayout.BeginScrollView(this.scrollPos, GUILayout.MinHeight(200), GUILayout.MaxHeight(this.windowRect.height - 300));
             if (GUILayout.Button("打开缓存目录", GUILayout.Width(100)))
             {
 #if UNITY_EDITOR
@@ -45,7 +46,7 @@ namespace ET.Client
                     }
                     catch (Exception e)
                     {
-                        
+                        Log.Error(e);
                     }
 #endif
             }

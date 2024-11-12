@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 using YooAsset.Editor;
 using BuildReport = UnityEditor.Build.Reporting.BuildReport;
@@ -49,7 +50,8 @@ namespace ET.Client
         public static void EnableDefineSymbols(string symbols, bool enable)
         {
             Debug.Log($"EnableDefineSymbols {symbols} {enable}");
-            string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            var target = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            string defines = PlayerSettings.GetScriptingDefineSymbols(target);
             var ss = defines.Split(';').ToList();
             if (enable)
             {
@@ -72,7 +74,7 @@ namespace ET.Client
 
             Debug.Log($"EnableDefineSymbols {symbols} {enable}");
             defines = string.Join(";", ss);
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, defines);
+            PlayerSettings.SetScriptingDefineSymbols(target, defines);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }

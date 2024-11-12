@@ -245,7 +245,7 @@ namespace Lean.Touch
 			}
 
 			// Exists in scene?
-			Object = instance = Object.FindObjectOfType<T>();
+			Object = instance = Object.FindAnyObjectByType<T>();
 
 			if (instance != null)
 			{

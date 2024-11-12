@@ -6,9 +6,20 @@ namespace ET.Client
     {
         public static void Normalize(this Transform self)
         {
-            self.localPosition = Vector3.zero;
             self.localScale = Vector3.one;
-            self.rotation = Quaternion.identity;
+            if (self is RectTransform rectTransform)
+            {
+                rectTransform.anchorMin = Vector2.zero;
+                rectTransform.anchorMax = Vector2.one;
+                rectTransform.anchoredPosition = Vector2.zero;
+                rectTransform.sizeDelta = Vector2.zero;
+                rectTransform.anchoredPosition3D = Vector3.zero;
+            }
+            else
+            {
+                self.localPosition = Vector3.zero;
+                self.rotation = Quaternion.identity;
+            }
         }
 
         public static void SetLayer(this Transform self, int layer)

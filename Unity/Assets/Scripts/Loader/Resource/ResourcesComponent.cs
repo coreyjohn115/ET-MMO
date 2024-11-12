@@ -51,6 +51,7 @@ namespace ET.Client
             this.cancelButton.onClick.AddListener(() => { this.tcs?.SetResult(-1); });
 
             this.root.transform.SetParent(Global.Instance.NormalRoot, false);
+            this.root.transform.Normalize();
         }
 
         public void UpdateMsg(string msg)

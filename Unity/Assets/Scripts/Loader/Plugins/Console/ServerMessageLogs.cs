@@ -11,30 +11,30 @@ namespace ET.Client
         {
             get
             {
-                _instance ??= new ServerMessageLogs();
-                return _instance;
+                instance ??= new ServerMessageLogs();
+                return instance;
             }
         }
 
-        private static ServerMessageLogs _instance;
-        public List<MsgContent> Msgs { get; } = new List<MsgContent>();
+        private static ServerMessageLogs instance;
+        public List<MsgContent> MsgList { get; } = new();
 
-        private Dictionary<string, ushort> _name2Code = new Dictionary<string, ushort>();
-        private Dictionary<string, Type> _name2Type = new Dictionary<string, Type>();
+        private readonly Dictionary<string, ushort> name2Code = new();
+        private readonly Dictionary<string, Type> name2Type = new();
 
-        private Regex _msg = new Regex(@"<msg>(.*)</msg>");
-        private Regex _zone = new Regex(@"<zone>(.*)</zone>");
-        private Regex _actorId = new Regex(@"<actorId>(.*)</actorId>");
-        private Regex _type = new Regex(@"<type>(.*)</type>");
-        private Regex _serverTime = new Regex(@"<time>(.*)</time>");
-        private Regex _isSend = new Regex(@"<send>");
-        private Regex _isClient = new Regex(@"<client>");
-        private Regex _symbol = new Regex(@"<symbol=(\w)>");
-        private Regex _desc = new Regex(@"<desc=(\w)>");
+        private Regex _msg = new(@"<msg>(.*)</msg>");
+        private Regex _zone = new(@"<zone>(.*)</zone>");
+        private Regex _actorId = new(@"<actorId>(.*)</actorId>");
+        private Regex _type = new(@"<type>(.*)</type>");
+        private Regex _serverTime = new(@"<time>(.*)</time>");
+        private Regex _isSend = new(@"<send>");
+        private Regex _isClient = new(@"<client>");
+        private Regex _symbol = new(@"<symbol=(\w)>");
+        private Regex _desc = new(@"<desc=(\w)>");
 
         private ServerMessageLogs()
         {
-            var codes = Assembly.Load("Unity.Model.Codes");
+            var codes = Assembly.Load("Unity.Model");
             var inner = codes.GetType("ET.InnerMessage");
             var mongo = codes.GetType("ET.MongoMessage");
             var outer = codes.GetType("ET.OuterMessage");
@@ -43,20 +43,20 @@ namespace ET.Client
             var mongoFields = mongo.GetFields(BindingFlags.Public | BindingFlags.Static);
             foreach (FieldInfo fieldInfo in innerFields)
             {
-                this._name2Code.Add(fieldInfo.Name, (ushort)fieldInfo.GetValue(null));
-                this._name2Type.Add(fieldInfo.Name, codes.GetType($"ET.{fieldInfo.Name}"));
+                this.name2Code.Add(fieldInfo.Name, (ushort)fieldInfo.GetValue(null));
+                this.name2Type.Add(fieldInfo.Name, codes.GetType($"ET.{fieldInfo.Name}"));
             }
 
             foreach (FieldInfo fieldInfo in outerFields)
             {
-                this._name2Code.Add(fieldInfo.Name, (ushort)fieldInfo.GetValue(null));
-                this._name2Type.Add(fieldInfo.Name, codes.GetType($"ET.{fieldInfo.Name}"));
+                this.name2Code.Add(fieldInfo.Name, (ushort)fieldInfo.GetValue(null));
+                this.name2Type.Add(fieldInfo.Name, codes.GetType($"ET.{fieldInfo.Name}"));
             }
 
             foreach (FieldInfo fieldInfo in mongoFields)
             {
-                this._name2Code.Add(fieldInfo.Name, (ushort)fieldInfo.GetValue(null));
-                this._name2Type.Add(fieldInfo.Name, codes.GetType($"ET.{fieldInfo.Name}"));
+                this.name2Code.Add(fieldInfo.Name, (ushort)fieldInfo.GetValue(null));
+                this.name2Type.Add(fieldInfo.Name, codes.GetType($"ET.{fieldInfo.Name}"));
             }
         }
 
@@ -78,8 +78,8 @@ namespace ET.Client
             if (this._type.IsMatch(msg))
             {
                 var res = this._type.Match(msg);
-                content.type = this._name2Type[res.Groups[1].Value];
-                content.opCode = this._name2Code[res.Groups[1].Value];
+                content.type = this.name2Type[res.Groups[1].Value];
+                content.opCode = this.name2Code[res.Groups[1].Value];
                 content.msgType = content.opCode / 10000 == 1? MsgType.Outer :
                         content.opCode / 10000 == 2? MsgType.Inner : MsgType.Mongo;
                 content.title = res.Groups[1].Value;
@@ -121,7 +121,7 @@ namespace ET.Client
             }
 
             content.stack = stack;
-            this.Msgs.Add(content);
+            this.MsgList.Add(content);
         }
 
         [Flags]

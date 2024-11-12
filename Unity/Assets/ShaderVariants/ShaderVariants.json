@@ -1,0 +1,356 @@
+{
+    "ShaderTotalCount": 23,
+    "VariantTotalCount": 30,
+    "ShaderVariantInfos": [
+        {
+            "AssetPath": "Assets/Bundles/Shaders/SS/SEffectAdditive.shader",
+            "ShaderName": "Blz/Effect/Additive",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Bundles/Shaders/SS/SEffectAllTransparent.shader",
+            "ShaderName": "Blz/Effect/AllTransparent",
+            "ShaderVariantCount": 3,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "Breath_On",
+                        "IllumMap_On",
+                        "MainTex_On"
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "MainTex_On"
+                    ]
+                },
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "MainTex_On",
+                        "MaskMap_On"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Bundles/Shaders/SS/SEffectAlphaBlend.shader",
+            "ShaderName": "Blz/Effect/AlphaBlend",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Assets/Bundles/Shaders/SS/SEffectCustomParticle.shader",
+            "ShaderName": "Blz/Effect/CustomParticle",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderLdr.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/LutBuilderLdr",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/UberPost.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/UberPost",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader",
+            "ShaderName": "Universal Render Pipeline/Simple Lit",
+            "ShaderVariantCount": 3,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        "_ADDITIONAL_LIGHTS",
+                        "_MAIN_LIGHT_SHADOWS_CASCADE",
+                        "_SPECULAR_COLOR",
+                        "EVALUATE_SH_VERTEX"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader",
+            "ShaderName": "Universal Render Pipeline/Unlit",
+            "ShaderVariantCount": 2,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                },
+                {
+                    "PassType": 13,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CopyDepth.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/CopyDepth",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_OUTPUT_DEPTH"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader",
+            "ShaderName": "Hidden/Universal/CoreBlit",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader",
+            "ShaderName": "Hidden/Universal Render Pipeline/FallbackError",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/BlitCopy",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUIRoundedRect",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUIRoundedRectWithColorPerBorder",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITexture",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureBlit",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureClip",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-GUITextureClipText",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/Internal-UIRAtlasBlitCopy",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/TextCore/Distance Field SSD",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Hidden/UIElements/EditorUIE",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "UIE_FORCE_GAMMA"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Particles/Standard Unlit",
+            "ShaderVariantCount": 3,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_ALPHABLEND_ON"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ALPHABLEND_ON",
+                        "SHADOWS_DEPTH"
+                    ]
+                },
+                {
+                    "PassType": 8,
+                    "Keywords": [
+                        "_ALPHABLEND_ON",
+                        "PROCEDURAL_INSTANCING_ON",
+                        "SHADOWS_DEPTH"
+                    ]
+                }
+            ]
+        },
+        {
+            "AssetPath": "Resources/unity_builtin_extra",
+            "ShaderName": "Skybox/Procedural",
+            "ShaderVariantCount": 1,
+            "ShaderVariantElements": [
+                {
+                    "PassType": 0,
+                    "Keywords": [
+                        "_SUNDISK_SIMPLE"
+                    ]
+                }
+            ]
+        }
+    ]
+}
