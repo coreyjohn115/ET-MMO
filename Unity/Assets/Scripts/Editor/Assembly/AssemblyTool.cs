@@ -11,7 +11,7 @@ namespace ET.Client
         /// <summary>
         /// Unity线程的同步上下文
         /// </summary>
-        static SynchronizationContext unitySynchronizationContext { get; set; }
+        private static SynchronizationContext unitySynchronizationContext { get; set; }
 
         /// <summary>
         /// 程序集名字数组
@@ -19,7 +19,7 @@ namespace ET.Client
         public static readonly string[] DllNames = { "Unity.Hotfix", "Unity.HotfixView", "Unity.Model", "Unity.ModelView" };
 
         [InitializeOnLoadMethod]
-        static void Initialize()
+        private static void Initialize()
         {
             unitySynchronizationContext = SynchronizationContext.Current;
         }
@@ -40,7 +40,7 @@ namespace ET.Client
         /// 菜单和快捷键热重载按钮
         /// </summary>
         [MenuItem("ET/Reload _F7", false, ETMenuItemPriority.Compile)]
-        static void MenuItemOfReload()
+        private static void MenuItemOfReload()
         {
             if (Application.isPlaying)
             {
@@ -74,7 +74,7 @@ namespace ET.Client
         /// <summary>
         /// 刷新代码模式
         /// </summary>
-        static void RefreshCodeMode()
+        private static void RefreshCodeMode()
         {
             CodeMode codeMode = CodeMode.ClientServer;
             GlobalConfig globalConfig = Resources.Load<GlobalConfig>("GlobalConfig");
@@ -108,7 +108,7 @@ namespace ET.Client
         /// <summary>
         /// 刷新构建类型
         /// </summary>
-        static void RefreshBuildType()
+        private static void RefreshBuildType()
         {
             BuildType buildType = BuildType.Release;
             GlobalConfig globalConfig = Resources.Load<GlobalConfig>("GlobalConfig");
@@ -123,7 +123,7 @@ namespace ET.Client
         /// <summary>
         /// 编译成dll
         /// </summary>
-        static bool CompileDlls()
+        private static bool CompileDlls()
         {
             // 运行时编译需要先设置为UnitySynchronizationContext, 编译完再还原为CurrentContext
             SynchronizationContext lastSynchronizationContext = Application.isPlaying ? SynchronizationContext.Current : null;
@@ -161,7 +161,7 @@ namespace ET.Client
         /// <summary>
         /// 将dll文件复制到加载目录
         /// </summary>
-        static void CopyHotUpdateDlls()
+        private static void CopyHotUpdateDlls()
         {
             FileHelper.ClearDirectory(Define.CodeDir);
             foreach (string dllName in DllNames)
@@ -178,7 +178,7 @@ namespace ET.Client
         /// <summary>
         /// 启用纯客户端模式
         /// </summary>
-        static void EnableUnityClient()
+        private static void EnableUnityClient()
         {
             DisableAsmdef("Assets/Scripts/Model/Generate/Client/Ignore.asmdef");
             EnableAsmdef("Assets/Scripts/Model/Generate/Server/Ignore.asmdef");
@@ -197,7 +197,7 @@ namespace ET.Client
         /// <summary>
         /// 启用纯服务端模式
         /// </summary>
-        static void EnableUnityServer()
+        private static void EnableUnityServer()
         {
             EnableAsmdef("Assets/Scripts/Model/Generate/Client/Ignore.asmdef");
             EnableAsmdef("Assets/Scripts/Model/Generate/Server/Ignore.asmdef");
@@ -216,7 +216,7 @@ namespace ET.Client
         /// <summary>
         /// 启用双端模式
         /// </summary>
-        static void EnableUnityClientServer()
+        private static void EnableUnityClientServer()
         {
             EnableAsmdef("Assets/Scripts/Model/Generate/Client/Ignore.asmdef");
             EnableAsmdef("Assets/Scripts/Model/Generate/Server/Ignore.asmdef");
@@ -235,7 +235,7 @@ namespace ET.Client
         /// <summary>
         /// 启用指定的程序集定义文件
         /// </summary>
-        static void EnableAsmdef(string asmdefFile)
+        private static void EnableAsmdef(string asmdefFile)
         {
             string asmdefDisableFile = $"{asmdefFile}.DISABLED";
             string srcFilePath = asmdefDisableFile.Replace("Assets/Scripts/", "Assets/Settings/IgnoreAsmdef/");
@@ -257,7 +257,7 @@ namespace ET.Client
         /// <summary>
         /// 删除指定的程序集定义文件
         /// </summary>
-        static void DisableAsmdef(string asmdefFile)
+        private static void DisableAsmdef(string asmdefFile)
         {
             File.Delete(asmdefFile);
             File.Delete($"{asmdefFile}.meta");

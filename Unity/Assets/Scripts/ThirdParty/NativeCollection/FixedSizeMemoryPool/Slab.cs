@@ -7,10 +7,10 @@ namespace NativeCollection
 {
     public unsafe partial struct FixedSizeMemoryPool
     {
-        public struct Slab : IDisposable
+        public struct Slab: IDisposable
         {
             public int BlockSize;
-            
+
             public int FreeSize;
 
             public int ItemSize;
@@ -24,27 +24,30 @@ namespace NativeCollection
             public Slab* Self
             {
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                get { return (Slab*)Unsafe.AsPointer(ref this); }
+                get
+                {
+                    return (Slab*)Unsafe.AsPointer(ref this);
+                }
             }
 
-            public static Slab* Create(int blockSize,int itemSize,Slab* prevSlab , Slab* nextSlab )
+            public static Slab* Create(int blockSize, int itemSize, Slab* prevSlab, Slab* nextSlab)
             {
                 int size = itemSize + Unsafe.SizeOf<IntPtr>();
-                int slabSize =Unsafe.SizeOf<Slab>() + size * blockSize;
-                byte* slabBuffer  = (byte*)NativeMemoryHelper.Alloc((UIntPtr)slabSize);
+                int slabSize = Unsafe.SizeOf<Slab>() + size * blockSize;
+                byte* slabBuffer = (byte*)NativeMemoryHelper.Alloc((UIntPtr)slabSize);
                 Slab* slab = (Slab*)slabBuffer;
                 slab->BlockSize = blockSize;
                 slab->FreeSize = blockSize;
                 slab->ItemSize = itemSize;
                 slab->Prev = prevSlab;
                 slab->Next = nextSlab;
-                slabBuffer+=Unsafe.SizeOf<Slab>();
+                slabBuffer += Unsafe.SizeOf<Slab>();
 
                 ListNode* next = null;
-                
-                for (int i = blockSize-1; i >= 0; i--)
+
+                for (int i = blockSize - 1; i >= 0; i--)
                 {
-                    ListNode* listNode = (ListNode*)(slabBuffer + i*size);
+                    ListNode* listNode = (ListNode*)(slabBuffer + i * size);
                     listNode->Next = next;
                     next = listNode;
                 }
@@ -52,10 +55,11 @@ namespace NativeCollection
                 slab->FreeList = next;
                 return slab;
             }
+
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public byte* Alloc()
             {
-                Debug.Assert(FreeList!=null && FreeSize>0);
+                Debug.Assert(FreeList != null && FreeSize > 0);
                 FreeSize--;
                 ListNode* node = FreeList;
                 FreeList = FreeList->Next;
@@ -63,43 +67,47 @@ namespace NativeCollection
                 node += 1;
                 return (byte*)node;
             }
+
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public void Free(ListNode* node)
             {
-                Debug.Assert(FreeSize<BlockSize && node!=null);
+                Debug.Assert(FreeSize < BlockSize && node != null);
                 FreeSize++;
                 node->Next = FreeList;
                 FreeList = node;
             }
+
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public bool IsAllFree()
             {
                 return FreeSize == BlockSize;
             }
+
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public bool IsAllAlloc()
             {
                 return FreeSize == 0;
             }
-            
+
             public void Dispose()
             {
-                int slabSize =Unsafe.SizeOf<Slab>() + (ItemSize + Unsafe.SizeOf<IntPtr>()) * BlockSize;
+                int slabSize = Unsafe.SizeOf<Slab>() + (ItemSize + Unsafe.SizeOf<IntPtr>()) * BlockSize;
                 Slab* self = Self;
                 NativeMemoryHelper.Free(self);
                 NativeMemoryHelper.RemoveNativeMemoryByte(slabSize);
             }
         }
-        
+
         [StructLayout(LayoutKind.Explicit)]
         public struct ListNode
         {
             [FieldOffset(0)]
             public ListNode* Next;
+
             [FieldOffset(0)]
             public Slab* ParentSlab;
         }
-        
+
         public struct SlabLinkedList
         {
             public int SlabCount;
@@ -110,13 +118,13 @@ namespace NativeCollection
             {
                 Top = initSlab;
                 Bottom = initSlab;
-                SlabCount = initSlab==null?0:1;
+                SlabCount = initSlab == null? 0 : 1;
             }
 
             public void MoveTopToBottom()
             {
-                Debug.Assert(Top!=null && Bottom!=null);
-                if (Top==Bottom)
+                Debug.Assert(Top != null && Bottom != null);
+                if (Top == Bottom)
                 {
                     return;
                 }
@@ -132,11 +140,11 @@ namespace NativeCollection
 
             public void SplitOut(Slab* splitSlab)
             {
-                Debug.Assert(splitSlab!=null && Top!=null && Bottom!=null);
+                Debug.Assert(splitSlab != null && Top != null && Bottom != null);
 
                 SlabCount--;
                 // 只有一个slab
-                if (Top==Bottom)
+                if (Top == Bottom)
                 {
                     splitSlab->Prev = null;
                     splitSlab->Next = null;
@@ -144,7 +152,7 @@ namespace NativeCollection
                     Bottom = null;
                     return;
                 }
-                
+
                 // 链表头部
                 if (splitSlab == Top)
                 {
@@ -175,7 +183,7 @@ namespace NativeCollection
                 SlabCount++;
                 if (Top == Bottom)
                 {
-                    if (Top==null)
+                    if (Top == null)
                     {
                         Top = slab;
                         Bottom = slab;
@@ -190,6 +198,7 @@ namespace NativeCollection
                         Top->Prev = null;
                         oldTop->Prev = Top;
                     }
+
                     return;
                 }
 
@@ -202,4 +211,3 @@ namespace NativeCollection
         }
     }
 }
-

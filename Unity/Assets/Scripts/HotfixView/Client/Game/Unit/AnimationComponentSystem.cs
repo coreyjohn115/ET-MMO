@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Animancer;
+using UnityEngine;
 
 namespace ET.Client
 {
@@ -6,159 +7,96 @@ namespace ET.Client
     [FriendOf(typeof (AnimationComponent))]
     public static partial class AnimationComponentSystem
     {
+        [Event(SceneType.Current)]
+        private class MoveStart_Animator: AEvent<Scene, MoveStart>
+        {
+            protected override async ETTask Run(Scene scene, MoveStart a)
+            {
+                var anim = a.Unit.GetComponent<AnimationComponent>();
+                anim.PlayInner(UnitClip.RunNormal);
+                await ETTask.CompletedTask;
+            }
+        }
+        
+        [Event(SceneType.Current)]
+        private class MoveStop_Animator: AEvent<Scene, MoveStop>
+        {
+            protected override async ETTask Run(Scene scene, MoveStop a)
+            {
+                var anim = a.Unit.GetComponent<AnimationComponent>();
+                anim.PlayIdleFromStart();
+                await ETTask.CompletedTask;
+            }
+        }
+        
         [EntitySystem]
         private static void Awake(this AnimationComponent self)
         {
-            var animation = self.GetParent<Unit>().GetComponent<UnitGoComponent>().GetAnimation();
-            if (animation == null)
+            self.unitGo = self.GetParent<Unit>().GetComponent<UnitGoComponent>();
+            UnitGoComponent c = self.unitGo;
+            var animancer = c.GetAnimancer();
+            if (!animancer)
             {
                 return;
             }
 
-            self.timer = self.Root().GetComponent<TimerComponent>().NewRepeatedTimer(1000, TimerInvokeType.CheckAnimation, self);
-            self.animation = animation;
-            for (int i = 0; i < 1; i++)
-            {
-                self.postureList.Add($"{AnimationComponent.Postore}_0{i}");
-            }
+            self.animancer = animancer;
+            self.PlayIdleFromStart();
         }
 
         [EntitySystem]
         private static void Destroy(this AnimationComponent self)
         {
-            self.Root().GetComponent<TimerComponent>().Remove(ref self.timer);
         }
 
-        [Invoke(TimerInvokeType.CheckAnimation)]
-        public class CheckAnimationTimer: ATimer<AnimationComponent>
+        /// <summary>
+        /// 播放默认动画如果在此期间再次播放，则会继续播放
+        /// </summary>
+        /// <param name="self"></param>
+        public static void PlayIdle(this AnimationComponent self)
         {
-            protected override void Run(AnimationComponent self)
-            {
-                self.Check();
-            }
+            self.PlayInner(UnitClip.IdleNormal);
         }
 
-        private static void Check(this AnimationComponent self)
+        /// <summary>
+        /// 播放默认动画如果在此期间再次播放，则会从头开始
+        /// </summary>
+        /// <param name="self"></param>
+        public static void PlayIdleFromStart(this AnimationComponent self)
         {
+            self.PlayInner(UnitClip.IdleNormal, mode: FadeMode.FromStart);
         }
 
-        private static bool IsClipLoop(AnimationClip clip)
+        public static AnimancerState PlaySkill(this AnimationComponent self, string stateName, float fadeTime = 0.25f, float speed = 1f,
+        FadeMode mode = FadeMode.FixedDuration)
         {
-            return clip && (clip.wrapMode == WrapMode.Loop || clip.wrapMode == WrapMode.PingPong);
+            AnimancerState state = self.PlayInner(stateName, fadeTime, speed, mode);
+            state.Events(self).OnEnd = () => { state.StartFade(0f, 0.1f); };
+            return state;
         }
 
-        private static AnimationState PlayInner(this AnimationComponent self, string clipName, float fadeLength, bool isLoop)
+        /// <summary>
+        /// 播放一个动画(播放完成自动回到默认动画)
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="stateName">动画状态名称, 参阅<see cref="UnitClip"/></param>
+        /// <param name="fadeTime"></param>
+        /// <param name="speed"></param>
+        /// <param name="mode"></param>
+        public static void PlayAnimReturnIdle(this AnimationComponent self, string stateName, float fadeTime = 0.25f, float speed = 1f,
+        FadeMode mode = FadeMode.FixedDuration)
         {
-            AnimationState r = null;
-            if (self.lastAnimName == null)
-            {
-                if (self.animation.Play(clipName, PlayMode.StopAll))
-                {
-                    self.animation.Sample();
-                    r = self.animation[clipName];
-                }
-            }
-            else
-            {
-                if (clipName == self.lastAnimName)
-                {
-                    if (isLoop)
-                    {
-                        return self.animation[clipName];
-                    }
-
-                    if (fadeLength <= 0)
-                    {
-                        if (self.animation.Play(clipName, PlayMode.StopAll))
-                        {
-                            self.animation.Sample();
-                            r = self.animation[clipName];
-                        }
-                        else
-                        {
-                            r = null;
-                        }
-                    }
-                    else
-                    {
-                        r = self.animation.CrossFadeQueued(clipName, fadeLength, QueueMode.PlayNow, PlayMode.StopAll);
-                    }
-                }
-                else
-                {
-                    if (fadeLength <= 0)
-                    {
-                        if (self.animation.Play(clipName, PlayMode.StopAll))
-                        {
-                            self.animation.Sample();
-                            r = self.animation[clipName];
-                        }
-                        else
-                        {
-                            r = null;
-                        }
-                    }
-                    else
-                    {
-                        self.animation.CrossFade(clipName, fadeLength, PlayMode.StopAll);
-                        r = self.animation[clipName];
-                    }
-
-                    if (r != null && self.lastAnimState != null && IsClipLoop(self.lastAnimState.clip) && isLoop)
-                    {
-                        r.normalizedTime = self.lastAnimState.normalizedTime - Mathf.Floor(self.lastAnimState.normalizedTime);
-                    }
-                }
-            }
-
-            self.lastAnimName = clipName;
-            self.lastAnimState = r;
-            return r;
+            self.PlayInner(stateName, fadeTime, speed, mode).Events(self).OnEnd = self.PlayIdleFromStart;
         }
 
-        private static void PlayByName(this AnimationComponent self, string actionName)
+        private static AnimancerState PlayInner(this AnimationComponent self, string stateName, float fadeTime = 0.25f, float speed = 1f,
+        FadeMode mode = FadeMode.FixedDuration)
         {
-            var cfg = ActionConfigCategory.Instance.GetActionCfg(actionName);
-            var animCfg = cfg.GetSubConfig<AnimationAActionConfig>();
-            switch (actionName)
-            {
-                case AnimationComponent.Idle:
-                    animCfg.Name = "Idle_Normal";
-                    break;
-                case AnimationComponent.Run:
-                    animCfg.Name = "Run_Normal";
-                    break;
-            }
-
-            self.Play(animCfg);
-        }
-
-        public static AnimationState Play(this AnimationComponent self, AnimationAActionConfig cfg)
-        {
-            var ac = self.animation.GetClip(cfg.Name);
-            if (!ac)
-            {
-                Log.Error($"can not find animation clip: {cfg.Name}");
-                return default;
-            }
-
-            if (self.lastAnimName == cfg.Name && (Time.frameCount - self.lastAnimStateFrame) <= 3)
-            {
-                return self.lastAnimState;
-            }
-
-            bool isLoop = IsClipLoop(ac);
-            self.lastAnimStateFrame = Time.frameCount;
-            if (cfg.Strict)
-            {
-                return self.PlayInner(cfg.Name, cfg.FadeTime, isLoop);
-            }
-
-            bool focusNewAnim = cfg.Layer > self.lastAnimLayer;
-            float targetWeight = focusNewAnim? 10 : 1;
-            self.lastAnimLayer = cfg.Layer;
-            self.animation.Blend(cfg.Name, targetWeight, 0.3f);
-            return self.animation[cfg.Name];
+            UnitGoComponent c = self.unitGo;
+            AnimationClip clip = c.GetAnimationClip(stateName);
+            var state = self.animancer.Layers[0].Play(clip, fadeTime, mode);
+            state.Speed = speed;
+            return state;
         }
     }
 }

@@ -55,7 +55,6 @@ namespace NativeCollection
 #endif
         }
 
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Free<T>(T* ptr) where T : unmanaged
         {
@@ -65,11 +64,11 @@ namespace NativeCollection
         Marshal.FreeHGlobal(new IntPtr(ptr));
 #endif
         }
-        
+
 #if MEMORY_PROFILE
         public static long NativeMemoryBytes;
 #endif
-        
+
         public static void AddNativeMemoryByte(long size)
         {
             GC.AddMemoryPressure((long)size);
@@ -78,7 +77,7 @@ namespace NativeCollection
             NativeMemoryBytes += size;
 #endif
         }
-        
+
         public static void RemoveNativeMemoryByte(long size)
         {
             GC.RemoveMemoryPressure(size);
@@ -96,6 +95,5 @@ namespace NativeCollection
             return 0;
 #endif
         }
-    }    
+    }
 }
-

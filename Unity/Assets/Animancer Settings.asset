@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 16
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18bd840b706853d4a934ec3199f63a41, type: 3}
+  m_Name: Animancer Settings
+  m_EditorClassIdentifier: 
+  _Data:
+  - rid: 4539574848758481180
+  - rid: 4539574848758481181
+  - rid: 4539574848758481182
+  - rid: 4539574848758481183
+  - rid: 4539574848758481184
+  - rid: 4539574848758481185
+  references:
+    version: 2
+    RefIds:
+    - rid: 4539574848758481180
+      type: {class: AnimancerComponentPreviewSettings, ns: Animancer.Editor.Previews,
+        asm: Kybernetik.Animancer.Lite}
+      data:
+        _RepaintRate: 30
+    - rid: 4539574848758481181
+      type: {class: AnimancerGraphControls, ns: Animancer.Editor, asm: Kybernetik.Animancer.Lite}
+      data:
+        _FrameStep: 0.02
+    - rid: 4539574848758481182
+      type: {class: TransitionPreviewSettings, ns: Animancer.Editor.Previews, asm: Kybernetik.Animancer.Lite}
+      data:
+        _AutoClose: 1
+        _SceneLighting: 0
+        _ShowSkybox: 0
+        _FrameStep: 0.02
+        _SceneEnvironment: {fileID: 0}
+        _Models: []
+    - rid: 4539574848758481183
+      type: {class: SerializableEventSequenceDrawerSettings, ns: Animancer.Editor,
+        asm: Kybernetik.Animancer.Lite}
+      data:
+        _HideEventCallbacks: 0
+    - rid: 4539574848758481184
+      type: {class: AnimationTimeAttributeSettings, ns: Animancer.Units.Editor, asm: Kybernetik.Animancer.Lite}
+      data:
+        showApproximations: 1
+        showNormalized: 1
+        showSeconds: 1
+        showFrames: 1
+    - rid: 4539574848758481185
+      type: {class: GenerateSpriteAnimationsSettings, ns: Animancer.Editor.Tools,
+        asm: Kybernetik.Animancer.Lite}
+      data:
+        _FrameRate: 12
+        _HierarchyPath: 
+        _TargetType:
+          _QualifiedName: UnityEngine.SpriteRenderer, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        _PropertyName: m_Sprite

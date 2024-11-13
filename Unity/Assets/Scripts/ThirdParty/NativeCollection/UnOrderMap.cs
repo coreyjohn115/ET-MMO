@@ -6,10 +6,10 @@ using NativeCollection.UnsafeType;
 
 namespace NativeCollection
 {
-    public unsafe class UnOrderMap<T, K> : IEnumerable<MapPair<T, K>>, INativeCollectionClass
-        where T : unmanaged, IEquatable<T>, IComparable<T> where K : unmanaged, IEquatable<K>
+    public unsafe class UnOrderMap<T, K>: IEnumerable<MapPair<T, K>>, INativeCollectionClass
+            where T : unmanaged, IEquatable<T>, IComparable<T> where K : unmanaged, IEquatable<K>
     {
-private int _capacity;
+        private int _capacity;
         private UnsafeType.UnOrderMap<T, K>* _unOrderMap;
 
         public UnOrderMap(int initCapacity = 0)
@@ -24,9 +24,9 @@ private int _capacity;
             get => (*_unOrderMap)[key];
             set => (*_unOrderMap)[key] = value;
         }
-        
+
         public int Count => _unOrderMap->Count;
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Add(in T key, K value)
         {
@@ -44,27 +44,27 @@ private int _capacity;
         {
             _unOrderMap->Clear();
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool ContainsKey(in T key)
         {
             return _unOrderMap->ContainsKey(key);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetValue(in T key, out K value)
         {
-            bool contains =  _unOrderMap->TryGetValue(key, out var actualValue);
+            bool contains = _unOrderMap->TryGetValue(key, out var actualValue);
             if (contains)
             {
                 value = actualValue;
                 return true;
             }
+
             value = default;
             return false;
         }
 
-        
         IEnumerator<MapPair<T, K>> IEnumerable<MapPair<T, K>>.GetEnumerator()
         {
             return GetEnumerator();
@@ -74,9 +74,9 @@ private int _capacity;
         {
             return GetEnumerator();
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public UnsafeType.UnOrderMap<T,K>.Enumerator GetEnumerator()
+        public UnsafeType.UnOrderMap<T, K>.Enumerator GetEnumerator()
         {
             return _unOrderMap->GetEnumerator();
         }
@@ -103,11 +103,10 @@ private int _capacity;
         }
 
         public bool IsDisposed { get; private set; }
-        
+
         ~UnOrderMap()
         {
             Dispose();
         }
     }
 }
-

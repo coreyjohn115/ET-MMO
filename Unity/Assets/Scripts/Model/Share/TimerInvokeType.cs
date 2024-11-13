@@ -43,7 +43,6 @@
 
         // 战斗飘字
         public const int BattleText = 1001;
-        public const int CheckAnimation = 1002;
 
         //检测资源缓存
         public const int Client0_1S = 1005;

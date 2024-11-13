@@ -3,7 +3,7 @@ using System.Net;
 
 namespace ET.Client
 {
-    public static partial class RouterHelper
+    public static class RouterHelper
     {
         // 注册router
         public static async ETTask<Session> CreateRouterSession(this NetComponent netComponent, IPEndPoint address, string account, string password)

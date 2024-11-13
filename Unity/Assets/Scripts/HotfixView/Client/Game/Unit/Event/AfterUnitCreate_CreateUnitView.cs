@@ -51,7 +51,7 @@ namespace ET.Client
 
             unit.AddComponent<UnitWeaponComponent>();
             unit.AddComponent<ActionComponent>();
-            unit.AddComponent<AnimatorComponent>();
+            unit.AddComponent<AnimationComponent>();
             await ETTask.CompletedTask;
         }
     }
