@@ -86,6 +86,22 @@ namespace ET.Server
             }
         }
 
+        /// <summary>
+        /// 广播全部成员
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <param name="message"></param>
+        public static void Broadcast(Scene scene, IMessage message)
+        {
+            MessageLocationSenderOneType oneTypeMessageLocationType =
+                    scene.GetComponent<MessageLocationSenderComponent>().Get(LocationType.GateSession);
+            UnitComponent component = scene.GetComponent<UnitComponent>();
+            foreach (Unit u in component.Children.Values)
+            {
+                oneTypeMessageLocationType.Send(u.Id, message).NoContext();
+            }
+        }
+
         public static async ETTask SendToClient(this Unit unit, IMessage message)
         {
             await unit.Root().GetComponent<MessageLocationSenderComponent>().Get(LocationType.GateSession).Send(unit.Id, message);

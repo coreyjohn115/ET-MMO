@@ -37,6 +37,16 @@ message M2C_TransferMap // ILocationResponse
 {
 }
 
+message C2M_FrameCmd // ILocationMessage
+{
+  A_LSF_Cmd Cmd = 1;
+}
+
+message M2C_FrameCmd // IMessage
+{
+  A_LSF_Cmd Cmd = 1;
+}
+
 message UnitBasicProto
 {
   int64 Gid = 1;
