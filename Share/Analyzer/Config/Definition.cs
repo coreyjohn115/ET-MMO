@@ -1,37 +1,35 @@
-﻿namespace ET.Analyzer
+﻿namespace ET
 {
     public static class Definition
     {
-        public const string ObjectType = "ET.Object";
-        
         public const string EntityType = "ET.Entity";
 
         public const string LSEntityType = "ET.LSEntity";
-        
+
         public const string ETTask = "ETTask";
 
         public const string ETTaskFullName = "ET.ETTask";
 
         public static readonly string[] AddChildMethods = { "AddChild", "AddChildWithId" };
 
-        public static readonly string[] ComponentMethod = ["AddComponent","GetComponent"];
+        public static readonly string[] ComponentMethod = { "AddComponent", "GetComponent" };
 
         public const string ISystemType = "ET.ISystemType";
         
         public const string BaseAttribute = "ET.BaseAttribute";
-        
+
         public const string ObjectSystemAttribute = "ET.SystemAttribute";
 
         public const string EnableMethodAttribute = "ET.EnableMethodAttribute";
-        
+
         public const string FriendOfAttribute = "ET.FriendOfAttribute";
-        
+
         public const string UniqueIdAttribute = "ET.UniqueIdAttribute";
 
         public const string ChildOfAttribute = "ET.ChildOfAttribute";
 
         public const string ComponentOfAttribute = "ET.ComponentOfAttribute";
-        
+
         public const string EnableAccessEntiyChildAttribute = "ET.EnableAccessEntiyChildAttribute";
 
         public const string StaticFieldAttribute = "ET.StaticFieldAttribute";
@@ -50,11 +48,21 @@
         public const string EntitySystemOfAttribute = "ET.EntitySystemOfAttribute";
         public const string EntitySystemInterfaceSequence = "EntitySystemInterfaceSequence";
 
+        public static string[] FriendAttributes =
+        [
+            FriendOfAttribute,
+            EntitySystemOfAttribute,
+            LSEntitySystemOfAttribute
+        ];
+
         public const string IAwakeInterface = "ET.IAwake";
         public const string AwakeMethod = "Awake";
 
         public const string IUpdateInterface = "ET.IUpdate";
         public const string UpdateMethod = "Update";
+        
+        public const string IFixedUpdateInterface = "ET.IFixedUpdate";
+        public const string FixedUpdateMethod = "FixedUpdate";
 
         public const string IDestroyInterface = "ET.IDestroy";
         public const string DestroyMethod = "Destroy";
@@ -92,7 +100,7 @@
         public const string IMessageInterface = "ET.IMessage";
 
         public const string EntityRefType = "EntityRef";
-        
+
         public const string EntityWeakRefType = "EntityWeakRef";
 
         public const string DisableNewAttribute = "ET.DisableNewAttribute";
@@ -100,4 +108,3 @@
         public const string EnableClassAttribute = "ET.EnableClassAttribute";
     }
 }
-

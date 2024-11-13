@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.FlowAnalysis;
-using Exception = System.Exception;
 
-namespace ET.Analyzer
+namespace ET
 {
     public static class AnalyzerHelper
     {
@@ -110,13 +107,14 @@ namespace ET.Analyzer
                     return true;
                 }
             }
+
             return false;
         }
 
         public static IEnumerable<ITypeSymbol> BaseTypes(this ITypeSymbol typeSymbol)
         {
             ITypeSymbol? baseType = typeSymbol.BaseType;
-            while (baseType!=null)
+            while (baseType != null)
             {
                 yield return baseType;
                 baseType = baseType.BaseType;
@@ -126,11 +124,12 @@ namespace ET.Analyzer
         /// <summary>
         ///     INamedTypeSymbol 是否有指定的基类Attribute
         /// </summary>
-        public static bool HasBaseAttribute(this INamedTypeSymbol namedTypeSymbol, string AttributeName)
+        public static bool HasAttribute(this INamedTypeSymbol namedTypeSymbol, string AttributeName)
         {
             foreach (AttributeData? attributeData in namedTypeSymbol.GetAttributes())
             {
-                INamedTypeSymbol? attributeType = attributeData.AttributeClass?.BaseType;
+                INamedTypeSymbol? attributeType = attributeData.AttributeClass;
+
                 while (attributeType != null)
                 {
                     if (attributeType.ToString() == AttributeName)
@@ -180,7 +179,6 @@ namespace ET.Analyzer
         /// <summary>
         /// 某个接口symbol 是否是指定的接口
         /// </summary>
-
         public static bool IsInterface(this INamedTypeSymbol namedTypeSymbol, string InterfaceName)
         {
             return $"{namedTypeSymbol.GetNameSpace()}.{namedTypeSymbol.Name}" == InterfaceName;
@@ -257,13 +255,12 @@ namespace ET.Analyzer
 
             return null;
         }
-        
+
         /// <summary>
         /// 获取最近的指定类型祖先节点
         /// </summary>
-        public static T? GetNeareastAncestor<T>(this SyntaxNode syntaxNode) where T:SyntaxNode
+        public static T? GetNeareastAncestor<T>(this SyntaxNode syntaxNode) where T : SyntaxNode
         {
-            
             foreach (var ancestorNode in syntaxNode.Ancestors())
             {
                 if (ancestorNode is T Tancestor)
@@ -271,9 +268,10 @@ namespace ET.Analyzer
                     return Tancestor;
                 }
             }
-            return null ;
+
+            return null;
         }
-        
+
         /// <summary>
         /// 判断函数是否是否含有指定类型的参数
         /// </summary>
@@ -287,6 +285,7 @@ namespace ET.Analyzer
                     return true;
                 }
             }
+
             cencelTokenSymbol = null;
             return false;
         }
@@ -310,11 +309,11 @@ namespace ET.Analyzer
         /// </summary>
         public static SyntaxNode? PreviousNode(this SyntaxNode syntaxNode)
         {
-            if (syntaxNode.Parent==null)
+            if (syntaxNode.Parent == null)
             {
                 return null;
             }
-            
+
             int index = 0;
             foreach (var childNode in syntaxNode.Parent.ChildNodes())
             {
@@ -322,15 +321,16 @@ namespace ET.Analyzer
                 {
                     break;
                 }
+
                 index++;
             }
 
-            if (index==0)
+            if (index == 0)
             {
                 return null;
             }
-            
-            return syntaxNode.Parent.ChildNodes().ElementAt(index-1);
+
+            return syntaxNode.Parent.ChildNodes().ElementAt(index - 1);
         }
 
         /// <summary>
@@ -338,43 +338,45 @@ namespace ET.Analyzer
         /// </summary>
         public static SyntaxNode? NextNode(this SyntaxNode syntaxNode)
         {
-            if (syntaxNode.Parent==null)
+            if (syntaxNode.Parent == null)
             {
                 return null;
             }
-            
+
             int index = 0;
-            
+
             foreach (var childNode in syntaxNode.Parent.ChildNodes())
             {
                 if (childNode == syntaxNode)
                 {
                     break;
                 }
+
                 index++;
             }
 
-            if (index == syntaxNode.Parent.ChildNodes().Count()-1)
+            if (index == syntaxNode.Parent.ChildNodes().Count() - 1)
             {
                 return null;
             }
-            
-            return syntaxNode.Parent.ChildNodes().ElementAt(index+1);
+
+            return syntaxNode.Parent.ChildNodes().ElementAt(index + 1);
         }
-        
+
         /// <summary>
         /// 获取await表达式所在的控制流block
         /// </summary>
-        public static BasicBlock? GetAwaitStatementControlFlowBlock(StatementSyntax statementSyntax,AwaitExpressionSyntax awaitExpressionSyntax ,SemanticModel semanticModel)
+        public static BasicBlock? GetAwaitStatementControlFlowBlock(StatementSyntax statementSyntax, AwaitExpressionSyntax awaitExpressionSyntax,
+        SemanticModel semanticModel)
         {
             // 跳过 return 表达式
             if (statementSyntax.IsKind(SyntaxKind.ReturnStatement))
             {
                 return null;
             }
-            
+
             var methodSyntax = statementSyntax.GetNeareastAncestor<MethodDeclarationSyntax>();
-            if (methodSyntax==null)
+            if (methodSyntax == null)
             {
                 return null;
             }
@@ -382,7 +384,7 @@ namespace ET.Analyzer
             // 构建表达式所在函数的控制流图
             var controlFlowGraph = ControlFlowGraph.Create(methodSyntax, semanticModel);
 
-            if (controlFlowGraph==null)
+            if (controlFlowGraph == null)
             {
                 return null;
             }
@@ -391,11 +393,11 @@ namespace ET.Analyzer
             {
                 return null;
             }
-            
+
             BasicBlock? block = controlFlowGraph.Blocks.FirstOrDefault(x => x.Operations.Any(y => y.Syntax.Contains(statementSyntax)));
             return block;
         }
-        
+
         /// <summary>
         /// 判断类是否为partial类
         /// </summary>
@@ -447,6 +449,7 @@ namespace ET.Analyzer
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -455,7 +458,6 @@ namespace ET.Analyzer
         /// </summary>
         public static bool HasMethodWithParams(this INamedTypeSymbol namedTypeSymbol, string methodName, params ITypeSymbol[] typeSymbols)
         {
-            
             foreach (var member in namedTypeSymbol.GetMembers())
             {
                 if (member is not IMethodSymbol methodSymbol)
@@ -463,26 +465,26 @@ namespace ET.Analyzer
                     continue;
                 }
 
-                if (methodSymbol.Name!=methodName)
+                if (methodSymbol.Name != methodName)
                 {
                     continue;
                 }
-                
-                if (typeSymbols.Length!=methodSymbol.Parameters.Length)
+
+                if (typeSymbols.Length != methodSymbol.Parameters.Length)
                 {
                     continue;
                 }
-                
-                if (typeSymbols.Length==0)
+
+                if (typeSymbols.Length == 0)
                 {
                     return true;
                 }
 
                 bool isEqual = true;
-                
+
                 for (int i = 0; i < typeSymbols.Length; i++)
                 {
-                    if (typeSymbols[i].ToString()!=methodSymbol.Parameters[i].Type.ToString())
+                    if (typeSymbols[i].ToString() != methodSymbol.Parameters[i].Type.ToString())
                     {
                         isEqual = false;
                         break;
@@ -497,13 +499,12 @@ namespace ET.Analyzer
 
             return false;
         }
-        
+
         /// <summary>
         /// 类型symbol是否有指定名字 指定参数的方法
         /// </summary>
         public static bool HasMethodWithParams(this INamedTypeSymbol namedTypeSymbol, string methodName, params string[] typeSymbols)
         {
-            
             foreach (var member in namedTypeSymbol.GetMembers())
             {
                 if (member is not IMethodSymbol methodSymbol)
@@ -511,26 +512,26 @@ namespace ET.Analyzer
                     continue;
                 }
 
-                if (methodSymbol.Name!=methodName)
+                if (methodSymbol.Name != methodName)
                 {
                     continue;
                 }
-                
-                if (typeSymbols.Length!=methodSymbol.Parameters.Length)
+
+                if (typeSymbols.Length != methodSymbol.Parameters.Length)
                 {
                     continue;
                 }
-                
-                if (typeSymbols.Length==0)
+
+                if (typeSymbols.Length == 0)
                 {
                     return true;
                 }
 
                 bool isEqual = true;
-                
+
                 for (int i = 0; i < typeSymbols.Length; i++)
                 {
-                    if (typeSymbols[i]!=methodSymbol.Parameters[i].Type.ToString())
+                    if (typeSymbols[i] != methodSymbol.Parameters[i].Type.ToString())
                     {
                         isEqual = false;
                         break;
@@ -545,8 +546,7 @@ namespace ET.Analyzer
 
             return false;
         }
-        
-        
+
         /// <summary>
         /// 方法symbol 是否有指定的attribute
         /// </summary>
@@ -554,11 +554,12 @@ namespace ET.Analyzer
         {
             foreach (AttributeData? attributeData in methodSymbol.GetAttributes())
             {
-                if (attributeData?.AttributeClass?.ToString()==AttributeName)
+                if (attributeData?.AttributeClass?.ToString() == AttributeName)
                 {
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -570,24 +571,7 @@ namespace ET.Analyzer
             string typeName = typeSymbol.ToString();
             string? baseType = typeSymbol.BaseType?.ToString();
             return typeName == Definition.EntityType || baseType == Definition.EntityType || baseType == Definition.LSEntityType;
-        } 
-        
-        /// <summary>
-        /// 类型symbol是否是ET.Object
-        /// </summary>
-        public static bool IsObject(this ITypeSymbol typeSymbol)
-        {
-            foreach (ITypeSymbol symbol in typeSymbol.BaseTypes())
-            {
-                string? baseType = symbol.BaseType?.ToDisplayString();
-                if (baseType == Definition.ObjectType)
-                {
-                    return true;
-                }
-            }
-            
-            return false;
-        } 
+        }
 
         /// <summary>
         /// 类型symbol是否是EntiyRef 或EntityWeakRef类
@@ -598,7 +582,6 @@ namespace ET.Analyzer
             {
                 return false;
             }
-            
 
             if (!namedTypeSymbol.IsGenericType)
             {

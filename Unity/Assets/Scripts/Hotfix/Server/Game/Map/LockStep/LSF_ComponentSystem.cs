@@ -1,13 +1,29 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ET.Server
 {
     [EntitySystemOf(typeof (LSF_Component))]
-    [FriendOf(typeof (LSF_Component))]
     public static partial class LSF_ComponentSystem
     {
         [EntitySystem]
         private static void Awake(this LSF_Component self)
+        {
+        }
+
+        [EntitySystem]
+        private static void Update(this LSF_Component self)
+        {
+            if (!self.startSync)
+            {
+                return;
+            }
+            
+            self.fixedUpdate.Tick();
+        }
+
+        [EntitySystem]
+        private static void FixedUpdate(this LSF_Component self)
         {
         }
 
@@ -48,7 +64,7 @@ namespace ET.Server
             self.startSync = true;
             self.fixedUpdate = new FixedUpdate() { UpdateCallback = self.TickInner };
         }
-        
+
         /// <summary>
         /// 发送本帧收集的指令
         /// </summary>
@@ -67,8 +83,34 @@ namespace ET.Server
                 MapHelper.Broadcast(self.Root(), message);
             }
         }
-        
+
         private static void TickInner(this LSF_Component self)
+        {
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
+
+            self.currentFrame++;
+            if (self.handleCmdQueue.Remove(self.currentFrame, out var queue))
+            {
+                UnitComponent component = self.Root().GetComponent<UnitComponent>();
+                foreach (A_LSF_Cmd cmd in queue)
+                {
+                    Unit unit = component.Get(cmd.UnitId);
+                    LSF_CmdDispatcher.Instance.Handler(unit, cmd);
+                }
+            }
+
+            self.TickManual();
+            self.SendCurrentFrame();
+            stopwatch.Stop();
+            Log.Info($"LockStepComponentUpdateSystem Cost: {stopwatch.ElapsedMilliseconds}");
+        }
+
+        /// <summary>
+        /// 正式的帧同步Tick，所有的战斗逻辑都从这里出发，会自增CurrentFrame
+        /// </summary>
+        /// <param name="self"></param>
+        private static void TickManual(this LSF_Component self)
         {
         }
     }

@@ -11,7 +11,7 @@ namespace ET
             Fiber root = self.Fiber();
             return new ActorId(root.Process, root.Id, self.InstanceId);
         }
-        
+
         public static Entity GetEntity(this Entity self, long instanceId)
         {
             Fiber root = self.Fiber();
@@ -77,6 +77,18 @@ namespace ET
             try
             {
                 this.EntitySystem.Update();
+            }
+            catch (Exception e)
+            {
+                this.Log.Error(e);
+            }
+        }
+
+        internal void FixedUpdate()
+        {
+            try
+            {
+                this.EntitySystem.FixedUpdate();
             }
             catch (Exception e)
             {

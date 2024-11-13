@@ -61,19 +61,5 @@ namespace ET.Analyzer
             //     namedTypeSymbol);
             // context.ReportDiagnostic(diagnostic);
         }
-
-        private static bool IsAttribute(ITypeSymbol typeSymbol)
-        {
-            foreach (ITypeSymbol symbol in typeSymbol.BaseTypes())
-            {
-                string? baseType = symbol.BaseType?.ToDisplayString();
-                if (baseType == Definition.BaseAttribute)
-                {
-                    return true;
-                }
-            }
-            
-            return false;
-        } 
     }
 }

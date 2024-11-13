@@ -1,20 +1,22 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.Linq;
+using ET.Analyzer;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace ET.Analyzer
+namespace ET
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ClassDeclarationInHotfixAnalyzer: DiagnosticAnalyzer
     {
-        private const string Title = "Hotfix程序集中 只能声明含有BaseAttribute子类特性的类或静态类";
+        private const string Title = "Hotfix程序集中 只能声明含有EnableClassAttribute子类特性的类或静态类";
 
-        private const string MessageFormat = "Hotfix程序集中 只能声明含有BaseAttribute子类特性的类或静态类 类: {0}";
+        private const string MessageFormat = "Hotfix程序集中 只能声明含有EnableClassAttribute子类特性的类或静态类 类: {0}";
 
-        private const string Description = "Hotfix程序集中 只能声明含有BaseAttribute子类特性的类或静态类.";
+        private const string Description = "Hotfix程序集中 只能声明含有EnableClassAttribute子类特性的类或静态类.";
 
         private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticIds.ClassDeclarationInHotfixAnalyzerRuleId,
             Title,
@@ -35,54 +37,52 @@ namespace ET.Analyzer
             context.EnableConcurrentExecution();
             context.RegisterCompilationStartAction((analysisContext =>
             {
-                if (AnalyzerHelper.IsAssemblyNeedAnalyze(analysisContext.Compilation.AssemblyName, AnalyzeAssembly.AllHotfix))
+                if (AnalyzerHelper.IsAssemblyNeedAnalyze(analysisContext.Compilation.AssemblyName,AnalyzeAssembly.AllHotfix))
                 {
-                    analysisContext.RegisterSemanticModelAction((AnalyzeSemanticModel));
+                    analysisContext.RegisterSemanticModelAction((this.AnalyzeSemanticModel));
                 }
-            }));
+            } ));
         }
 
-        private static void AnalyzeSemanticModel(SemanticModelAnalysisContext analysisContext)
+        private void AnalyzeSemanticModel(SemanticModelAnalysisContext analysisContext)
         {
             foreach (var classDeclarationSyntax in analysisContext.SemanticModel.SyntaxTree.GetRoot().DescendantNodes<ClassDeclarationSyntax>())
             {
                 var classTypeSymbol = analysisContext.SemanticModel.GetDeclaredSymbol(classDeclarationSyntax);
-                if (classTypeSymbol != null)
+                if (classTypeSymbol!=null)
                 {
                     Analyzer(analysisContext, classTypeSymbol);
                 }
             }
         }
-
-        private static void Analyzer(SemanticModelAnalysisContext context, INamedTypeSymbol namedTypeSymbol)
+        
+        private void Analyzer(SemanticModelAnalysisContext context, INamedTypeSymbol namedTypeSymbol)
         {
             if (namedTypeSymbol.IsStatic)
             {
                 return;
             }
 
-            if (CheckIsTypeOrBaseTypeHasBaseAttributeInherit(namedTypeSymbol))
+            if (!this.CheckIsTypeOrBaseTypeHasBaseAttributeInherit(namedTypeSymbol))
             {
-                return;
-            }
-
-            foreach (SyntaxReference? declaringSyntaxReference in namedTypeSymbol.DeclaringSyntaxReferences)
-            {
-                Diagnostic diagnostic = Diagnostic.Create(Rule, declaringSyntaxReference.GetSyntax()?.GetLocation(), namedTypeSymbol.Name);
-                //Diagnostic diagnostic = Diagnostic.Create(Rule, declaringSyntaxReference.GetSyntax()?.GetLocation(), context.SemanticModel.SyntaxTree.FilePath);
-                context.ReportDiagnostic(diagnostic);
+                foreach (SyntaxReference? declaringSyntaxReference in namedTypeSymbol.DeclaringSyntaxReferences)
+                {
+                    Diagnostic diagnostic = Diagnostic.Create(Rule, declaringSyntaxReference.GetSyntax()?.GetLocation(), namedTypeSymbol.Name);
+                    //Diagnostic diagnostic = Diagnostic.Create(Rule, declaringSyntaxReference.GetSyntax()?.GetLocation(), context.SemanticModel.SyntaxTree.FilePath);
+                    context.ReportDiagnostic(diagnostic);
+                }
             }
         }
 
         /// <summary>
-        /// 检查该类或其基类是否有BaseAttribute的子类特性标记
+        ///     检查该类或其基类是否有BaseAttribute的子类特性标记
         /// </summary>
-        private static bool CheckIsTypeOrBaseTypeHasBaseAttributeInherit(INamedTypeSymbol namedTypeSymbol)
+        private bool CheckIsTypeOrBaseTypeHasBaseAttributeInherit(INamedTypeSymbol namedTypeSymbol)
         {
             INamedTypeSymbol? typeSymbol = namedTypeSymbol;
             while (typeSymbol != null)
             {
-                if (typeSymbol.HasBaseAttribute(Definition.BaseAttribute))
+                if (typeSymbol.HasAttribute(Definition.BaseAttribute))
                 {
                     return true;
                 }

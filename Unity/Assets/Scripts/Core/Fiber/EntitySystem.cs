@@ -138,6 +138,50 @@ namespace ET
             }
         }
 
+        public void FixedUpdate()
+        {
+            var queue = this.queues[InstanceQueueIndex.FixedUpdate];
+            int count = queue.Count;
+            while (count-- > 0)
+            {
+                Entity component = queue.Dequeue();
+                if (component == null)
+                {
+                    continue;
+                }
+
+                if (component.IsDisposed)
+                {
+                    continue;
+                }
+
+                if (component is not IFixedUpdate)
+                {
+                    continue;
+                }
+
+                List<object> iLateUpdateSystems =
+                        EntitySystemSingleton.Instance.TypeSystems.GetSystems(component.GetType(), typeof (IFixedUpdateSystem));
+                if (iLateUpdateSystems == null)
+                {
+                    continue;
+                }
+
+                queue.Enqueue(component);
+                foreach (IFixedUpdateSystem iLateUpdateSystem in iLateUpdateSystems)
+                {
+                    try
+                    {
+                        iLateUpdateSystem.Run(component);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e);
+                    }
+                }
+            }
+        }
+
         public void Load()
         {
             var queue = this.queues[InstanceQueueIndex.Load];

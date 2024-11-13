@@ -29,6 +29,7 @@ public class EntitySystemAnalyzer: DiagnosticAnalyzer
         new ETSystemData(Definition.EntitySystemOfAttribute, Definition.EntitySystemAttribute, Definition.EntityType,Definition.EntitySystemAttributeMetaName,
             new SystemMethodData(Definition.IAwakeInterface, Definition.AwakeMethod),
             new SystemMethodData(Definition.IUpdateInterface, Definition.UpdateMethod),
+            new SystemMethodData(Definition.IFixedUpdateInterface, Definition.FixedUpdateMethod),
             new SystemMethodData(Definition.IDestroyInterface, Definition.DestroyMethod),
             new SystemMethodData(Definition.IAddComponentInterface, Definition.AddComponentMethod),
             new SystemMethodData(Definition.IDeserializeInterface, Definition.DeserializeMethod),

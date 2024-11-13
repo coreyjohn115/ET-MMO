@@ -13,7 +13,7 @@ namespace ET.Client
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
-        
+
         private void Start()
         {
             Application.targetFrameRate = 120;
@@ -35,7 +35,7 @@ namespace ET.Client
 
             World.Instance.AddSingleton<Logger>().Log = new UnityLogger();
             ETTask.ExceptionHandler += Log.Error;
-            
+
             World.Instance.AddSingleton<SDK>();
             World.Instance.AddSingleton<TimeInfo>();
             World.Instance.AddSingleton<FiberManager>();
@@ -50,7 +50,7 @@ namespace ET.Client
                 Log.Error($"资源初始化失败: {errno}");
                 return;
             }
-            
+
             CodeLoader codeLoader = World.Instance.AddSingleton<CodeLoader>();
             await codeLoader.DownloadAsync();
 
@@ -67,7 +67,6 @@ namespace ET.Client
         private void LateUpdate()
         {
             World.Instance.LateUpdate();
-            ;
             FiberManager.Instance.LateUpdate();
         }
 

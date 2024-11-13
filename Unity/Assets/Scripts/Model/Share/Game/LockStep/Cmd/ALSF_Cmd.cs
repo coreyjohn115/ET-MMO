@@ -9,7 +9,7 @@ namespace ET
         public uint Frame;
 
         [MemoryPackOrder(51)]
-        public uint FrameSyncDataType;
+        public uint FrameCmdType;
 
         [MemoryPackOrder(52)]
         public long UnitId;
@@ -32,7 +32,7 @@ namespace ET
         public virtual void Clear()
         {
             Frame = 0;
-            this.FrameSyncDataType = 0;
+            this.FrameCmdType = 0;
             UnitId = 0;
         }
     }

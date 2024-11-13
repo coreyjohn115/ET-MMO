@@ -1,11 +1,12 @@
 ﻿using System.Collections.Immutable;
 using System.Linq;
+using ET.Analyzer;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace ET.Analyzer
+namespace ET
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class EntityFiledAccessAnalyzer: DiagnosticAnalyzer
@@ -117,7 +118,7 @@ namespace ET.Analyzer
             var attributes = accessFieldTypeSymbol.GetAttributes();
             foreach (AttributeData? attributeData in attributes)
             {
-                if (attributeData.AttributeClass?.ToString() != Definition.FriendOfAttribute)
+                if (!Definition.FriendAttributes.Contains(attributeData.AttributeClass?.ToString()))
                 {
                     continue;
                 }
