@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <linker>
+  <assembly fullname="Kybernetik.Animancer">
+    <type fullname="Animancer.AnimancerComponent" preserve="all" />
+  </assembly>
+  <assembly fullname="Kybernetik.Animancer.Lite">
+    <type fullname="Animancer.AnimancerEvent" preserve="all" />
+    <type fullname="Animancer.AnimancerEvent/Sequence" preserve="all" />
+    <type fullname="Animancer.AnimancerLayer" preserve="all" />
+    <type fullname="Animancer.AnimancerLayerList" preserve="all" />
+    <type fullname="Animancer.AnimancerNode" preserve="all" />
+    <type fullname="Animancer.AnimancerNodeBase" preserve="all" />
+    <type fullname="Animancer.AnimancerState" preserve="all" />
+    <type fullname="Animancer.FadeMode" preserve="all" />
+  </assembly>
   <assembly fullname="MemoryPack">
     <type fullname="MemoryPack.Formatters.ArrayFormatter`1" preserve="all" />
     <type fullname="MemoryPack.Formatters.DictionaryFormatter`2" preserve="all" />
@@ -258,13 +271,9 @@
     <type fullname="ET.ETTask`1" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AnimationModule">
-    <type fullname="UnityEngine.Animation" preserve="all" />
     <type fullname="UnityEngine.AnimationClip" preserve="all" />
-    <type fullname="UnityEngine.AnimationState" preserve="all" />
     <type fullname="UnityEngine.Animator" preserve="all" />
     <type fullname="UnityEngine.AnimatorControllerParameter" preserve="all" />
-    <type fullname="UnityEngine.PlayMode" preserve="all" />
-    <type fullname="UnityEngine.QueueMode" preserve="all" />
     <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.AudioModule">
@@ -303,12 +312,10 @@
     <type fullname="UnityEngine.Sprite" preserve="all" />
     <type fullname="UnityEngine.TextAsset" preserve="all" />
     <type fullname="UnityEngine.Time" preserve="all" />
-    <type fullname="UnityEngine.TrackedReference" preserve="all" />
     <type fullname="UnityEngine.Transform" preserve="all" />
     <type fullname="UnityEngine.U2D.SpriteAtlas" preserve="all" />
     <type fullname="UnityEngine.Vector2" preserve="all" />
     <type fullname="UnityEngine.Vector3" preserve="all" />
-    <type fullname="UnityEngine.WrapMode" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.InputLegacyModule">
     <type fullname="UnityEngine.Input" preserve="all" />
@@ -401,6 +408,7 @@
     <type fullname="System.FlagsAttribute" preserve="all" />
     <type fullname="System.Func`1" preserve="all" />
     <type fullname="System.Func`2" preserve="all" />
+    <type fullname="System.ICloneable" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
     <type fullname="System.IO.BinaryReader" preserve="all" />
     <type fullname="System.IO.Directory" preserve="all" />

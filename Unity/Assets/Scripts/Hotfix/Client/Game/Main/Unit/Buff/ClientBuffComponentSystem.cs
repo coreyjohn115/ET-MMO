@@ -3,7 +3,6 @@
 namespace ET.Client
 {
     [EntitySystemOf(typeof (ClientBuffComponent))]
-    [FriendOf(typeof (ClientBuffComponent))]
     [FriendOf(typeof (ClientBuffUnit))]
     public static partial class ClientBuffComponentSystem
     {

@@ -107,6 +107,7 @@ namespace ET
         {
             try
             {
+                SkillEffectArgs args = new SkillEffectArgs();
                 template = File.ReadAllText("Template.txt");
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 

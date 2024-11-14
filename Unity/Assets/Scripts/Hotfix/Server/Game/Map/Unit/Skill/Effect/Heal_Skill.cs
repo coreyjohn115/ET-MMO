@@ -10,8 +10,8 @@ namespace ET.Server
     public class Heal_Skill: ASkillEffect
     {
         public override HurtPkg Run(SkillComponent self, SkillUnit skill, HashSet<Unit> RoleList, SkillDyna dyna)
-    {
-        return default;
-    }
+        {
+            return default;
+        }
     }
 }

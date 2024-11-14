@@ -19,6 +19,6 @@ namespace ET.Client
     [ComponentOf(typeof (Unit))]
     public class ClientBuffComponent: Entity, IAwake
     {
-        public Dictionary<string, HashSet<long>> buffListDict = new Dictionary<string, HashSet<long>>();
+        public Dictionary<string, HashSet<long>> buffListDict = new();
     }
 }

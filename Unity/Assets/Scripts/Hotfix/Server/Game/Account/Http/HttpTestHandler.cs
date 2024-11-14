@@ -11,7 +11,7 @@ public class HttpTestHandler: IHttpHandler
     {
         for (int i = 0; i < 10000; i++)
         {
-            RankHelper.UpdateRank(scene, i, RankType.Fight, i);
+            // RankHelper.UpdateRank(scene, i, RankType.Fight, i);
         }
 
         int page = context.Request.QueryString["page"].ToInt();
@@ -20,10 +20,8 @@ public class HttpTestHandler: IHttpHandler
 
         // var r = await ItemHelper.AddItemList(scene, 2330452587184758, [new ItemArgs() { Id = 110010, Count = 1L}], LogDef.GM);
         // Log.Console(r);
-        
+
         HttpHelper.Response(context, ss);
         await ETTask.CompletedTask;
     }
 }
-
-

@@ -176,7 +176,7 @@ public static partial class SkillComponentSystem
     private static HashSet<Unit> GetHurtList(this SkillComponent self, SkillUnit skill)
     {
         var effectCfg = skill.Config.EffectList.Get(self.oft);
-        RangeType rT = (RangeType)effectCfg.RangeType;
+        RangeType rT = effectCfg.RangeType;
         switch (rT)
         {
             case RangeType.None:
@@ -184,7 +184,7 @@ public static partial class SkillComponentSystem
             case RangeType.UseLast:
                 return self.dyna.LastHurtList;
             default:
-                return self.GetParent<Unit>().GetAttackList((FocusType)effectCfg.Dst,
+                return self.GetParent<Unit>().GetAttackList(effectCfg.Dst,
                     rT,
                     self.dyna.Forward,
                     self.GetParent<Unit>().GetUnitsById(self.dyna.DstList),

@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using Sirenix.OdinInspector;
+
+namespace ET
 {
     /// <summary>
     /// 元素类型
@@ -6,7 +8,7 @@
     public enum ElementType
     {
         None = 0,
-        
+
         /// <summary>
         /// 水元素
         /// </summary>
@@ -26,12 +28,12 @@
         /// 冰元素
         /// </summary>
         Ice = 4,
-        
+
         /// <summary>
         /// 风元素
         /// </summary>
         Wind = 5,
-        
+
         /// <summary>
         /// 草元素
         /// </summary>
@@ -46,36 +48,43 @@
         /// <summary>
         /// 任意
         /// </summary>
+        [LabelText("任意")]
         All = 0,
 
         /// <summary>
         /// 自身
         /// </summary>
+        [LabelText("自身")]
         Self = 1,
 
         /// <summary>
         /// 敌对 
         /// </summary>
+        [LabelText("敌对")]
         OOP = 2,
 
         /// <summary>
         /// 友善
         /// </summary>
+        [LabelText("友善")]
         Friend = 3,
 
         /// <summary>
         /// 友善排己
         /// </summary>
+        [LabelText("友善排己")]
         FriendNSelf = 4,
 
         /// <summary>
         /// 队友
         /// </summary>
+        [LabelText("队友")]
         Team = 5,
 
         /// <summary>
         /// 队友排己
         /// </summary>
+        [LabelText("队友排己")]
         TeamNSelf = 6,
     }
 
@@ -85,53 +94,60 @@
     public enum RangeType
     {
         None = 0,
-        
+
         /// <summary>
         /// 自身
         /// </summary>
+        [LabelText("自身")]
         Self = 1,
 
         /// <summary>
         /// 单一目标
         /// </summary>
+        [LabelText("单一目标")]
         Single = 2,
-        
-        Much = 3,
-        
+
         /// <summary>
         /// 自身扇形
         /// </summary>
+        [LabelText("自身扇形")]
         SelfFan = 4,
 
         /// <summary>
         /// 自身矩形
         /// </summary>
+        [LabelText("自身矩形")]
         SelfLine = 5,
 
         /// <summary>
         /// 目标矩形
         /// </summary>
+        [LabelText("目标矩形")]
         DstLine = 6,
 
         /// <summary>
         /// 目标扇形
         /// </summary>
+        [LabelText("目标扇形")]
         DstFan = 7,
 
         /// <summary>
         /// 目标扇形+直线
         /// </summary>
+        [LabelText("目标扇形+直线")]
         DstFanLine = 8,
-        
+
         /// <summary>
         /// 自身扇形+直线
         /// </summary>
+        [LabelText("自身扇形+直线")]
         SelfFanLine = 9,
 
         /// <summary>
         /// 使用上次(技能)
         /// </summary>
-        UseLast = 11,
+        [LabelText("使用上次(技能)")]
+        UseLast = 10,
     }
 
     /// <summary>

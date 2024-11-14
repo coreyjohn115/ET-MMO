@@ -210,13 +210,6 @@ namespace ET.Server
                         dstSet);
                     break;
                 }
-                case RangeType.Much:
-                {
-                    maxCount = args2;
-                    set2 = GetSelector(dstList, self.Position.x, self.Position.z, SharpType.Round, forward, repairPos, maxDistance * 1.2f, 0,
-                        dstSet);
-                    break;
-                }
                 case RangeType.SelfFan:
                 {
                     var ll = self.GetFocusPlayers(fT);

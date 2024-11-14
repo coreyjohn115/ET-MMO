@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 namespace ET
 {
+    [Serializable]
     public class SubEffectArgs
     {
         public string Cmd;
@@ -13,6 +15,7 @@ namespace ET
     /// <summary>
     /// 效果参数
     /// </summary>
+    [Serializable]
     public class EffectArgs: ICloneable
     {
         public string Cmd;
@@ -37,19 +40,30 @@ namespace ET
     /// <summary>
     /// 技能效果参数
     /// </summary>
+    [Serializable]
     public class SkillEffectArgs: ICloneable
     {
-        public int Dst;
-        public int RangeType;
+        [LabelText("目标类型")]
+        public FocusType Dst;
+
+        [LabelText("范围类型")]
+        public RangeType RangeType;
+        [LabelText("效果参数列表")] [ListDrawerSettings(ShowFoldout = true)] [InfoBox("参数不能为空", InfoMessageType.Error, "ShowRangeErrorTip")]
         public List<int> RangeArgs;
 
+        [ValueDropdown(valuesGetter: "GetCmd")]
         public string Cmd;
+        [LabelText("触发延迟")]
         public int Ms;
+        
+        [LabelText("效果参数列表")] [ListDrawerSettings(ShowFoldout = true)] [InfoBox("参数不能为空", InfoMessageType.Error, "ShowErrorTip")]
         public List<int> Args;
+        [LabelText("触发几率")]
         public int Rate;
 
         public string ViewCmd;
 
+        [LabelText("子效果列表"), PropertySpace(10)] [ListDrawerSettings(ShowFoldout = false, DraggableItems = true)] [HideReferenceObjectPicker]
         public List<SubEffectArgs> SubList;
 
         public int this[int i]
@@ -63,6 +77,26 @@ namespace ET
 
                 return this.RangeArgs[i];
             }
+        }
+
+        private ValueDropdownList<string> GetCmd()
+        {
+            var list = CodeTypes.Instance.GetTypes(CodeTypes.Instance.GetType("ET.Server.SkillAttribute"));
+            Log.Info(list);
+            return new ValueDropdownList<string>()
+            {   
+                
+            };
+        }
+        
+        private bool ShowRangeErrorTip()
+        {
+            return this.RangeArgs.IsNullOrEmpty();
+        }
+        
+        private bool ShowErrorTip()
+        {
+            return this.Args.IsNullOrEmpty();
         }
 
         public EffectArgs ToEffectArgs()
@@ -100,6 +134,7 @@ namespace ET
         }
     }
 
+    [Serializable]
     public class TalentEffectArgs
     {
         public string Cmd;
@@ -109,6 +144,7 @@ namespace ET
         public List<string> Args;
     }
 
+    [Serializable]
     public class OftCfgs
     {
         public int Idx;
