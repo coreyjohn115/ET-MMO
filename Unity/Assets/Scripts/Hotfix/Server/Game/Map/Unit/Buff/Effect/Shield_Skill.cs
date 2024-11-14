@@ -4,9 +4,11 @@
     /// 护盾
     /// 发挥比例;发挥值;暴击倍率(万比);
     /// </summary>
-    [Buff("AbsorbHp")]
+    [Buff(EffectName)]
     public class Shield_Skill: ABuffEffect
     {
+        public const string EffectName = "AbsorbHp";
+
         protected override void OnCreate(BuffComponent self, BuffUnit buff, BuffDyna dyna, EffectArgs effectArgs, object[] args)
         {
             var effect = effectArgs.Args;

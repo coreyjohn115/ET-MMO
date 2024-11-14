@@ -4,9 +4,11 @@
     /// 添加技能
     /// 技能ID;
     /// </summary>
-    [Buff("AddSkill")]
+    [Buff(EffectName)]
     public class AddSkillEffect: ABuffEffect
     {
+        public const string EffectName = "AddSkill";
+
         protected override void OnCreate(BuffComponent self, BuffUnit buff, BuffDyna dyna, EffectArgs effectArgs, object[] args)
         {
         }

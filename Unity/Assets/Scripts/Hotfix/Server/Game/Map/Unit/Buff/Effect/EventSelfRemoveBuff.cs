@@ -6,9 +6,11 @@ namespace ET.Server;
 /// 触发指定事件删除Buff
 /// <para>BuffId;Buff事件类型...;</para>
 /// </summary>
-[Buff("EventSelfRemoveBuff")]
+[Buff(EffectName)]
 public class EventSelfRemoveBuff: ABuffEffect
 {
+    public const string EffectName = "EventSelfRemoveBuff";
+
     protected override void OnCreate(BuffComponent self, BuffUnit buff, BuffDyna dyna, EffectArgs effectArgs, object[] args)
     {
         var set = new HashSet<int>();

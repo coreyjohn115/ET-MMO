@@ -2,6 +2,9 @@
 
 namespace ET.Server
 {
+    /// <summary>
+    /// 默认成功
+    /// </summary>
     [TaskProcess("Default")]
     public class TaskProcessDefault: ATaskProcess
     {
@@ -11,9 +14,6 @@ namespace ET.Server
         }
     }
 
-    /// <summary>
-    /// 默认成功
-    /// </summary>
     [TaskProcess("SubTask")]
     public class TaskProcessSubTask: ATaskProcess
     {

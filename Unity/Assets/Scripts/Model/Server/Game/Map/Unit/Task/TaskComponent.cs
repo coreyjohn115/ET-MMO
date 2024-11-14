@@ -13,7 +13,7 @@ namespace ET.Server
         public bool NotUpdate { get; set; }
     }
 
-    public class FinishTaskData
+    public class FinishTaskData : Object
     {
         public List<long> Args { get; set; }
 

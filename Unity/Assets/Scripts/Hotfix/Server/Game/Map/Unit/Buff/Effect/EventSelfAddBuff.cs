@@ -6,9 +6,11 @@ namespace ET.Server;
 /// 触发指定事件加Buff
 /// <para>冷却时间;几率;BuffId;ms;最大人数;目标类型;Buff事件类型...;</para>
 /// </summary>
-[Buff("EventSelfAddBuff")]
+[Buff(EffectName)]
 public class EventSelfAddBuff: ABuffEffect
 {
+    public const string EffectName = "EventSelfAddBuff";
+
     protected override void OnCreate(BuffComponent self, BuffUnit buff, BuffDyna dyna, EffectArgs effectArgs, object[] args)
     {
         int buffId = effectArgs.Args[2];
@@ -34,7 +36,7 @@ public class EventSelfAddBuff: ABuffEffect
         dyna.Args.Add(set);
         dyna.Args.Add(0);
     }
-    
+
     protected override void OnEvent(BuffComponent self, BuffEvent buffEvent, BuffUnit buff, BuffDyna dyna, EffectArgs effectArgs, object[] args)
     {
         if (dyna.Args[0] is not HashSet<int> set || !set.Contains((int)buffEvent))

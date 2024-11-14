@@ -4,9 +4,11 @@
     /// 给周围目标添加Buff
     /// BuffId;Buff时长;最大数量;万分比
     /// </summary>
-    [Buff("MassAddBuff")]
+    [Buff(EffectName)]
     public class MassAddBuffEffect: ABuffEffect
     {
+        public const string EffectName = "MassAddBuff";
+
         protected override void OnTimeOut(BuffComponent self, BuffUnit buff, BuffDyna dyna, EffectArgs effectArgs, object[] args)
         {
             int buffId = effectArgs.Args[0];

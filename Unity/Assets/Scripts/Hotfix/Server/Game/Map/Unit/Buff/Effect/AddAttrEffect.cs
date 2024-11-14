@@ -3,9 +3,11 @@
     /// <summary>
     /// 添加属性
     /// </summary>
-    [Buff("AddAttr")]
+    [Buff(EffectName)]
     public class AddAttrEffect: ABuffEffect
     {
+        public const string EffectName = "AddAttr";
+        
         protected override void OnCreate(BuffComponent self, BuffUnit buff, BuffDyna dyna, EffectArgs effectArgs, object[] args)
         {
             var numericCom = self.GetParent<Unit>().GetComponent<NumericComponent>();

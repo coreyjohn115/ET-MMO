@@ -16,6 +16,10 @@ namespace ET.Server
         public List<object> Args { get; init; }
     }
 
+    /// <summary>
+    /// Buff实体
+    /// <para>Awake参数: Buff配置ID, 添加时间, 添加者Id</para>
+    /// </summary>
     [ChildOf(typeof (BuffComponent))]
     public class BuffUnit: Entity, IAwake<int, long, long>, ISerializeToEntity
     {
