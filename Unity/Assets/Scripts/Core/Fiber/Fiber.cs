@@ -84,18 +84,6 @@ namespace ET
             }
         }
 
-        internal void FixedUpdate()
-        {
-            try
-            {
-                this.EntitySystem.FixedUpdate();
-            }
-            catch (Exception e)
-            {
-                this.Log.Error(e);
-            }
-        }
-
         internal void LateUpdate()
         {
             try

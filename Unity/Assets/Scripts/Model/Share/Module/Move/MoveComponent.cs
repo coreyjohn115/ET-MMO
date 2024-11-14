@@ -71,13 +71,10 @@ namespace ET
         }
 
         public int N;
-
         public int TurnTime;
-
         public bool IsTurnHorizontal;
 
         public quaternion From;
-
         public quaternion To;
     }
 }

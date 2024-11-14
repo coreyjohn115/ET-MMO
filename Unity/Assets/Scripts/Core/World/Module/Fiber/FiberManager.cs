@@ -46,11 +46,6 @@ namespace ET
             this.mainThreadScheduler.LateUpdate();
         }
 
-        public void FixedUpdate()
-        {
-            this.mainThreadScheduler.FixedUpdate();
-        }
-
         public void Load()
         {
             foreach (var fiber in this.fibers)
