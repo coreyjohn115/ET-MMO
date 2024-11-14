@@ -6,7 +6,7 @@ namespace ET.Server
     /// 添加Buff
     /// <para>buffId,概率,时长(毫秒),最大数量</para>
     /// </summary>
-    [Skill("AddBuff")]
+    [Skill(SkillEffectType.AddBuff)]
     public class AddBuff_Skill: ASkillEffect
     {
         public override HurtPkg Run(SkillComponent self, SkillUnit skill, HashSet<Unit> RoleList, SkillDyna dyna)

@@ -6,7 +6,7 @@ namespace ET.Server
     /// 添加buff时若目标已有某buffid则额外添加x层该buff
     /// <para>BuffId,概率,持续时间,最大数量,目标BuffId,额外层数</para>
     /// </summary>
-    [Skill("AddExistBuff")]
+    [Skill(SkillEffectType.AddExistBuff)]
     public class AddExistBuff_Skill: ASkillEffect
     {
         public override HurtPkg Run(SkillComponent self, SkillUnit skill, HashSet<Unit> RoleList, SkillDyna dyna)

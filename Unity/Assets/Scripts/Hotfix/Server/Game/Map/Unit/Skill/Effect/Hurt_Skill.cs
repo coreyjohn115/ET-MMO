@@ -6,7 +6,7 @@ namespace ET.Server
     /// 伤害
     /// <para>技能发挥比例,额外附加攻击,最大数量,打断技能类型</para>
     /// </summary>
-    [Skill("Hurt")]
+    [Skill(SkillEffectType.Hurt)]
     public class Hurt_Skill: ASkillEffect
     {
         public override HurtPkg Run(SkillComponent self, SkillUnit skill, HashSet<Unit> RoleList, SkillDyna dyna)

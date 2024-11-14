@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Sirenix.OdinInspector;
 
 namespace ET
@@ -48,22 +49,30 @@ namespace ET
 
         [LabelText("范围类型")]
         public RangeType RangeType;
-        [LabelText("效果参数列表")] [ListDrawerSettings(ShowFoldout = true)] [InfoBox("参数不能为空", InfoMessageType.Error, "ShowRangeErrorTip")]
+
+        [LabelText("效果参数列表")]
+        [ListDrawerSettings(ShowFoldout = true)]
+        [InfoBox("参数不能为空", InfoMessageType.Error, "ShowRangeErrorTip")]
         public List<int> RangeArgs;
 
-        [ValueDropdown(valuesGetter: "GetCmd")]
+        [ReadOnly]
         public string Cmd;
+
         [LabelText("触发延迟")]
         public int Ms;
-        
-        [LabelText("效果参数列表")] [ListDrawerSettings(ShowFoldout = true)] [InfoBox("参数不能为空", InfoMessageType.Error, "ShowErrorTip")]
+
+        [LabelText("效果参数列表")]
+        [ListDrawerSettings(ShowFoldout = true)]
+        [InfoBox("参数不能为空", InfoMessageType.Error, "ShowErrorTip")]
         public List<int> Args;
+
         [LabelText("触发几率")]
         public int Rate;
 
         public string ViewCmd;
 
-        [LabelText("子效果列表"), PropertySpace(10)] [ListDrawerSettings(ShowFoldout = false, DraggableItems = true)] [HideReferenceObjectPicker]
+        [LabelText("子效果列表"), PropertySpace(10)]
+        [ListDrawerSettings(ShowFoldout = false, DraggableItems = true)]
         public List<SubEffectArgs> SubList;
 
         public int this[int i]
@@ -79,21 +88,11 @@ namespace ET
             }
         }
 
-        private ValueDropdownList<string> GetCmd()
-        {
-            var list = CodeTypes.Instance.GetTypes(CodeTypes.Instance.GetType("ET.Server.SkillAttribute"));
-            Log.Info(list);
-            return new ValueDropdownList<string>()
-            {   
-                
-            };
-        }
-        
         private bool ShowRangeErrorTip()
         {
             return this.RangeArgs.IsNullOrEmpty();
         }
-        
+
         private bool ShowErrorTip()
         {
             return this.Args.IsNullOrEmpty();

@@ -6,7 +6,7 @@ namespace ET.Server
     /// 添加buff时若目标没有某buff则额外添加x层该buff
     /// <para>BuffId,概率,持续时间,最大数量,目标BuffId,额外层数</para>
     /// </summary>
-    [Skill("AddNoBuff")]
+    [Skill(SkillEffectType.AddNoBuff)]
     public class AddNoBuff_Skill: ASkillEffect
     {
         public override HurtPkg Run(SkillComponent self, SkillUnit skill, HashSet<Unit> RoleList, SkillDyna dyna)

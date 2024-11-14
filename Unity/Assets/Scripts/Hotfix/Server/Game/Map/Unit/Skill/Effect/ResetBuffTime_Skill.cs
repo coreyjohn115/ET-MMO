@@ -6,7 +6,7 @@ namespace ET.Server
     /// 重置buff持续时间
     /// <para>BuffID</para>
     /// </summary>
-    [Skill("ResetBuffTime")]
+    [Skill(SkillEffectType.ResetBuffTime)]
     public class ResetBuffTime_Skill: ASkillEffect
     {
         public override HurtPkg Run(SkillComponent self, SkillUnit skill, HashSet<Unit> RoleList, SkillDyna dyna)

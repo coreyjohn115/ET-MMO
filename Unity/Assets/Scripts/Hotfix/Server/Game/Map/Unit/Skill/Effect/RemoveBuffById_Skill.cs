@@ -6,7 +6,7 @@ namespace ET.Server
     /// 移除buff
     /// buffId,移除层数
     /// </summary>
-    [Skill("RemoveBuffById")]
+    [Skill(SkillEffectType.RemoveBuffById)]
     public class RemoveBuffById_Skill: ASkillEffect
     {
         public override HurtPkg Run(SkillComponent self, SkillUnit skill, HashSet<Unit> RoleList, SkillDyna dyna)
