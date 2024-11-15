@@ -5,25 +5,28 @@ namespace ET
 {
     public class GizmosDebug: MonoBehaviour
     {
-        public static GizmosDebug Instance { get; private set; }
+        [SerializeField]
+        private List<Vector3> path;
 
-        public List<Vector3> Path;
-
-        private void Awake()
-        {
-            Instance = this;
-        }
+        [SerializeField, Space(10)]
+        private Color color = Color.red;
 
         private void OnDrawGizmos()
         {
-            if (this.Path.Count < 2)
+            if (this.path.Count < 2)
             {
                 return;
             }
-            for (int i = 0; i < Path.Count - 1; ++i)
+
+            var c = Gizmos.color;
+            Gizmos.color = color;
+            for (int i = 0; i < this.path.Count - 1; ++i)
             {
-                Gizmos.DrawLine(Path[i], Path[i + 1]);
+                Gizmos.DrawLine(this.path[i], this.path[i + 1]);
             }
+            
+            Gizmos.DrawLine(this.path[^1], this.path[0]);
+            Gizmos.color = c;
         }
     }
 }
