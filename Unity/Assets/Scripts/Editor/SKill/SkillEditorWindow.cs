@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
@@ -11,105 +12,129 @@ namespace ET.Client
 {
     public class SkillEditorWindow: OdinMenuEditorWindow
     {
-        [MenuItem("SE/Skill Editor &%g")]
+        [MenuItem("ET/Skill Editor &%g")]
         private static void Open()
         {
             GetWindow<SkillEditorWindow>().Show();
         }
 
-        private readonly HashSet<int> exitsList = new();
+        private HashSet<int> skillIds = new();
 
         protected override OdinMenuTree BuildMenuTree()
         {
             var tree = new OdinMenuTree();
             tree.DefaultMenuStyle.IconSize = 32.00f;
             tree.Config.DrawSearchToolbar = true;
+            tree.Selection.SupportsMultiSelect = true;
 
-            exitsList.Clear();
-            for (int i = 0; i < 5; i++)
+            if (!File.Exists(this.excelPath))
             {
-                var asset = new SKillConfig();
-                tree.Add(i.ToString(), asset);
+                Log.Error($"配置表不存在: {this.excelPath}");
+                return tree;
             }
 
-            tree.Add("保存", null);
+            using var fs = new FileStream(this.excelPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            IWorkbook workbook = new XSSFWorkbook(fs);
+            ISheet sheet = workbook.GetSheetAt(0);
+            foreach (SKillEditorConfig config in sheet.ReadData<SKillEditorConfig>())
+            {
+                skillIds.Add(config.MasterId);
+                tree.Add(config.GetId(), config);
+            }
 
             return tree;
         }
 
-        private string serverFilePath = "../../config/web-2.0.0/map/skill_effect.lua";
-        private string clientFilePath = "Raw/code/config/map/skill_effect.lua";
+        private string excelPath = "../Excel/SkillConfig.xlsx";
 
         protected override void OnBeginDrawEditors()
         {
             var toolbarHeight = this.MenuTree.Config.SearchToolbarHeight;
-            var selected = this.MenuTree.Selection.FirstOrDefault();
-            var data = selected?.Value as SKillConfig;
-            if (data != default)
+            OdinMenuItem selected = this.MenuTree.Selection.FirstOrDefault();
+            var data = selected?.Value as SKillEditorConfig;
+            if (data == default)
             {
-                SirenixEditorGUI.BeginVerticalList();
-                SirenixEditorGUI.BeginHorizontalToolbar(toolbarHeight);
-                {
-                    EditorGUILayout.LabelField("客户端导出路径: ", GUILayout.Width(100f));
-                    serverFilePath = SirenixEditorFields.FilePathField(serverFilePath, "", "lua", true, false);
-                    SirenixEditorGUI.EndHorizontalToolbar();
-                }
-
-                SirenixEditorGUI.BeginHorizontalToolbar(toolbarHeight);
-                {
-                    EditorGUILayout.LabelField("客户端导出路径: ", GUILayout.Width(100f));
-                    clientFilePath = SirenixEditorFields.FilePathField(clientFilePath, "", "lua", false, false);
-                    SirenixEditorGUI.EndHorizontalToolbar();
-                }
-
-                SirenixEditorGUI.BeginHorizontalToolbar(toolbarHeight);
-                {
-                    if (GUILayout.Button("保存Excel"))
-                    {
-                        Export();
-                        EditorUtility.DisplayDialog("提示", "保存成功", "确定");
-                    }
-
-                    SirenixEditorGUI.EndHorizontalToolbar();
-                }
-
-                SirenixEditorGUI.EndVerticalList();
                 return;
+            }
+
+            SirenixEditorGUI.BeginVerticalList();
+            SirenixEditorGUI.BeginHorizontalToolbar(toolbarHeight);
+            {
+                EditorGUILayout.LabelField("配置导出路径: ", GUILayout.Width(100f));
+                excelPath = SirenixEditorFields.FilePathField(excelPath, "", "xlsx", false, false);
+                SirenixEditorGUI.EndHorizontalToolbar();
             }
 
             SirenixEditorGUI.BeginHorizontalToolbar(toolbarHeight);
             {
+                if (GUILayout.Button("保存Excel"))
+                {
+                    this.Save();
+                    Log.Info("保存成功!");
+                }
+
+                if (GUILayout.Button("删除"))
+                {
+                    foreach (OdinMenuItem item in this.MenuTree.Selection)
+                    {
+                        this.MenuTree.MenuItems.Remove(item);
+                    }
+                }
+
+                if (GUILayout.Button("复制下一等级"))
+                {
+                    var config = data.Clone() as SKillEditorConfig;
+                    config.Level++;
+                    this.MenuTree.Add(config.GetId(), config);
+                }
+
+                if (GUILayout.Button("复制下一技能"))
+                {
+                    var config = data.Clone() as SKillEditorConfig;
+                    config.MasterId = this.GetNewId();
+                    this.skillIds.Add(config.MasterId);
+                    this.MenuTree.Add(config.GetId(), config);
+                }
+
                 SirenixEditorGUI.EndHorizontalToolbar();
             }
+
+            SirenixEditorGUI.EndVerticalList();
         }
 
-        private void Export()
+        private void Save()
         {
-            StringBuilder builder = new StringBuilder(1000);
-            builder.AppendLine("return {");
-            foreach (var item in MenuTree.MenuItems)
+            IWorkbook workbook;
+            using (var fs = new FileStream(this.excelPath, FileMode.Open, FileAccess.Read))
             {
-                SKillConfig config = item.Value as SKillConfig;
-                if (config != default)
-                {
-                }
+                workbook = new XSSFWorkbook(fs);
             }
 
-            builder.AppendLine("}");
-            string content = builder.ToString();
-            File.WriteAllText(serverFilePath, content);
-            File.WriteAllText(clientFilePath, content);
+            ISheet sheet = workbook.GetSheetAt(0);
+            sheet.Clear();
+            for (int i = 0; i < this.MenuTree.MenuItems.Count; i++)
+            {
+                var data = this.MenuTree.MenuItems[i].Value as SKillEditorConfig;
+                sheet.WriteData(data);
+            }
+
+            using (var fs = new FileStream(this.excelPath, FileMode.Create, FileAccess.Write))
+            {
+                workbook.Write(fs);
+            }
+
+            workbook.Close();
         }
 
-        private int GetName()
+        private int GetNewId()
         {
-            var list = exitsList.ToList();
+            var list = skillIds.ToList();
             list.Sort();
             int min = list[0];
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 int v = min + i;
-                if (!this.exitsList.Contains(v))
+                if (!this.skillIds.Contains(v))
                 {
                     return v;
                 }

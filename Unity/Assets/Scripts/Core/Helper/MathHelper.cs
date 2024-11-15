@@ -90,6 +90,17 @@ namespace ET
 
             return def;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float ToFloat(this string value, float def = 0f)
+        {
+            if (float.TryParse(value, out float v))
+            {
+                return v;
+            }
+
+            return def;
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long ToLong(this object value, long def = 0)

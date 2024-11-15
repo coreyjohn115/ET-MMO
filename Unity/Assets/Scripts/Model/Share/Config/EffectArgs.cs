@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
+using NLog.Conditions;
 using Sirenix.OdinInspector;
 
 namespace ET
@@ -50,9 +50,9 @@ namespace ET
         [LabelText("范围类型")]
         public RangeType RangeType;
 
-        [LabelText("效果参数列表")]
-        [ListDrawerSettings(ShowFoldout = true)]
+        [LabelText("范围参数列表")]
         [InfoBox("参数不能为空", InfoMessageType.Error, "ShowRangeErrorTip")]
+        [ListDrawerSettings(ShowFoldout = true)]
         public List<int> RangeArgs;
 
         [ReadOnly]
@@ -88,11 +88,13 @@ namespace ET
             }
         }
 
+        [ConditionMethod("UNITY_EDITOR")]
         private bool ShowRangeErrorTip()
         {
             return this.RangeArgs.IsNullOrEmpty();
         }
 
+        [ConditionMethod("UNITY_EDITOR")]
         private bool ShowErrorTip()
         {
             return this.Args.IsNullOrEmpty();
