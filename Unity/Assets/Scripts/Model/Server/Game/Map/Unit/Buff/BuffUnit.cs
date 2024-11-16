@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Options;
 
 namespace ET.Server
 {
-    public struct BuffDyna
+    public class BuffDyna : Object
     {
         /// <summary>
         /// 天赋技能是否生效

@@ -5,7 +5,6 @@ using System.Linq;
 namespace ET.Server;
 
 [EntitySystemOf(typeof (SkillComponent))]
-[FriendOf(typeof (SkillComponent))]
 [FriendOf(typeof (SkillUnit))]
 public static partial class SkillComponentSystem
 {
@@ -167,98 +166,6 @@ public static partial class SkillComponentSystem
         self.DelSkillList(delList);
     }
 
-    /// <summary>
-    /// 获取技能受伤列表
-    /// </summary>
-    /// <param name="self"></param>
-    /// <param name="skill">当前使用的技能</param>
-    /// <returns></returns>
-    private static HashSet<Unit> GetHurtList(this SkillComponent self, SkillUnit skill)
-    {
-        var effectCfg = skill.Config.EffectList.Get(self.oft);
-        RangeType rT = effectCfg.RangeType;
-        switch (rT)
-        {
-            case RangeType.None:
-                return [];
-            case RangeType.UseLast:
-                return self.dyna.LastHurtList;
-            default:
-                return self.GetParent<Unit>().GetAttackList(effectCfg.Dst,
-                    rT,
-                    self.dyna.Forward,
-                    self.GetParent<Unit>().GetUnitsById(self.dyna.DstList),
-                    self.dyna.DstPosition,
-                    0,
-                    effectCfg[0], effectCfg[1], effectCfg[2], effectCfg[3],
-                    skill.MasterConfig.MaxDistance);
-        }
-    }
-
-    private static void ProcessSKillEffect(this SkillComponent self)
-    {
-        if (self.skillEffect == default)
-        {
-            return;
-        }
-
-        SkillUnit skill = self.GetChild<SkillUnit>(self.usingSkillId);
-        var unitList = self.GetHurtList(skill);
-        HurtPkg pkg = self.skillEffect.Run(self, skill, unitList, self.dyna);
-        self.dyna.LastHurtList = unitList;
-        if (pkg != default)
-        {
-            self.GetParent<Unit>().BroadCastHurt(self.usingSkillId, pkg);
-        }
-
-        self.oft++;
-        self.ProcessSkill();
-    }
-
-    private static void ProcessSkill(this SkillComponent self)
-    {
-        var skill = self.GetChild<SkillUnit>(self.usingSkillId);
-        if (skill == default)
-        {
-            return;
-        }
-
-        var effectCfg = skill.Config.EffectList.Get(self.oft);
-        if (effectCfg == default)
-        {
-            self.UseSuccess();
-            return;
-        }
-
-        // 创建配置副本
-        effectCfg = effectCfg.Clone() as SkillEffectArgs;
-        EffectArgs eArgs = effectCfg.ToEffectArgs();
-        //天赋修改技能
-        int mId = skill.MasterConfig.Classify > 0? skill.MasterConfig.Classify : skill.MasterConfig.Id;
-        var beArgs = self.GetParent<Unit>().GetComponent<TalentComponent>().Hook(mId, skill.Config.Id, self.oft + 1, eArgs);
-        if (beArgs != default)
-        {
-            effectCfg.CopyFrom(beArgs);
-        }
-
-        self.skillEffect = SkillEffectSingleton.Instance.CreateSkillEffect(effectCfg.Cmd);
-        if (self.skillEffect == default)
-        {
-            return;
-        }
-
-        //技能效果是顺序执行的, 当前效果执行完才会切换下一个
-        self.skillEffect.SetEffectArg(effectCfg);
-        if (effectCfg.Ms > 0)
-        {
-            self.effectTimer = self.Scene().GetComponent<TimerComponent>()
-                    .NewOnceTimer(TimeInfo.Instance.Frame + effectCfg.Ms, TimerInvokeType.SKillEffect, self);
-            return;
-        }
-
-        self.ProcessSKillEffect();
-    }
-
     private static MessageReturn CheckCondition(this SkillComponent self, SkillUnit skill)
     {
         return MessageReturn.Success();
@@ -374,8 +281,9 @@ public static partial class SkillComponentSystem
                 return false;
             }
 
-            self.Scene().GetComponent<TimerComponent>().Remove(ref self.singTimer);
-            self.Scene().GetComponent<TimerComponent>().Remove(ref self.effectTimer);
+            TimerComponent timerComponent = self.Scene().GetComponent<TimerComponent>();
+            timerComponent.Remove(ref self.singTimer);
+            timerComponent.Remove(ref self.effectTimer);
             var unit = self.GetParent<Unit>();
             M2C_BreakSkill breakSkill = M2C_BreakSkill.Create();
             breakSkill.Id = self.usingSkillId;
@@ -393,5 +301,97 @@ public static partial class SkillComponentSystem
         self.usingSkillId = 0;
         self.skillEffect = default;
         self.dyna = default;
+    }
+
+    /// <summary>
+    /// 获取技能受伤列表
+    /// </summary>
+    /// <param name="self"></param>
+    /// <param name="skill">当前使用的技能</param>
+    /// <returns></returns>
+    private static HashSet<Unit> GetHurtList(this SkillComponent self, SkillUnit skill)
+    {
+        var effectCfg = skill.Config.EffectList.Get(self.oft);
+        RangeType rT = effectCfg.RangeType;
+        switch (rT)
+        {
+            case RangeType.None:
+                return [];
+            case RangeType.UseLast:
+                return self.dyna.LastHurtList;
+            default:
+                return self.GetParent<Unit>().GetAttackList(effectCfg.Dst,
+                    rT,
+                    self.dyna.Forward,
+                    self.GetParent<Unit>().GetUnitsById(self.dyna.DstList),
+                    self.dyna.DstPosition,
+                    0,
+                    effectCfg[0], effectCfg[1], effectCfg[2], effectCfg[3],
+                    skill.MasterConfig.MaxDistance);
+        }
+    }
+
+    private static void ProcessSKillEffect(this SkillComponent self)
+    {
+        if (self.skillEffect == default)
+        {
+            return;
+        }
+
+        SkillUnit skill = self.GetChild<SkillUnit>(self.usingSkillId);
+        var unitList = self.GetHurtList(skill);
+        HurtPkg pkg = self.skillEffect.Run(self, skill, unitList, self.dyna);
+        self.dyna.LastHurtList = unitList;
+        if (pkg != default)
+        {
+            self.GetParent<Unit>().BroadCastHurt(self.usingSkillId, pkg);
+        }
+
+        self.oft++;
+        self.ProcessSkill();
+    }
+
+    private static void ProcessSkill(this SkillComponent self)
+    {
+        var skill = self.GetChild<SkillUnit>(self.usingSkillId);
+        if (skill == default)
+        {
+            return;
+        }
+
+        var effectCfg = skill.Config.EffectList.Get(self.oft);
+        if (effectCfg == default)
+        {
+            self.UseSuccess();
+            return;
+        }
+
+        // 创建配置副本
+        effectCfg = effectCfg.Clone() as SkillEffectArgs;
+        EffectArgs eArgs = effectCfg.ToEffectArgs();
+        //天赋修改技能
+        int mId = skill.MasterConfig.Classify > 0? skill.MasterConfig.Classify : skill.MasterConfig.Id;
+        var beArgs = self.GetParent<Unit>().GetComponent<TalentComponent>().Hook(mId, skill.Config.Id, self.oft + 1, eArgs);
+        if (beArgs != default)
+        {
+            effectCfg.CopyFrom(beArgs);
+        }
+
+        self.skillEffect = SkillEffectSingleton.Instance.CreateSkillEffect(effectCfg.Cmd);
+        if (self.skillEffect == default)
+        {
+            return;
+        }
+
+        //技能效果是顺序执行的, 当前效果执行完才会切换下一个
+        self.skillEffect.SetEffectArg(effectCfg);
+        if (effectCfg.Ms > 0)
+        {
+            self.effectTimer = self.Scene().GetComponent<TimerComponent>()
+                    .NewOnceTimer(TimeInfo.Instance.Frame + effectCfg.Ms, TimerInvokeType.SKillEffect, self);
+            return;
+        }
+
+        self.ProcessSKillEffect();
     }
 }

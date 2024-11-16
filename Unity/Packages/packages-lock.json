@@ -14,6 +14,12 @@
       "dependencies": {},
       "hash": "2554e81f0315ddf835026940ccc4ba8175edfda3"
     },
+    "com.et.skill": {
+      "version": "file:com.et.skill",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.heurekagames.assethunterpro": {
       "version": "file:com.heurekagames.assethunterpro",
       "depth": 0,

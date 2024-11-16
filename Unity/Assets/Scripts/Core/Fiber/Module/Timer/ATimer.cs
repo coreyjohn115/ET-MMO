@@ -7,6 +7,6 @@
             this.Run(a.Args as T);
         }
 
-        protected abstract void Run(T t);
+        protected abstract void Run(T self);
     }
 }

@@ -15,7 +15,7 @@ namespace ET.Client
                 ResourcesLoaderComponent resourcesLoaderComponent = currentScene.GetComponent<ResourcesLoaderComponent>();
 
                 // 加载场景资源
-                string path = $"Assets/Bundles/Scenes/{currentScene.Name}.unity";
+                string path = $"Assets/Bundles/Scenes/Map/{currentScene.Name}.unity";
                 var handler = resourcesLoaderComponent.LoadScene(path, LoadSceneMode.Single);
                 while (true)
                 {

@@ -1,7 +1,6 @@
 namespace ET.Server;
 
 [EntitySystemOf(typeof (MapManagerComponent))]
-[FriendOf(typeof (MapManagerComponent))]
 [FriendOf(typeof (MapUnit))]
 public static partial class MapManagerComponentSystem
 {
@@ -59,6 +58,7 @@ public static partial class MapManagerComponentSystem
 
             unit.fiberId = id;
             unit.actorId = new ActorId(self.Fiber().Process, id);
+            unit.actorStr = unit.actorId.ToString();
             long t = ctx.ExpiredTime > 0? ctx.ExpiredTime : config.ValidTime;
             if (t > 0)
             {

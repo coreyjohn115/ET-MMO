@@ -8,7 +8,7 @@ namespace ET.Server
     [Code]
     public class FightFormula: Singleton<FightFormula>, ISingletonAwake
     {
-        private int cirtDamage; //初始爆伤
+        private int critDamage; //初始爆伤
         private int dmgRateC; //暴击系数C
         private int dmgArgK; //暴击参数K
         private int fenderRateC; //格挡系数C
@@ -20,7 +20,7 @@ namespace ET.Server
 
         public void Awake()
         {
-            this.cirtDamage = 15000;
+            this.critDamage = 15000;
             this.dmgRateC = 4000;
             this.dmgArgK = 500;
             this.fenderRateC = 4500;
@@ -47,7 +47,7 @@ namespace ET.Server
         {
             long att = attack.NumericDic.Get(NumericType.Attack) + extraAttack;
             long dfs = dst.NumericDic.Get(NumericType.Defense);
-            int dmgR = isCrit? this.cirtDamage : 10000;
+            int dmgR = isCrit? this.critDamage : 10000;
             int directR = isDirect? this.directM : 10000;
             int fenderR = isFender? this.fenderM : 10000;
             float hurtRate = (1 + attack.NumericDic.Get(NumericType.HurtAddRate) / 10000f) * (1 - dst.NumericDic.Get(NumericType.HurtReduceRate) / 10000f);

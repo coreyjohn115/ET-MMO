@@ -36,6 +36,7 @@ namespace ET
             RegisterStruct<Address>();
             RegisterStruct<UnitHead>();
             RegisterStruct<MessageReturn>();
+            RegisterStruct<CreateMapCtx>();
 
             Dictionary<string, Type> types = CodeTypes.Instance.GetTypes();
             foreach (Type type in types.Values)

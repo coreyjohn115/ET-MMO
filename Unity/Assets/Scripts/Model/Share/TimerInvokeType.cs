@@ -37,6 +37,7 @@
         public const int CacheCheck = 314;
         public const int ChatSaveCheck = 315;
         public const int MapCloseCheck = 316;
+        public const int SummonCheck = 317;
 
         // 客户端1000起
         public const int ClientServerCheck = 1000;
@@ -44,7 +45,7 @@
         // 战斗飘字
         public const int BattleText = 1001;
 
-        //检测资源缓存
+        //客户端常用时间
         public const int Client0_1S = 1005;
         public const int Client0_5S = 1006;
         public const int Client1S = 1007;

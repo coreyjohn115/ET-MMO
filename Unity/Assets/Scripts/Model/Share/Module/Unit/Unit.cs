@@ -58,10 +58,22 @@ namespace ET
 
         public int MapUid { get; set; }
 
+        private CampType camp;
+
         /// <summary>
         /// 玩家阵营
         /// </summary>
-        public CampType Camp { get; set; }
+        [BsonIgnore]
+        public CampType Camp
+        {
+            get => this.camp;
+            set
+            {
+                var old = this.camp;
+                this.camp = value;
+                EventSystem.Instance.Publish(this.Scene(), new ChangeCamp() { OldCamp = old, Unit = this });
+            }
+        }
 
         protected override string ViewName
         {

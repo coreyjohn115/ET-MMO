@@ -17,8 +17,9 @@ namespace ET.Server
         public static bool IsCrit(Unit self)
         {
             FightUnit f = CopyUnit(self);
+            var r = FightFormula.Instance.IsCrit(f);
             f.Dispose();
-            return FightFormula.Instance.IsCrit(f);
+            return r;
         }
 
         public static long BeHurt(Unit self, Unit dst, long hurt, int id)
@@ -34,6 +35,17 @@ namespace ET.Server
             long h = Math.Max(e.Hurt - e.ShieldHurt, 0);
             dst.AddHp(-h, self.Id, id);
             return h;
+        }
+
+        public static HurtProto Heal(Unit unit, Unit target, int skillAdjust, int skillExtra)
+        {
+            FightUnit dst = CopyUnit(target);
+            long v = FightFormula.Instance.AddHp(dst, skillAdjust, skillExtra);
+            HurtProto proto = HurtProto.Create();
+            proto.Id = dst.Id;
+            proto.Hurt = v;
+            proto.IsAddHp = true;
+            return proto;
         }
 
         /// <summary>
@@ -126,7 +138,7 @@ namespace ET.Server
             HurtSingleton.Instance.Process(attack, default, subList, HurtEffectType.EffectAfter, ht, default, hurtList);
             attack.Dispose();
             long addHp = 0;
-            List<HurtProto> protos = [];
+            List<HurtProto> protoList = [];
             foreach (HurtInfo info in hurtList)
             {
                 addHp += info.Proto.SuckHp;
@@ -134,7 +146,7 @@ namespace ET.Server
                 BeHurt(unit, hurtDst, info.Proto.Hurt, id);
                 hurtDst.AddHate(unit.Id, Math.Max((info.Proto.Hurt * hateRate / 10000f).Ceil() + hateBase, 1));
                 unit.AddHate(hurtDst.Id, 1);
-                protos.Add(info.Proto);
+                protoList.Add(info.Proto);
             }
 
             if (unit.IsAlive())
@@ -142,7 +154,7 @@ namespace ET.Server
                 unit.AddHp(addHp, unit.Id, id);
             }
 
-            return protos;
+            return protoList;
         }
     }
 }

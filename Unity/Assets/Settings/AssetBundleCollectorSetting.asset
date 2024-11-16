@@ -21,8 +21,8 @@ MonoBehaviour:
     EnableAddressable: 0
     LocationToLower: 0
     IncludeAssetGUID: 0
-    IgnoreDefaultType: 1
     AutoCollectShaders: 1
+    IgnoreRuleName: NormalIgnoreRule
     Groups:
     - GroupName: AotDlls
       GroupDesc: "\u8865\u5145\u5143\u6570\u636E"
@@ -118,8 +118,8 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Bundles/Scenes
-        CollectorGUID: 406b13cb70603ef449d91f5572708db2
+      - CollectPath: Assets/Bundles/Scenes/Map
+        CollectorGUID: c8d7c37f711be4b43ab8a7d934f80b43
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackSeparately

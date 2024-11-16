@@ -11,9 +11,10 @@ namespace ET
     {
         [MemoryPackOrder(0)]
         public int Process;
+
         [MemoryPackOrder(1)]
         public int Fiber;
-        
+
         public bool Equals(Address other)
         {
             return this.Process == other.Process && this.Fiber == other.Fiber;
@@ -28,7 +29,7 @@ namespace ET
         {
             return HashCode.Combine(this.Process, this.Fiber);
         }
-        
+
         public Address(int process, int fiber)
         {
             this.Process = process;
@@ -50,7 +51,7 @@ namespace ET
             return $"{this.Process}:{this.Fiber}";
         }
     }
-    
+
     [MemoryPackable]
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public partial struct ActorId
@@ -72,6 +73,7 @@ namespace ET
 
         [MemoryPackOrder(0)]
         public Address Address;
+
         [MemoryPackOrder(1)]
         public long InstanceId;
 
@@ -87,7 +89,7 @@ namespace ET
                 this.Address.Process = value;
             }
         }
-        
+
         [BsonIgnore]
         public int Fiber
         {
@@ -100,23 +102,23 @@ namespace ET
                 this.Address.Fiber = value;
             }
         }
-        
+
         public ActorId(int process, int fiber)
         {
             this.Address = new Address(process, fiber);
             this.InstanceId = 1;
         }
-        
+
         public ActorId(int process, int fiber, long instanceId)
         {
             this.Address = new Address(process, fiber);
             this.InstanceId = instanceId;
         }
-        
+
         public ActorId(Address address): this(address, 1)
         {
         }
-        
+
         public ActorId(Address address, long instanceId)
         {
             this.Address = address;
@@ -136,6 +138,17 @@ namespace ET
         public override string ToString()
         {
             return $"{this.Process}:{this.Fiber}:{this.InstanceId}";
+        }
+
+        public static ActorId FromString(string str)
+        {
+            string[] parts = str.Split(':');
+            int process = int.Parse(parts[0]);
+            int fiber = int.Parse(parts[1]);
+            long id = long.Parse(parts[2]);
+            ActorId actorId = new(process, fiber, id);
+
+            return actorId;
         }
     }
 }

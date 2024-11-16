@@ -59,7 +59,7 @@ namespace ET.Server
             bool isNewPlayer = unit == null;
             if (isNewPlayer)
             {
-                unit = UnitFactory.Create(player.Scene(), player.Id, UnitType.Player);
+                unit = UnitFactory.Create(player.Scene(), player.Id, UnitType.Player, 1001);
             }
 
             return (isNewPlayer, unit);
@@ -67,7 +67,7 @@ namespace ET.Server
 
         public static async ETTask InitUnit(Unit unit, Player player, bool isNewPlayer)
         {
-            foreach ((string name, string fullName) in UnitComponentSingleton.Instance.GetUnitComs())
+            foreach ((string name, string fullName) in UnitComponentSingleton.Instance.GetUnitComDict())
             {
                 if (unit.GetComponentByName(name) != null)
                 {

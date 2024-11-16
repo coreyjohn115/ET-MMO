@@ -17,6 +17,7 @@ public class MapUnit: Entity, IAwake<int>, IDestroy, ISerializeToEntity
 
     public int fiberId;
     public ActorId actorId;
+    public string actorStr;
     public CreateMapCtx ctx;
 
     /// <summary>

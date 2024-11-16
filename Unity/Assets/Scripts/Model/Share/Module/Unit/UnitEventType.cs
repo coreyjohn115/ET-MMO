@@ -12,4 +12,10 @@ namespace ET
     {
         public Unit Unit;
     }
+
+    public struct ChangeCamp
+    {
+        public CampType OldCamp;
+        public Unit Unit;
+    }
 }

@@ -49,7 +49,7 @@ namespace ET.Server
         public Dictionary<int, long> NumericDic { get; set; }
     }
 
-    public class HurtTemp
+    public class HurtTemp : Object
     {
         public int id;
         public HashSet<Unit> objectList;
@@ -59,7 +59,7 @@ namespace ET.Server
         public SkillDyna skillDyna;
     }
 
-    public class HurtInfo
+    public class HurtInfo : Object
     {
         public HurtProto Proto;
         public long OriginHurt;

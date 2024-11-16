@@ -29,6 +29,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.AEvent.<Handle>d__3<object,ET.AfterUnitCreate>
 	// ET.AEvent.<Handle>d__3<object,ET.AppStartInitFinish>
 	// ET.AEvent.<Handle>d__3<object,ET.BasicChangeEvent>
+	// ET.AEvent.<Handle>d__3<object,ET.ChangeCamp>
 	// ET.AEvent.<Handle>d__3<object,ET.ChangePosition>
 	// ET.AEvent.<Handle>d__3<object,ET.ChangeRotation>
 	// ET.AEvent.<Handle>d__3<object,ET.Client.AddBuffView>
@@ -71,6 +72,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.AEvent<object,ET.AfterUnitCreate>
 	// ET.AEvent<object,ET.AppStartInitFinish>
 	// ET.AEvent<object,ET.BasicChangeEvent>
+	// ET.AEvent<object,ET.ChangeCamp>
 	// ET.AEvent<object,ET.ChangePosition>
 	// ET.AEvent<object,ET.ChangeRotation>
 	// ET.AEvent<object,ET.Client.AddBuffView>
@@ -731,6 +733,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void ET.EventSystem.Publish<object,ET.AfterCreateCurrentScene>(object,ET.AfterCreateCurrentScene)
 		// System.Void ET.EventSystem.Publish<object,ET.AfterUnitCreate>(object,ET.AfterUnitCreate)
 		// System.Void ET.EventSystem.Publish<object,ET.BasicChangeEvent>(object,ET.BasicChangeEvent)
+		// System.Void ET.EventSystem.Publish<object,ET.ChangeCamp>(object,ET.ChangeCamp)
 		// System.Void ET.EventSystem.Publish<object,ET.ChangePosition>(object,ET.ChangePosition)
 		// System.Void ET.EventSystem.Publish<object,ET.ChangeRotation>(object,ET.ChangeRotation)
 		// System.Void ET.EventSystem.Publish<object,ET.Client.AddBuffView>(object,ET.Client.AddBuffView)

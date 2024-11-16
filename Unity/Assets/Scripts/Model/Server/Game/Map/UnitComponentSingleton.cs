@@ -19,7 +19,7 @@ public class UnitComponentSingleton: Singleton<UnitComponentSingleton>, ISinglet
         }
     }
 
-    public Dictionary<string, string> GetUnitComs()
+    public Dictionary<string, string> GetUnitComDict()
     {
         return this.unitComDict;
     }
