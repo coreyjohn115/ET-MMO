@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using NLog.Conditions;
+#if UNITY_EDITOR
 using Sirenix.OdinInspector;
+#endif
 
 namespace ET
 {
@@ -44,35 +45,51 @@ namespace ET
     [Serializable]
     public class SkillEffectArgs: ICloneable
     {
+#if UNITY_EDITOR
         [LabelText("目标类型")]
+#endif
         public FocusType Dst;
 
+#if UNITY_EDITOR
         [LabelText("范围类型")]
+#endif
         public RangeType RangeType;
 
+#if UNITY_EDITOR
         [LabelText("范围参数列表")]
         [InfoBox("参数不能为空", InfoMessageType.Error, "ShowRangeErrorTip")]
         [ListDrawerSettings(ShowFoldout = true)]
+#endif
         public List<int> RangeArgs;
 
+#if UNITY_EDITOR
         [ReadOnly]
+#endif
         public string Cmd;
 
+#if UNITY_EDITOR
         [LabelText("触发延迟")]
+#endif
         public int Ms;
 
+#if UNITY_EDITOR
         [LabelText("效果参数列表")]
         [ListDrawerSettings(ShowFoldout = true)]
         [InfoBox("参数不能为空", InfoMessageType.Error, "ShowErrorTip")]
+#endif
         public List<int> Args;
 
+#if UNITY_EDITOR
         [LabelText("触发几率")]
+#endif
         public int Rate;
 
         public string ViewCmd;
 
+#if UNITY_EDITOR
         [LabelText("子效果列表"), PropertySpace(10)]
         [ListDrawerSettings(ShowFoldout = false, DraggableItems = true)]
+#endif
         public List<SubEffectArgs> SubList;
 
         public int this[int i]
@@ -88,13 +105,11 @@ namespace ET
             }
         }
 
-        [ConditionMethod("UNITY_EDITOR")]
         private bool ShowRangeErrorTip()
         {
             return this.RangeArgs.IsNullOrEmpty();
         }
 
-        [ConditionMethod("UNITY_EDITOR")]
         private bool ShowErrorTip()
         {
             return this.Args.IsNullOrEmpty();

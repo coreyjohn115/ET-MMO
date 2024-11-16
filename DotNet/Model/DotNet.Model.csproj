@@ -44,12 +44,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="Sirenix.OdinInspector.Attributes">
-            <HintPath>.\Lib\Sirenix.OdinInspector.Attributes.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\..\Share\Analyzer\Share.Analyzer.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <ProjectReference Include="..\..\Share\Share.SourceGenerator\Share.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
         <ProjectReference Include="..\Core\DotNet.Core.csproj"/>

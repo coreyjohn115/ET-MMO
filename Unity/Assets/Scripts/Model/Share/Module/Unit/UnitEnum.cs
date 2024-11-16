@@ -1,4 +1,6 @@
-﻿using Sirenix.OdinInspector;
+﻿#if UNITY_EDITOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace ET
 {
@@ -48,43 +50,57 @@ namespace ET
         /// <summary>
         /// 任意
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("任意")]
+#endif
         All = 0,
 
         /// <summary>
         /// 自身
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("自身")]
+#endif
         Self = 1,
 
         /// <summary>
         /// 敌对 
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("敌对")]
+#endif
         OOP = 2,
 
         /// <summary>
         /// 友善
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("友善")]
+#endif
         Friend = 3,
 
         /// <summary>
         /// 友善排己
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("友善排己")]
+#endif
         FriendNSelf = 4,
 
         /// <summary>
         /// 队友
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("队友")]
+#endif
         Team = 5,
 
         /// <summary>
         /// 队友排己
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("队友排己")]
+#endif
         TeamNSelf = 6,
     }
 
@@ -98,55 +114,75 @@ namespace ET
         /// <summary>
         /// 自身
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("自身")]
+#endif
         Self = 1,
 
         /// <summary>
         /// 单一目标
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("单一目标")]
+#endif
         Single = 2,
 
         /// <summary>
         /// 自身扇形
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("自身扇形")]
+#endif
         SelfFan = 4,
 
         /// <summary>
         /// 自身矩形
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("自身矩形")]
+#endif
         SelfLine = 5,
 
         /// <summary>
         /// 目标矩形
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("目标矩形")]
+#endif
         DstLine = 6,
 
         /// <summary>
         /// 目标扇形
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("目标扇形")]
+#endif
         DstFan = 7,
 
         /// <summary>
         /// 目标扇形+直线
+        /// 半径, 角度, 长, 宽
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("目标扇形+直线")]
+#endif
         DstFanLine = 8,
 
         /// <summary>
         /// 自身扇形+直线
+        /// 半径, 角度, 长, 宽
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("自身扇形+直线")]
+#endif
         SelfFanLine = 9,
 
         /// <summary>
         /// 使用上次(技能)
         /// </summary>
+#if UNITY_EDITOR
         [LabelText("使用上次(技能)")]
+#endif
         UseLast = 10,
     }
 

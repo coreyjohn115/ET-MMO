@@ -92,29 +92,29 @@ namespace ET.Client
             Gizmos.DrawLine(pos + begin, pos + end);
         }
 
-        public static void DrawCircle(Color col, Vector3 pos, float radius, float angledegree = 360)
+        public static void DrawCircle(Color col, Vector3 pos, float radius, float angleDegree = 360)
         {
             Gizmos.color = col;
-            DrawCircle(pos, radius, angledegree);
+            DrawCircle(pos, radius, angleDegree);
         }
 
-        public static void DrawSector(Vector3 pos, float router, float rinner, float angledegree = 360)
+        public static void DrawSector(Vector3 pos, float router, float inner, float angleDegree = 360)
         {
-            DrawCircle(pos, router, angledegree);
-            DrawCircle(pos, rinner, angledegree);
-            if (angledegree < 360)
+            DrawCircle(pos, router, angleDegree);
+            DrawCircle(pos, inner, angleDegree);
+            if (angleDegree < 360f)
             {
-                Quaternion rl = Quaternion.Euler(0, -angledegree / 2.0f, 0);
-                Gizmos.DrawLine(pos + rl * Vector3.forward * rinner, pos + rl * Vector3.forward * router);
-                Quaternion rr = Quaternion.Euler(0, angledegree / 2.0f, 0);
-                Gizmos.DrawLine(pos + rr * Vector3.forward * rinner, pos + rr * Vector3.forward * router);
+                Quaternion rl = Quaternion.Euler(0, -angleDegree / 2.0f, 0);
+                Gizmos.DrawLine(pos + rl * Vector3.forward * inner, pos + rl * Vector3.forward * router);
+                Quaternion rr = Quaternion.Euler(0, angleDegree / 2.0f, 0);
+                Gizmos.DrawLine(pos + rr * Vector3.forward * inner, pos + rr * Vector3.forward * router);
             }
         }
 
-        public static void DrawSector(Color col, Vector3 pos, float router, float rinner, float angledegree = 360)
+        public static void DrawSector(Color col, Vector3 pos, float router, float inner, float angleDegree = 360)
         {
             Gizmos.color = col;
-            DrawSector(pos, router, rinner, angledegree);
+            DrawSector(pos, router, inner, angleDegree);
         }
 
         public static void DrawWireCapsule(Vector3 p1, Vector3 p2, float radius)
