@@ -2,13 +2,11 @@ using UnityEngine;
 
 namespace ET.Client
 {
-    [Action("Particle")]
+    [Action(ActionType.Particle)]
     public class ParticleAction: AAction
     {
         public override async ETTask OnExecute(Unit unit, ActionUnit actionUnit)
         {
-            var cfg = actionUnit.Config.GetSubConfig<ParticleAActionConfig>();
-
             var prefab = await unit.Scene().GetComponent<ResourcesLoaderComponent>()
                     .LoadAssetAsync<GameObject>(actionUnit.ActionName.ToBuffEffectPath());
             if (!actionUnit.IsRunning)
@@ -17,7 +15,8 @@ namespace ET.Client
             }
 
             var go = actionUnit.AddComponent<GameObjectComponent, GameObject>(prefab);
-            go.Transform.SetParent(unit.GetComponent<UnitGoComponent>().GetBone(cfg.Bone));
+            string bone = actionUnit.Config.Args[0];
+            go.Transform.SetParent(unit.GetComponent<UnitGoComponent>().GetBone(bone));
             go.Transform.Normalize();
         }
     }

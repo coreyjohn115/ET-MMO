@@ -2,11 +2,11 @@ namespace ET.Client
 {
     public class ActionAttribute: BaseAttribute
     {
-        public string ActionName { get; set; }
+        public string ActionType { get; }
 
         public ActionAttribute(string name)
         {
-            this.ActionName = name;
+            this.ActionType = name;
         }
     }
 

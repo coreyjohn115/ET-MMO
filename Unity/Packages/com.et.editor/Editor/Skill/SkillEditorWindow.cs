@@ -13,7 +13,7 @@ namespace ET.Client
 {
     public class SkillEditorWindow: OdinMenuEditorWindow
     {
-        [MenuItem("ET/Skill Editor &%g")]
+        [MenuItem("ET/Window/Skill Editor &%g")]
         private static void Open()
         {
             GetWindow<SkillEditorWindow>().Show();

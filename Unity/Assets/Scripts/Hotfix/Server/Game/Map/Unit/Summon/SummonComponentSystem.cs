@@ -17,13 +17,13 @@ public static partial class SummonComponentSystem
     [EntitySystem]
     private static void Awake(this SummonComponent self)
     {
-        self.timer = self.Scene().GetComponent<TimerComponent>().NewRepeatedTimer(100L, TimerInvokeType.SummonCheck, self);
+        self.timer = self.Scene().GetComponent<TimerComponent>().NewRepeatedTimer(500L, TimerInvokeType.SummonCheck, self);
     }
 
     [EntitySystem]
     private static void Deserialize(this SummonComponent self)
     {
-        self.timer = self.Scene().GetComponent<TimerComponent>().NewRepeatedTimer(100L, TimerInvokeType.SummonCheck, self);
+        self.timer = self.Scene().GetComponent<TimerComponent>().NewRepeatedTimer(500L, TimerInvokeType.SummonCheck, self);
     }
 
     [EntitySystem]

@@ -80,17 +80,17 @@ namespace ET.Client
             self.StopAllAction();
         }
 
-        public static async ETTask PlayAction(this ActionComponent self, string name, int duration = 0)
+        public static async ETTask PlayAction(this ActionComponent self, string name, float duration = 0)
         {
-            ActionUnit action = self.AddChild<ActionUnit, string, int>(name, duration);
+            ActionUnit action = self.AddChild<ActionUnit, string, float>(name, duration);
             self.playActions.Add(action.Id);
 
             await action.WaitFinishAsync();
         }
 
-        public static async ETTask PushAction(this ActionComponent self, string name, int duration = 0)
+        public static async ETTask PushAction(this ActionComponent self, string name, float duration = 0)
         {
-            ActionUnit action = self.AddChild<ActionUnit, string, int>(name, duration);
+            ActionUnit action = self.AddChild<ActionUnit, string, float>(name, duration);
             self.pushActions.Add(action.Id);
 
             self.pushActions.Sort(Comparison);

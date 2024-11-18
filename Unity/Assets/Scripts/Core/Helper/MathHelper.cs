@@ -101,6 +101,17 @@ namespace ET
 
             return def;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool ToBool(this string value, bool def = false)
+        {
+            if (bool.TryParse(value, out bool v))
+            {
+                return v;
+            }
+
+            return def;
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long ToLong(this object value, long def = 0)

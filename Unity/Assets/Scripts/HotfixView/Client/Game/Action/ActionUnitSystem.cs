@@ -4,16 +4,16 @@ using UnityEngine;
 namespace ET.Client
 {
     [EntitySystemOf(typeof (ActionUnit))]
-    [FriendOf(typeof (ActionUnit))]
     public static partial class ActionUnitSystem
     {
         [EntitySystem]
-        private static void Awake(this ActionUnit self, string name, int duration)
+        private static void Awake(this ActionUnit self, string name, float duration)
         {
             self.tcs = ETTask.Create(true);
             self.ActionName = name;
             self.outDuration = duration;
-            self.action = ActionSingleton.Instance.GetAction(self.Config.Type);
+            self.index = 0;
+            self.action = ActionSingleton.Instance.GetAction(self.Config.ActionType);
         }
 
         [EntitySystem]
@@ -26,8 +26,8 @@ namespace ET.Client
             }
 
             self.state = ActionState.Ready;
-            self.duration = 0;
-            self.startTime = 0;
+            self.duration = 0f;
+            self.startTime = 0f;
             self.action = null;
         }
 

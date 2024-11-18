@@ -631,6 +631,7 @@ namespace ET
                 case "List<SkillEffectArgs>":
                 case "List<TalentEffectArgs>":
                 case "List<EffectArgs>":
+                case "List<ActionConfig>":
                     return value;
                 default:
                     throw new Exception($"不支持此类型: {type}");

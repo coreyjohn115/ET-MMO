@@ -62,13 +62,17 @@ namespace ET.Client
         public static string RemoveExtension(string str)
         {
             if (string.IsNullOrEmpty(str))
+            {
                 return str;
+            }
 
             int index = str.LastIndexOf(".", StringComparison.Ordinal);
             if (index == -1)
+            {
                 return str;
-            else
-                return str.Remove(index); //"assets/config/test.unity3d" --> "assets/config/test"
+            }
+
+            return str.Remove(index); //"assets/config/test.unity3d" --> "assets/config/test"
         }
     }
 }

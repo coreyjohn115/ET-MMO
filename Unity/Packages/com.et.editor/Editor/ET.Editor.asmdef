@@ -1,10 +1,11 @@
 {
-    "name": "MapEditor",
+    "name": "ET.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:9ef2053bcf13a254ab3940a767f7b1a5",
         "GUID:000a53018e5e7c14aa75273e1f7be8e2",
-        "GUID:efc2ca0b51ad54047b25b5c2eb4c19a1"
+        "GUID:efc2ca0b51ad54047b25b5c2eb4c19a1",
+        "GUID:6e17cd4649ea94c0cb18f30a60b9b4b4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

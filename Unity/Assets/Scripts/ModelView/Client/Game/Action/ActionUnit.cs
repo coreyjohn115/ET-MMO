@@ -21,7 +21,7 @@ namespace ET.Client
     }
 
     [ChildOf(typeof (ActionComponent))]
-    public class ActionUnit: Entity, IAwake<string, int>, IDestroy
+    public class ActionUnit: Entity, IAwake<string, float>, IDestroy
     {
         public string ActionName { get; set; }
 
@@ -33,9 +33,11 @@ namespace ET.Client
         /// <summary>
         /// 行为持续时间
         /// </summary>
-        public float Interval => this.outDuration == 0? (float)this.Config.Duration : this.outDuration;
+        public float Interval => this.outDuration == 0f? this.Config.Duration : this.outDuration;
 
-        public ActionConfig Config => ActionConfigCategory.Instance.GetActionCfg(this.ActionName);
+        public int index;
+        public ActionGroupConfig groupConfig;
+        public ActionConfig Config => this.groupConfig.ActionList[this.index];
 
         public AAction action;
 
@@ -53,7 +55,7 @@ namespace ET.Client
         /// 行为开始时间
         /// </summary>
         public float startTime;
-        
+
         public ETTask tcs;
     }
 }
