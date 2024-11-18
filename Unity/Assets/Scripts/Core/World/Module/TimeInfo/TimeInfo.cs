@@ -45,7 +45,6 @@ namespace ET
         {
             // 赋值long型是原子操作，线程安全
             this.Frame = this.Now();
-            Log.Console(this.Frame);
         }
 
         /// <summary> 

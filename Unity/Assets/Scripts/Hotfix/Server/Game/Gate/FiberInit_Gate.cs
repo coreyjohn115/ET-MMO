@@ -24,7 +24,7 @@ namespace ET.Server
             StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.Get((int)root.Id);
             root.AddComponent<NetComponent, IPEndPoint, NetworkProtocol>(startSceneConfig.InnerIPPort, NetworkProtocol.UDP);
 
-            root.AddComponent<NetWSComponent, string>($"http://*:{startSceneConfig.Port}/");
+            root.AddComponent<NetWSComponent, string>($"http://*:{startSceneConfig.Port + 10000}/");
             await ETTask.CompletedTask;
         }
     }

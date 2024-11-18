@@ -120,7 +120,7 @@ namespace ET
                     throw new Exception($"请先在cmd中运行: netsh http add urlacl url=http://*:你的address中的端口/ user=Everyone, address: {prefix}", e);
                 }
 
-                Log.Error(e);
+                Log.Error($"{prefix} {e}");
             }
             catch (Exception e)
             {
