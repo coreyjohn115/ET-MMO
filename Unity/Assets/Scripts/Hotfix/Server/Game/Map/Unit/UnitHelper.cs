@@ -7,6 +7,22 @@ namespace ET.Server
 {
     public static class UnitHelper
     {
+        public static void AfterTransfer(Unit unit, M2M_UnitTransferRequest request)
+        {
+            unit.AddComponent<MoveComponent>();
+            unit.AddComponent<PathfindingComponent, string>(MapConfigCategory.Instance.Get(request.MapId).PathName);
+            unit.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.OrderedMessage);
+            unit.AddComponent<SummonComponent>();
+            if (request.IsEnterGame)
+            {
+                unit.AddComponent<NumericComponent>();
+                unit.AddComponent<FashionComponent>();
+
+                EventSystem.Instance.Publish(unit.Scene(), new UnitCheckCfg() { Unit = unit });
+                EventSystem.Instance.Publish(unit.Scene(), new UnitReEffect() { Unit = unit });
+            }
+        }
+
         public static void AddHp(this Unit self, long hp, long srcId = 0, int id = 0)
         {
             if (!self.IsAlive() || hp == 0L)

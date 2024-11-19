@@ -162,7 +162,7 @@ namespace ET.Server
                 return;
             }
 
-            if (!TaskEffectSingleton.Instance.TaskHanderDict.TryGetValue(tf.TaskHandle, out var ff))
+            if (!TaskEffectSingleton.Instance.TaskHandeDict.TryGetValue(tf.TaskHandle, out var ff))
             {
                 Log.Error($"不存在处理函数: {tf.TaskHandle}");
                 return;

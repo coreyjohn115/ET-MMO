@@ -21,7 +21,7 @@
         AddCountItem = 3,
         
         /// <summary>
-        /// 获得XX个XX道具
+        /// 消耗XX个XX道具
         /// </summary>
         ConsumeCountItem = 4,
         
@@ -31,12 +31,12 @@
         HomeLevel = 5,
 
         /// <summary>
-        /// 联盟任任务事件类型
+        /// 联盟任任务事件类型开始
         /// </summary>
         LeagueType = 1000,
 
         /// <summary>
-        /// 全服任务事件类型
+        /// 全服任务事件类型开始
         /// </summary>
         ServerType = 2000,
     }

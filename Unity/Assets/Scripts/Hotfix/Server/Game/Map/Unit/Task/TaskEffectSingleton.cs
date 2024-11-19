@@ -10,9 +10,9 @@ namespace ET.Server
 
         public Dictionary<string, ATaskArgs> TaskArgDict => taskArgDict;
 
-        private Dictionary<string, ATaskHandler> taskHanderDict;
+        private Dictionary<string, ATaskHandler> taskHandeDict;
 
-        public Dictionary<string, ATaskHandler> TaskHanderDict => taskHanderDict;
+        public Dictionary<string, ATaskHandler> TaskHandeDict => this.taskHandeDict;
 
         private Dictionary<string, ATaskProcess> taskProcessDict;
 
@@ -21,7 +21,7 @@ namespace ET.Server
         public void Awake()
         {
             taskArgDict = new Dictionary<string, ATaskArgs>();
-            taskHanderDict = new Dictionary<string, ATaskHandler>();
+            this.taskHandeDict = new Dictionary<string, ATaskHandler>();
             taskProcessDict = new Dictionary<string, ATaskProcess>();
             foreach (var v in CodeTypes.Instance.GetTypes(typeof (TaskArgsAttribute)))
             {
@@ -32,7 +32,7 @@ namespace ET.Server
             foreach (var v in CodeTypes.Instance.GetTypes(typeof (TaskHandlerAttribute)))
             {
                 var attr = v.GetCustomAttributes(typeof (TaskHandlerAttribute), false)[0] as TaskHandlerAttribute;
-                taskHanderDict.Add(attr.Key, Activator.CreateInstance(v) as ATaskHandler);
+                this.taskHandeDict.Add(attr.Key, Activator.CreateInstance(v) as ATaskHandler);
             }
 
             foreach (var v in CodeTypes.Instance.GetTypes(typeof (TaskProcessAttribute)))

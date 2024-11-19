@@ -21,12 +21,6 @@ public static partial class SummonComponentSystem
     }
 
     [EntitySystem]
-    private static void Deserialize(this SummonComponent self)
-    {
-        self.timer = self.Scene().GetComponent<TimerComponent>().NewRepeatedTimer(500L, TimerInvokeType.SummonCheck, self);
-    }
-
-    [EntitySystem]
     private static void Destroy(this SummonComponent self)
     {
         self.Scene().GetComponent<TimerComponent>().Remove(ref self.timer);

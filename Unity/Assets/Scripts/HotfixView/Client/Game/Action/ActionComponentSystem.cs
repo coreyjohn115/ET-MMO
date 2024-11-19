@@ -3,7 +3,6 @@
 namespace ET.Client
 {
     [EntitySystemOf(typeof (ActionComponent))]
-    [FriendOf(typeof (ActionComponent))]
     [FriendOf(typeof (ActionUnit))]
     public static partial class ActionComponentSystem
     {

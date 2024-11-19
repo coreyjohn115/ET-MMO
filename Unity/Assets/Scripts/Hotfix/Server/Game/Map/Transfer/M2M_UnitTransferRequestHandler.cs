@@ -22,23 +22,12 @@ namespace ET.Server
             unit.LastMapId = unit.MapId;
             unit.MapId = request.MapId;
             unit.MapUid = scene.Fiber.Id;
-            unit.AddComponent<MoveComponent>();
-            unit.AddComponent<PathfindingComponent, string>(MapConfigCategory.Instance.Get(request.MapId).PathName);
-            unit.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.OrderedMessage);
-            if (request.IsEnterGame)
-            {
-                unit.AddComponent<NumericComponent>();
-                unit.AddComponent<FashionComponent>();
-
-                EventSystem.Instance.Publish(scene, new UnitCheckCfg() { Unit = unit });
-                EventSystem.Instance.Publish(scene, new UnitReEffect() { Unit = unit });
-            }
+            UnitHelper.AfterTransfer(unit, request);
 
             // 通知客户端开始切场景
             M2C_StartSceneChange m2CStartSceneChange = M2C_StartSceneChange.Create();
             m2CStartSceneChange.SceneInstanceId = scene.InstanceId;
             m2CStartSceneChange.MapId = request.MapId;
-
             await unit.SendToClient(m2CStartSceneChange);
 
             // 通知客户端创建My Unit
