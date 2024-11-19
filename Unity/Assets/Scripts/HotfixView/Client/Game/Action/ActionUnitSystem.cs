@@ -1,5 +1,5 @@
-using System;
-using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ET.Client
 {
@@ -11,33 +11,52 @@ namespace ET.Client
         {
             self.tcs = ETTask.Create(true);
             self.ActionName = name;
-            self.outDuration = duration;
-            self.index = 0;
-            self.action = ActionSingleton.Instance.GetAction(self.Config.ActionType);
+            List<ActionConfig> configs = ActionGroupConfigCategory.Instance.GetActionConfig(name);
+            if (configs == default)
+            {
+                Log.Error($"获取行为配置失败: {name}");
+                return;
+            }
+
+            foreach (ActionConfig config in configs)
+            {
+                self.AddChild<ActionSubUnit, string, float, ActionConfig>(name, duration, config);
+            }
         }
 
         [EntitySystem]
         private static void Destroy(this ActionUnit self)
         {
-            if (self.state < ActionState.Complete)
-            {
-                self.state = ActionState.Complete;
-                self.UnExecute();
-            }
-
-            self.state = ActionState.Ready;
-            self.duration = 0f;
-            self.startTime = 0f;
-            self.action = null;
+            self.Finish();
         }
 
         public static void Finish(this ActionUnit self)
         {
-            if (self.state == ActionState.Run)
+            if (self.Children.Count <= 0)
             {
-                self.state = ActionState.Complete;
-                self.UnExecute();
+                return;
             }
+
+            foreach (ActionSubUnit child in self.Children.Values.ToList())
+            {
+                child.Finish();
+            }
+
+            self.tcs.SetResult();
+        }
+
+        public static bool IsFinish(this ActionUnit self)
+        {
+            bool finish = true;
+            foreach (ActionSubUnit children in self.Children.Values)
+            {
+                if (children.IsRunning)
+                {
+                    finish = false;
+                }
+            }
+
+            return finish;
         }
 
         public static async ETTask WaitFinishAsync(this ActionUnit self)
@@ -47,80 +66,9 @@ namespace ET.Client
 
         public static void Update(this ActionUnit self)
         {
-            if (self.action == null)
+            foreach (ActionSubUnit child in self.Children.Values)
             {
-                return;
-            }
-
-            Unit unit = self.Parent.GetParent<Unit>();
-            switch (self.state)
-            {
-                case ActionState.Run:
-                    self.action.OnUpdate(unit, self);
-                    self.duration += Time.deltaTime;
-                    if (self.Interval > 0 && self.duration >= self.Interval + self.Config.StartTime)
-                    {
-                        self.state = ActionState.Complete;
-                        self.UnExecute();
-                    }
-
-                    break;
-                case ActionState.Ready:
-                    self.duration += Time.deltaTime;
-                    if (self.duration >= self.Config.StartTime)
-                    {
-                        self.Execute();
-                    }
-
-                    break;
-            }
-        }
-
-        private static void Execute(this ActionUnit self)
-        {
-            if (self.action == null)
-            {
-                return;
-            }
-
-            if (self.state != ActionState.Ready)
-            {
-                return;
-            }
-
-            self.startTime = Time.time;
-            Unit unit = self.Parent.GetParent<Unit>();
-            self.action.Execute(unit, self);
-            self.state = ActionState.Run;
-            self.action.OnExecute(unit, self).NoContext();
-        }
-
-        private static void UnExecute(this ActionUnit self)
-        {
-            if (self.action == null)
-            {
-                return;
-            }
-
-            if (self.state != ActionState.Complete)
-            {
-                return;
-            }
-
-            try
-            {
-                Unit unit = self.Parent.GetParent<Unit>();
-                self.action.OnUnExecute(unit, self);
-                self.action.OnFinish(unit, self);
-            }
-            catch (Exception e)
-            {
-                Log.Error(e);
-            }
-            finally
-            {
-                self.state = ActionState.Finish;
-                self.tcs.SetResult();
+                child.Update();
             }
         }
     }

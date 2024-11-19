@@ -22,7 +22,7 @@ namespace ET.Client
                     ActionUnit action = self.curAction;
                     action.Update();
 
-                    if (action.state == ActionState.Finish)
+                    if (action.IsFinish())
                     {
                         self.curAction = null;
                         self.pushActions.Remove(action.Id);
@@ -56,7 +56,7 @@ namespace ET.Client
                 try
                 {
                     action.Update();
-                    if (action.state == ActionState.Finish)
+                    if (action.IsFinish())
                     {
                         list.Add(action.Id);
                     }
@@ -84,7 +84,6 @@ namespace ET.Client
         {
             ActionUnit action = self.AddChild<ActionUnit, string, float>(name, duration);
             self.playActions.Add(action.Id);
-
             await action.WaitFinishAsync();
         }
 
@@ -93,21 +92,12 @@ namespace ET.Client
             ActionUnit action = self.AddChild<ActionUnit, string, float>(name, duration);
             self.pushActions.Add(action.Id);
 
-            self.pushActions.Sort(Comparison);
-            if (self.curAction == null)
+            if (self.curAction == default)
             {
                 self.curAction = self.GetChild<ActionUnit>(self.pushActions[0]);
             }
 
             await action.WaitFinishAsync();
-            return;
-
-            int Comparison(long a, long b)
-            {
-                ActionUnit unitA = self.GetChild<ActionUnit>(a);
-                ActionUnit unitB = self.GetChild<ActionUnit>(b);
-                return unitA.Config.Priority.CompareTo(unitB.Config.Priority);
-            }
         }
 
         public static void RemoveAction(this ActionComponent self, long id)

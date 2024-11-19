@@ -12,7 +12,7 @@ namespace ET.Client
 
     public abstract class AAction
     {
-        public virtual void Execute(Unit unit, ActionUnit actionUnit)
+        public virtual void Execute(Unit unit, ActionSubUnit actionUnit)
         {
         }
 
@@ -21,7 +21,7 @@ namespace ET.Client
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="actionUnit"></param>
-        public virtual async ETTask OnExecute(Unit unit, ActionUnit actionUnit)
+        public virtual async ETTask OnExecute(Unit unit, ActionSubUnit actionUnit)
         {
             await ETTask.CompletedTask;
         }
@@ -31,7 +31,7 @@ namespace ET.Client
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="actionUnit"></param>
-        public virtual void OnUpdate(Unit unit, ActionUnit actionUnit)
+        public virtual void OnUpdate(Unit unit, ActionSubUnit actionUnit)
         {
         }
 
@@ -40,7 +40,7 @@ namespace ET.Client
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="actionUnit"></param>
-        public virtual void OnUnExecute(Unit unit, ActionUnit actionUnit)
+        public virtual void OnUnExecute(Unit unit, ActionSubUnit actionUnit)
         {
         }
 
@@ -49,7 +49,7 @@ namespace ET.Client
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="actionUnit"></param>
-        public virtual void OnFinish(Unit unit, ActionUnit actionUnit)
+        public virtual void OnFinish(Unit unit, ActionSubUnit actionUnit)
         {
         }
     }

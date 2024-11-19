@@ -16,7 +16,7 @@ namespace ET.Client
             {
                 var attr = v.GetCustomAttributes(typeof (ActionAttribute), false)[0] as ActionAttribute;
 
-                Func<object> func = Expression.Lambda<Func<object>>(Expression.Convert(Expression.New(v), typeof (object))).Compile;
+                Func<object> func = Expression.Lambda<Func<object>>(Expression.Convert(Expression.New(v), typeof (object))).Compile();
                 actionTypeDic.Add(attr.ActionType, func);
             }
         }
@@ -26,11 +26,6 @@ namespace ET.Client
             if (!actionTypeDic.TryGetValue(name, out var t))
             {
                 Thrower.Throw($"Action {name} not found");
-            }
-
-            if (t == null)
-            {
-                return default;
             }
 
             return t() as AAction;

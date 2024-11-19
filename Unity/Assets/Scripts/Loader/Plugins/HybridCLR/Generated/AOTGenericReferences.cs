@@ -117,6 +117,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.AwakeSystem<object,byte>
 	// ET.AwakeSystem<object,int,int>
 	// ET.AwakeSystem<object,int>
+	// ET.AwakeSystem<object,object,float>
 	// ET.AwakeSystem<object,object,int>
 	// ET.AwakeSystem<object,object>
 	// ET.AwakeSystem<object>
@@ -174,11 +175,13 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.IAwake<byte>
 	// ET.IAwake<int,int>
 	// ET.IAwake<int>
+	// ET.IAwake<object,float>
 	// ET.IAwake<object,int>
 	// ET.IAwake<object>
 	// ET.IAwakeSystem<byte>
 	// ET.IAwakeSystem<int,int>
 	// ET.IAwakeSystem<int>
+	// ET.IAwakeSystem<object,float>
 	// ET.IAwakeSystem<object,int>
 	// ET.IAwakeSystem<object>
 	// ET.LateUpdateSystem<object>
@@ -194,6 +197,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.StateMachineWrap<object>
 	// ET.StructBsonSerialize<ET.ActorId>
 	// ET.StructBsonSerialize<ET.Address>
+	// ET.StructBsonSerialize<ET.CreateMapCtx>
 	// ET.StructBsonSerialize<ET.MessageReturn>
 	// ET.StructBsonSerialize<ET.UnitHead>
 	// ET.StructBsonSerialize<Unity.Mathematics.float2>
@@ -224,6 +228,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// MongoDB.Bson.Serialization.IBsonSerializer<object>
 	// MongoDB.Bson.Serialization.Serializers.SerializerBase<ET.ActorId>
 	// MongoDB.Bson.Serialization.Serializers.SerializerBase<ET.Address>
+	// MongoDB.Bson.Serialization.Serializers.SerializerBase<ET.CreateMapCtx>
 	// MongoDB.Bson.Serialization.Serializers.SerializerBase<ET.MessageReturn>
 	// MongoDB.Bson.Serialization.Serializers.SerializerBase<ET.UnitHead>
 	// MongoDB.Bson.Serialization.Serializers.SerializerBase<Unity.Mathematics.float2>
@@ -233,6 +238,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// MongoDB.Bson.Serialization.Serializers.SerializerBase<object>
 	// MongoDB.Bson.Serialization.Serializers.StructSerializerBase<ET.ActorId>
 	// MongoDB.Bson.Serialization.Serializers.StructSerializerBase<ET.Address>
+	// MongoDB.Bson.Serialization.Serializers.StructSerializerBase<ET.CreateMapCtx>
 	// MongoDB.Bson.Serialization.Serializers.StructSerializerBase<ET.MessageReturn>
 	// MongoDB.Bson.Serialization.Serializers.StructSerializerBase<ET.UnitHead>
 	// MongoDB.Bson.Serialization.Serializers.StructSerializerBase<Unity.Mathematics.float2>
@@ -604,14 +610,19 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Comparison<object>
 	// System.Comparison<uint>
 	// System.Comparison<ushort>
+	// System.Dynamic.Utils.CacheDict.Entry<object,object>
+	// System.Dynamic.Utils.CacheDict<object,object>
 	// System.Func<int,object>
 	// System.Func<object,byte>
 	// System.Func<object,int>
+	// System.Func<object,object,byte,object,object>
 	// System.Func<object,object,object>
 	// System.Func<object,object>
 	// System.Func<object>
 	// System.Linq.Buffer<ET.RpcInfo>
+	// System.Linq.Buffer<object>
 	// System.Linq.Enumerable.<SkipIterator>d__31<object>
+	// System.Linq.Expressions.Expression<object>
 	// System.Linq.GroupedEnumerable<object,int,object>
 	// System.Linq.GroupedEnumerable<object,object,object>
 	// System.Linq.IGrouping<int,object>
@@ -645,7 +656,10 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>
 	// System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter<object>
 	// System.Runtime.CompilerServices.ConfiguredTaskAwaitable<object>
+	// System.Runtime.CompilerServices.ReadOnlyCollectionBuilder.Enumerator<object>
+	// System.Runtime.CompilerServices.ReadOnlyCollectionBuilder<object>
 	// System.Runtime.CompilerServices.TaskAwaiter<object>
+	// System.Runtime.CompilerServices.TrueReadOnlyCollection<object>
 	// System.Span.Enumerator<byte>
 	// System.Span<byte>
 	// System.Threading.Tasks.ContinuationTaskFromResultTask<object>
@@ -696,7 +710,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void ET.ETAsyncTaskMethodBuilder<uint>.Start<object>(object&)
 		// ET.ETTask<object> ET.ETCancellationTokenHelper.TimeoutAsync<object>(ET.ETTask<object>,long)
 		// object ET.Entity.AddChild<object,int>(int,bool)
-		// object ET.Entity.AddChild<object,object,int>(object,int,bool)
+		// object ET.Entity.AddChild<object,object,float>(object,float,bool)
 		// object ET.Entity.AddChild<object,object>(object,bool)
 		// object ET.Entity.AddChild<object>(bool)
 		// ET.Entity ET.Entity.AddChildByType<object>(object,System.Type,bool)
@@ -723,6 +737,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void ET.EntitySystemSingleton.Awake<byte>(ET.Entity,byte)
 		// System.Void ET.EntitySystemSingleton.Awake<int,int>(ET.Entity,int,int)
 		// System.Void ET.EntitySystemSingleton.Awake<int>(ET.Entity,int)
+		// System.Void ET.EntitySystemSingleton.Awake<object,float>(ET.Entity,object,float)
 		// System.Void ET.EntitySystemSingleton.Awake<object,int>(ET.Entity,object,int)
 		// System.Void ET.EntitySystemSingleton.Awake<object>(ET.Entity,object)
 		// int ET.EnumHelper.FromString<int>(string)
@@ -898,6 +913,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object System.Collections.Generic.CollectionExtensions.GetValueOrDefault<int,object>(System.Collections.Generic.IReadOnlyDictionary<int,object>,int,object)
 		// object System.Collections.Generic.CollectionExtensions.GetValueOrDefault<object,object>(System.Collections.Generic.IReadOnlyDictionary<object,object>,object)
 		// object System.Collections.Generic.CollectionExtensions.GetValueOrDefault<object,object>(System.Collections.Generic.IReadOnlyDictionary<object,object>,object,object)
+		// System.Collections.ObjectModel.ReadOnlyCollection<object> System.Dynamic.Utils.CollectionExtensions.ToReadOnly<object>(System.Collections.Generic.IEnumerable<object>)
 		// int System.Enum.Parse<int>(string)
 		// int System.Enum.Parse<int>(string,bool)
 		// object System.Linq.Enumerable.First<object>(System.Collections.Generic.IEnumerable<object>)
@@ -908,7 +924,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.Skip<object>(System.Collections.Generic.IEnumerable<object>,int)
 		// System.Collections.Generic.IEnumerable<object> System.Linq.Enumerable.SkipIterator<object>(System.Collections.Generic.IEnumerable<object>,int)
 		// ET.RpcInfo[] System.Linq.Enumerable.ToArray<ET.RpcInfo>(System.Collections.Generic.IEnumerable<ET.RpcInfo>)
+		// object[] System.Linq.Enumerable.ToArray<object>(System.Collections.Generic.IEnumerable<object>)
 		// System.Collections.Generic.List<object> System.Linq.Enumerable.ToList<object>(System.Collections.Generic.IEnumerable<object>)
+		// System.Linq.Expressions.Expression<object> System.Linq.Expressions.Expression.Lambda<object>(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression[])
+		// System.Linq.Expressions.Expression<object> System.Linq.Expressions.Expression.Lambda<object>(System.Linq.Expressions.Expression,bool,System.Collections.Generic.IEnumerable<System.Linq.Expressions.ParameterExpression>)
+		// System.Linq.Expressions.Expression<object> System.Linq.Expressions.Expression.Lambda<object>(System.Linq.Expressions.Expression,string,bool,System.Collections.Generic.IEnumerable<System.Linq.Expressions.ParameterExpression>)
 		// System.Span<byte> System.MemoryExtensions.AsSpan<byte>(byte[])
 		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.AwaitUnsafeOnCompleted<object,object>(object&,object&)
 		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.Start<object>(object&)

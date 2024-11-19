@@ -3,14 +3,8 @@
     [Action(ActionType.Animator)]
     public class AnimatorAction: AAction
     {
-        public override async ETTask OnExecute(Unit unit, ActionUnit actionUnit)
+        public override async ETTask OnExecute(Unit unit, ActionSubUnit actionUnit)
         {
-            var animation = unit.GetComponent<UnitGoComponent>().GetAnimator();
-            if (!animation)
-            {
-                return;
-            }
-
             bool lockMove = actionUnit.Config.Args[0].ToBool();
             if (lockMove)
             {
@@ -18,17 +12,18 @@
                 unit.GetComponent<MoveComponent>().Stop(false);
             }
 
-            for (int i = 1; i < actionUnit.Config.Args.Length; i++)
+            string name = actionUnit.Config.Args[1];
+            unit.GetComponent<AnimationComponent>().PlayAnimReturnIdle(name);
+            for (int i = 2; i < actionUnit.Config.Args.Length; i++)
             {
                 string view = actionUnit.Config.Args[i];
                 unit.GetComponent<ActionComponent>().PlayAction(view).NoContext();
             }
 
-            unit.GetComponent<AnimatorComponent>().SetTrigger(actionUnit.ActionName);
             await ETTask.CompletedTask;
         }
 
-        public override void OnUnExecute(Unit unit, ActionUnit actionUnit)
+        public override void OnUnExecute(Unit unit, ActionSubUnit actionUnit)
         {
             bool lockMove = actionUnit.Config.Args[0].ToBool();
             if (lockMove)
