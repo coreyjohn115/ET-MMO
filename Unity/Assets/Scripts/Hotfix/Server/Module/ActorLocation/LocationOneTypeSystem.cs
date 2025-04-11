@@ -2,8 +2,7 @@
 
 namespace ET.Server
 {
-    [EntitySystemOf(typeof(LockInfo))]
-    [FriendOf(typeof(LockInfo))]
+    [EntitySystemOf(typeof (LockInfo))]
     public static partial class LockInfoSystem
     {
         [EntitySystem]
@@ -12,7 +11,7 @@ namespace ET.Server
             self.CoroutineLock = coroutineLock;
             self.lockActorId = lockActorId;
         }
-        
+
         [EntitySystem]
         private static void Destroy(this LockInfo self)
         {
@@ -20,11 +19,9 @@ namespace ET.Server
             self.lockActorId = default;
         }
     }
-    
 
-    [EntitySystemOf(typeof(LocationOneType))]
-    [FriendOf(typeof(LocationOneType))]
-    [FriendOf(typeof(LockInfo))]
+    [EntitySystemOf(typeof (LocationOneType))]
+    [FriendOf(typeof (LockInfo))]
     public static partial class LocationOneTypeSystem
     {
         [EntitySystem]
@@ -32,7 +29,7 @@ namespace ET.Server
         {
             self.locationType = locationType;
         }
-        
+
         public static async ETTask Add(this LocationOneType self, long key, ActorId instanceId)
         {
             int coroutineLockType = (self.locationType << 16) | CoroutineLockType.Location;
@@ -73,9 +70,11 @@ namespace ET.Server
                     {
                         return;
                     }
+
                     Log.Info($"location timeout unlock key: {key} instanceId: {actorId} newInstanceId: {actorId}");
                     self.UnLock(key, actorId, actorId);
                 }
+
                 TimeWaitAsync().NoContext();
             }
         }
@@ -116,9 +115,9 @@ namespace ET.Server
         }
     }
 
-    [EntitySystemOf(typeof(LocationManagerComoponent))]
+    [EntitySystemOf(typeof (LocationManagerComoponent))]
     [FriendOf(typeof (LocationManagerComoponent))]
-    public static partial class LocationComoponentSystem
+    public static partial class LocationComponentSystem
     {
         [EntitySystem]
         private static void Awake(this LocationManagerComoponent self)
@@ -128,7 +127,7 @@ namespace ET.Server
                 self.AddChildWithId<LocationOneType, int>(i, i);
             }
         }
-        
+
         public static LocationOneType Get(this LocationManagerComoponent self, int locationType)
         {
             return self.GetChild<LocationOneType>(locationType);

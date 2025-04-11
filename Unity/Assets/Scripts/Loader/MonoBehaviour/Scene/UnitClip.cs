@@ -15,7 +15,5 @@ namespace ET.Client
         public const string SKill01 = "Skill_01";
         public const string SKill02 = "Skill_02";
         public const string SKill03 = "Skill_03";
-        
-        public const string Posture01 = "Posture_01";
     }
 }

@@ -6,7 +6,6 @@ using MongoDB.Driver;
 
 namespace ET.Server
 {
-    [FriendOf(typeof (RankComponent))]
     [EntitySystemOf(typeof (RankComponent))]
     public static partial class RankComponentSystem
     {
@@ -113,6 +112,13 @@ namespace ET.Server
             }
 
             Log.Info("加载排行榜数据完成!");
+            var rankObjList = await zoneDb.Query<RankObject>(info => true, nameof (RankObject));
+            foreach (RankObject info in rankObjList)
+            {
+                self.rankObjDict.TryAdd(info.Id, info);
+            }
+            
+            Log.Info("加载排行榜对象数据完成!");
         }
 
         /// <summary>
@@ -387,6 +393,7 @@ namespace ET.Server
             roleInfoProto.Fight = obj.RoleObj.Fight;
             roleInfoProto.Sex = obj.RoleObj.Sex;
 
+            proto.RoleInfo = roleInfoProto;
             return proto;
         }
 
