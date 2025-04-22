@@ -53,17 +53,9 @@ MonoBehaviour:
       - rid: 4539574918651838749
       - rid: 4539574918651838750
       - rid: 3553597584745955347
+      - rid: 6774009152961511424
     m_RuntimeSettings:
-      m_List:
-      - rid: 3553597584745955328
-      - rid: 3553597584745955329
-      - rid: 3553597584745955330
-      - rid: 3553597584745955331
-      - rid: 3553597584745955332
-      - rid: 3553597584745955336
-      - rid: 3553597584745955339
-      - rid: 3553597584745955344
-      - rid: 3553597584745955347
+      m_List: []
   m_AssetVersion: 8
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
@@ -239,6 +231,8 @@ MonoBehaviour:
           type: 2}
         m_DefaultDecalMaterial: {fileID: 2100000, guid: 31d0dcc6f2dd4e4408d18036a2c93862,
           type: 2}
+        m_DefaultSpriteMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40,
+          type: 2}
     - rid: 4539574918651838744
       type: {class: GPUResidentDrawerResources, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.GPUDriven.Runtime}
       data:
@@ -327,3 +321,13 @@ MonoBehaviour:
       data:
         m_Version: 1
         m_ProbeVolumeDisableStreamingAssets: 0
+    - rid: 6774009152961511424
+      type: {class: UniversalRenderPipelineRuntimeXRResources, ns: UnityEngine.Rendering.Universal,
+        asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        m_xrOcclusionMeshPS: {fileID: 4800000, guid: 4431b1f1f743fbf4eb310a967890cbea,
+          type: 3}
+        m_xrMirrorViewPS: {fileID: 4800000, guid: d5a307c014552314b9f560906d708772,
+          type: 3}
+        m_xrMotionVector: {fileID: 4800000, guid: f89aac1e4f84468418fe30e611dff395,
+          type: 3}

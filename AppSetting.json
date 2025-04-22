@@ -1,0 +1,7 @@
+{
+	"AccountHost" : "http://10.0.1.38",
+	"RouterHttpHost" : "http://10.0.1.38",
+	"HotUpdate" : true,
+	"HostServerHost" : "http://10.0.1.38:89",
+	"AppVersion" : "1.0.0"
+}
